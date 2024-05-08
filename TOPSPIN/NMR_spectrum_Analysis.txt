@@ -1,0 +1,21 @@
+##
+## COMMAND INDEX
+##
+
+click Help (? symbol)->Commands
+
+
+##
+## INTEGRATE 1D SPECTRUM (Manual 12.3 1D Interactive Integration, p. 203)
+##
+
+* To switch to Inegration mode enter .int on the command line.
+* Integrate manually all peacks in the N-H region (~6.5-10.2 ppm). Interactive bias or slope correction do not help.
+* Click Save Region as...->Save & Show list, then save the list of peak integrals into a file for future reference.
+* Select a peack that you believe corresponds to a single NH-NH, right click->Calibrate Current Integral and set it to 1.0. This will set automatically all other integrals
+  to multiple of the selected reference peak and will help you count the number of NH-NH signals in each multiple peak. Save these numbers if you want as above.
+  To find out your reference peak was correct do:
+  awk "NR>5" 58/pdata/1/1D_normalized_peak_integrals.txt | awk '{sum+=$4} END { print "",sum}'
+  This must give you a number close to N-1, where N you number of residues in the peptide.
+* You can optionaly try to deconvolute a complicated peak by right click on the peak integral->Deconvolution->Deconvolute & display Integrals. Howeve, I din't find it accurate.
+

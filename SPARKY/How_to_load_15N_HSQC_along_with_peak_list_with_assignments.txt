@@ -1,0 +1,11 @@
+Short Tutorial: how to load a 15N HSQC spectrum along with a peak lists containing assignments from BMRB for comparison.
+Created by Lisa-Maria Weinhold, Feb 12, 2024
+
+
+1. Open Sparky program
+2. Open spectra (.ucsf format)
+3. Command: vt 								#Adjust aspect (ppm) 
+4. Command: ct 								#Adjust contour levels (Lowest)
+5. Command: oz								#Adjust ornament sizes (Label size and peak size)
+6. Command: rp								#Load peak list (.list format, columns layout: Assignment[AANoN-H] w1(N) w2(H))
+7. Optional: Move label names manually 
