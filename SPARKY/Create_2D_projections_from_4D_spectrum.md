@@ -43,7 +43,8 @@ ucsfdata -a1 C -a2 HC -o 13C_HSQC_renamed_axes.ucsf 13C_HSQC.ucsf
 
 ## Step 4: Align the 2D C-H Projection with the 13C HSQC
 
-- Select one peak from the window of the 2D C-H Projection and the equivalent peak from the window of the 13C HSQC (not both peaks from the same window where the spectra are overlaid).
+- Select one peak from the window of the 2D C-H Projection and the equivalent peak from the window of the 13C HSQC 
+(not both peaks from the same window where the spectra are overlaid).
 - Use `al`, select the right windows and then click `Auto Align`
 
 ## Additional Resources
