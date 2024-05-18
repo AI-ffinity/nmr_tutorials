@@ -18,7 +18,7 @@ These values are for an 850 MHz spectrometer, and it's advisable to use the Tops
    - Use `ta` to select the spectrum type loaded and click `Transfer`. Note: You can load the original NMRSTAR3 file directly, but be aware that assignments will have an "_s" suffix.
    
 
-[2D projections with transfered BMRB labeled peaks](2D_N-HN_proj_BMRB_labels.png)
+![2D projections with transfered BMRB labeled peaks](images/2D_N-HN_proj_BMRB_labels.png)
 
 
 
