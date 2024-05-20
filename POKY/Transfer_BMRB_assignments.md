@@ -23,3 +23,5 @@ These values are for an 850 MHz spectrometer, and it's advisable to use the Tops
 
 
 OPTIONALLY: "_s" tags can be removed by "ut" (untag _s) or "cu" (untag _s and center)
+
+`lr` followed by `lu` to offset the labels to the right and up if they overlap with each other.

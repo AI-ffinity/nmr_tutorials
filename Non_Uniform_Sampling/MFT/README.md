@@ -93,9 +93,9 @@ Putting it together, "States-TPPI sign inversions for odd increments" means that
    - Review 2D projections in `roi_6_10-nuft/`.
    - Adjust `parameters.txt` and/or `run.sh` if necessary.
    
-   ![projection 1-4](images/Ubq_edited_4D_test_run_proj1-4.png)
-   ![projection 2-4](images/Ubq_edited_4D_test_run_proj2-4.png)
-   ![projection 3-4](images/Ubq_edited_4D_test_run_proj3-4.png)
+   ![projection 1-4](../images/Ubq_edited_4D_test_run_proj1-4.png)
+   ![projection 2-4](../images/Ubq_edited_4D_test_run_proj2-4.png)
+   ![projection 3-4](../images/Ubq_edited_4D_test_run_proj3-4.png)
 
 5. **Edit `run.sh`** to comment out the first part and uncomment the second part for a full NUS run (slow, with NUS cleaning):
    ```bash
@@ -142,7 +142,7 @@ Putting it together, "States-TPPI sign inversions for odd increments" means that
      spectra window and the other peak in the 2D projection window. Once the are both selected, click the `Align` 
      button. Then check the shift offset values in spectrum settings (`st`)
 
-   ![](images/Ubq_edited_4D_overlay_HC-C_13C_HSQC.png)
+   ![](../images/Ubq_edited_4D_overlay_HC-C_13C_HSQC.png)
    
    *Overlay of HC-C plane and 13C HSQC*
 
@@ -258,11 +258,11 @@ pulse sequence), focusing on the Ubiquitin sample in the context of data/AIffini
 - Overlay 2D projections from SSA on HN-N HSQC (data/AIffinity_2024/14 in red/green). The projection from data/AIffinity_2024/12 
    should appear in turquoise, and the projection from AIffinity/101 in gold.
 
-![](images/HN-N.png)
+![](../images/HN-N.png)
 
 ### HC-C HSQC Analysis
 
-1. Generate additional 2D HC-C projections from 4D spectrum:
+1. Generate additional 2D HC-C projection from 4D spectrum:
    ```bash
    ucsfdata -p4 -o projection-1-2-3.ucsf spectrum.ucsf
    ucsfdata -p3 -o projection-1-2.ucsf projection-1-2-3.ucsf
@@ -272,7 +272,19 @@ pulse sequence), focusing on the Ubiquitin sample in the context of data/AIffini
    will be in turquoise, with the AIffinity/101 projection in gold. Note that the missing part of AIffinity/101 (gold) 
    got shifted outside the HSQC window but the peaks there can be correctly handled with the peak aliasing feature in Sparky.
 
-![](images/HC-C.png)
+![](../images/HC-C.png)
+
+### 15N HSQC Analysis
+
+1. Generate additional 2D N-HN projection from 4D spectrum:
+   ```bash
+   ucsfdata -p1 -o projection-2-3-4.ucsf spectrum.ucsf
+   ucsfdata -p1 -o projection-3-4.ucsf projection-2-3-4.ucsf
+   ```
+2. In Sparky, read the resulting projections and reference the N or HN axes as previously described.
+3. Overlay these projections on the 15N HSQC.
+
+![](../images/N-HN.png)
 
 *Authors: Petr Padrta & Thomas Evangelidis, 8.4.2024*
 
