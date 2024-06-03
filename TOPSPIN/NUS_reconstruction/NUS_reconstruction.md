@@ -31,3 +31,12 @@ In this command: `projplp 12 all 11239121`
 	- `projpln 34 all 11239342`
 	- `abs1`
 	- `abs2`
+
+
+# Karel's commands
+* `1s td`
+* deactivate Linear Correction by setting "ME_mod" to "no" for F1-F4.
+* Divide by 2 all 4 dimensions in SI before doing `ftnd 0` for explorative purposes - it will be faster. 
+* In "STSI" at "HN" dimension write `SI/2` and click enter. It removes the 5-0 ppm Region where only water protons occur.
+* Leave all "NUS" parameters to the default values.
+* `levcalc` 
