@@ -39,4 +39,12 @@ In this command: `projplp 12 all 11239121`
 * Divide by 2 all 4 dimensions in SI before doing `ftnd 0` for explorative purposes - it will be faster. 
 * In "STSI" at "HN" dimension write `SI/2` and click enter. It removes the 5-0 ppm Region where only water protons occur.
 * Leave all "NUS" parameters to the default values.
-* `levcalc` 
+* `levcalc` automatically calculates contour levels based on the noise level and peak intensity within the spectrum. It 
+takes into account the signal-to-noise ratio to determine the starting contour level and the increment steps for 
+additional contours. typically used after the Fourier transformation and any other necessary spectral processing steps 
+like phase correction or baseline adjustment.
+- `ft2d`           # Apply two-dimensional Fourier transformation
+- `abs`            # Baseline correction
+- `autophase`      # Automatic phasing
+- `levcalc`        # Calculate and set contour levels
+- `dis2d`          # Display the 2D spectrum
