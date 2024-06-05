@@ -34,11 +34,13 @@ In this command: `projplp 12 all 11239121`
 
 
 # Karel's commands
-* `1s td`
+* `1s td` opens up the TD (size of fid) window with values "1" at the last two dimensions and a very high value at the 2nd 
+dimension. I don't know what it does. `td` opens up the TD (size of fid) window with the existing values.
 * deactivate Linear Correction by setting "ME_mod" to "no" for F1-F4.
 * Divide by 2 all 4 dimensions in SI before doing `ftnd 0` for explorative purposes - it will be faster. 
 * In "STSI" at "HN" dimension write `SI/2` and click enter. It removes the 5-0 ppm Region where only water protons occur.
 * Leave all "NUS" parameters to the default values.
+* Execute `ftnd 0 nusthreads 16`
 * `levcalc` automatically calculates contour levels based on the noise level and peak intensity within the spectrum. It 
 takes into account the signal-to-noise ratio to determine the starting contour level and the increment steps for 
 additional contours. typically used after the Fourier transformation and any other necessary spectral processing steps 
