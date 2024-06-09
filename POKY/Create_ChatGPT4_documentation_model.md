@@ -44,6 +44,6 @@ pdfunite *.pdf POKY_documentation.pdf
 
 ### 4. Load the Documentation
 
-You can find the [`POKY_documentation.pdf`](POKY_documentation.pdf) file in the current folder for convenience.
+You can find the [`POKY_documentation.pdf`](doc/POKY_documentation.pdf) file in the current folder for convenience.
 Then create a new ChatGPT 4 model by loading the POKY_documentation.pdf file. Hopefuly,
 the new model will be able to answer to your questions related to POKY's usage.

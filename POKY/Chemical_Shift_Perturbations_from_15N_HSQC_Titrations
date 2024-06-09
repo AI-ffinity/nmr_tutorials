@@ -1,0 +1,21 @@
+# Chemical Shift Perturbation Analysis from 15N HSQC Titration Experiments
+
+1. `fm` to open multiple spectra.
+2. `ja` save project as..
+3. `js` save project
+4. `pf` preferences setting => set automatic saving
+5. `ct` contour levels one spectrum
+6. `zi`, `zo`, `zf`, `zp`: zoom (in, out, show the whole spectrum, previous). Typically type `zf`, then click F11,
+ select and focus to the region of interest and click F1 to switch to selection mode.
+7. `xa` to display nucleus name (can be also set in `vt`)
+8. `rp` to read peak list
+9. `ec` (easy contour) changes the contour level of all opened spectra.
+10. `eo` easy overlay overlays multiple spectra onto one.
+11. `np` create chemical shift perturbation plots.
+
+### Handwritten Notes:
+- "Go through peaks and observe the changes. Note down affected residues."
+- "Select a peak on the overly window with LMB (left mouse button). C+O (Command + Option) to copy the peak label."
+- "My notes: the <up HM?> window and 'op' (comment- paste) to copy the peak label."
+- "(bas) Baseline correction, peak is the baseline, where is any speculation which is simplified. not related to
+field homogeneity. NE sd this because automatic carrying was imperfect"
