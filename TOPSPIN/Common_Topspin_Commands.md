@@ -1,0 +1,55 @@
+# TopSpin Commands for Spectra Processing
+
+## Fourier Transform and Baseline Correction
+1. **`ft`** - Performs a one-dimensional Fourier Transform on the data.
+2. **`fp`** - Alias for performing a Fourier Transform.
+3. **`ef`** - Alias for performing an exponential Fourier Transform.
+4. **`efp`** - Performs an exponential Fourier Transform followed by phase correction.
+5. **`edmac qfp`** - Create a new macro named `qfp` that applies a quadrature sine bell window function, performs a Fourier Transform, and then phase correction.
+6. **`xfb`** - Executes a Fourier Transform on both dimensions of a 2D dataset. Variants include `xfb n`, `xf2`, and `xf1` to focus on specific dimensions or to discard imaginary data.
+7. **`ft3d n`** - Process 3D data including Fourier Transform, without creating an imaginary file (only 3rrr file in pdata folder).
+8. **`ftnd 0`** - Execute NUS reconstruction with Fourier transformation.
+9. **`ftnd 0 nusft`** - Execute Fourier transformation without NUS reconstruction.
+10. **`abs`** - Performs baseline correction. The parameters `absf1` & `absf2` specify the range in ppm for the correction.
+11. **`abs1`** - Baseline correction specifically for the F1 dimension of a 2D spectrum.
+12. **`abs2`** - Baseline correction specifically for the F2 dimension of a 2D spectrum.
+13. **`tabs3`, `tabs2`, `tabs1`** - Perform baseline correction in the F3, F2, and F1 axes, respectively.
+
+## Phase Correction
+1. **`.ph`** - Enters interactive phase correction mode.
+2. **`pk`** - Applies previously set phase corrections (`phc0` and `phc1`) to the spectrum.
+3. **`apk`** - Executes automated phase correction, suitable for simple spectra like methanol.
+
+## Window Functions
+1. **`em`** - Applies exponential multiplication to the data, used for line broadening.
+2. **`sin`** - Multiplies the data by a sine window, phase-shifted by π/ssb.
+3. **`qsin`** - Multiplies the data by a quadrature sine window, similar to `sin` but typically with different phase adjustments.
+
+## Data Extraction and Manipulation
+1. **`slice`** - Extract a specific plane from multidimensional data.
+2. **`xht1`** - Command to reconstruct the imaginary dimension in F1.
+3. **`xht2`** - Command to reconstruct the imaginary dimension in F2.
+4. **`projplp 34 all all 34`** and **`projplp 21 all all 21`** - Generates positive projections of the specified dimensions for visualization.
+5. **`projpln 12 all 11239122`** - Generates the Negative Projection for specified dimensions.
+
+## Miscellaneous Processing
+1. **`eda`** - Displays parameters for the indirect dimensions of 2D, 3D spectra such as sweep width, time domain size, and offsets.
+2. **`tf3 n; tf2 n; tf1 n`** - Fourier Transforms the specified dimension in a 3D dataset. The 'n' indicates that no imaginary data is generated.
+3. **`edp`** - Used to access and modify processing parameters in the "ProcPars" window.
+4. **`.gr`** - Refresh the graphical display.
+
+### Spectrometer Control and Spectra Recording Commands:
+1. **`sx` and `ej`** - Commands used to eject the current sample from the spectrometer.
+2. **`sx <position>`** - Starts the carousel and inserts the sample at the specified position into the spectrometer.
+3. **`new`** - Creates a new experiment based on an active one.
+4. **`ww`** - Executes automatic matching and tuning of the system.
+5. **`lock`** - Locks the magnetic field, usually selecting "H2O + D2O" from the dropdown list.
+6. **`topshim gui`** - Initiates automatic 1D shimming to optimize the magnetic field homogeneity.
+7. **`p1` followed by `1 P1 1`** - Configures pulse program settings.
+8. **`zg`** - Starts the experiment, initiating the acquisition of the NMR spectrum.
+9. **`atma`** - Automatically tunes and matches the channels, typically used for 15N and 1H channels.
+10. **`pulsecal`** - Calculates the length of the 90° hydrogen pulse P1 for 10W.
+11. **`getprosol 1H P1 xW`** - Sets pulse and power, inserting previously determined value P1 with the appropriate power value.
+12. **`stop`** - Stops the measurement process.
+13. **`pulse <x>W`** - Recalculates the pulse for `<x> Watt`.
+
