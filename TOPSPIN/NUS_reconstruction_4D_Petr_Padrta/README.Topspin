@@ -67,7 +67,8 @@
 ## Processing of AIffinity_2024/12, pulseprogram hsqcnoesyhsqccngp4d
 # axis order: HN-15N-HC-13C
 - Set main processing parameters (edp):
-  - Reference: set SI to next power of 2 of TD
+  - Reference: set SI to next power of 2 of TD (Fourier transforms are more efficient computationally 
+  when the number of data points is a power of two; zero filling can be used to increase the number of points in an FID to the next higher power of two)
 	SI: 1024 256 512 256
   - Phase: opposite sign of NMRPipe/SSA
 	PHC0: 150  0  0  0

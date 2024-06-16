@@ -5,7 +5,8 @@
 2. **`fp`** - Alias for performing a Fourier Transform.
 3. **`ef`** - Alias for performing an exponential Fourier Transform.
 4. **`efp`** - Performs an exponential Fourier Transform followed by phase correction.
-5. **`edmac qfp`** - Create a new macro named `qfp` that applies a quadrature sine bell window function, performs a Fourier Transform, and then phase correction.
+5. **`edmac qfp`** - Create a new macro named `qfp` that applies a quadrature sine bell window function (`qsin`), 
+performs a Fourier Transform, and then phase correction (`fp`).
 6. **`xfb`** - Executes a Fourier Transform on both dimensions of a 2D dataset. Variants include `xfb n`, `xf2`, and `xf1` to focus on specific dimensions or to discard imaginary data.
 7. **`ft3d n`** - Process 3D data including Fourier Transform, without creating an imaginary file (only 3rrr file in pdata folder).
 8. **`ftnd 0`** - Execute NUS reconstruction with Fourier transformation.
@@ -19,6 +20,7 @@
 1. **`.ph`** - Enters interactive phase correction mode.
 2. **`pk`** - Applies previously set phase corrections (`phc0` and `phc1`) to the spectrum.
 3. **`apk`** - Executes automated phase correction, suitable for simple spectra like methanol.
+4. **`pknd`** - Performs a phase correction of data of dimension ≥3D, applying the values of PHC0 and PHC1. 
 
 ## Window Functions
 1. **`em`** - Applies exponential multiplication to the data, used for line broadening.
@@ -30,7 +32,7 @@
 2. **`xht1`** - Command to reconstruct the imaginary dimension in F1.
 3. **`xht2`** - Command to reconstruct the imaginary dimension in F2.
 4. **`projplp 34 all all 34`** and **`projplp 21 all all 21`** - Generates positive projections of the specified dimensions for visualization.
-5. **`projpln 12 all 11239122`** - Generates the Negative Projection for specified dimensions.
+5. **`projpln 34 all all 340`** and **`projpln 21 all all 210`** - Generates the Negative Projection for specified dimensions.
 
 ## Miscellaneous Processing
 1. **`eda`** - Displays parameters for the indirect dimensions of 2D, 3D spectra such as sweep width, time domain size, and offsets.
