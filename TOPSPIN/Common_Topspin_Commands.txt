@@ -1,0 +1,41 @@
+### Spectra Processing Commands:
+1. **`xfb`** - Process data in F1 and F2 dimensions, transferring FID to a 2D spectrum.
+2. **`clev 0.6 32`** - Automatically calculate and set contour levels for 2D data; 0.6 is the factor for calculation and 32 is the number of levels.
+3. **`.lv` or `edlev`** - Manually enter contour levels mode to adjust "level increment" and "number of levels".
+4. **`.ph`** - Enter phase mode for adjusting the phase of the spectrum.
+5. **`abs1`** - Perform automatic baseline correction in the F1 axis.
+6. **`abs2`** - Perform automatic baseline correction in the F2 axis.
+7. **`edp`** - Used to access and modify processing parameters in the "ProcPars" window.
+8. **`ft3d n`** - Process 3D data including Fourier Transform, without creating an imaginary file (only 3rrr file in pdata folder).
+9. **`tabs3`, `tabs2`, `tabs1`** - Perform baseline correction in the F3, F2, and F1 axes, respectively.
+10. **`ftnd 0 nusft`** - Execute Fourier transformation without NUS reconstruction.
+11. **`SI/2`** - Command to halve the Size Increment in the STSI field.
+12. **`3 TDeff 1400`** - Set the effective time domain size for the direct dimension.
+13. **`edmac qfp`** - Create a new macro named qfp.
+14. **`qsin`** - Apply a quadrature sine window function.
+15. **`fp`** - Perform Fourier transformation (likely ft with parameters).
+16. **`qfp`** - Run the macro named qfp.
+17. **`.gr`** - Refresh the graphical display.
+18. **`ftnd 0`** - Execute NUS reconstruction with Fourier transformation.
+19. **`slice`** - Extract a specific plane from multidimensional data.
+20. **`xht1`** - Command to reconstruct the imaginary dimension in F1.
+21. **`xht2`** - Command to reconstruct the imaginary dimension in F2.
+22. **`projplp 34 all all 34`** and **`projplp 21 all all 21`** - Generates positive projections of the specified dimensions for visualization.
+23. **`projpln 12 all 11239122`** - Generates the Negative Projection for specified dimensions.
+
+### Spectrometer Control and Spectra Recording Commands:
+1. **`sx` and `ej`** - Commands used to eject the current sample from the spectrometer.
+2. **`sx <position>`** - Starts the carousel and inserts the sample at the specified position into the spectrometer.
+3. **`new`** - Creates a new experiment based on an active one.
+4. **`ww`** - Executes automatic matching and tuning of the system.
+5. **`lock`** - Locks the magnetic field, usually selecting "H2O + D2O" from the dropdown list.
+6. **`topshim gui`** - Initiates automatic 1D shimming to optimize the magnetic field homogeneity.
+7. **`p1` followed by `1 P1 1`** - Configures pulse program settings.
+8. **`zg`** - Starts the experiment, initiating the acquisition of the NMR spectrum.
+9. **`atma`** - Automatically tunes and matches the channels, typically used for 15N and 1H channels.
+10. **`pulsecal`** - Calculates the length of the 90° hydrogen pulse P1 for 10W.
+11. **`getprosol 1H P1 xW`** - Sets pulse and power, inserting previously determined value P1 with the appropriate power value.
+12. **`stop`** - Stops the measurement process.
+13. **`pulse <x>W`** - Recalculates the pulse for `<x> Watt`.
+
+
