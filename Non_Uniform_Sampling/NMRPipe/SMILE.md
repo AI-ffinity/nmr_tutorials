@@ -301,16 +301,5 @@ Colsole output (execution aborted):
     user	0m11,319s
     sys	2m21,240s
     ekaterina@atlas:/home2/ekaterina/NUSdata/Ubiquitin_4D_2022_07/101$ 
-    
-    
-### IST
-
-Command: 
-
-    ist4D.com –istMaxRes Auto \
-    -in fid/test%04d.fid -mask mask/test%04d.fid -out ist/test%04d.ft3 \
-    -xP0 -90 -xP1 0 -zP0 -90 -zP1 180 -xEXTX1 10.4ppm -xEXTXN 5.4ppm \
-    -zFTARG alt
-
 
 
