@@ -54,11 +54,11 @@ With the default parameters
 	> Thus, only the FT of the entire spectrum takes longer than an hour while the segment of 20% of the direct dimension takees only 12 minutes!
 2. This code auto-phases; but just in case, call the auto-phase command separately and compare with the phase correction coefficients for our 2D planes:
 
-
-	nmrPrintf "Auto-Phase ...\n\n"
-	set xP0 = (`basicAutoPhase.com -in fid/test%04d.fid -apxP1 0.0 -apyP0 0.0 -apyP1 0.0 -apyFTARG None -apOrd 0`)
-	nmrPrintf "Auto-Phase xP0: %.1f\n\n" $xP0
-
+```
+nmrPrintf "Auto-Phase ...\n\n"
+set xP0 = (`basicAutoPhase.com -in fid/test%04d.fid -apxP1 0.0 -apyP0 0.0 -apyP1 0.0 -apyFTARG None -apOrd 0`)
+nmrPrintf "Auto-Phase xP0: %.1f\n\n" $xP0
+```
 
 ### Doing actual fourier transform in the indirect dimensions
 
