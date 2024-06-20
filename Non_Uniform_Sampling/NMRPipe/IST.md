@@ -154,4 +154,8 @@ Command:
 Unlike SMILE, the IST function does not generate any script. The prelimanary processing (FFT of the direcc dimension, 
 reformatting, restructuring) takes *much* longer than in case of SMILE - more than an hour as opposed to a dozen minutes! 
 
+See all availble options in the [command reference](./nusPipe_IST_4D_ref.md)
+
+**Warning**: Durnig processing, the intermediate file `ist_nuszf.fid` blows up *immensely* and can weight MORE THAN 350 GB - for 40 GB expanded FID!
+
 
