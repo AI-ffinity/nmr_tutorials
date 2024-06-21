@@ -33,14 +33,18 @@ performs a Fourier Transform, and then phase correction (`fp`).
 3. **`xht2`** - Command to reconstruct the imaginary dimension in F2.
 4. **`projplp 34 all all 34`** and **`projplp 21 all all 21`** - Generates positive projections of the specified dimensions for visualization.
 5. **`projpln 34 all all 340`** and **`projpln 21 all all 210`** - Generates the Negative Projection for specified dimensions.
-6. **`rser**` - Read row from 2D raw data (a series of FIDs) and store as 1D FID (2D,1D).
-7. **`rpl**` - Read plane from data ≥ 3D and store as 2D data.
+6. **`rser`** - Read row from 2D raw data (a series of FIDs) and store as 1D FID (2D,1D).
+7. **`rpl`** - Read plane from data ≥ 3D and store as 2D data.
 
 ## Miscellaneous Processing
 1. **`eda`** - Displays parameters for the indirect dimensions of 2D, 3D spectra such as sweep width, time domain size, and offsets.
 2. **`tf3 n; tf2 n; tf1 n`** - Fourier Transforms the specified dimension in a 3D dataset. The 'n' indicates that no imaginary data is generated.
 3. **`edp`** - Used to access and modify processing parameters in the "ProcPars" window.
 4. **`.gr`** - Refresh the graphical display.
+5. **`levcalc`** automatically calculates and sets optimal contour levels based on the signal intensity and 
+ noise characteristics to ensure that the peaks are visible and informative without being overwhelmed by noise. 
+Use `dis2d` or `dis3d` (depending on the dimensionality of your data) to display the spectrum with the 
+automatically calculated contour levels.
 
 ### Spectrometer Control and Spectra Recording Commands:
 1. **`sx` and `ej`** - Commands used to eject the current sample from the spectrometer.
