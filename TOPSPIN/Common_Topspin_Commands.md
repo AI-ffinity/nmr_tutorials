@@ -20,7 +20,7 @@ performs a Fourier Transform, and then phase correction (`fp`).
 1. **`.ph`** - Enters interactive phase correction mode.
 2. **`pk`** - Applies previously set phase corrections (`phc0` and `phc1`) to the spectrum.
 3. **`apk`** - Executes automated phase correction, suitable for simple spectra like methanol.
-4. **`pknd`** - Performs a phase correction of data of dimension ≥3D, applying the values of PHC0 and PHC1. 
+4. **`pknd`** - Performs a phase correction of data of dimension ≥3D, applying the values of PHC0 and PHC1 only on one dimension. 
 
 ## Window Functions
 1. **`em`** - Applies exponential multiplication to the data, used for line broadening.
@@ -33,6 +33,8 @@ performs a Fourier Transform, and then phase correction (`fp`).
 3. **`xht2`** - Command to reconstruct the imaginary dimension in F2.
 4. **`projplp 34 all all 34`** and **`projplp 21 all all 21`** - Generates positive projections of the specified dimensions for visualization.
 5. **`projpln 34 all all 340`** and **`projpln 21 all all 210`** - Generates the Negative Projection for specified dimensions.
+6. **`rser**` - Read row from 2D raw data (a series of FIDs) and store as 1D FID (2D,1D).
+7. **`rpl**` - Read plane from data ≥ 3D and store as 2D data.
 
 ## Miscellaneous Processing
 1. **`eda`** - Displays parameters for the indirect dimensions of 2D, 3D spectra such as sweep width, time domain size, and offsets.
