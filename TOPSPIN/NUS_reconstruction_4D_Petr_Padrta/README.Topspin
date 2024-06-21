@@ -11,6 +11,16 @@
 # Commercial license for Topspin is required: TOPSPIN_NUS and TOPSPIN_NUS_CS.
 # Topspin internaly uses modified MddNMR.
 
+## Selection of PHC0 and PHC1 angles for phase correction
+Only the direct dimension (F4), the phases in indirect dimensions
+are (ideally) given by the pulseprograms. There are two ways to do this:
+1. if you have measured 2D planes with the same pulseprogram, you can phase correct them
+and copy the PHC0 and PHC1 values to the PROCAPRS of the raw 4D spectrum.
+2. if not, then process whole spectrum in faster mode (e.g. with smaller SI values; see below),
+do the HN-N projection with `projpln` command (see "Visual comparison with 2D HSQC in Topspin"),
+phased it, copy the PHC0 and PHC1 values to the PROCAPRS of the raw 4D spectrum and
+reprocess it again with full SI.
+
 ## Processing of AIffinity/101, pulseprogram noehcnhwg4d_nove
 # axis order: HN-15N-13C-HC
 - Correct 1-point delay in 13C, otherwise NUS CS_VE will
@@ -27,7 +37,10 @@
   This should automatically set static TDeff(F2) also to 162 and allow
   processing with adjusted nuslist.
 - Set main processing parameters (edp):
-  - Reference: set SI to next power of 2 of TD
+  - Reference: set SI to next power of 2 of TD. (Fourier transforms are more efficient computationally
+  when the number of data points is a power of two; zero filling can be used to increase the number
+  of points in an FID to the next higher power of two). You might try lower SI but
+  then be ready to confirm processing of individual planes, asked every few hours or so.
 	SI: 1024 256 256 512
   - Phase: opposite sign of NMRPipe/SSA
 	PHC0: -107 0  0  0 
@@ -67,8 +80,7 @@
 ## Processing of AIffinity_2024/12, pulseprogram hsqcnoesyhsqccngp4d
 # axis order: HN-15N-HC-13C
 - Set main processing parameters (edp):
-  - Reference: set SI to next power of 2 of TD (Fourier transforms are more efficient computationally 
-  when the number of data points is a power of two; zero filling can be used to increase the number of points in an FID to the next higher power of two)
+  - Reference: set SI to next power of 2 of TD
 	SI: 1024 256 512 256
   - Phase: opposite sign of NMRPipe/SSA
 	PHC0: 150  0  0  0
@@ -133,6 +145,10 @@
 - Create 2D positive projections 34 (HN-N) and 12 (or 21) (HC-C):
   	"projplp 34 all all 34"
 	"projplp 21 all all 21"
+- If the positive projections are empty, then probably the peaks are anti-phase. Verify
+this by running "projpln 34 all all 340" and "projpln 21 all all 210". If this is the case,
+then add 180 to PHC0 and issue `pknd 4`. It will change the phase in the F4 dimension only,
+but will be slow (no parallelization).
 - Overlay with appropriate HSQC with Topspin command ".md".
 - Resulting screenshots are HN-N.png and HC-C.png in individual directories.
 
