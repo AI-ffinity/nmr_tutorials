@@ -10,16 +10,23 @@ performs a Fourier Transform, and then phase correction (`fp`).
 6. **`xfb`** - Executes a Fourier Transform on both dimensions of a 2D dataset. Variants include `xfb n`, `xf2`, and `xf1` to focus on specific dimensions or to discard imaginary data.
 7. **`ft3d n`** - Process 3D data including Fourier Transform, without creating an imaginary file (only 3rrr file in pdata folder).
 8. **`ftnd 0`** - Execute NUS reconstruction with Fourier transformation.
-9. **`ftnd 0 nusft`** - Execute Fourier transformation without NUS reconstruction.
+9. **`ftnd 0 nusft`** - Execute Fourier transformation without NUS reconstruction. Sorts FID’s, leaving blanks where no data was collected (xf2, xfb, ftnd)
+9. **`ftnd 0 nd2d`** - Leaves FID’s in the acquired order (xf2 only).
 10. **`abs`** - Performs baseline correction. The parameters `absf1` & `absf2` specify the range in ppm for the correction.
 11. **`abs1`** - Baseline correction specifically for the F1 dimension of a 2D spectrum.
 12. **`abs2`** - Baseline correction specifically for the F2 dimension of a 2D spectrum.
 13. **`tabs3`, `tabs2`, `tabs1`** - Perform baseline correction in the F3, F2, and F1 axes, respectively.
 
+## Special Options
+1. **`nusft`** – sort FID’s, leaving blanks where no data was collected (`xf2`, `xfb`, `ftnd`). Quick processing with tons of artifacts!
+2. **`nd2d`** – leave FID’s in the acquired order (xf2 only)
+
 ## Phase Correction
 1. **`.ph`** - Enters interactive phase correction mode.
 2. **`pk`** - Applies previously set phase corrections (`phc0` and `phc1`) to the spectrum.
 3. **`apk`** - Executes automated phase correction, suitable for simple spectra like methanol.
+4. **`apk2d`** - Automatically performs phase correction on 2D spectra, streamlining the adjustment of both zero-order 
+and first-order phase settings to optimize spectral clarity and symmetry.
 4. **`pknd`** - Performs a phase correction of data of dimension ≥3D, applying the values of PHC0 and PHC1 only on one dimension. 
 
 ## Window Functions

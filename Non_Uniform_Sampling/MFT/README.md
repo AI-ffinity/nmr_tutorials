@@ -264,8 +264,8 @@ pulse sequence), focusing on the Ubiquitin sample in the context of data/AIffini
 
 1. Generate additional 2D HC-C projection from 4D spectrum:
    ```bash
-   ucsfdata -p4 -o projection-1-2-3.ucsf spectrum.ucsf
-   ucsfdata -p3 -o projection-1-2.ucsf projection-1-2-3.ucsf
+   ucsfdata -p4 -r -o projection-1-2-3.ucsf spectrum.ucsf
+   ucsfdata -p3 -r -o projection-1-2.ucsf projection-1-2-3.ucsf
    ```
 2. In Sparky, read the resulting projections and shift the C or HC axes as previously described.
 3. Overlay these projections on the HC-C HSQC (data/AIffinity_2024/13 in red/green). The projection from data/AIffinity_2024/12 
@@ -278,8 +278,8 @@ pulse sequence), focusing on the Ubiquitin sample in the context of data/AIffini
 
 1. Generate additional 2D N-HN projection from 4D spectrum:
    ```bash
-   ucsfdata -p1 -o projection-2-3-4.ucsf spectrum.ucsf
-   ucsfdata -p1 -o projection-3-4.ucsf projection-2-3-4.ucsf
+   ucsfdata -p1 -r -o projection-2-3-4.ucsf spectrum.ucsf
+   ucsfdata -p1 -r -o projection-3-4.ucsf projection-2-3-4.ucsf
    ```
 2. In Sparky, read the resulting projections and reference the N or HN axes as previously described.
 3. Overlay these projections on the 15N HSQC.
