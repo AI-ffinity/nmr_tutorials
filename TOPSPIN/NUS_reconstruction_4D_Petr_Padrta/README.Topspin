@@ -12,7 +12,8 @@
 # Topspin internaly uses modified MddNMR.
 
 ## Selection of PHC0 and PHC1 angles for phase correction
-Only the direct dimension (F4), the phases in indirect dimensions
+NUS reconstruction works better when 1D spectra are properly phased.
+We need to find the PHC0 and PHC1  only for the direct dimension (F4), the phases in indirect dimensions
 are (ideally) given by the pulseprograms. There are two ways to do this:
 1. if you have measured 2D planes with the same pulseprogram, you can phase correct them
 and copy the PHC0 and PHC1 values to the PROCAPRS of the raw 4D spectrum.
@@ -157,10 +158,10 @@ but will be slow (no parallelization).
 	"cd AIffinity/101"
 	"bruk2ucsf pdata/1/4rrrr topspin.ucsf"
 - Create 2D projections HN-N and HC-C:
-	"ucsfdata -p1 -o projection-2-3-4.ucsf topspin.ucsf"
-	"ucsfdata -p1 -o projection-3-4.ucsf projection-2-3-4.ucsf"
-	"ucsfdata -p4 -o projection-1-2-3.ucsf spectrum.ucsf"
-	"ucsfdata -p3 -o projection-1-2.ucsf projection-1-2-3.ucsf"
+	"ucsfdata -p1 -r -o projection-2-3-4.ucsf topspin.ucsf"
+	"ucsfdata -p1 -r -o projection-3-4.ucsf projection-2-3-4.ucsf"
+	"ucsfdata -p4 -r -o projection-1-2-3.ucsf spectrum.ucsf"
+	"ucsfdata -p3 -r -o projection-1-2.ucsf projection-1-2-3.ucsf"
 
 
 Petr Padrta, 14.6.2024
