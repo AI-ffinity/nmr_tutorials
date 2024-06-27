@@ -70,13 +70,13 @@ reprocess it again with full SI.
     - Total shift of HC(F1) axis:
 	- in Topspin: set SR(F1) to (6.666-4.7)*600.05=1179.698 Hz
           or:
-	- in Sparky: set HC shift in "st" to -(6.666-4.7)=-1.966 ppm
+	- in POKY: set HC shift in "st" to -(6.666-4.7)=-1.966 ppm
   - CAR of 13C axis was written as 39.1096 ppm, but should be 41 ppm,
     13C axis is folded by 1/4*SW, relevant peaks are aliased.
     - Total shift of 13C(F2) axis:
 	- in Topspin: set SR(F2) to (58.0333/4 + (41-39.1096))*150.882693=2474.283 Hz
           or:
-	- in Sparky: set 13C shift in "st" to -(58.0333/4 + (41-39.1096))=-16.398 ppm
+	- in POKY: set 13C shift in "st" to -(58.0333/4 + (41-39.1096))=-16.398 ppm
 
 ## Processing of AIffinity_2024/12, pulseprogram hsqcnoesyhsqccngp4d
 # axis order: HN-15N-HC-13C
@@ -108,7 +108,7 @@ reprocess it again with full SI.
 - Correct shift of HC(F2) axis (the axis is folded by 1/4*SW):
 	- in Topspin: set SR(F2) to (11.9037/4)*600.05=1785.70 Hz
           or:
-	- in Sparky: set HC shift in "st" to -(11.9037/4)=-2.976 ppm
+	- in POKY: set HC shift in "st" to -(11.9037/4)=-2.976 ppm
   Note: this correction is not necessary for newer version of this
   pulseprogram, where CAR for HC axis is hardcoded via CNST20=2.6 ppm.
 
@@ -140,20 +140,42 @@ reprocess it again with full SI.
 - Correct shift of HC(F1) axis:
 	- in Topspin: set SR(F1) to (O1P-CNST16)*BF1=(4.7-2.75)*950.37=1853.22 Hz
           or:
-	- in Sparky: set HC shift in "st" to -(O1P-CNST16)=-(4.7-2.75)=-1.95 ppm
+	- in POKY: set HC shift in "st" to -(O1P-CNST16)=-(4.7-2.75)=-1.95 ppm
 
 ## Visual comparison with 2D HSQC in Topspin 
-- Create 2D positive projections 34 (HN-N) and 12 (or 21) (HC-C):
+- Create both 2D positive and negative (!) projections 34 (HN-N) and 12 (or 21) (HC-C):
   	"projplp 34 all all 34"
 	"projplp 21 all all 21"
-- If the positive projections are empty, then probably the peaks are anti-phase. Verify
-this by running "projpln 34 all all 340" and "projpln 21 all all 210". If this is the case,
-then add 180 to PHC0 and issue `pknd 4`. It will change the phase in the F4 dimension only,
-but will be slow (no parallelization).
+	"projpln 34 all all 340"
+	"projpln 21 all all 210"
+- Often, the F4:PHC0,PHC1 values are not correct and some of the peaks are anti-phase. See 4D Phase correction for
+how to proceed.
+- If the positive projections are completely empty, and all peaks are anti-phase, then add 180 to PHC0 and
+issue `pknd 4`. It will change the phase in the F4 dimension only, but will be slow (no parallelization).
 - Overlay with appropriate HSQC with Topspin command ".md".
 - Resulting screenshots are HN-N.png and HC-C.png in individual directories.
 
-## Conversion to Sparky
+## Conversion to POKY
+### Convert Topspin 21 and 34 projections to ucsf and correct the 13C width.
+- `bruk2ucsf 2rr HC-C_projection_Topspin.ucsf`
+- Find the 13C dimension limits by running `ucsfdata HC-C_projection_Topspin.ucsf`. E.g.
+```
+axis                          w1          w2
+nucleus                      13C          HC
+matrix size                  256         512
+block size                   128         256
+upfield ppm              -51.673      -1.293
+downfield ppm             52.562      10.693
+spectrum width Hz       8441.423    9578.544
+transmitter MHz           80.985     799.134
+```
+- In Topspin open the 21 projection and issue `pp2d` to see the original 13C dimension limits, e.g.,
+65.0265 and 12.9703 ppm.
+- Estimate the scaling factor, e.g. (65.0265−12.9703)÷(52.562+51.673)=0.503707933
+- Load HC-C_projection_Topspin.ucsf to POKY and type `Pn`, then File->Poky scripts->Find Additional
+Modules from POKY GitHib Repository->scale_spectra_width_script.py and follow the prompt.
+
+### Create 2D projections with POKY tools
 - Convert resulting 4D spectrum to ucsf:
 	"cd AIffinity/101"
 	"bruk2ucsf pdata/1/4rrrr topspin.ucsf"
