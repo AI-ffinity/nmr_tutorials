@@ -186,4 +186,24 @@ Modules from POKY GitHib Repository->scale_spectra_width_script.py and follow th
 	"ucsfdata -p3 -r -o projection-1-2.ucsf projection-1-2-3.ucsf"
 
 
+### Advanced CS Parameters
+- For faster processing (e.g. to find the optimal `PHC0`, `PHC1` values) try cutting `TD(F4)``
+back to 1024 by setting TDeff, and then set `SI(F4)` to 1024. You can also try lowering `SI(F4)``
+without modifying `TDeff(F4)`.
+- Changing SI upwards is only additional zero-filling.
+true resolution is given by the acquisition parameters. Zero-filling
+cannot add peaks or improve resolution, that's just illusion. However,
+in case of NUS, zero-filling could influence the convergence of
+reconstruction algorithms to better find "the original spectrum". That's
+why MddNMR internally uses ZF=2 by default (parameter Mdd_CsZF=2).
+- `BC_mode` influences the final spectrum, particularly in the F4 dimension.
+-  Wrong spectrometer frequency `SF` values, OFFSET values and spectrum reference frequencies (SR)
+ should just shift and/or compress the axes, not the spectrum itself.
+ - Spectral resolution `HZpPT` is to a small extened an indicator of the quality of the final
+processed spectrum. True resolution is given by acquisition params.
+- The `SPECTYP` parameter value probably does not affect the processed spectrum.
+
+
+Authors:
 Petr Padrta, 14.6.2024
+Thomas Evangelidis
