@@ -15,20 +15,20 @@ The dimensions in the Bruker's 4D HCNH NOESY spectrum are F1: C; F2: HC; F3: N; 
 * Optionally, apply automatic baseline correction to the whole NUS recopnstructed 4D spectrum by issueing `absnd`.
 
 * To calculate projections by summing over specific dimensions of your data. Given your dimensions (F1: C, F2: HC, F3: N, F4: HN), and wanting to project out F3 and F4 to keep F1 and F2, you would use the following syntax:
-In this command: `projplp 12 all 11239121`
+In this command: `projplp 21 all all 21`
  - 12 refers to keeping the first two dimensions (C and HC).
  - all indicates that all planes within these dimensions should be included.
  - 1 specifies the output PROCNO where the projection data will be stored. Adjust the PROCNO based on where you want to save the output.
 
 * Issue commands `abs1` followed by `abs2` to perform an automatic baseline correction in the F1 and F2 direction. These commands automatically subtracts a polynomial, typically of degree 5, from the rows of your processed 2D data. The polynomial degree and the correction region can be adjusted if needed through the ABSG, ABSF1, and ABSF2 parameters .
 
-* Afterwards issue `projpln 12 all 11239122` to Generate the Negative Projection. This command works similarly but for negative peaks, storing the output in a different processing directory. Perform automatic baseline correction with `abs1` followed by `abs2`.
+* Afterwards issue `projpln 21 all all 210` to Generate the Negative Projection. This command works similarly but for negative peaks, storing the output in a different processing directory. Perform automatic baseline correction with `abs1` followed by `abs2`.
 
 * Overlay the positive and negative projections to visually combine their features. As a quality control, overlay them with the 13C HSQC, too. Left click and hold on the icon with the "S" and above it the arrowed-cross to shift the 13C HSQC spectrum and place it exactly on top of the other two 2D projections.
 
 * Repeate the same procedure for the N-HN plane and compare it with the 15N HSQC.
-	- `projplp 34 all 11239341`
-	- `projpln 34 all 11239342`
+	- `projplp 34 all all 34`
+	- `projpln 34 all all 340`
 	- `abs1`
 	- `abs2`
 
