@@ -1,10 +1,10 @@
-# SMILE reconstruction 
+# IST reconstruction as implemented in NMR Pipe 
 
 ## General remarks
 
 `NMRPipe` uses a single CPU core only. FT (and other linear transforations) do not consume memory. 
 
-Reconstruction takes ... and consumes ... RAM. 
+Reconstruction takes *2 h 40 m X 2 (at least)* and consumes almost no RAM. 
 
  
 
@@ -156,6 +156,6 @@ reformatting, restructuring) takes *much* longer than in case of SMILE - more th
 
 See all availble options in the [command reference](./nusPipe_IST_4D_ref.md)
 
-**Warning**: Durnig processing, the intermediate file `ist_nuszf.fid` blows up *immensely* and can weight MORE THAN 350 GB - for 40 GB expanded FID!
+> **Warning**: Durnig processing, the intermediate file `ist_nuszf.fid` blows up *immensely* and can weight MORE THAN 350 GB - for 40 GB expanded FID!
 
 
