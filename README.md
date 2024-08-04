@@ -9,8 +9,7 @@
   </div>
 </div>
 
-## Table of Logos and Descriptions
-
+## Contents
 <table>
   <tr>
     <td style="vertical-align: middle;">
