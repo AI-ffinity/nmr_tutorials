@@ -13,6 +13,8 @@ The script will take care of downloading the source files, installing dependanci
 ## Requirements
 * Ubuntu 22.04.4 LTS
 * Admin rights
+* `wget` to fetch the script
+* `csh` or `tcsh` shell to run NMR pipe
 
 ## Note on Ubuntu 24
 The default installation will work for the command-line-based programs within NMR Pipe - however, NMRDraw will not open the window. To fix this: 
