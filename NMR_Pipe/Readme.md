@@ -14,6 +14,15 @@ The script will take care of downloading the source files, installing dependanci
 * Ubuntu 22.04.4 LTS
 * Admin rights
 
+## Note on Ubuntu 24
+The default installation will work for the command-line-based programs within NMR Pipe - however, NMRDraw will not open the window. To fix this: 
+* Get the following two files (X11 libraries from Ubuntu 20)
+  * https://www.ibbr.umd.edu/nmrpipe/libX11.so.6
+  * https://www.ibbr.umd.edu/nmrpipe/libXau.so.6
+* Put them in the nmrbin.*/lib directory.
+
+See this [thread](https://groups.io/g/nmrpipe/topic/99567785) for more details.
+
 ## Flow
 1. Creates a folder `tmp_download` in the current directory
 2. Checks if the necessary files already exist and downloads them, if necessary
