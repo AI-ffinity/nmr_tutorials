@@ -3,7 +3,7 @@
 Download, install and set up [NMRPipe](https://spin.niddk.nih.gov/bax/NMRPipe/) on Ubuntu 22.04 Jammy LTS with the single line!
 
 ```sh
-wget -qO- PUT_URL_TO_THE_SCRIPT_HERE | bash
+wget -qO- https://github.com/AI-ffinity/nmr_tutorials/blob/8ea33433f58a31e45138687217b24309d5c2ef2f/NMR_Pipe/nmrpipe_autoinstall.sh | bash
 ```
 
 Alternatively, download the script [nmrpipe_autoinstall.sh](./nmrpipe_autoinstall.sh) and execute it. 
