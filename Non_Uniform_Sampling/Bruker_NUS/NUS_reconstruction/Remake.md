@@ -1,0 +1,317 @@
+### Table of contents
+- [General workflow](#general-workflow)
+  - [Troubleshooting](#troubleshooting)
+    - [Post-reconstruction phasing](#post-reconstruction-phasing)
+    - [The reconstructed spectrum is left in the time domain](#the-reconstructed-spectrum-is-left-in-the-time-domain)
+- [Examples](#examples)
+  - [Bruker 4D HCNH NOESY `hsqcnoesyhsqccngp4d`](#bruker-4d-hcnh-noesy-hsqcnoesyhsqccngp4d)
+    - [Processing steps](#processing-steps)
+  - [AI|ffinity custom 4D HMQC-NOESY-HSQC experiment `noehcnhwg4d_nove`](#aiffinity-custom-4d-hmqc-noesy-hsqc-experiment-noehcnhwg4d_nove)
+    - [Processing steps](#processing-steps-1)
+  - [Frank Lohr's implementation of 4D HMQC-NOESY-HSQC experiment `sfhmqc_noe_sfhmqc_4Dhcnh.fl`](#frank-lohrs-implementation-of-4d-hmqc-noesy-hsqc-experiment-sfhmqc_noe_sfhmqc_4dhcnhfl)
+    - [Processing steps](#processing-steps-2)
+- [Credits](#credits)
+
+Tested environment:
+* Topspin 4.4.0 *with commercial license* for NUS processing
+* OS: AlmaLinux 9 (as an Oracle virtual machine)
+* 20 CPU cores, 120 GB of RAM. 
+
+> [!WARNING]
+> Not everything is thoroughly tested yet
+
+# General workflow
+
+1. Copy the raw 4D spectrum in a new directory by executing `wrpa` command. This will make working with the 4D neat and safe.
+> [!NOTE]
+> NUS FIDs before reconstruction are not that heavy: the `ser` files are usually <1 Gb. 
+2. Swich to the newly copied procedure; Open up the processing parameters (`edp` or the tab `PROCPAR`). 
+3. Adjust the size of the dimensions in the final spectrum with the parameter `SI` - set it to `256`
+> [!IMPORTANT]
+> Even though the next power of 2 to the size of fully reconstructed spectrum would be most often 128, *in our hands* TopSpin behaves weirdly with SI set to 128, e.g. will leave indirect dimensions in time domain. This means, that the attept to save processing time by reducing the size of the reconstructed spectru *may be futile*, because Topspin just *may not complete the processing*. Use your best judgement whe deciding on the size of the final spectrum. 
+4. If there were recorded test 2D **planes** (or 3D cubes) with **this exact** 4D pulse program, check their processing parameters:
+    * Phasing in the direct and indirect dimensions
+    * Window functions (rarely changes from default)
+    * Baseline correction parameters (rarely changes from default)
+    * Linear Prediction (LP), if you use it.
+> [!TIP]
+> Using linear prediction (LP) can enhance resolution, especially if the time domain (TD) values are small or if your FIDs are truncated. In TopSpin, you can use LP for improving resolution in particular dimensions during the Fourier Transform process by specifying the ME_mod and NCOEF parameters for those dimensions. Note that it may cause additional wiggles.
+
+![processing_parameters_window_top](../../images/processing_parameters_1.png)
+![processing_parameters_window_bottom](../../images/processing_parameters_2.png)
+5. Set the `FnMODE` according to the acquisition mode (usually, it is `States-TPPI`)
+6. Note down the signal region in the direct dimension. It can be extracted either from the test planes or the 2D experiments (HSQC, TOCSY, etc). 
+    * Go to the 2D experiment. Zoom in such that the signal-free regions are trimmed as much as possible. Issue the `.ftf2region STSR` command, it will prompt to  `Save display region to Parameters STSR\SI`.
+    * Issue the `STSR` command. Note down the values for the direct dimension. Same with `STSI`
+> [!TIP]
+> Those values may be obtained manually: in the 1D or 2D spectrum, note the "col Index" (`16` on the screenshot). Save it into `STSR`. Move the coursor to the right and calculate the width of the dimension in points, save that number into `STSI`.   
+
+![coursor_position](../../images/coursor_position.png)
+    
+> [!IMPORTANT]
+> If you copy the FT region from the planes, make sure the spectrum windows (SW) of the 4D and the test planes are the same. If they are not, the signal regions have to be adjusted manually. 
+7. Go to the `NUS` section. Check that the NUS mode is `mdd` (default). Set the phasing of the indirect dimensions to the same values as in the `Phase` section (i.e. `PH0` and `PH1`). 
+8. When everything is ready, issue 
+
+    `ftnd 0 21234 dlp nusthreads 30`
+
+* `ftnd` will run the NUS reconstruction, followed by FT all directions, with the Window Multiplication (WM), baseline correction and the LP as specified in the PROCPARS. `0` stands for "all dimensions", `21234` stands for the procedure number?, `dlp` stands for the region truncation???, `nusthreads 30` allocates 30 CPU cores for the process. 
+> [!NOTE]
+> Whereas NUS reconstruction is parallelized, FT stage uses only a single thread, therefore takes multiple hours.
+9. *Optionally*: adjust baseline correction parameters and apply the automatic baseline correction to the whole reconstructed 4D spectrum by issuing `absnd`.
+10. Evaluate the quality of the reconstructed spectrum by looking at the sum projections. You need to look at both positive and negative projections to identify the antiphase signals as well as the potentially misphased peaks. This is done by the command `projplp` and `projpln`. Run each and provide the parameters over the GUI or run the single lines such as `projplp 12 all all 21` 
+    - `projplp` stands for positive projection; run `projpln` to get the negative one
+    - `12` refers to keeping the first two dimensions (for standard Bruker HSQC NOESY, those are C and HC dimensions); that means, N (F3) and direct H (F4) will be summed up.
+    - `all` indicates that all planes within these dimensions should be included.
+    - `21` specifies the output PROCNO where the projection data will be stored. Adjust the PROCNO based on where you want to save the output.
+11. Perform automatic baseline correction of the projections with `abs1` followed by `abs2`.
+12. If the projections look good, evaluate the 4D spectrum. 
+    * Perform a putative peak picking. For that, lower the countours such that the noise disappears, then issue `pp` and set the sensitivity to the lowest countour level. 
+    
+    ![alt text](../../images/peak_picking.png)
+    * Jump to some position of the 4D which contains signals. For that, press the E button and give the plane numbers or the desired ppm.
+
+    ![screenshot](../../images/navigation_4D.png)
+
+
+13. If the phasing or other processing parameters are off, adjust them and repeat the reconstruction. If the projections looks good - congratulations!
+
+## Troubleshooting 
+
+### Post-reconstruction phasing
+If the spectrum appears to be misphased, it has to be processed all over again. 
+To determine the optimal phasing angles:
+* Navigate to your peak list. Note down the positions of several peaks you want to phase (in points). 
+  * If the specrum lines are in dispersion shape, i.e. misphased by 90°, you may have to fine tune the peak picking parameters to get the positions of the most strongest peaks.  
+* `rpl` - to Read PLane from the 4D spectrum. Set the plane numbers to the positions of your selected peaks. 
+  * As such, the command `rpl 34 75 70 347570` will extract a 34 (which is, usually, HN) plane at the point 75 in F1 and 70 in F2 and write it into the procedure 347570 
+*  `xif1` and `xif2` to execute the inverse FT, thereby restoring the imaginary part necessary for phasing
+*  `xfb` to execute FT and get back to the frequency domain
+*  `.ph` to enter the interactive phasing mode
+*  Note down the values of PH0 and PH1. Modify the `PHC0`, `PHC1` and `MddPHASE` paramenters accordingly. 
+* Repeat the same in all dimensions (e.g. 21 planes) and do not rely on phasing the single peak: make sure to test several planes, and perhaps not only the planes with peak maxima but also peak borders!
+* Reinitiate the NUS reconstruction. 
+
+### The reconstructed spectrum is left in the time domain
+* Run `ftnd 3`, `ftnd 2` and `ftnd 1` to reconstruct the dimensions one by one. 
+  * This should not initiate NUS reconstruction, at least on the machines without the NUS license. 
+
+# Examples
+
+## Bruker 4D HCNH NOESY `hsqcnoesyhsqccngp4d`
+
+Axis order:
+
+|F4|F3|F2|F1|
+|---|---|---|---|
+|HN|N|Hc|C|
+
+> On the example of the Exp. 12 (Ubiquitin) 
+
+### Processing steps
+
+1. **Copy the spectrum to a new procedure** (i.e. 1000): 
+   - `wrpa 1000`. `rep 1000` to switch to the procedure 1000
+2. **Set Main Processing Parameters (`edp`):**
+   
+   |   |F4 |F3 |F2 |F1 |
+   |---|---|---|---|---|
+   |SI|1020|256|512|256|
+   |PHC0|150 |0|0  |0  |
+   |PHC1|0   |0|0  |0  |
+   |PH mod|pk|pk|pk|pk |
+   |BC_mod|qfil or qpol|no|no|no|
+   |STSR|55|0|0|0|
+   |SRSI|350|0|0|0|
+   |FCOR|0.5|0.5|0.5|0.5|
+   |**NUS** |||||
+   |Mdd_mod|cs|||
+   |MddF180||false|false|false|
+   |MdPHASE||0|0|0|
+
+The following parameters are automatically set:
+  - MDD_CsAlg: `IST`
+  - MDD_CsVE: `true`
+
+3. **Process 4D Spectrum:** `ftnd 0`
+
+4. *Optional* **Baseline Correction in F4**: `absnd 4`
+
+5. **Correct shift of HC(F2) axis**:
+  * In Topspin: set `SR` (F2) to (11.9037/4)*600.05=1785.70 Hz
+  * In POKY: set HC shift in `st` to -(11.9037/4)=-2.976 ppm
+6. Pick the most intense peaks with `pp` interface
+7. Make the projections:
+   * `projplp 34 all all 43`
+   * `projpln 34 all all 430`
+   * `projplp 24 all all 42`
+   * `projpln 24 all all 420`
+   * `projplp 14 all all 41`
+   * `projpln 14 all all 410`
+   * `projplp 23 all all 32`
+   * `projpln 23 all all 320`
+   * `projplp 13 all all 31`
+   * `projpln 13 all all 310`
+   * `projplp 12 all all 21`
+   * `projpln 12 all all 210`
+8. Evaluate the projections and the spectrum visually by jumping from peak to peak 
+    
+## AI|ffinity custom 4D HMQC-NOESY-HSQC experiment `noehcnhwg4d_nove`
+
+Axis order:
+
+|F4|F3|F2|F1|
+|---|---|---|---|
+|HN|N|C|Hc|
+
+> On the example of the Exp. 101 (Ubiquitin) 
+
+<!---
+@Katja: THIS IS NOT NECESSARY FOR TOPSPIN; IS IT? Instead, THE PHASING SHOULD TAKE CARE OF IT?
+<------->
+### Processing steps
+
+1. **Correct 1-Point Delay in 13C:**
+    - Create a new nuslist with a 1-point shift in the 13C axis and replace the original nuslist:
+      ```sh
+      awk '{print $1,$2+1,$3}' nuslist > nuslist.off
+      mv nuslist nuslist.back
+      mv nuslist.off nuslist
+      ```
+    - Extend the 13C axis in Topspin by 1 complex point by changing static param NusTD(F2) from 160 to 162:
+      ```sh
+      2s NusTD 162
+      ```
+      This should automatically set static TDeff(F2) also to 162 and allow processing with the adjusted nuslist.
+
+2. **Copy the spectrum to a new procedure** (i.e. 1000): 
+   - `wrpa 1000`. `rep 1000` to switch to the procedure 1000
+3. **Set Main Processing Parameters (`edp`):**
+   |   |F4 |F3 |F2 |F1 |
+   |---|---|---|---|---|
+   |SI|1020|256|256|512|
+   |PHC0|-107 |0|0  |0  |
+   |PHC1|0   |0|0  |0  |
+   |PH mod|pk|pk|pk|pk |
+   |BC_mod|qfil or qpol|no|no|no|
+   |STSR|55|0|0|0|
+   |SRSI|350|0|0|0|
+   |FCOR|0.5|0.5|0.5|0.5|
+   |**NUS** |||||
+   |Mdd_mod|cs|||
+   |MddF180|  |false|false|false|
+   |MdPHASE|  |0|0|0|
+The following parameters are automatically set:
+  - MDD_CsAlg: `IST`
+  - MDD_CsVE: `true`
+4. **Process 4D Spectrum:** `ftnd 0`
+5. *Optional* **Baseline Correction in F4**: `absnd 4`
+6. **Correct Known TopSpin Bug (Badly Written CAR)** + Correct Shift by 1/4*SW in 13C:**
+    - **CAR of HC Axis:** Written as 6.666 ppm, but should be 4.7 ppm
+      - Total shift of HC(F1) axis:
+        - In Topspin: Set SR(F1) to (6.666-4.7)*600.05 = 1179.698 Hz
+          or
+        - In POKY: Set HC shift in "st" to -(6.666-4.7) = -1.966 ppm
+    - **CAR of 13C Axis:** Written as 39.1096 ppm, but should be 41 ppm. 13C axis is folded by 1/4*SW, relevant peaks are aliased.
+      - Total shift of 13C(F2) axis:
+        - In Topspin: Set SR(F2) to (58.0333/4 + (41-39.1096))*150.882693 = 2474.283 Hz
+          or
+        - In POKY: Set 13C shift in "st" to -(58.0333/4 + (41-39.1096)) = -16.398 ppm
+7. Pick the most intense peaks with `pp` interface
+8. Make the projections:
+   * `projplp 34 all all 43`
+   * `projpln 34 all all 430`
+   * `projplp 24 all all 42`
+   * `projpln 24 all all 420`
+   * `projplp 14 all all 41`
+   * `projpln 14 all all 410`
+   * `projplp 23 all all 32`
+   * `projpln 23 all all 320`
+   * `projplp 13 all all 31`
+   * `projpln 13 all all 310`
+   * `projplp 12 all all 21`
+   * `projpln 12 all all 210`
+9. Evaluate the projections and the spectrum visually by jumping from peak to peak 
+
+## Frank Lohr's implementation of 4D HMQC-NOESY-HSQC experiment `sfhmqc_noe_sfhmqc_4Dhcnh.fl`
+
+Axis order:
+
+|F4|F3|F2|F1|
+|---|---|---|---|
+|HN|N|C|Hc|
+
+> On the example of the Exp. 72 (Ubiquitin) 
+
+### Processing steps
+
+1. **Copy the spectrum to a new procedure** (i.e. 1000): 
+   - `wrpa 1000`. `rep 1000` to switch to the procedure 1000
+2. **Set Main Processing Parameters (`edp`):**
+   |   |F4 |F3 |F2 |F1 |
+   |---|---|---|---|---|
+   |SI|1020|128|256|256|
+   |PHC0|-68|90|90|-45|
+   |PHC1|0  |-180|-180|0  |
+   |PH mod|pk|pk|pk|pk |
+   |BC_mod|no|no|no|no|
+   |STSR|0|0|0|0|
+   |SRSI|400|0|0|0|
+   |FCOR|0.5|1.0|1.0|0.5|
+   |**NUS** |||||
+   |Mdd_mod|cs|||
+   |MddF180|  |true|true|false|
+   |MdPHASE|  |90|90|-45|
+> [!NOTE]
+> This specific phasing in the indirect dimension takes care of the 1-point delay incorporated into the pulse program in ¹³C channel. 
+
+The following parameters are automatically set:
+  - MDD_CsAlg: `IST`
+  - MDD_CsVE: `true`
+3. **Process 4D Spectrum:** `ftnd 0`
+4. *Optional* **Baseline Correction in F4**: `absnd 4`
+5. **Correct Shift of HC(F1) Axis:**
+    - In Topspin: Set SR(F1) to (O1P-CNST16)*BF1 = (4.7-2.75)*950.37 = 1853.22 Hz
+      or
+    - In POKY: Set HC shift in "st" to -(O1P-CNST16) = -(4.7-2.75) = -1.95 ppm
+6. Pick the most intense peaks with `pp` interface
+7. Make the projections:
+   * `projplp 34 all all 43`
+   * `projpln 34 all all 430`
+   * `projplp 24 all all 42`
+   * `projpln 24 all all 420`
+   * `projplp 14 all all 41`
+   * `projpln 14 all all 410`
+   * `projplp 23 all all 32`
+   * `projpln 23 all all 320`
+   * `projplp 13 all all 31`
+   * `projpln 13 all all 310`
+   * `projplp 12 all all 21`
+   * `projpln 12 all all 210`
+8. Evaluate the projections and the spectrum visually by jumping from peak to peak 
+
+<!--- 
+
+## Simple alerts
+> [!NOTE]
+> This is a note.
+
+> [!TIP]
+> This is a tip. (Supported since 14 Nov 2023)
+
+> [!IMPORTANT]
+> Crutial information comes here.
+
+> [!CAUTION]
+> Negative potential consequences of an action. (Supported since 14 Nov 2023)
+
+> [!WARNING]
+> Critical content comes here.
+
+<---->
+
+# Credits
+
+- Petr Padrta, 14.6.2024
+- Thomas Evangelidis @tevang2
+- Ekaterina Burakova @ebur-nmr

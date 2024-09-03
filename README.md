@@ -9,8 +9,7 @@
   </div>
 </div>
 
-## Table of Logos and Descriptions
-
+## Contents
 <table>
   <tr>
     <td style="vertical-align: middle;">
@@ -18,6 +17,14 @@
     </td>
     <td style="vertical-align: middle;">
       <a href=./Setup_NMR_Experiments_for_4D-GRAPHS>Setting up 4D NMR experiments for 4D-GRAPHS.</p>
+    </td>
+  </tr>
+  <tr>
+    <td style="vertical-align: middle;">
+      <img src="./images/nmrpipe_logo.png" alt="NMR Pipe logo" style="max-width: 100%; height: 100px">
+    </td>
+    <td style="vertical-align: middle; ">
+      <a href=./NMR_Pipe>General tips on navigating NMR Pipe ecosystem.</p>
     </td>
   </tr>
   <tr>
