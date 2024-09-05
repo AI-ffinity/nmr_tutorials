@@ -6,7 +6,8 @@
 	* [Pipe](./NMRPipe/IST.md) 
 	* [hmsIST scripts](./NMRPipe/hmsIST_no_pipe.md)
 *  SSA
-
+	* [Detailed reconstruction tutorial](SSA/Full_NUS_reconstruction_Tutorial.md)
+ 	* [Quick start](./SSA/Quick_NUS_Reconstruction_Tutorial.md)
 
 # Algorithm comparison
 
