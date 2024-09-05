@@ -4,7 +4,7 @@ This tutorial guides you through the process of peak picking in Poky or Sparky. 
 
 ## Prerequisites
 
-- Sparky installed and ready to use.
+- Installation of POKY or NMRFAM-Sparky; license for POKY.
 - Access to the specified Ubiquitin 4D and 15N HSQC spectrum files.
 
 ## Steps
@@ -16,7 +16,7 @@ You should be able to directly open the Bruker files with the `fo` command (make
 
 |||
 |---|---|
-|[!open spectra in POKY](./images/Open_Bruker_spectra_POKY.png)|[!Convert spectra in POKY](./images/Convert_Bruker_UCSF_SPARKY.png)|
+|![open_spectra in POKY](./images/Open_Bruker_spectra_POKY.png)|![Convert spectra in POKY](./images/Convert_Bruker_UCSF_SPARKY.png)|
 
 - Open Poky or Sparky, click on the Import button (see screenshot). In the pop-up window, click "All files". 
     - Open the folder with the `4rrrr` file, provide the path to the file *and hit convert. This will take several minutes. 
@@ -46,14 +46,15 @@ Conversion utility will create the .ucsf file of roughly the same size in the sa
 > Use `lt` to view the peak list. 
 
 6. **Use those peaks to find peaks in the 4D** Type `kr` to  enter the peak transfer dialogue. 
-	- Set the HN spectrum as the peak source:
-	
-    [!pk window](./images/Peak_picking _running.png)
-	
+    - Set the HN spectrum as the peak source:	
     - Adjust the tolerances: typically, 0.05 ppm for the *direct* 1H an 0.2 ppm for 15N is fine. For the *indirect* NOE-1H dimension, set the tolerance to 999: we want to find all NOE crosspeaks, not just the diagonals! 
-	- Finally, hit the `Pick peaks` button.
+    - Finally, hit the `Pick peaks` button.
 
 > The picking will take a while: about 25 minutes for 118 2D peaks on AMD Ryzen 3 1300 @ 3.5 GHz. (POKY uses a single CPU core).
+
+
+![Restrictive_peak_picking_window](./images/Peak_picking_running.png)
+
 
 ### Validation tips
 
@@ -65,7 +66,7 @@ Conversion utility will create the .ucsf file of roughly the same size in the sa
 
 9. Bring up the `lt` windows for the 2D as well as the 4D; sort the peaks by the direct 1H or 15N frequency and select the useful columns to display:
 
-[!the pick list options]()
+![the pick list options](./images/Peak_list_columns.png)
 
 Click on each peak in the 2D list and validate the peaks. 
 
