@@ -1,10 +1,10 @@
 # Manuals
 
-* [SMILE](./SMILE.md)
+* [SMILE](./NMRPipe/SMILE.md)
 * IST 
 	* [TopSpin](TOPSPIN/NUS_reconstruction/NUS_reconstruction.md) 
-	* [Pipe](./IST.md) 
-	* [hmsIST scripts](./hmsIST_no_pipe.md)
+	* [Pipe](./NMRPipe/IST.md) 
+	* [hmsIST scripts](./NMRPipe/hmsIST_no_pipe.md)
 *  SSA
 
 
