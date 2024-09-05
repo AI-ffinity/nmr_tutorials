@@ -10,7 +10,7 @@ Navigation
 
 ## Manuals
 * [Pick 4D NOESY peaks for 4D-GRAPHS](./Peak_picking_4D_spectrum.md)
-* [Protein NR workflow](./Protein_NMR_workflow.md)
+* [Protein NMR workflow](./Protein_NMR_workflow.md)
 * [Transfer assignments from BMRB](./Transfer_BMRB_assignments.md)
 
 ## Tips and tricks
@@ -21,6 +21,6 @@ Navigation
 
 ## Bonus
 * [Poky Documentation](./doc/POKY_documentation.pdf)
-* [Scripts for POKY](./scripts)
+* [Scripts for POKY](./POKY/scripts)
 * [POKY command reference](./Common_Commands.md)
 * [How to make POKY GPT (with ChatGPT4)](./Create_ChatGPT4_documentation_model.md)

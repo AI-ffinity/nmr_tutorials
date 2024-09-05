@@ -56,7 +56,7 @@
       <img src="./images/POKY_icon.png" alt="topspin logo" style="max-width: 100%; height: 100px">
     </td>
     <td style="vertical-align: middle; ">
-      <a href=./SPARKY_and_POKY>How to analyze spectra in POKY - the successor on NMRFAM SPARKY.</a>
+      <a href=./SPARKY_and_POKY>How to analyze spectra in POKY - the successor of NMRFAM SPARKY.</a>
     </td>
   </tr>
 </table>
