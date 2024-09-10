@@ -1,9 +1,10 @@
-# Transferring BMRB Assignments into Sparky
+# Transferring BMRB Assignments into POKY / Sparky
 
-* Extract the N-HN projection from the 4D HCNH NOESY.
+For POKY: 
 
-`ucsfdata -p4 -r -o 3D_HC-C-N_proj.ucsf 4D_HCNH_NOESY_NUS_reconstructed.ucsf`
-`ucsfdata -p1 -r -o 2D_N-HN_proj.ucsf 3D_C-N-HN_proj.ucsf`
+* Extract the N-HN projection from the 4D HCNH NOESY. (Make sure the `poky_[linux]/bin` directory is in your PATH).
+  * `ucsfdata -p4 -r -o 3D_HC-C-N_proj.ucsf 4D_HCNH_NOESY_NUS_reconstructed.ucsf`
+  * `ucsfdata -p1 -r -o 2D_N-HN_proj.ucsf 3D_C-N-HN_proj.ucsf`
 
 * Load 2D_N-HN_proj.ucsf and execute the vt command to open the "View Settings" dialog. Adjust the "Aspect (ppm)" value to set the scale of each axis and improve the view (e.g. 0.35).
   
