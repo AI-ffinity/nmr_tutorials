@@ -48,7 +48,7 @@
       <img src="./images/sparky.png" alt="Sparky screnshot" style="max-width: 100%; height: 100px">
     </td>
     <td style="vertical-align: middle;">
-      <a href=./SPARKY>How to process spectra in SPARKY.</a>
+      <a href=./SPARKY_and_POKY>How to analyze spectra in SPARKY.</a>
     </td>
   </tr>
   <tr>
@@ -56,7 +56,7 @@
       <img src="./images/POKY_icon.png" alt="topspin logo" style="max-width: 100%; height: 100px">
     </td>
     <td style="vertical-align: middle; ">
-      <a href=./POKY>How to process spectra in POKY - the successor on NMRFAM SPARKY.</a>
+      <a href=./SPARKY_and_POKY>How to analyze spectra in POKY - the successor of NMRFAM SPARKY.</a>
     </td>
   </tr>
 </table>

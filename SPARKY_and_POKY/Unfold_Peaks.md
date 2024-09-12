@@ -10,7 +10,7 @@ Then you have two options to proceed.
 ## OPTION 1
 * select all peaks in the 15N HSQC
 * Switch to the 4D, type , activate the "peak" radio button.
-* Type `ps` to anable viewing all peaks on all the visible planes.
+* Type `ps` to enable viewing all peaks on all the visible planes.
 * type `vd` to open the "View Depth" window, and set the visible planes at the N and HN 
 dimensions to 999999. Now you should see all peaks of all spin systems of the 4D on the
 HC-C plane.
