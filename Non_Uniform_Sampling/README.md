@@ -11,9 +11,9 @@
 
 # Algorithm comparison
 
-For processing of 3D spectra, one can afford to chose just about any reconstruction program without focussing on the implementation details. However for 4D, it is important that the method not only produces high quality frequency-domain data, but is also implemented in the resourse efficient way.
+For processing of 3D spectra, one can afford to chose just about any reconstruction program without focussing on the implementation details. However for 4D, it is important that the method not only produces high quality frequency-domain data, but is also implemented in the resource efficient way.
 
-Here we summarized strenths and pitfalls of several reconstruction methods we tried ourselves.
+Here we summarize strengths and pitfalls of several reconstruction methods we tried ourselves.
 
 
 |   Method      |NMR Pipe-based| RAM consumption |  Advantages   |  Disadvantages|  Time of full reconstruction (Ubiquitin)  |
