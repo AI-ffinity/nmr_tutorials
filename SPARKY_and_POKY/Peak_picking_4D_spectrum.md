@@ -55,7 +55,8 @@ Conversion utility will create the .ucsf file of roughly the same size in the sa
 
 ![Restrictive_peak_picking_window](./images/Peak_picking_running.png)
 
-
+7. Finally, select all picked peaks in the 4D (`Ctrl+A`) and type `pc` to center the peak markers at the centers of the hypervolume.
+8. 
 ### Validation tips
 
 7. **View the C-H Plane in the 4D Spectrum**
