@@ -1,7 +1,7 @@
 # Topspin installation on Linux 
 
 Here we consider just Debian-based systems. 
-> ![NOTE]
+> [!NOTE]
 > Bruker officially supports only RHEL-based Linux, such as AlmaLinux. 
 
 1. Log in to your Bruker account, find the latest release of Topspin and download it. The file will have `.sh` extension. 
