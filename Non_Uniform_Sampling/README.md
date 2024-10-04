@@ -2,7 +2,7 @@
 
 * [SMILE](./NMRPipe/SMILE.md)
 * IST 
-	* [TopSpin](Bruker_NUS/NUS_reconstruction.md) 
+	* [TopSpin](Bruker_NUS/4D) 
 	* [Pipe](./NMRPipe/IST.md) 
 	* [hmsIST scripts](./NMRPipe/hmsIST_no_pipe.md)
 *  SSA
