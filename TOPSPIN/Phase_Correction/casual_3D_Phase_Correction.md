@@ -1,9 +1,12 @@
-# Phase Correction on a 3D Spectrum (13C-edited NOESY)
+# This must be integrated to 3D.md (2.10.2024).
+# Phase Correction on a 3D Spectrum (13C-edited NOESY) 
+# E.g. Carbonic_Anhydrase_II_wt/AIffinity_950/81/ and 83/
 
 ## Steps for Phase Correction
 
 1. **Identify Region of Interest (ROI):**
-   - The vertical lines in the center of the F2-F3 plane represent water. Pulse sequences are designed to be symmetrical, meaning the space before and after the water line should be the same.
+   - The vertical lines in the center of the F2-F3 plane represent water. Pulse sequences are designed to be symmetrical
+, meaning the space before and after the water line should be the same.
    - Note down the start and end positions of the ROI (e.g., 390-1990).
 
 2. **Open the Raw 3D Spectrum:**
@@ -46,7 +49,9 @@
 5. **Navigate and Adjust Peaks:**
    - Navigate in depth (F2) by clicking the "+" icon until you reach two overlapping peaks.
    - Note down the plane number (e.g., 27/256).
-   - Iterate with different FID sizes, window functions, and linear predictions until the peaks separate. Do not apply linear prediction on the proton dimension because many points are acquired, but it can be done in the direct dimension. Avoid overdoing it.
+   - Iterate with different FID sizes, window functions, and linear predictions until the peaks separate. Do not apply 
+linear prediction on the proton dimension because many points are acquired, but it can be done in the direct dimension. 
+Avoid overdoing it.
 
 6. **Baseline Correction:**
    - Perform baseline correction with the commands:

@@ -21,7 +21,7 @@
 * **`pk`** - Applies previously set phase corrections (`phc0` and `phc1`) to the spectrum.
 * **`apk`** - Executes automated phase correction, suitable for simple spectra like methanol.
 * **`apk2d`** - Automatically performs phase correction on 2D spectra, streamlining the adjustment of both zero-order 
-and first-order phase settings to optimize spectral clarity and symmetry.
+and first-order phase settings to optimize spectral clarity and symmetry. Not recommended when water signal is dominant.
 * **`pknd`** - Performs a phase correction of data of dimension ≥3D, applying the values of PHC0 and PHC1 only on one dimension. 
 
 ## Window Functions
@@ -43,6 +43,7 @@ and first-order phase settings to optimize spectral clarity and symmetry.
 * **`eda`** - Displays parameters for the indirect dimensions of 2D, 3D spectra such as sweep width, time domain size, and offsets.
 * **`tf3 n; tf2 n; tf1 n`** - Fourier Transforms the specified dimension in a 3D dataset. The 'n' indicates that no imaginary data is generated.
 * **`edp`** - Used to access and modify processing parameters in the "ProcPars" window.
+* **`3 TDeff 1400`** - Set the effective time domain size for the direct dimension. In a similar manner you can change any other parameter in `PROCPARS`.
 
 ### Display adjustments
 * **`dlp`** - Save the currently displayed region as default for this processed data
@@ -52,7 +53,7 @@ and first-order phase settings to optimize spectral clarity and symmetry.
  noise characteristics to ensure that the peaks are visible and informative without being overwhelmed by noise. 
 Use `dis2d` or `dis3d` (depending on the dimensionality of your data) to display the spectrum with the 
 automatically calculated contour levels.
-
+* **`clev 0.6 32`** - Automatically calculate and set contour levels for 2D data; 0.6 is the factor for calculation and 32 is the number of levels.
 
 ### Spectrometer Control and Spectra Recording Commands:
 * **`sx` and `ej`** - Commands used to eject the current sample from the spectrometer.
