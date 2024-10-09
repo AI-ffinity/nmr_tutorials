@@ -28,5 +28,5 @@ sudo chmod 777 -R /opt/topspin-4.4.0/
 
 9. Your installation is complete!
 
-> [!NOTE}
+> [!NOTE]
 > Sometimes Topspin can not start because of the error "Failed to connect to a data server". To us, the reasons are yet unknown, but perhaps they have something to di with the network and firewall configuration. If this happens, simply turn *off* your internet connection while starting TopSpin. Turn it back on once the GUI is loaded. 
