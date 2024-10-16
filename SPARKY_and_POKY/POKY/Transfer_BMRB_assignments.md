@@ -1,6 +1,7 @@
-# Transferring BMRB Assignments into POKY / Sparky
+# Transferring BMRB Assignments
 
-For POKY: 
+![Watch video tutorial](https://drive.google.com/file/d/1KJQv9yT1oTubOu-vexuqLXtVFEE_EmxS/view?usp=drive_link)
+![Download Ubiquitin demo spectra for this tutorial](https://drive.google.com/drive/folders/1qKl5yc4Sz5KHfghwdRcfmmTe5go-2hjP?usp=drive_link)
 
 * Extract the N-HN projection from the 4D HCNH NOESY. (Make sure the `poky_[linux]/bin` directory is in your PATH).
   * `ucsfdata -p4 -r -o 3D_HC-C-N_proj.ucsf 4D_HCNH_NOESY_NUS_reconstructed.ucsf`
@@ -36,7 +37,7 @@ These values are for an 850 MHz spectrometer, and it's advisable to check if the
   
    > OPTIONALLY: "_s" tags can be removed by "ut" (untag _s) or "cu" (untag _s and center) `lr` followed by `lu` to offset the labels to the right and up if they overlap with each other.
 
-![2D projections with transfered BMRB labeled peaks](images/2D_N-HN_proj_BMRB_labels.png)
+![2D projections with transfered BMRB labeled peaks](../images/2D_N-HN_proj_BMRB_labels.png)
 6. **Adjust Label Visibility:**
    - Use `lc` to center the labels.
    - Use `lu` to adjust labels to prevent overlap.
