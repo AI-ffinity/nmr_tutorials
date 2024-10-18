@@ -85,12 +85,12 @@ Click on each peak in the 2D list and validate the peaks.
 > **View the nD spectrum from different C-H Planes** To open multiple C-H planes, click `vd` to duplicate the view of a 4D spectrum into another window. In each window, you can focus on different C-H planes by selecting a different 15N HSQC peak with `F1` and clicking `vc` to center it.
 
 12. If you wish to discard the peaks which are too close to noise: `ss` command is helpful, which selects all peaks which are less intense than the selected one.
-Note: it compares intensities with their signs, so the negative peaks with large absolute intensity will be selected too! Go over them manually and deselect: hold `Ctrl` and drag over the
+**Note**: it compares intensities as signed numbers: the negative peaks with large absolute intensity will be selected too! Go over them manually and deselect: hold `Ctrl` and drag over the
 selected peaks with your mouse. 
 
 ![peak list](./images/peak-list-window.png)
 
-(Should be a gif here!)
+(^ Should be a gif here; showing large negative peaks)
 
 ### Exporting Picked Peaks
 
