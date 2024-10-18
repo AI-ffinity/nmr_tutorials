@@ -110,7 +110,7 @@ an orthogonal plane (for example, or 13C-HSQC in addition to the 15N-HSQC) to
 If the spectrum width of the source 2D is larger than that of the nD (n=[3,4]), than
 POKY will find and mark the peaks in the 3D as aliased.
   
-Below are examples of the 13C-HSQC spectra with aliased peaks (in green boxes)
+Below are examples of the 13C-HSQC spectra with aliased peaks (in yellow boxes)
 
 | Protein 1                                                        | Example 13C-HSQC - Protein 2                                       |
 |------------------------------------------------------------------|--------------------------------------------------------------------|
