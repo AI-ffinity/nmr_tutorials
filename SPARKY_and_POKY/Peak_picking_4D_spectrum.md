@@ -12,7 +12,7 @@ This tutorial guides you through the process of peak picking in Poky or Sparky. 
 ### Loading the spectra
 
 1. **Load the Bruker spectra and convert them to a `.ucsf` files**. 
-You should be able to directly open the Bruker files with the `fo` command (make sure to display All types of files in the pop-up browser). If you can't, convert them to the .ucsf forat first. 
+You should be able to directly open the Bruker files with the `fo` command (make sure to display All types of files in the pop-up browser). If you can't, convert them to the .ucsf format first. 
 
 |||
 |---|---|
@@ -89,6 +89,7 @@ Note: it compares intensities with their signs, so the negative peaks with large
 selected peaks with your mouse. 
 
 ![peak list](./images/peak-list-window.png)
+
 (Should be a gif here!)
 
 ### Exporting Picked Peaks
@@ -113,6 +114,6 @@ Below are examples of the 13C-HSQC spectra with aliased peaks (in green boxes)
 
 | Protein 1                                                        | Example 13C-HSQC - Protein 2                                       |
 |------------------------------------------------------------------|--------------------------------------------------------------------|
-| ![13C-HSQC-ac1](SPARKY_and_POKY/images/13C-HSQC-ac1-aliased.png) | ![13C-HSQC-sy15](SPARKY_and_POKY/images/13C-HSQC-sy15-aliased.png) |
+| ![13C-HSQC-ac1](./images/13C-HSQC-ac1-aliased.png) | ![13C-HSQC-sy15](./images/13C-HSQC-sy15-aliased.png) |
  
 ----------------------------
