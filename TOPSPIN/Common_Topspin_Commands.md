@@ -44,6 +44,7 @@ and first-order phase settings to optimize spectral clarity and symmetry. Not re
 * **`tf3 n; tf2 n; tf1 n`** - Fourier Transforms the specified dimension in a 3D dataset. The 'n' indicates that no imaginary data is generated.
 * **`edp`** - Used to access and modify processing parameters in the "ProcPars" window.
 * **`3 TDeff 1400`** - Set the effective time domain size for the direct dimension. In a similar manner you can change any other parameter in `PROCPARS`.
+* **`cplbruk`** - View and compile Bruker's AU programs.
 
 ### Display adjustments
 * **`dlp`** - Save the currently displayed region as default for this processed data
