@@ -11,7 +11,7 @@ Navigation
 ## Manuals
 * [Pick 4D NOESY peaks for 4D-GRAPHS](./Peak_picking_4D_spectrum.md)
 * [Protein NMR workflow](./Protein_NMR_workflow.md)
-* [Transfer assignments from BMRB](./Transfer_BMRB_assignments.md)
+* [Transfer assignments from BMRB](POKY/Transfer_BMRB_assignments.md)
 
 ## Tips and tricks
 * [How to unalias (unfold) peaks in POKY](./Unfold_Peaks.md)
