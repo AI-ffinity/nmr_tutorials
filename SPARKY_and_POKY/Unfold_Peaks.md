@@ -1,21 +1,26 @@
 # Theory
 
-# Folding and Aliasing
+**The peaks appear aliased/folded when** the frequency of a peak exceeds the Nyquist limit for the spectral window which is being observed. 
+In the indirect dimensions, the spectral width is defined by the acquisition time (**SOME GOOD REFERENCE**), which is always limited by the available spectrometer time. 
+The spectrometer time is expensive, which is one of the reasons to limit spectral width. (Another reason is the range of frequencies which can be hit by pulses). 
+**The limit in spectral width is essentially the same as undersampling??**
+If there are signals of a higher frequency than the maximum frequency sampled, the spectrometer “sees” their frequencies as if they were within the window by mirroring it, so it appears as a lower frequency within the observed range. 
 
-* **The peaks appear aliased/folded when** the frequency of a peak exceeds the Nyquist limit for the spectral window being observed. In such cases, the spectrometer “sees” the frequency as if it were within the window by mirroring it, so it appears as a lower frequency within the observed range. This occurs due to undersampling, where the sampling rate isn’t fast enough to capture frequencies beyond half the sampling frequency, causing them to appear at incorrect positions in the spectrum.
+The influence of the sampling rate is demonstrated in [this video by Zach Star](https://www.youtube.com/watch?v=Jv5FU8oUWEY)
 
-* **For nD NMR spectroscopy, this means** that peaks outside the detectable spectral window in any dimension can appear as "folded" or "aliased" peaks within the window. Folding in multiple dimensions, like in 2D or 3D NMR, can make spectra more complex, as folded signals from outside the spectral range appear within it, sometimes creating overlap with peaks from within the window. This folding or aliasing can complicate interpretation but may also be useful for spectral compression when controlled.
+**For nD NMR spectroscopy, this means** that peaks outside the detectable spectral window in any dimension will appear as "folded" or "aliased" peaks within the window. 
+Folding in multiple dimensions, like in 2D or 3D NMR, can make spectra more complex, as folded signals from outside the spectral range appear within it, sometimes creating overlap with peaks from within the window. This folding or aliasing can complicate interpretation but may also be useful for spectral compression when controlled.
 
-* **There is a slight difference in terms "folded" and "aliased" peaks.** "Aliased" peaks typically refer to signals that appear within the observed spectral range due to frequency mirroring from outside the Nyquist range, whereas "folded" peaks are those that are mirrored back into the spectral window, often referring specifically to how they "fold" over the Nyquist frequency. In essence, while "aliasing" describes the appearance of an incorrect frequency, "folding" often refers to the mirroring effect specifically.
+**There is a slight difference in terms "folded" and "aliased" peaks.** "Aliased" peaks typically refer to signals that appear within the observed spectral range due to frequency mirroring from outside the Nyquist range, whereas "folded" peaks are those that are mirrored back into the spectral window, often referring specifically to how they "fold" over the Nyquist frequency. In essence, while "aliasing" describes the appearance of an incorrect frequency, "folding" often refers to the mirroring effect specifically.
 
-* **The folded peaks can be of the same or the opposite phase depending on the acquisition mode.** For instance, in echo-antiecho acquisition modes, the folded signals can invert in phase, appearing as the opposite sign, while in States or States-TPPI acquisition, the phase of folded peaks may remain the same as the original. These acquisition modes use phase cycling or gradient techniques that control how folded signals are processed, often allowing for either retention or inversion of phase in a way that aids in 
-differentiating aliased or folded peaks from true signals in the spectral range.
-
+*
 * Happens only in the indirect dimension: spectral width and sampling rate in the direct dimension is always enough - **is that still true for ultra-high fields like 1.2GHz???** 
 
 ## When is there sign inversion?
 
-To be written
+**The folded peaks can be of the same or the opposite phase depending on the acquisition mode.** For instance, in 
+echo-antiecho acquisition modes, the folded signals can invert in phase, appearing as the opposite sign, while in States or States-TPPI acquisition, the phase of folded peaks may remain the same as the original. These acquisition modes use phase cycling or gradient techniques that control how folded signals are processed, often allowing for either retention or inversion of phase in a way that aids in 
+differentiating aliased or folded peaks from true signals in the spectral range.
 
 ## How to identify aliased peaks?
 * The most easy method to identify folded and aliased peaks is *experimental* 
