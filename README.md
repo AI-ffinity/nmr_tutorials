@@ -46,7 +46,7 @@
   </tr>
   <tr>
     <td style="vertical-align: middle; width: 100px;">
-      <img src="./images/sparky.png" alt="Sparky screnshot" style="max-width: 100%; height: 100px">
+      <img src="./images/sparky.png" alt="Sparky screenshot" style="max-width: 100%; height: 100px">
     </td>
     <td style="vertical-align: middle;">
       <a href="./SPARKY_and_POKY">How to analyze spectra in SPARKY.</a>

@@ -43,7 +43,9 @@ and first-order phase settings to optimize spectral clarity and symmetry. Not re
 * **`eda`** - Displays parameters for the indirect dimensions of 2D, 3D spectra such as sweep width, time domain size, and offsets.
 * **`tf3 n; tf2 n; tf1 n`** - Fourier Transforms the specified dimension in a 3D dataset. The 'n' indicates that no imaginary data is generated.
 * **`edp`** - Used to access and modify processing parameters in the "ProcPars" window.
-* **`3 TDeff 1400`** - Set the effective time domain size for the direct dimension. In a similar manner you can change any other parameter in `PROCPARS`.
+* **`4 TDeff 1024`** - Set the effective time domain size for the direct dimension in the 4D spectrum. This will allow you to use `SI{F4} = 1024` 
+when the spectrum was measured with `TD{F4} > 1024`. In a similar manner you can change any other parameter in `PROCPARS`.
+* **`cplbruk`** - View and compile Bruker's AU programs.
 
 ### Display adjustments
 * **`dlp`** - Save the currently displayed region as default for this processed data

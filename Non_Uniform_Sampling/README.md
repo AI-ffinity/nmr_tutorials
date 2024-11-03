@@ -2,7 +2,7 @@
 
 * [SMILE](./NMRPipe/SMILE.md)
 * IST 
-	* [TopSpin](Bruker_NUS/4D) 
+	* [TopSpin](../TOPSPIN/NUS_reconstruction/README.md) 
 	* [Pipe](./NMRPipe/IST.md) 
 	* [hmsIST scripts](./NMRPipe/hmsIST_no_pipe.md)
 *  SSA
@@ -23,5 +23,4 @@ Here we summarize strengths and pitfalls of several reconstruction methods we tr
 | hmsIST_4D.com        | Yes | Minimal | Peak-shape agnostic; integrated into NMR Pipe GUI    | Utterly inefficient use of the disk space ( 700+ Gb per spectrum); poorly documented  |         |
 | hmsIST        | Yes | ~50 GB |  Fast; Good with overlapped peaks       |  Script-based interface |         |
 | SSA           | No | NA | Fast and rather simple to set up     |  Apparently more prone to miss peaks than IST implementations            |  Overnight       |
-
 
