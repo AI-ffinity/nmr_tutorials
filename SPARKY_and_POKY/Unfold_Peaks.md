@@ -21,9 +21,9 @@ often referring specifically to how they "fold" over the Nyquist frequency. In e
 
 **The sign of the folded peaks depends on the acquisition mode.**
 
-In *Echo-antiecho* mode, the aliased signals will appear inverted. 
+In ***Echo-antiecho*** mode, the aliased signals will appear **inverted**. 
 
-In *States-TPPI* the folded signals will have the same phase.
+In ***States-TPPI*** the folded signals will have the **same phase**.
 
 *States* and *TPPI* acquisition modes are inferior to *States-TPPI* and are not used in the modern NMR spectroscopy.
 
