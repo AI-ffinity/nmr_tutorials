@@ -41,17 +41,19 @@ Download the 4D HMQC-NOESY-HSQC pulse sequence file, as it's not available in Br
 - This corresponds to 100 (15N) x 80 (13C) x 200 (1H) = 1.6M hypercomplex points
 - Used 8 scans per increment with an 8-step phase cycle and 1.0 s delay.
 
-### Quality Assessment
-Evaluate the HN, HC planes to assess quality indicators such as signal-to-noise ratio, peak sharpness, cross-peak intensity, and the absence of artifacts. Additionally, check the H-H 2D plane for calibrating the mixing time for the 4D NOESY experiment(s). If the protein is small (<= 10 kDa), then only one 4D HCNH NOESY with intermediate mixing time (usually 70 ms) is sufficient. For larger proteins we measure twice this experiment with varying mixing times (see below). We may also measure the CBCA(CO)NH to help 4D-GRAPHS in the assignment in challenging cases.
+### Selection of 4D HCNH NOESY pulse sequence (pp)
+We have two options, but are available in Topspin: 
+To select the most suitable pp for your sample, evaluate the HN, HC planes to assess quality indicators such as 
+signal-to-noise ratio, peak sharpness, cross-peak intensity, and the absence of artifacts.
 
 ### Mixing Times Configuration
-Decide on the range and increment of mixing times (e.g., 30 ms, 40 ms, up to 80 ms). Use a lower mixing time (e.g. 50 ms) for resonance assignment as NOEs are generally stronger, and a higher mixing time (e.g. 80 ms) for structure calculations to detect weak long-range NOEs.
+Use an intermediate mixing time based on your protein. Usually 70 ms is good choice.
 
 ### NUS Setup
-Parameters suggested based on our previous publication:
 
-- **Number of points**: We used 5000 NUS points. Generally, you can go very low with sampling density on simple and robust samples; however, usually 5% sampling is a reasonable bet. Adjust the sampling amount (= density) or number of scans (and/or d1 delay) to optimize the signal-to-noise ratio. For smaller proteins like Ubiquitin, fewer scans might be sufficient.
+- **Number of points**: We used 5000 NUS points. Generally, you can go very low with sampling density on simple and 
+robust samples; however, usually 5% sampling is a reasonable bet. Adjust the sampling amount (= density) or number of scans (and/or d1 delay) to optimize the signal-to-noise ratio. For smaller proteins like Ubiquitin, fewer scans might be sufficient.
 
-- **Schedule**: We used Poisson-Gap schedule. It can be generated here: nus@HMS (harvard.edu) (mind that the number of points in the indirect dimensions should be half the corresponding TD from TopSpin, i.e., if TD F3 is 32 you need to type 16 into the generator). Save the generated schedule and provide the absolute path to TopSpin. Tip: make it short otherwise TopSpin will cut the path string and throw an error. Ensure that the estimated measurement time of the NUS is what you expect.
+- **Schedule**: use Topspin's NUS scheduler.
 
 
