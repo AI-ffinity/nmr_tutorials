@@ -1,0 +1,19 @@
+12.10.2025 on 850 MHz
+
+`1s te`: set the temperature.
+`lock`: opens a dialog box with the list of solvents. When you select a solvent and click OK, it reads the lock parameters for that solvent from the lock table which has been set up with the command edlock and performs an autolock. The autolock procedure is also suitable for solvents with multiple lock signals. For each solvent with multiple signals only one lock signal is defined in the edlock table. 
+`atma`: automatic tuning and matching for every nucleus in the spectrum; it must be repeated for every sample and spectrometer. It is inperfect thus we must manually correct it after it ends. 
+`atmm`: You have to manually move the well so its bottom matches with the red vertical line. Warning: every nucleus you correct the rest may be spoiled. We adjust two parameters: 1) "Tuning" adjusts the frequency and 2) "Matching" adjust the electricity current so that the EM pulse matches with (not sure; watch Radek explaining it in the video)
+`topshim gui`: automatic shimming - homogenizes the magnetic field in z and xy axes. There is automatic option and manual.
+`loopadj`: optimize the lock parameters LGAIN (loop gain), LTIME (loop time) and LFILTER (loop filter).
+`pulsecalc`: calibrates the pulse lengths (prosol: `getprosol` has the precalibrated parameters based on a test sample but they are not optimal for other samples). This calibration is mostly needed for H because the values of C and N don't change that much.
+`getprosol [nucleus P90 PL90] <- values for 1H, 13C, 15N`:     The nucleus; P90, the value for 90° hard pulse length; PL90, the value for 90°hard pulse power level. 
+`O1`: sets the spectral center in the given dimension.
+
+MISCELLANEOUS COMMANDS:
+`ased`: edit acquisition parameters used in pulse program
+`qfp`: a macro that applies a quadrature sine bell window function (qsin), performs a Fourier Transform, and then phase correction (fp).
+
+NOTES:
+- For each nucleuls there are calibration spectra that are used to adjust the parameters of all pulse sequences to the given sample (see Radek's explanation in the video). I think Topspin has some default calibration spectra that need to be manually adjusted before optimizing the parameters of each pp.
+- Radek by "number of increments" means the parameter `TD` the controls the resolution.
