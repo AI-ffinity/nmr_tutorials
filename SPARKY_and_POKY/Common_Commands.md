@@ -27,7 +27,7 @@ Sparky offers a variety of two-letter accelerators to streamline your workflow. 
 - **cl:** Adjust the color of an ornament.
 - **oz:** Adjust the size of an ornament.
 - **ol:** Overlay views. Compares different spectra.
-- **ci:** "Inverse background color": *in fact, this dialogue allows changing the color of the selected peak (POKY build 29. Aug 2024)*
+- **ci:** Inverse background color
 - **vt:** View settings. Adjusts various spectral settings, including aspect ratio.
 
 ### Peak and Spectrum Manipulation
