@@ -84,29 +84,114 @@ A trapezoidal window creates a linear ramp up → plateau → linear ramp down p
 
 ---
 
-### Choosing Values by Experiment Dimension
+## Choosing Values by Experiment Dimension
 
-#### 1H–15N HSQC
-- **Direct 1H dimension:** Use `EM` or `GM` with LB ≈ 0.3–0.5 Hz.
-- **Indirect 15N dimension:** Typically use `SINE` (or `QSINE`) with SSB ≈ 2–3; alternatively, Gaussian parameters (negative LB, GB ≈ 0.1–0.3) can be applied.
+Below is a nicely formatted Markdown document that summarizes practical, experience‐based guidelines for setting TopSpin window parameters when processing protein spectra. Note that these guidelines are heuristic—your final settings should be fine‐tuned based on your specific hardware, acquisition parameters, and sample characteristics. The TopSpin processing manual itself provides definitions and allowed ranges for these parameters but leaves the final choices to the user citeturn1file1.
 
-#### 1H–13C HSQC
-- **Direct 1H dimension:** Similar to the HSQC above.
-- **Indirect 13C dimension:** Use QSINE with SSB ≈ 2–3 or mild Gaussian parameters, depending on the data quality.
+---
 
-#### Triple-Resonance Experiments (e.g., HN(CO)CA, CBCA(CO)NH, HNCACB)
-- Typically 3D experiments:
-  - **Direct 1H dimension:** Exponential or Gaussian weighting with modest LB.
-  - **Indirect 15N and 13C dimensions:** QSINE is a common default with SSB around 2–3. Adjust slightly (e.g., larger SSB or modest LB of 1–3 Hz) if peaks are broader.
+# Recommended Processing Parameters for Protein Spectra in TopSpin
 
-#### NOESY Experiments (3D/4D, including HCNH NOESY, HCCH NOESY, N-/C-edited 3D NOESY)
-- **Direct 1H dimension:** Often processed using `EM` or `GM`.
-- **Indirect dimensions (1H, 13C, 15N):** SINE/QSINE weighting is very common to reduce t1 noise, with SSB ≈ 2–3.  
-- For 4D experiments with multiple indirect dimensions, similar strategies apply to each dimension.
+The following guidelines are often used by experienced NMR spectroscopists when processing protein spectra. They are roughly categorized by protein size (small, medium, and large) and are presented here for common experiments such as 1H–15N HSQC, 1H–13C HSQC, triple-resonance (HNCO, HN(CA)CO, CBCA(CO)NH, HNCACB), and various NOESY experiments (3D/4D). 
 
-#### Trapezoidal (TM1/TM2)
-- Use only if a linear ramp is specifically desired.
-- Typical settings: TM1 = 10–15% and TM2 = 10–15% of the total number of FID points.
+> **Note:**  
+> The TopSpin reference manual does not provide a “one size fits all” table of recommended parameters (WDW, LB, GB, SSB, TM1, TM2) tailored to protein size or specific experiments. Instead, it outlines the available window functions and their associated parameters, leaving choices to the user’s discretion based on experimental objectives.
+
+---
+
+### 1. Window Function (WDW) Choice
+
+#### General Recommendations
+
+- **Small Proteins (<15 kDa):**  
+  - Aim: Maximize resolution while maintaining good signal-to-noise (S/N).  
+  - Common Choices:  
+    - *Gaussian* (`gm`) or  
+    - *Sine-bell squared* (`qsine`).  
+  - Rationale: When S/N is strong, sine-bell functions can deliver very sharp lines; if S/N is lower, a Gaussian or exponential option may help emphasize the signal.
+
+- **Medium Proteins (15–35 kDa):**  
+  - Aim: Accommodate somewhat broader lines and reduced S/N.  
+  - Common Choices:  
+    - *Gaussian* (`gm`) or  
+    - *Sine-bell* (`sine` or `qsine`) with a modest sine-bell shift (SSB ≈ 2).
+
+- **Large Proteins (>35 kDa):**  
+  - Aim: Compensate for rapidly decaying FIDs and broad lines.  
+  - Common Choices:  
+    - *Exponential multiplication* (`em`) is typical (with a small LB of 1–3 Hz).  
+    - In some multi-dimensional experiments, partial sine or trapezoidal windows may also be used.
+
+---
+
+### 2. LB (Lorentzian Broadening) and GB (Gaussian Broadening)
+
+#### When Using Exponential or Gaussian Weighting
+
+- **For Exponential Weighting (WDW = em):**  
+  - **LB** is typically set to:
+    - **Small proteins:** 0.3–1.0 Hz (especially in indirect dimensions).
+    - **Large proteins:** 1–3 Hz (to compensate for faster decay).
+
+- **For Gaussian Weighting (WDW = gm):**  
+  - **LB** > 0 is used in conjunction with **GB**.
+  - **GB** values generally range from 0.0 to 1.0:
+    - **Common Values:** 0.1–0.4 for small/medium proteins.
+    - A larger GB results in a narrower main lobe but can cause more distortion if the FID decays quickly.
+
+> **Note:**  
+> If you use sine or qsine window functions, LB and GB typically do not apply unless you mix function types (e.g., sinc/qsinc).
+
+---
+
+### 3. SSB (Sine Bell Shift)
+
+- **Applicability:**  
+  Used when applying a sine-bell (WDW = sine) or sine-bell squared (WDW = qsine).
+
+- **General Guidelines:**  
+  - Typical SSB values range from 0 to 3.
+  - **Small Proteins:** An SSB of around 2 often provides a good compromise between resolution and S/N.
+  - **Larger Proteins:** If signals decay more rapidly, you might opt for a slightly lower shift or consider switching to exponential/Gaussian weighting.
+
+---
+
+### 4. TM1 / TM2 (Trapezoidal Window)
+
+- **Applicability:**  
+  Use when choosing a trapezoidal window function (WDW = trap).
+
+- **General Guidelines:**  
+  - **TM1** sets the ramp-up (starting edge) and **TM2** the ramp-down (ending edge) of the FID.
+  - Typical values (expressed as a fraction of the total FID length):
+    - **Small Proteins:** TM1 ≈ 0.05 and TM2 ≈ 0.95.
+    - **Medium Proteins:** TM1 ≈ 0.10 and TM2 ≈ 0.90.
+    - **Large Proteins:** Similar to medium, though some users may opt for slightly broader ramps if necessary.
+
+---
+
+### 5. Experiment-Specific Notes
+
+| **Experiment Type**                | **Direct Dimension (1H)**                                                     | **Indirect Dimensions (15N, 13C, or 1H in NOESY)**                                                                                                  |
+|------------------------------------|-------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **1H–15N HSQC / 1H–13C HSQC**       | **WDW:** EM<br>**LB:**<br>- Small: ~0.3 Hz<br>- Medium: ~0.5 Hz<br>- Large: ~1 Hz  | **WDW:** QSINE or GM<br>**LB:**<br>- Small: ~1 Hz<br>- Medium: ~2 Hz<br>- Large: ~3 Hz<br>**GB:** ~0.2 (if using GM)<br>**SSB:**<br>- Small: ~2<br>- Medium: ~2.5<br>- Large: ~3  |
+| **Triple-Resonance (HNCO, HN(CA)CO, CBCA(CO)NH, HNCACB)** | **WDW:** EM<br>**LB:**<br>- Small: ~0.3 Hz<br>- Medium: ~0.5 Hz<br>- Large: ~1 Hz  | **WDW:** QSINE or GM<br>**LB:**<br>- Small: ~1 Hz<br>- Medium: ~2 Hz<br>- Large: ~3 Hz<br>**GB:** ~0.2<br>**SSB:**<br>- Small: ~2<br>- Medium: ~2.5<br>- Large: ~3  |
+| **NOESY (3D/4D NOESY, N-/C-edited NOESY, HSQC-NOESY)**   | **WDW:** EM<br>**LB:**<br>- Small: ~0.3 Hz<br>- Medium: ~0.5 Hz<br>- Large: ~1 Hz  | **WDW:** QSINE (preferred) or GM<br>**LB:**<br>- Small: ~1 Hz<br>- Medium: ~2 Hz<br>- Large: ~3 Hz<br>**GB:** ~0.2<br>**SSB:**<br>- Small: ~2<br>- Medium: ~2.5<br>- Large: ~3<br>**TM1/TM2:**<br>- If using trap: Small ≈ 0.05/0.95, Medium ≈ 0.10/0.90, Large ≈ 0.10/0.90  |
+
+---
+
+### 6. Summary of Typical Starting Values
+
+The table below provides a “starting point” matrix for processing parameters. These values are meant as guidelines and should be adjusted based on visual inspection and further optimization:
+
+| **Protein Size** | **WDW (Indirect Dimensions)** | **LB (Hz)**             | **GB**         | **SSB**     | **TM1 / TM2 (if Trap is used)** |
+|------------------|-------------------------------|-------------------------|----------------|-------------|----------------------------------|
+| **Small**        | qsine or gm                  | 0.3 – 0.7               | 0.2 – 0.3      | 1 – 2       | 0.05 / 0.95                      |
+| **Medium**       | gm (or qsine)                | 0.5 – 1.5               | 0.1 – 0.3      | 1 – 2       | 0.10 / 0.90                      |
+| **Large**        | em or gm                     | 1 – 3                   | 0.0 – 0.2      | ~1          | 0.10 / 0.90                      |
+
+> **Final Note:**  
+> These recommendations are starting points only. In practice, you should perform a quick transform (using commands such as xf2, xfb, or tf1) to inspect the spectral quality, then fine-tune the parameters according to your sample’s specific characteristics and experimental requirements.
 
 ---
 
