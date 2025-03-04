@@ -205,3 +205,8 @@ The table below provides a “starting point” matrix for processing parameters
 
 The exact choices depend on the trade-off between resolution and S/N, and you may adjust these parameters based on the spectral quality and the specific characteristics of the experiment.
 
+---
+
+## Authors
+
+- **Thomas Evangelidis**
