@@ -8,6 +8,20 @@
 - https://docs.google.com/document/d/1-G85BHjtCY-79RyG-cctNSj8fIh2jNmi4OUSO0uOYUg/edit?usp=sharing
 - https://ethz.ch/content/dam/ethz/special-interest/biol/mol-biol/bnsp-dam/NMRmanual/Topspin-ver4.pdf
 
+# Steps
+- Tuning and Matching: Adjust the probe for optimal sensitivity and performance. 
+- Deuterium Lock 
+- Shimming: Optimize the magnetic field homogeneity over the sample volume. 
+- Pulse Calibration: Calibrate pulse widths for uniform flip angles across the sample.
+- Setting Parameters: Adjust spectral width, number of scans, relaxation delay, etc., to optimize signal-to-noise ratio and resolution.
+- Temperature Calibration: Maintain a consistent temperature throughout the acquisition to ensure data consistency.
+- Chemical shift referencing
+
+Advanced operation
+
+    Deuterium pulse width calibration and decoupling
+
+
 ### Downloading Ubiquitin's Parameter Set (OBSOLETE: it's Novacek-Tripsianes pp which we don't use anymore)
 For a smooth configuration of your spectrometer, download Ubiquitin's parameter set (the Topsin directory including 
 spectra and parameters) from this Google drive link. This parameter set is from a 600 MHz magnet (e.g. generated with 
