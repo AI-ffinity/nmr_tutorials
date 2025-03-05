@@ -5,7 +5,7 @@
 ## 2. Load the peak list
 * Navigate to the tab ``Experiments`` (**the main panel**)
 * Clik on **⇥** icon to import the resonance list;
-* `lt` or Peak | Peak list... - Load peak list...
+* `rp` or Peak | Peak list... - Load peak list...
 ## 3. Read the intensities
 * In the **Spectrum Peaks** window: **Options...**, check the box `Data height`
 
