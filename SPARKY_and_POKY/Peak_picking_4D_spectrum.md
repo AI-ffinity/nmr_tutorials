@@ -39,7 +39,8 @@ For example, to convert the `1H-15N`, `1H-13C HSQC` spectra, and the 4D HCNH NOE
  bruk2ucsf_run 5/pdata/1/4rrr /srv/NMR/Peak_Picking/Nanoluc/4D_HCNH_NOESY.ucsf
 ```
 
-> Note: You can also convert the spectra from Bruker to UCSF format in POKY/Sparky, but you cannot rename the axes in that process.
+> Note: You can also [convert the spectra from Bruker to UCSF format in POKY/Sparky](Miscellaneous/convert_spectra_POKY.md), 
+> but you cannot rename the axes in that process.
 
 #### 2.3 Rename Axes
 
@@ -59,8 +60,6 @@ ucsfdata 4D_HCNH_NOESY.ucsf
 Example output:
 
 ```shell
-Copy
-Edit
 axis                          w1          w2          w3          w4
 nucleus                       1H         13C         15N          1H
 matrix size                  256         256         256         416
@@ -78,7 +77,7 @@ command renames them properly—amidic protons have higher shift values than the
 ucsfdata -a1 HC -a2 C -a3 N -a4 HN 4D_HCNH_NOESY.ucsf
 ```
 
-> IMPORTANT: Make sure that axes are named consistently in all spectra; otherwise, you will encounter problems during peak picking.
+> **IMPORTANT:** Make sure that axes are named consistently in all spectra; otherwise, you will encounter problems during peak picking.
 
 #### 2.4 Create C-HC and N-HN Projections
 
@@ -167,6 +166,8 @@ all NOE cross peaks, not just the diagonals!
 
 > The picking will take a while, but you can see its progress in the window:
 
+![Restrictive_peak_picking_in-progress_window](./images/Peak_picking_running.png)
+
 **Pick all peaks in the reference 1H-13C HSQC**  
 Go to `1H-13C HSQC` and repeat previous step. Keep only those peaks that you deem to be real.
 
@@ -192,6 +193,8 @@ While you have only real peaks in `13C_HSQC`, type `kr` to enter the peak transf
 **Open the peak lists**  
 Bring up the `lt` windows for both the 2D and the 4D; sort the peaks by the direct `HN` or `N` frequency, and select the useful columns to display:
 
+![the pick list options](./images/Peak_list_columns.png)
+
 (Linewidth should be unchecked!)
 
 Click on each peak in the 2D list and validate them.
@@ -203,7 +206,8 @@ Type `pa` to select all peaks, and hit **Delete** to remove all peaks.
 Don't forget to check the **Use selected peaks only?** box in the `kr` dialogue!
 
 **View the nD spectrum from different C-H planes**  
-To open multiple C-H planes, click `vd` to duplicate the view of a 4D spectrum into another window. In each window, you can focus on different C-H planes by selecting a different `15N HSQC` peak with `F1` and clicking `vc` to center it.
+To open multiple C-H planes, click `vd` to duplicate the view of a 4D spectrum into another window. In each window, you 
+can focus on different C-H planes by selecting a different `15N HSQC` peak with `F1` and clicking `vc` to center it.
 
 **Discard the noise peaks**  
 - Overlay the `N-HN_proj` onto the `15N_HSQC` and increase the contour levels until noise peaks start to emerge.  
@@ -213,7 +217,10 @@ To open multiple C-H planes, click `vd` to duplicate the view of a 4D spectrum i
 - Once you succeed, select the **weakest picked peak** and hit `ss`. This command will select all 4D peaks that have lower intensity than the selected one. Type `lt` to check that.  
 - Click **Delete** to remove them.
 
-> **Note**: This comparison is made using signed intensities: negative peaks with large absolute intensity will also be selected! Check them manually and deselect if needed: hold `Ctrl` and drag over the selected peaks with your mouse.
+> **Note**: This comparison is made using signed intensities: negative peaks with large absolute intensity will also be 
+selected! Check them manually and deselect if needed: hold `Ctrl` and drag over the selected peaks with your mouse.
+
+![peak list](./images/peak-list-window.png)
 
 (^ There should be a GIF here showing large negative peaks.)
 
@@ -229,16 +236,18 @@ Go to the 4D peak list (type `lt`) and select the columns `w1`, `w2`, `w3`, `w4`
 ## Notes for Special Cases
 
 **Crowded 2D Spectra**  
-If there is too much peak overlap in the 2D spectra (or planes or projections), it is helpful to use an orthogonal plane (for example, a `13C-HSQC` in addition to the `15N-HSQC`) to ...
+If there is too much peak overlap in the 2D spectra (or planes or projections), it is helpful to use an orthogonal plane 
+(for example, a `13C-HSQC` in addition to the `15N-HSQC`) to ...
 
 **Unaliasing Peaks in POKY**  
-When you use restricted peak picking (`kr`), POKY will automatically check for possible aliased peaks. If the spectrum width of the source 2D is larger than that of the nD (n = [3,4]), POKY will find and mark the peaks in the 3D as aliased.
+When you use restricted peak picking (`kr`), POKY will automatically check for possible aliased peaks. If the spectrum 
+width of the source 2D is larger than that of the nD (n = [3,4]), POKY will find and mark the peaks in the 3D as aliased.
 
 Below are examples of the `13C-HSQC` spectra with aliased peaks (in yellow boxes):
 
 | Protein 1 | Example 13C-HSQC - Protein 2 |
-|-----------|------------------------------|
-| (Image)   | (Image)                      |
+|------------------------------------------------------------------|--------------------------------------------------------------------|
+| ![13C-HSQC-ac1](./images/13C-HSQC-ac1-aliased.png) | ![13C-HSQC-sy15](./images/13C-HSQC-sy15-aliased.png) |
 
 ---
 
