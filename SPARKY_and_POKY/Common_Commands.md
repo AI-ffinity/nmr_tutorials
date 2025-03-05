@@ -70,7 +70,7 @@ Note: For peaks with assignments not following the convention [A-Z][0-9]+[A-Z0-9
 - **vd:** View duplicate. Duplicates the view of a spectrum into another window.
 - **vR:** Show assignments on the edge of the spectrum.
 - **vS:** Show 1D slice on the edge of the spectrum.
-
+- **ss:** Select all peak with lower intensity than the currently selected peak; good to discard noise.
 
 
 ## Pointer Modes
