@@ -4,8 +4,8 @@ This tutorial guides you through creating 2D and 3D projections from a 4D NOESY 
 
 ## POKY installation
 
-Sometimes running the POKY/Sparky utility scripts outside their directory yields segmentation faults. Therefore, add the following
-functions into your `~/.bashrc` script:
+Sometimes running the POKY/Sparky utility scripts (especially `bruk2ucsf`) outside their directory yields segmentation 
+faults. Therefore, add the following functions into your `~/.bashrc` script:
 
 ```shell
 alias poky="/opt/POKY/poky_linux/bin/poky"
@@ -104,10 +104,12 @@ ucsfdata -a1 C -a2 HC -o 13C_HSQC_renamed_axes.ucsf 13C_HSQC.ucsf
 
 ## Additional Resources
 
-- For those interested in creating 2D projections via the graphical user interface (GUI), refer to the following video tutorial: [How to Make 2D Projections of 3D Spectra](https://www.youtube.com/watch?v=KyfyS5inLwI)
+- For those interested in creating 2D projections via the graphical user interface (GUI), refer to the following video 
+tutorial: [How to Make 2D Projections of 3D Spectra](https://www.youtube.com/watch?v=KyfyS5inLwI)
 
 **Note:** While the GUI method is available, this tutorial focuses on the command-line approach for its efficiency and precision.
 
 
-With ucsfdata you can also pull 2D slices from the 4D. You can go back to -wN parameter and find the “index” that gives your preferred ppm slice.
+With ucsfdata you can also pull 2D slices from the 4D. You can go back to `-wN` parameter and find the “index” that 
+gives your preferred ppm slice.
 https://groups.google.com/g/nmr-sparky/c/wb2IJoeNPZc
