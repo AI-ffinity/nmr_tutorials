@@ -28,7 +28,7 @@ There is no benifit of converting the files explicitly.
 
 - In Poky or Sparky, click on the Import button (see the screenshot). In the pop-up window, click "All files". 
 - Paste the path to the file and hit "convert". This will take several minutes. 
-- Open the file. In POKY, type `fo` to bring up the file browser. Open the ucsf file. 
+- Open the file. In POKY, type `fo` to bring up the file browser. Open the UCSF file. 
 
 Do the same with the 2D HN projection (F3-F4) or an HSQC spectrum
 
@@ -50,11 +50,14 @@ Conversion utility will create the .ucsf file of roughly the same size in the sa
 4. **Pick all peaks in the reference 2D** Go to the 2D, hit F8 to enter the peak picking mode, and drag a box around all signals. This will pick all the visible peaks. Hit F1 to enter the default mode. 
 
 > [!TIP]
-> Use `lt` to view the peak list. 
+> Use `lt` to view the peak list. In POKY, use `Ctrl+J` and `Ctrl+K` to adjust the size of the peak markers (or open the `oz` interface). 
 
 5. **Use those peaks to find peaks in the 4D** Type `kr` to  enter the peak transfer dialogue. 
     - Set the HN spectrum as the peak source:	
-    - Adjust the tolerances: typically, 0.05 ppm for the *direct* 1H an 0.2 ppm for 15N is fine. For the *indirect* NOE-1H dimension, set the tolerance to 999: we want to find all NOE crosspeaks, not just the diagonals! 
+    - Adjust the tolerances: 
+      - 0.03 ppm for the *direct* 1H dimension; 
+      - 0.3 ppm for 15N or 13C dimension, in case 13C-HSQC is used. 
+      - For the *indirect* NOE-1H dimension, set the tolerance to 999: we want to find all NOE crosspeaks, not just the diagonals! 
     - Finally, hit the `Pick peaks` button.
 
 > The picking will take a while: about 25 minutes for 118 2D peaks on AMD Ryzen 3 1300 @ 3.5 GHz. (POKY uses a single CPU core).
