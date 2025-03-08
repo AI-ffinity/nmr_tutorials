@@ -74,3 +74,40 @@ to obtain the rough estimate of the expected peak positions.
 POKY will automatically check for folding and label the peaks as `aliased`.
 
 [screenshot of the aliased peaks](./images/aliased-label-poky.png)
+
+
+# Aliasing and Unfolding Peaks in NMR Spectra
+
+To identify aliased or folded peaks, you can shift the spectrum axes upfield or downfield using specific accelerator commands. These shifts help to visually determine whether peaks are aliased or folded and on which axis.
+
+- **For Upfield shifts**: Use lowercase commands (`f1`, `f2`, `f3`, `f4`).
+- **For Downfield shifts**: Use uppercase commands (`F1`, `F2`, `F3`, `F4`).
+
+For example:
+- To shift the **w2** axis upfield, type `f2`.
+- To shift **downfield**, type `F2`.
+
+These commands do **not** change the actual coordinates of peaks; they only affect the visual representation of spectra.
+
+Once you've determined the correct position of an aliased peak, you may need to adjust its coordinates manually or confirm its proper placement.
+
+To identify folded peaks in a 2D projection from a 4D HC(CC)NH or a 13C-HSQC spectrum, consider this practical guideline:
+
+- Any peak located at **carbon frequency < 25 ppm** and **proton frequency > 3 ppm** is potentially an aliased aromatic peak.
+- If you suspect folding, confirm by checking typical aromatic chemical shift ranges and use unfolding commands accordingly.
+
+Certain spectra (e.g., acquired in TPPI mode) produce aliased peaks that appear reflected around the spectral edges (upfield or downfield). Specifically:
+
+- **`f1`, `f2`, `f3`, `f4`** shift peaks **upfield** by one sweep width.
+- **`F1`, `F2`, `F3`, `F4`** shift peaks **downfield** by one sweep width.
+
+When you correctly unfold an aliased peak, hovering your cursor over that peak along the axis where unfolding was applied will display the annotation **"aliased"**.
+
+## Practical Tip for **HC-C Projections** or **13C-HSQC**
+Any peak with a carbon frequency <25 ppm and proton frequency >3 ppm might actually be an aromatic peak that is aliased. For example, if you have an aromatic peak at a carbon chemical shift around 130 ppm, it could appear around a much lower ppm value (due to aliasing). Verify and unfold such peaks accordingly.
+
+### Example
+- If an aromatic peak expected around ~125 ppm appears near -10 ppm, it has likely folded around the spectral edge. Use unfolding commands (`fX` or `FX`) to visually confirm this.
+
+This procedure helps you correctly identify and handle aliased peaks, ensuring accurate peak assignments.
+

@@ -36,6 +36,7 @@ of these commands along with brief descriptions of their functionalities.
 ### Peak and Spectrum Manipulation
 
 - **a1, a2, a3:** Add spectral width (SW) to a peak in the F1, F2, or F3 dimension. Useful for aliased spectra.
+> **NOTE:** **sweepwidth** is an term incorectly used to refer to **spectral width**.
 - **A1, A2, A3:** Subtract SW from a peak in the F1, F2, or F3 dimension. For handling aliased spectra.
 - **at:** Assignment tool. Assists in assigning peaks.
 - **dr:** Delete resonances not used in any peak assignment. Cleans up the resonance list.

@@ -156,29 +156,46 @@ Go to the `15N_HSQC`, hit `F8` to enter peak picking mode, and drag a box around
 > **TIP:** Use `lt` to view the peak list.
 
 **Use those peaks to find peaks in the 4D**  
-While you have only real peaks in `15N_HSQC`, type `kr` to enter the peak transfer dialogue:  
-- Set **Find peaks in** to `4D_HCNH_NOESY`  
-- Set **Using peaks in** to `15N_HSQC`  
-- Adjust the tolerances: typically, 0.04 ppm for the direct `HN` and 0.4 ppm for `N` is fine.  
+- While you have only real peaks in `15N_HSQC`, type `lt` and export the peak list to a file.
+- Switch to the `2D_N-HN_proj` window and hit `rp` to load the list of peaks.
+- Select **Auto detect dimensions** and click **Create peaks**.
+- Hit `pa` to select all loaded peak markers and then `pc` to center them to the contour hills of `2D_N-HN_proj`.
+- Hit `ol` and overlay `15N_HSQC` to `2D_N-HN_proj`.
+- Go through all the peak markers, visualize them and adjust their position manually to be at the center of the contours hills
+in the `2D_N-HN_proj`. To help you spot the overlapping peak parkers, hit `lt`, **sort by frequency** and go through the list
+search for peaks with identical coordinates. Double click on them and adjust their position based on the `15N_HSQC`.
+ 
   **THIS IS FOR 3D SPECTRA:** For the indirect NOE-HC dimension, set the tolerance to **999** because we want to find 
 all NOE cross peaks, not just the diagonals!  
-- Finally, hit the **Pick peaks** button.
 
 > The picking will take a while, but you can see its progress in the window:
 
 ![Restrictive_peak_picking_in-progress_window](./images/Peak_picking_running.png)
 
-**Pick all peaks in the reference 1H-13C HSQC**  
-Go to `1H-13C HSQC` and repeat previous step. Keep only those peaks that you deem to be real.
+**Pick all peaks in the HC-C projection that match with reference 1H-13C HSQC**  
+Since `1H-13C HSQC` is very crowded and is not ideal for setting landmarks for restricted peak selection, we will use it in 
+combinations ith the `2D_HC-C_proj`. Overlay the two spectra and select the peaks in `2D_HC-C_proj` that you believe are
+within the general boundaries defined by the `1H-13C HSQC` and are not noise - a bit of intuition will be helpful here. 
+Inspect visually the selected peaks in the `2D_HC-C_proj` and add/remove peaks by holding the **Shift** button.
+These will be your landmarks for restrictive peak selection. Repeat the previous step to select the relevant peaks in the
+`4D_HCNH_NOESY` (hit the **Select peaks** button this time). Keep only those peaks that you deem to be real by hitting `pI`
+for inverted selection followed by **Delete** button.
 
 **Use those peaks to delete noise peaks in the 4D**  
 While you have only real peaks in `13C_HSQC`, type `kr` to enter the peak transfer dialogue:  
 - Set **Find peaks in** to `4D_HCNH_NOESY`  
 - Set **Using peaks in** to `13C_HSQC`  
-- Adjust the tolerances: use higher tolerances because the `1H-13C HSQC` spectrum is very crowded. For example, 0.1 ppm for `C` and 0.1 ppm for `HC`.  
+- Adjust the tolerances: use higher tolerances because the `1H-13C HSQC` spectrum is very crowded. For example, 0.4 ppm for `C` and 0.04 ppm for `HC`.  
 - This time, hit the **Select peaks** button.  
 - Once the selection is finished, type `pI` to invert the peak selection and click **Delete** to remove those noise peaks.  
 - In the end, you should see only peaks that are close to the `13C_HSQC` contours, but there may still be many peaks that fall outside and are noise. Refine your peak selection by repeating restricted peak picking with gradually lower tolerances, inverting the selection, and deleting the peaks that you deem to be noise.
+
+Tolerances for `kr`:
+2D_N-HN_proj -> 4D_HCNH_NOESY: N=0.2 ppm and HN=0.02 ppm
+2D_HC-C_proj -> 4D_HCNH_NOESY: C=0.4 ppm and HN=0.04 ppm because the HC-C projection is more crowded. You want to add peaks manually (`F8` button) at crowded regions (e.g. CA) where no peak markers were created with `13C_HSQC`->`2D_HC-C_proj` restricted peak selection.
+
+Aliased Peaks:
+`C < 25` ppm and `HC > 3` ppm. 
 
 [FIGURE here]
 
