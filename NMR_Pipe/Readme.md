@@ -25,10 +25,10 @@ NMRPipe release from 03. Apr 2025 made the software compatible with the newest v
 >   * https://www.ibbr.umd.edu/nmrpipe/libXau.so.6
 > * Put them in the nmrbin.*/lib directory.
 
-Tested on Ubuntu 24-based TuxedoOS; KDE desktop.  
+Tested on Ubuntu 24-based TuxedoOS with KDE desktop environment.  
 
-If something still doesn't work, try MATE desktop environment, which was used on the NMR Pipe development VM. 
- If there are still problems, use NMRPipe in a VM. 
+If something still doesn't work, try MATE desktop environment, which was used on the NMRPipe development virtual machine. 
+ If there are still problems, use NMRPipe in a virtual machine. 
 
 See this [thread](https://groups.io/g/nmrpipe/message/3225) for more details.
 
