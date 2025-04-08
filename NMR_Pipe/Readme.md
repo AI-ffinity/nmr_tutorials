@@ -16,7 +16,7 @@ The script will take care of downloading the source files, installing dependanci
 * `wget` to fetch the script
 * `csh` or `tcsh` shell to run NMR pipe
 
-## Note on Ubuntu 24
+### Note on Ubuntu 24
 
 NMRPipe release from 03. Apr 2025 made the software compatible with the newest versions of Ubuntu. However, if the GUI still won't display, an old solution may help:
 
