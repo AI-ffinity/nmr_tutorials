@@ -11,19 +11,26 @@ Alternatively, download the script [nmrpipe_autoinstall.sh](./nmrpipe_autoinstal
 The script will take care of downloading the source files, installing dependancies, and the post-installation modifications of the ~/.cshrc file.
 
 ## Requirements
-* Ubuntu 22.04.4 LTS
+* Ubuntu 22 or older
 * Admin rights
 * `wget` to fetch the script
 * `csh` or `tcsh` shell to run NMR pipe
 
 ## Note on Ubuntu 24
-The default installation will work for the command-line-based programs within NMR Pipe - however, NMRDraw will not open the window. To fix this: 
-* Get the following two files (X11 libraries from Ubuntu 20)
-  * https://www.ibbr.umd.edu/nmrpipe/libX11.so.6
-  * https://www.ibbr.umd.edu/nmrpipe/libXau.so.6
-* Put them in the nmrbin.*/lib directory.
 
-See this [thread](https://groups.io/g/nmrpipe/topic/99567785) for more details.
+NMRPipe release from 03. Apr 2025 made the software compatible with the newest versions of Ubuntu. However, if the GUI still won't display, an old solution may help:
+
+> * Get the following two files (X11 libraries from Ubuntu 20)
+>   * https://www.ibbr.umd.edu/nmrpipe/libX11.so.6
+>   * https://www.ibbr.umd.edu/nmrpipe/libXau.so.6
+> * Put them in the nmrbin.*/lib directory.
+
+Tested on Ubuntu 24-based TuxedoOS; KDE desktop.  
+
+If something still doesn't work, try MATE desktop environment, which was used on the NMR Pipe development VM. 
+ If there are still problems, use NMRPipe in a VM. 
+
+See this [thread](https://groups.io/g/nmrpipe/message/3225) for more details.
 
 ## Flow
 1. Creates a folder `tmp_download` in the current directory
