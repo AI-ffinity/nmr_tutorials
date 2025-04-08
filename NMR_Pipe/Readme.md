@@ -1,6 +1,6 @@
 # Single line NMR Pipe installation
 
-Download, install and set up [NMRPipe](https://spin.niddk.nih.gov/bax/NMRPipe/) on Ubuntu 22.04 Jammy LTS with the single line!
+Download, install and set up [NMRPipe](https://spin.niddk.nih.gov/bax/NMRPipe/) on Ubuntu with the single line!
 
 ```sh
 wget -qO- https://raw.githubusercontent.com/AI-ffinity/nmr_tutorials/refs/heads/main/NMR_Pipe/nmrpipe_autoinstall.sh | bash
