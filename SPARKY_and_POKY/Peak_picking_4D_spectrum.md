@@ -181,74 +181,52 @@ def estimate_15N_hsqc_peaks(sequence: str) -> int:
     sidechain_peaks = sequence.count('R') + sequence.count('K') + sequence.count('W') + sequence.count('H')
     return backbone_peaks + sidechain_peaks
 ```
-- Gradually increase or decrease the contour levels until the number of inphase (positive intensity) picked peaks is approximately the expected number of N-H peaks (292 for CA2 protein).
+- Gradually increase or decrease the contour levels until the number of in-phase (positive intensity) picked peaks is approximately the expected number of N-H peaks (292 for CA2 protein).
 I set the contour level to 1.4e+06, which captured 274 in-phase peaks, as below that a lot of noise peaks were emerging.
   ![](images/15N_HSQC_contour_level.png)
 - Press `lt` to open the peak list and export the peak list from the `15N HSQC` spectrum by saving it to a file.
-- Switch to the `2D N-HN projection` and overlay the `15N HSQC` spectrum.
+- Switch to the `2D N-HN projection`, hit `ol` and overlay `15N_HSQC` to `2D_N-HN_proj`.
 - Delete all current peaks from the `2D N-HN projection`.
-- Press `rp` to load the saved peak list from the `15N HSQC`. Altnatively, just copy (Ctrl+c)-paste (Ctrl+v) from one spectrum to the other.
+- Press `rp` to load the saved peak list from the `15N HSQC`. Alternatively, just copy (Ctrl+c)-paste (Ctrl+v) from one spectrum to the other.
 - Press `pa` to select all peaks.
 - Press `pc` to adjust the peak positions to the **contour centers** of the `2D projection`.
-- Manually adjust or create peak markers to ensure they align with the actual peak centers in the `2D projection`.
-- At the end count the peak markers in both spectra using `lt`. They must be the same. If not, check for peaks with the same coordinates - they are seen as one.
+- Go through all the peak markers, visualize them and adjust their position manually to be at the center of the contours hills
+in the `2D_N-HN_proj`. To help you spot the overlapping peak markers, hit `lt`, **sort by frequency** and go through the list
+search for peaks with identical coordinates. Double-click on them and adjust their position based on the `15N_HSQC`.- At the end count the peak markers in both spectra using `lt`. They must be the same. If not, check for peaks with the same coordinates - they are seen as one.
 - These peaks will be used as **reference points** for **restricted peak picking** in the `4D spectrum` later on.
 
-#--------------------------------
+Below you see the final peak selection on the `N-HN_proj` (orange) adjusted to the peak centers. The `15N_HSQC` is 
+overlaid with cyan and yellow color. Notice that some peaks that were not present in the `N-HN_proj` (less sensitive experiment)
+were added from the `15N_HSQC` and the inverse (although much fewer peaks were added like this).
 
-**Pick all peaks in the reference 1H-15N HSQC**  
-Go to the `15N_HSQC`, hit `F8` to enter peak picking mode, and drag a box around all signals. This will pick all the visible peaks. Hit `F1` to return to selection mode. Select and delete all peaks that you deem to be noise.
-
-> **TIP:** Use `lt` to view the peak list.
-
-**Use those peaks to find peaks in the 4D**  
-- While you have only real peaks in `15N_HSQC`, type `lt` and export the peak list to a file.
-- Switch to the `2D_N-HN_proj` window and hit `rp` to load the list of peaks.
-- Select **Auto detect dimensions** and click **Create peaks**.
-- Hit `pa` to select all loaded peak markers and then `pc` to center them to the contour hills of `2D_N-HN_proj`.
-- Hit `ol` and overlay `15N_HSQC` to `2D_N-HN_proj`.
-- Go through all the peak markers, visualize them and adjust their position manually to be at the center of the contours hills
-in the `2D_N-HN_proj`. To help you spot the overlapping peak parkers, hit `lt`, **sort by frequency** and go through the list
-search for peaks with identical coordinates. Double click on them and adjust their position based on the `15N_HSQC`.
- 
-  **THIS IS FOR 3D SPECTRA:** For the indirect NOE-HC dimension, set the tolerance to **999** because we want to find 
-all NOE cross peaks, not just the diagonals!  
-
-> The picking will take a while, but you can see its progress in the window:
-
-![Restrictive_peak_picking_in-progress_window](./images/Peak_picking_running.png)
+![here you see](images/N-HN_proj_peaks.png)
 
 #------------------------------------------
 
 **Pick all peaks in the HC-C projection that match with reference 1H-13C HSQC**  
 Since `1H-13C HSQC` is very crowded and is not ideal for setting landmarks for restricted peak selection, we will use it in 
-combinations ith the `2D_HC-C_proj`. Overlay the two spectra and select the peaks in `2D_HC-C_proj` that you believe are
-within the general boundaries defined by the `1H-13C HSQC` and are not noise - a bit of intuition will be helpful here. 
-Inspect visually the selected peaks in the `2D_HC-C_proj` and add/remove peaks by holding the **Shift** button.
-These will be your landmarks for restrictive peak selection. Repeat the previous step to select the relevant peaks in the
-`4D_HCNH_NOESY` (hit the **Select peaks** button this time). Keep only those peaks that you deem to be real by hitting `pI`
-for inverted selection followed by **Delete** button.
+combinations ith the `2D_HC-C_proj`. Overlay the two spectra and select with `F8` all the peaks in `2D_HC-C_proj`. The add manually
+the peaks that you believe are within the general boundaries defined by the `1H-13C HSQC` and are not noise - a bit of 
+intuition will be helpful here. Synchronizing the two spectra with `yt` and viewing them next to each other will help you.
+In the following Figure I show how I add a new peak in the `2D_HC-C_proj` based on the density of the `1H-13C HSQC`.
 
-**Use those peaks to delete noise peaks in the 4D**  
-While you have only real peaks in `13C_HSQC`, type `kr` to enter the peak transfer dialogue:  
-- Set **Find peaks in** to `4D_HCNH_NOESY`  
-- Set **Using peaks in** to `13C_HSQC`  
-- Adjust the tolerances: use higher tolerances because the `1H-13C HSQC` spectrum is very crowded. For example, 0.4 ppm for `C` and 0.04 ppm for `HC`.  
-- This time, hit the **Select peaks** button.  
-- Once the selection is finished, type `pI` to invert the peak selection and click **Delete** to remove those noise peaks.  
-- In the end, you should see only peaks that are close to the `13C_HSQC` contours, but there may still be many peaks that fall outside and are noise. Refine your peak selection by repeating restricted peak picking with gradually lower tolerances, inverting the selection, and deleting the peaks that you deem to be noise.
+![](images/HC-C_proj_pick_filling.png)
 
-Tolerances for `kr`:
-2D_N-HN_proj -> 4D_HCNH_NOESY: N=0.2 ppm and HN=0.02 ppm or if tpp many peaks are picked, N=0.1 ppm and HN=0.01 ppm
-2D_HC-C_proj -> 4D_HCNH_NOESY: C=0.4 ppm and HN=0.04 ppm because the HC-C projection is more crowded. You want to add peaks manually (`F8` button) at crowded regions (e.g. CA) where no peak markers were created with `13C_HSQC`->`2D_HC-C_proj` restricted peak selection.
+These peaks in `2D_HC-C_proj` will be your landmarks for restrictive peak selection.
+
 
 ## Optimizing Restricted Peak Picking for Higher Accuracy
 
 - For **more accurate restricted peak picking** and to **reduce noise**, it is recommended to use **different tolerances** for peaks based on their **radius**.
-- Since **measuring distances between two markers is not supported in POKY**, we will manually determine appropriate tolerances by analyzing peaks in the **2D projection spectra**.
-- Open each **projection spectrum**, sort the peaks by **data height**, and **start from the highest intensity peaks**.
-- **Double-click on peaks** in the `lt` table to visualize them and estimate **suitable tolerance values** that will capture all corresponding peaks in the 4D spectrum within that **region of the 2D plane**.
-- Keep **notes** of the chosen tolerance values by pressing `NT`, selecting the peak, and **applying the same tolerance to all peaks with similar data height**.
+- Open each **projection spectrum**, sort the peaks by **data height**, and **start the lowest intensity peaks**.
+- **Double-click on peaks** in the `lt` table to visualize them, hit `ms` to measure their radius in both axes and group them
+based on **suitable tolerance values** that will capture all corresponding peaks in the 4D spectrum within that **region of the 2D plane**.
+In general applying the same tolerance to all peaks with similar data height is a good strategy.
+- Once you decide about the tolerance values of a group of peaks, select them in the `lt` window and hit `nt` to save 
+in a note the chosen tolerance values.
+
+![](images/calculate_tolerances.png)
+
 - Perform **multiple restricted peak picking queries**, each time selecting a **set of peaks that share the same tolerances**.
 - Start with the **N-HN projection**, enabling **restricted peak picking** in the `4D NOESY` spectrum.
 - Each time, enable **"Use only selected peaks"** and set the corresponding **tolerance values**.
