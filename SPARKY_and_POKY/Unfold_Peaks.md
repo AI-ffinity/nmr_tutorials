@@ -19,6 +19,22 @@ often referring specifically to how they "fold" over the Nyquist frequency. In e
 
 ## Phase of the folded peaks
 
+There should be **no negative peaks** in Burker's 4D HCNH NOESY pulse sequences unless they are **aliased in the 13C or 15N dimension**.  
+
+If a peak is located **outside the spectral width**, it will be **aliased** into the spectrum, and its **sign will be inverted**.  
+For example, if the chemical shift of a nucleus is **80 ppm** and your **spectral width (SW)** is from **10 to 70 ppm**, 
+a **negative signal** will appear at **20 ppm**.
+
+This **sign inversion** occurs only for dimensions that use **delayed sampling**, where the **first complex sampling (CS) 
+evolution time** is equal to **1/2 increment**. This results in a **90°/-180° zero/first order phase correction**.
+
+Unless these peaks are **known to be aliased** and you **explicitly account for this** in your assignment algorithm 
+(since they **do not appear at the expected position**), you should **most likely discard these signals**.
+
+
+**Folded peaks** will still appear as **in-phase signals**, but with **inverted sign**.  
+If they are **folded twice** (e.g., in **two different dimensions**), they will appear **positive again**.
+
 **The sign of the folded peaks depends on the acquisition mode.**
 
 In ***Echo-antiecho*** mode, the aliased signals will appear **inverted**. 
@@ -104,7 +120,7 @@ Certain spectra (e.g., acquired in TPPI mode) produce aliased peaks that appear 
 When you correctly unfold an aliased peak, hovering your cursor over that peak along the axis where unfolding was applied will display the annotation **"aliased"**.
 
 ## Practical Tip for **HC-C Projections** or **13C-HSQC**
-Any peak with a carbon frequency <25 ppm and proton frequency >3 ppm might actually be an aromatic peak that is aliased. For example, if you have an aromatic peak at a carbon chemical shift around 130 ppm, it could appear around a much lower ppm value (due to aliasing). Verify and unfold such peaks accordingly.
+Any peak with a carbon frequency `<25 ppm` and proton frequency `>3 ppm` might actually be an aromatic peak that is aliased. For example, if you have an aromatic peak at a carbon chemical shift around 130 ppm, it could appear around a much lower ppm value (due to aliasing). Verify and unfold such peaks accordingly.
 
 ### Example
 - If an aromatic peak expected around ~125 ppm appears near -10 ppm, it has likely folded around the spectral edge. Use unfolding commands (`fX` or `FX`) to visually confirm this.

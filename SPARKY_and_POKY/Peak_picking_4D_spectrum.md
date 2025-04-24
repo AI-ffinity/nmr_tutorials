@@ -19,7 +19,9 @@ By following this approach, we ensure that the final set of picked peaks in the 
 ## Prerequisites
 
 - Installation of POKY or NMRFAM-Sparky; license for POKY.
-- Access to the specified Ubiquitin 4D and 15N HSQC spectrum files.
+- Copy the enhanced **Restricted Peak Pick** POKY plugin that reads the tolerance values from the peak's "Note" field from
+`nmr_tutorials/SPARKY_and_POKY/POKY/scripts/restrictedpick.py` to your `POKY/poky_linux/modules/poky/` folder.
+- Access to the specified CA2 protein 4D HCNH NOESY, 15N HSQC and 13C HSQC spectrum files.
 
 ## Steps
 
@@ -227,48 +229,94 @@ in a note the chosen tolerance values.
 
 ![](images/calculate_tolerances.png)
 
-- Perform **multiple restricted peak picking queries**, each time selecting a **set of peaks that share the same tolerances**.
-- Start with the **N-HN projection**, enabling **restricted peak picking** in the `4D NOESY` spectrum.
-- Each time, enable **"Use only selected peaks"** and set the corresponding **tolerance values**.
-- After finishing with the **N-HN projection**, switch to the **HC projection**.
-- This time, **do not enable peak picking**, but instead, **select peaks** based on the same grouping strategy.
-- Each time a **set of peaks** is selected in the **4D spectrum**, press `NT` and **add a note** with the **tolerance values used**.
-- After completing all iterations of **grouping peaks in the projections** based on their **common tolerance values** and **performing restricted peak selection in the 4D spectrum**, you can **sort all peaks in the `lt` table by note**.
-- **Select and delete peaks that do not have a note**, as they likely represent noise.
-- **Manual refinement of 4D peak list:** Overlay the `HC-C_projection` and the `13C_HSQC` on the `4D_HCNH_NOESY` with the selected peak list and manually remove peaks that are not in regions with signal of at least one of the 2D spectra.
+Since this protein is large, we will perform restricted peak picking in **two rounds**.  
+This is necessary because the screen updates every time a picking cycle completes, and for large proteins, this eventually becomes **terribly slow**.
+
+- First, select approximately **half** of the peaks in the **N-HN projection**.
+- Press `kr` to open the **Restricted Peak Picking** window. Make sure you copied our enhanced plugin to your POKY distribution (see **Prerequisites**)!
+- Activate the toggle options:
+  - `Use selected peaks only`
+  - `Use tolerance values from note`
+- Under **Find peaks**, select the **4D NOESY** spectrum.
+- Under **Using peaks in**, select the **N-HN projection**.
+- Click the **Pick Peaks** button.
+- Once it finishes, repeat **restricted peak picking**, this time:
+  - Set **Using peaks in** to the **HC-C projection**
+  - **Deactivate** the toggle `Use selected peaks only`
+  - Click the **Select Peaks** button.
+
+- Then, switch to the **4D NOESY window**, press `I` (capital i), and then the **Delete** button to remove all irrelevant peaks.
+- The remaining peak list displayed on the **HC-C plane** of the 4D NOESY should now look clean.
+- Press `pa` (select all), then `NT`, and write a word like `matched` to mark these peaks.
+- Click **Apply**.
+
+- Now go back to the **N-HN projection window**.
+- Select the **remaining half** of the peaks.
+- Open the **Restricted Peak Picking** window again.
+  - Set **Using peaks in** to the **N-HN projection**.
+  - Activate both toggle options:
+    - `Use selected peaks only`
+    - `Use tolerance values from note`
+  - Click the **Pick Peaks** button.
+
+- Change **Using peaks in** to the **HC-C projection**.
+- Deactivate `Use selected peaks only`.
+- Click **Select Peaks**.
+- Switch to the **4D NOESY window**, press `NT`, write the word `matched`, and click **Apply**.
+
+> ⚠️ **Important:** Do **not delete any peaks yet**, as we did in the first round—otherwise, you will lose some of the peaks identified earlier.
+
+- Press `lt` to display the **pick list** in the 4D spectrum.
+- Click **Options**, sort the list by **Note**, activate the **Note** toggle, and click **Apply**.
+- Our goal is to delete only those peaks that do **not have a note**. The **good peaks** are those with the word `matched` in the **Note** column.
+- Use the `Page Up` and `Page Down` keyboard buttons to scroll quickly and select large portions of peaks without notes.
+- Once a significant portion is selected, switch to the **4D NOESY window** and press the **Delete** key to remove the selected irrelevant peaks.
+
+> 💡 For large proteins with **tens of thousands of peaks**, it is recommended to **delete them in two batches** rather than all at once.
+
+This is how the final **peak selection** on the **HC-C plane** of the **4D NOESY** should look.
+
+[FIGURE]
 
 
-Aliased Peaks:
-`C < 25` ppm and `HC > 3` ppm. 
+### Step X. Unalias/Unfold 4D Peaks
+
+Next, we will perform **unaliasing/unfolding of peaks**. For more details, please read the [respective article](Unfold_Peaks.md).
+
+Aliased Peaks usually occur in the ranges `C < 25` ppm and `HC > 3` ppm. 
+
+In this spectrum, we have some **aliased peaks** that appear on top.  
+- Press `F1` to switch to **selection mode**, select the aliased peaks, and then press `a1` to unalias them along the **C axis (W1)**.
+
 
 [FIGURE here]
 
 ---
 
-### Step 6. Validation Tips
+### Step X. Manual Refinement of 4D Peak List
 
-**View the C-H Plane in the 4D Spectrum**  
-- Click `xr` twice on the 4D spectrum to focus on the C-H plane. Type `xx` to make the H axis horizontal and C vertical.  
-- You can type `xa` to show the nucleus types on the axes.
+Next, we will manually inspect all the peaks and remove those that are **not located in density regions**—neither of 
+the **HC-C projection** nor of the **N-HN projection**.
 
-**Open the peak lists**  
-Bring up the `lt` windows for both the 2D and the 4D; sort the peaks by the direct `HN` or `N` frequency, and select the useful columns to display:
+- Type `fo` and load the 4D spectrum again, this time to a new window.
+- In the new window double-click `xr` followed by `xx` to bring the **N and HN axes** into view.
+- Adjust the view by pressing `vt` and increasing the **aspect**.
+- Press `vz`, set the values to:
+  - **N and HN axes** = 0
+  - **C and HC axes** = 9999
+  - Click **Apply**.
+- You might need to adjust the **peak sizes** by typing `oz`.
+- Hit `ol` and overlay:
+  - First the **N-HN projection** onto the 4D
+  - Then the **15N HSQC** onto the 4D
+- Hit `st` and rename this window to **4D_HCNH_NOESY - N-HN proj**
 
-![the pick list options](./images/Peak_list_columns.png)
+You should now have **two different views** of the 4D spectrum:
+1. One showing the selected peaks on the **HC-C plane**
+2. The other showing the selected peaks on the **N-HN plane**
 
-(Linewidth should be unchecked!)
-
-Click on each peak in the 2D list and validate them.
-
-**If you wish to start over completely**  
-Type `pa` to select all peaks, and hit **Delete** to remove all peaks.
-
-**If you want to find new peaks to add**  
-Don't forget to check the **Use selected peaks only?** box in the `kr` dialogue!
-
-**View the nD spectrum from different C-H planes**  
-To open multiple C-H planes, click `vd` to duplicate the view of a 4D spectrum into another window. In each window, you 
-can focus on different C-H planes by selecting a different `15N HSQC` peak with `F1` and clicking `vc` to center it.
+What you must do next is **manually inspect** the peaks and **delete those not in density regions**. This requires a 
+bit of **intuition** and a **sharp eye**. Unfortunately, it **cannot be automated**—it must be **supervised manually** by pressing `st`.
 
 **Discard the noise peaks using a S/N cutoff**
 - Hit `st` and in the text box **"noise as median of"** write 10000 or another high number.
@@ -294,14 +342,14 @@ selected! Check them manually and deselect if needed: hold `Ctrl` and drag over 
 
 ---
 
-### Step 7. Exporting Peak Lists
+### Step X. Exporting Peak Lists
 
 **Export Picked Peaks for 4D-GRAPHS**  
 Go to the 4D peak list (type `lt`) and select the columns `w1`, `w2`, `w3`, `w4`, `Data Height` and `Note`. Click **Apply**, then **Save...**.
 Further editing of the projections and the HSQCs is needed.
 
 
-# Improve the Precision of the 13C HSQC Peak List using the 4D HCNH NOESY Peak List  
+# Improve the Precision of the 13C HSQC Peak List using the 4D HCNH NOESY Peak List
 
 - Once you have finalized the **peak list** from the **HC-C projection**, **export it to a file**.  
 - Press `fo` and reopen the **13C HSQC spectrum** in a **new window**.  
