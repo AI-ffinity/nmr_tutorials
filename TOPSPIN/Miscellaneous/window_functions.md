@@ -4,7 +4,7 @@ Overview of Window Function Parameters (PROCPARS tab) for Protein Spectra
 ### 1. WDW (Window Function Type)
 
 **What It Is:**  
-WDW sets the type of weighting (apodization) function applied to the time-domain data before Fourier transform. Common choices include:  
+WDW sets the type of **weighting (apodization) function** applied to the time-domain data before Fourier transform. Common choices include:  
 - `no` (no window function)  
 - `EM` (exponential multiplication, often referred to as “line broadening”)  
 - `GM` (Gaussian multiplication)  
