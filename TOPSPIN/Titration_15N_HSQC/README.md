@@ -123,3 +123,5 @@ Proceed with the following steps to set up and start the 1D experiment:
 ## General Remarks
 
 - **Water Signal:** In NMR spectroscopy, water typically appears at 4.7 ppm. This is a crucial reference point for calibrating and interpreting NMR spectra, especially in aqueous samples.
+- **FCOR value:** `FCOR=0.5` if `PHC0==0.0` and `PHC1==0.0`, and `FCOR=1.0` if `PHC0!=0.0` or `PHC1!=0.0` (e.g. `-90` and `180 degrees`).
+- **echo-antiecho:** if this is a gradient selection experiment, then `MC2{F1}=echo-antiecho`
