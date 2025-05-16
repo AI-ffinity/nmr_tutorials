@@ -3,34 +3,52 @@
 * enter the sample to the spectrometer
 * hit `lock` and select the right solvent (e.g. "H2O+D2O").
 
-[10:20] you must wait ~10 minutes for temperature stabilization but in the meantime we can setup the HSQC experiment
+[p1, 10:20] you must wait ~10 minutes for temperature stabilization but in the meantime we can setup the HSQC experiment
 
-* [11:09] to create a new experiment, hit `edc`, select "Read parameterset", then select and pick the right HSQC pulse sequence (e.g. "HSQCETF3FGPSI"). Then select "Execute getprosol" and write the description under "Title" text box. Finally, click "OK".
-* [14:50] Hit `edasp` to check for correctness of the channels.
+* [p1, 11:09] to create a new experiment, hit `edc`, select "Read parameterset", then select and pick the right HSQC pulse sequence (e.g. "HSQCETF3FGPSI"). Then select "Execute getprosol" and write the description under "Title" text box. Finally, click "OK".
+* [p1, 14:50] Hit `edasp` to check for correctness of the channels.
 * Open the parameters' table with `eda`. First, set the following parameters: SW, O1P, AQ. Then adjust TD, DS, NS based on the estimated experimental time, which can be calculated with `expt`.
-* [26:49] Initate automatic matching and tuning with `atmm`. Select the "15N" dimension and click "Start" under "Automatic adjustment". Repeat it for the "1H" dimension. Once finished start the manual matching and tuning. The goal is to bring the minimum at the center, lowest point both on 1H and 15N dimensions.
+* [p1, 26:49] Initate automatic matching and tuning with `atmm`. Select the "15N" dimension and click "Start" under "Automatic adjustment". Repeat it for the "1H" dimension. Once finished start the manual matching and tuning. The goal is to bring the minimum at the center, lowest point both on 1H and 15N dimensions.
 * hit `loopadj` to optimize the lock parameters
-* [43:06] hit `topshim gui` for automatic shimming. Because we use Shigemi tube, go to "PARAMETERS" and write "plot".
-* [44:20] Open TopshimData -> 1D_maps_field -> zg30 to see the profil of the magnetic field of our sample in the Shigemi tube. Write down the range of the liquid (-0.881 cm to 0.84 cm in our case).
-* [46:55] hit again `topshim gui`, select "3D", toggle on "Use Z6", set "Before" and "After" to "Z-X-Y-XZ-YZ-Z", under "PARAMETERS" write "zrange=-0.881,0.84" and hit "Start".
+* [p1, 43:06] hit `topshim gui` for automatic shimming. Because we use Shigemi tube, go to "PARAMETERS" and write "plot".
+* [p1, 44:20] Open TopshimData -> 1D_maps_field -> zg30 to see the profil of the magnetic field of our sample in the Shigemi tube. Write down the range of the liquid (-0.881 cm to 0.84 cm in our case).
+* [p1, 46:55] hit again `topshim gui`, select "3D", toggle on "Use Z6", set "Before" and "After" to "Z-X-Y-XZ-YZ-Z", under "PARAMETERS" write "zrange=-0.881,0.84" and hit "Start".
 
 #~ I forgot to record a video of the next step, but this is the series of commands I issued ~#
 
-lockdisp
-loopadj
-wsh
-bsmsdisp
-re 1
-eda
-1 AQ 0.524	-> extends the acquisition time
-1 TD 64K
-pulsecalc
-ased
-1 P1 1
+`lockdisp`
+`loopadj`
+`wsh`
+`bsmsdisp`
+`re 1`
+`eda`
+`1 AQ 0.524`	-> extends the acquisition time
+`1 TD 64K`
+`pulsecalc`
+`ased`
+`1 P1 1`
+`zg`
+`gm`
+`ft`
+`mc`
+`pp`
+
 
 #~ from here it begins the recording ~#
-==> add snapshots!
+
+* [p2, 0:11] hit `ased` and then copy the results of pulse calibration by hitting `1 P1 15.59*4`
 * hit `zg` to lauch the measurement of 1D proton
-* once recording finished hit `fp`.
+* once recording finished hit `fp`. Check if the lock was confused due to the presence of DMSO, in which case the peak is not at ~4.7 ppm.
 * hit `.ph` to manually phase the spectrum. Save and return.
-* hit `ased` and then `1 P1 15.59*4`.
+* hit again `zg` to calibrate the pulse length.
+* [p3, 1:32] when it will finish hit `fp`. Do not phase again, it is already phased! Our aim with the pulse calibration is to get here 0 signal - ideally - or at least equal phase and anti-phase signal. we have rotated the pulse, we went from bottom to zero, but we still have more negative signal than positive. Hence we must increase the P1.
+* hit `ased` followed by `1 P1 62.520`
+* [p3, 2:55] hit `zg` to remeasure the 1D proton spectrum. Repeat `fp`, slight increase of P1 and `zg` until the negative and positive components are equal.
+* [p3, 3:18] hit `eda` and divide P1 by 4 to return to the 90 degree pulse.
+* [p3, 4:06] to define the carrier frequency of water for "water referencing" zoom into the 1D spectrum, and find the position of zero intensity (4456.08 Hz in our case).
+* hit `re 2` to return to the 2D experiment, the `eda` and set O1{F2} to 4456.08.
+* hit `getprosol 1H 15.66 14W` (15.66 is the pulse length that we calibrated and 14 the pulse power given by parameter PLW1{F2}).
+* hit `ased` to verify that are parameters are set correctly and if yes launch the 2D HSQC by hitting `zg`. 
+
+#~ from here begins the setup of BEST-HSQC ~#
+
