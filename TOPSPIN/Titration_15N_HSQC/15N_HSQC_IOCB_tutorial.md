@@ -1,7 +1,6 @@
 # 15N HSQC Titration Experiment Setup
 
 This tutorial outlines the step-by-step setup for a 15N HSQC titration experiment using an NMR spectrometer.
-There is [another tutorial](./15N_HSQC_IOCB_tutorial.md) based on a workshop, which will be eventually merged to this one.
 
 ## Starting the Experiment
 

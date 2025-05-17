@@ -1,6 +1,8 @@
 # How to Set Up a **¹H–¹⁵N HSQC** Experiment in TopSpin
 
-> This tutorial walks you through every step—from loading your sample to fine-tuning shims and measuring signal-to-noise—so you can acquire high-quality HSQC data and compare the classic and BEST-HSQC variants.
+> This tutorial walks you through every step—from loading your sample to fine-tuning shims and measuring signal-to-noise—so 
+> you can acquire high-quality HSQC data and compare the classic and BEST-HSQC variants.
+> There is [another tutorial](./15N_HSQC_IOCB_tutorial.md) based on a workshop, which will be eventually merged to this one.
 
 ---
 
