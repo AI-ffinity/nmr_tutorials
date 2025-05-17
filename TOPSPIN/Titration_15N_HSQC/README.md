@@ -194,6 +194,7 @@ pp
 | BEST HSQC         | `edc` → BEST sequence | Faster variant         |
 | S/N analysis      | `sino2D`              | Compare datasets       |
 
----
+-----------------------------
+## Authors
 
-**You are now ready to run reliable ¹H–¹⁵N HSQC experiments and quantitatively compare classic and BEST pulse sequences!**
+- **Thomas Evangelidis**
