@@ -13,7 +13,7 @@
 * **`ftnd 0 nd2d`** - Leaves FID’s in the acquired order (xf2 only).
 * **`abs`** - Performs baseline correction. The parameters `absf1` & `absf2` specify the range in ppm for the correction.
 * **`abs1`** - Baseline correction specifically for the F1 dimension of a 2D spectrum.
-* **`abs2`** - Baseline correction specifically for the F2 dimension of a 2D spectrum.
+* **`abs2`** - Baseline correction specifically for the F2 dimension of a 2D spectrum. Do first `abs2` and then `abs1`.
 * **`tabs3`, `tabs2`, `tabs1`** - Perform baseline correction in the F3, F2, and F1 axes, respectively.
 
 ## Phase Correction
