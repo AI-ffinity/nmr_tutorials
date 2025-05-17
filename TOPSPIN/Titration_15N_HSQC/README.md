@@ -9,7 +9,7 @@
 ## 1. Prepare a New Experiment Folder
 
 1. **Copy a previously calibrated ¹H experiment**  
-   - In TopSpin, select an earlier proton pulse-calibration experiment (e.g. `zg`) and press `edc`.  
+   - In TopSpin, select an earlier proton pulse-calibration experiment (e.g. `zg`) and press `new`.  
    - Create a **new dataset** and copy the parameters into it.
 
 2. **Set the temperature**  
@@ -30,7 +30,7 @@
 
 ![Create new experiment](images/fig2.png)
 
-1. Press `edc` → **Read parameter set** → choose an HSQC sequence (e.g. `HSQCETF3FGPSI`).  
+1. Press `new` → **Read parameter set** → choose an HSQC sequence (e.g. `HSQCETF3FGPSI`).  
 2. Select **Execute getprosol** to import pulse-length/power values.  
 3. Enter a short description under **Title** and click **OK**.
 
@@ -145,7 +145,7 @@ pp
 
 ## 7. Setting Up the **BEST-HSQC**
 
-1. Press `edc` → **Read parameters** → select `B_HSQCETF3GPSI` (BEST variant).
+1. Press `new` → **Read parameters** → select `B_HSQCETF3GPSI` (BEST variant).
 2. In `eda`, note the **shorter TD{F1}** (faster but lower resolution).
 
    * Adjust **TD**, **SW**, **NS** to balance time vs. resolution.
@@ -182,7 +182,7 @@ pp
 
 | Step              | Command               | Purpose                |
 | ----------------- | --------------------- | ---------------------- |
-| New dataset       | `edc`                 | Copy parameters        |
+| New dataset       | `new`                 | Copy parameters        |
 | Temperature       | `edte`                | Set temp               |
 | Parameter check   | `edasp`, `eda`        | Verify & edit settings |
 | Probe tune/match  | `atmm`                | ¹H & ¹⁵N matching      |
@@ -191,7 +191,7 @@ pp
 | Pulse calibration | `zg`, `ased`          | Optimize P1            |
 | Water reference   | `eda`                 | Set O1{F2}             |
 | Acquire HSQC      | `zg`                  | Start 2-D run          |
-| BEST HSQC         | `edc` → BEST sequence | Faster variant         |
+| BEST HSQC         | `new` → BEST sequence | Faster variant         |
 | S/N analysis      | `sino2D`              | Compare datasets       |
 
 -----------------------------
