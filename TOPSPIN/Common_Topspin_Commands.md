@@ -40,9 +40,8 @@ and first-order phase settings to optimize spectral clarity and symmetry. Not re
 * **`totxt`** - save currently displayed region as a text file (1D and 2D)
 
 ## Miscellaneous Processing
-* **`eda`** - Displays parameters for the indirect dimensions of 2D, 3D spectra such as sweep width, time domain size, and offsets.
 * **`tf3 n; tf2 n; tf1 n`** - Fourier Transforms the specified dimension in a 3D dataset. The 'n' indicates that no imaginary data is generated.
-* **`edp`** - Used to access and modify processing parameters in the "ProcPars" window.
+* **`edp`** - Used to access and modify processing parameters in the "PROCPARS" window.
 * **`4 TDeff 1024`** - Set the effective time domain size for the direct dimension in the 4D spectrum. This will allow you to use `SI{F4} = 1024` 
 when the spectrum was measured with `TD{F4} > 1024`. In a similar manner you can change any other parameter in `PROCPARS`.
 * **`cplbruk`** - View and compile Bruker's AU programs.
@@ -61,6 +60,11 @@ automatically calculated contour levels.
 * **`sx` and `ej`** - Commands used to eject the current sample from the spectrometer.
 * **`sx <position>`** - Starts the carousel and inserts the sample at the specified position into the spectrometer.
 * **`new`** - Creates a new experiment based on an active one.
+* **`eda`** - Switches to the "ACQUPARS" panel to edit acquisition parameters.
+* **`ased`** - Same effect as `eda`? According to documentation: edit acquisition parameters used in pulse program.
+* **`edasp`** - Set up nuclei and spectrometer routing.
+* **`edte`** - Edit the temperature parameters.
+* **`loopadj`** - AU program for optimization of LGAIN (loop gain), LTIME (loop time), etc.
 * **`ww`** - Executes automatic matching and tuning of the system.
 * **`lock`** - Locks the magnetic field, usually selecting "H2O + D2O" from the dropdown list.
 * **`topshim gui`** - Initiates automatic 1D shimming to optimize the magnetic field homogeneity.
