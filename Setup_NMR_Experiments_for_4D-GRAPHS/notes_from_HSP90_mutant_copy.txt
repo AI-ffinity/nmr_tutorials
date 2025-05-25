@@ -1,4 +1,8 @@
-12.10.2024 on 850 MHz
+## protein HSP90 (25 kDa) on 850 MHz spectrometer
+
+## Below I try to summarize the steps undertaken in chronological order, the commands issued and their function.
+## The goal is to set-up measurement of multiple 2D planes of the various 4D HCNH NOESY pulse programs and launch them one by one
+## using `zg`. Based on their quality we will choose the right 4D pulse program for this protein sample.
 
 `1s te`: set the temperature.
 `lock`: opens a dialog box with the list of solvents. When you select a solvent and click OK, it reads the lock parameters for that solvent from the lock table which has been set up 
@@ -31,9 +35,12 @@ E.g. "-DCALC_SP -DLABEL_CN"
 
 
 
-## So the goal is to setup multiple 2D planes of the various 4D HCNH NOESY pulse programs and launch them one by one using `zg` (they will be added to the queue). Based on their quality we will chose the right 4D pulse program for this protein sample.
+## Now iterate through all the 2D plane experiments that you setup and launch them one by one
+using `zg` (they will be added to the queue). Based on their quality we will choose the right 4D pulse program for
+this protein sample.
 
-The remaining of the process involves creating a 4D HCNH NOESY experiments and copying values of the folowing parameters (among others) from the 2D plane experiment:
+## The remaining of the process involves creating a 4D HCNH NOESY experiments and copying values of the folowing
+## parameters (among others) from the selected 2D plane experiments:
 SW{Fx}: spectral widths
 IN_F{s} [μsec]: increment for delay
 CNST{2,4,16,18,19}{Fx}: various constants for 1H nucleous (maybe also for 13C and 15N).
@@ -47,7 +54,7 @@ MISCELLANEOUS COMMANDS:
 `qfp`: a macro that applies a quadrature sine bell window function (qsin), performs a Fourier Transform, and then phase correction (fp).
 
 NOTES:
-- For each nuclels there are calibration spectra that are used to adjust the parameters of all pulse sequences to the given sample (see Radek's explanation in the video). I think Topspin has some default calibration spectra that need to be manually adjusted before optimizing the parameters of each pp.
+- For each nucleus there are calibration spectra that are used to adjust the parameters of all pulse sequences to the given sample (see Radek's explanation in the video). I think Topspin has some default calibration spectra that need to be manually adjusted before optimizing the parameters of each pp.
 - Radek by "number of increments" means the parameter `TD` the controls the resolution.
 - If a nucleus relaxes relatively slow, then increasing the TD parameter value will increase the resolution of its signals in the spectrum.
 - In a nucleous relaxes fast (e.g. in the course of 1000 increments) then increasing the TD parameter (e.g. from 2048 to 4096) will result in recording more noise.

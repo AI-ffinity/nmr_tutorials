@@ -50,7 +50,7 @@
 
 ![ATMM window](images/fig4.png)
 
-1. Press `atmm` (automatic tune/match).  
+1. Press `atmm` (manual tune/match).  
 2. **Select `15N`**, click **Start**, then repeat for **`1H`**.  
 3. When automatic tuning finishes, switch to **manual** mode and center the minima on both channels.
 
@@ -132,7 +132,7 @@ pp
 
 3. Execute `getprosol 1H 15.66 14W` (15.66 µs length of 90 degree pulse, PLW1{F2}=14 W power).
 
-4. Verify in `ased`, then start the 2-D HSQC: `zg`.
+4. Verify in `ased`, then start the 2D HSQC: `zg`.
 
 5. While acquiring, extract the 1D strip:
 
@@ -154,7 +154,7 @@ pp
 
 ---
 
-## 8. Measuring 2-D Signal-to-Noise (Classic vs. BEST)
+## 8. Measuring 2D Signal-to-Noise (Classic vs. BEST)
 
 1. Display both processed datasets side-by-side.
 2. `xfb` → Fourier transform → `abs2` then `abs1` for baseline correction.
@@ -190,7 +190,7 @@ pp
 | Shim              | `topshim gui`         | 1-D then 3-D shim      |
 | Pulse calibration | `zg`, `ased`          | Optimize P1            |
 | Water reference   | `eda`                 | Set O1{F2}             |
-| Acquire HSQC      | `zg`                  | Start 2-D run          |
+| Acquire HSQC      | `zg`                  | Start 2D run          |
 | BEST HSQC         | `new` → BEST sequence | Faster variant         |
 | S/N analysis      | `sino2D`              | Compare datasets       |
 

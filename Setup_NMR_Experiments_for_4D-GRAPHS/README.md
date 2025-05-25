@@ -50,17 +50,100 @@ and the absence of artifacts. Additionally, check the H-H 2D plane for calibrati
 experiment(s). We frequently use intermediate mixing time (e.g. 70 ms).
 
 ### NUS Setup
-Parameters suggested based on our previous publication:
+We use Topspins's NUS schedule generator. The number of NUS points and % sampling will depend on you sample. Specifically,
+on the required number of scans, D1 delay, and other parameter values required to obtain good S/N.
+the available spectrometer time.
 
-- **Number of points**: We used 5000 NUS points. Generally, you can go very low with sampling density on simple and 
-robust samples; however, usually 5% sampling is a reasonable bet. Adjust the sampling amount (= density) or number 
-of scans (and/or d1 delay) to optimize the signal-to-noise ratio. For smaller proteins like Ubiquitin, fewer scans 
-might be sufficient.
 
-- **Schedule**: We used Poisson-Gap schedule. It can be generated here: nus@HMS (harvard.edu) (mind that the number of 
-points in the indirect dimensions should be half the corresponding TD from TopSpin, i.e., if TD F3 is 32 you need to 
-type 16 into the generator). Save the generated schedule and provide the absolute path to TopSpin. Tip: make it short 
-otherwise TopSpin will cut the path string and throw an error. Ensure that the estimated measurement time of the NUS 
-is what you expect.
+# Measurement Setup for HSP90 (25 kDa) on an 850 MHz Spectrometer  
+*Goal:* prepare and launch multiple **2D planes** from various **4D HCNH NOESY** pulse programs, evaluate their quality, and choose the most suitable 4D sequence.
+
+---
+
+## Chronological Command Log
+
+| Command | Purpose / Action |
+|---------|------------------|
+| `1s te` | Set the **temperature**. |
+| `lock`  | Opens a solvent‐selection dialog, reads lock parameters (from **`edlock`** table), and performs **autolock**. Suitable for solvents with multiple lock signals. *Selected solvent:* **90 % H₂O / 10 % D₂O**. |
+| `edasp` | (opens **ASP** editor; parameters not modified in this run). |
+| `p1`, `p3`, `p21` | Display current **pulse lengths**. |
+| `atma`  | **Automatic tuning & matching** for every nucleus; repeat for every sample and probe. |
+| `atmm`  | **Manual fine-tuning** after `atma`. Adjust two parameters:<br> 1. **Tuning** – align probe resonance with Larmor frequency.<br> 2. **Matching** – match probe impedance (50 Ω). *Warning:* correcting one nucleus may disturb others. |
+| `topshim gui` | **Automatic / manual shimming** (homogenize B₀ in z and xy). |
+| `loopadj` | Optimize lock parameters **LGAIN**, **LTIME**, **LFILTER**. |
+| `pulsecalc` | Calibrate pulse lengths; essential for **¹H** (¹³C/¹⁵N vary less). |
+| `getprosol …` | Retrieve / set **pre-calibrated 90° hard-pulse parameters**.<br>Example: <br>`getprosol 1H 13.29 14.529W 13C 12.0 162.93W 15N 37.8 169.82W` |
+| `O1` | Set spectral center (in the observed dimension). |
+| `O1P`, `O2P`, `O3P` | Set transmitter-offsets (ppm) for 1st, 2nd, 3rd nuclei. |
+| `D1`–`D8` | Delay parameters (s). |
+| `ZGOPTNS` | Add **compiler flags** (C-style `-D<FLAG>`) passed verbatim to the pulse programme. |
+
+### Common `ZGOPTNS` Flags
+
+| Flag | Typical pulse sets | Enables | Practical effect |
+|------|--------------------|---------|------------------|
+| `-DLABEL_CN` | Triple-resonance (HNCA, HNCACB, HSQC, …) | Double-labelled (¹³C/¹⁵N) branch | Adds ¹³C decoupling during ¹⁵N evolution; un-comments `P22`, `PL2`, delays that depend on ¹J<sub>CN</sub>. |
+| `-DCALC_SP`  | BEST / “b_…” selective or BEST-TROSY | Auto-derives ¹H band-selective shapes from `cnst54/55` | Sequence generates & loads shaped pulses on the fly. |
+
+Other useful flags:
+
+| Flag | Purpose |
+|------|---------|
+| `-DPRESAT`              | Use **continuous-wave presaturation** during `d1`. |
+| `-DWG` or `-DWATERGATE` | Use **WATERGATE** suppression instead of presat. |
+
+---
+
+## Running the 2D Plane Experiments
+
+1. **Iterate through every 2D plane** you have set up.  
+2. Launch each with `zg` (queued automatically).  
+3. Inspect the resulting spectra; the best plane(s) will dictate the final **4D pulse program** for this sample.
+
+---
+
+## Setting Up the 4D HCNH NOESY
+
+After selecting the optimal 2D planes, create the **4D HCNH NOESY** experiment and copy these parameter values from the chosen 2D datasets:
+
+| Parameter | Meaning |
+|-----------|---------|
+| `SW{Fx}`     | Spectral width for each dimension F₁–F₄ |
+| `IN_F{s}`    | Increment for delay (µs) |
+| `CNST{2,4,16,18,19}{Fx}` | Various constants (mainly for ¹H; possibly for ¹³C and ¹⁵N) |
+| `SPNAM26{F4}` / `SPNAM1{F4}` | Shape file name for shaped pulse |
+| `P1{F4}` / `P17{F4}` | Length of the shaped pulse |
+
+Then **run `getprosol` again** with the updated 90° parameters, e.g.:
+
+```bash
+getprosol 1H 13.29 14.529W 13C 12.0 162.93W 15N 37.8 169.82W
+```
+
+---
+
+## Miscellaneous Commands
+
+| Command | Description                                                                                         |
+| ------- | --------------------------------------------------------------------------------------------------- |
+| `ased`  | Edit **acquisition parameters** used by the pulse program.                                          |
+| `qfp`   | Macro: applies a **quadrature sine-bell window (qsin)**, performs FT, then phase correction (`fp`). |
+
+---
+
+## Notes & Practical Tips
+
+* **Calibration spectra** for each nucleus must be measured and adjusted before fine-tuning pulse-program parameters.
+* “**number of increments**” equals the **`TD`** parameter, which sets **resolution**.
+
+  * Slow-relaxing nuclei: higher `TD` ⇒ higher resolution.
+  * Fast-relaxing nuclei: higher `TD` mainly records noise.
+* **Increasing scans** improves S/N.
+* FID intensity drops rapidly early and slowly later; beyond a point, extra acquisition does **not** improve spectrum quality.
+
+---
+
+
 
 
