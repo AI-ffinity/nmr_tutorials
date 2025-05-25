@@ -69,10 +69,11 @@ automatically calculated contour levels.
 * **`lock`** - Locks the magnetic field, usually selecting "H2O + D2O" from the dropdown list.
 * **`topshim gui`** - Initiates automatic 1D shimming to optimize the magnetic field homogeneity.
 * **`p1` followed by `1 P1 1`** - Configures pulse program settings.
-* **`zg`** - Starts the experiment, initiating the acquisition of the NMR spectrum.
 * **`atma`** - Automatically tunes and matches the channels, typically used for 15N and 1H channels.
 * **`pulsecal`** - Calculates the length of the 90° hydrogen pulse P1 for 10W.
 * **`getprosol 1H P1 xW`** - Sets pulse and power, inserting previously determined value P1 with the appropriate power value.
+* **`gs`** - Interactive parameter optimization during acquisition.
+* **`zg`** - Starts the experiment, initiating the acquisition of the NMR spectrum.
 * **`stop`** - Stops the measurement process.
 * **`pulse <x>W`** - Recalculates the pulse for `<x> Watt`.
 

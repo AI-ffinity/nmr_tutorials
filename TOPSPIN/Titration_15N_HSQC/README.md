@@ -130,7 +130,7 @@ pp
 
 2. `re 2` → return to HSQC dataset → `eda` → set **O1{F2}** to that value.
 
-3. Execute `getprosol 1H 15.66 14W` (15.66 µs pulse, PLW1{F2}=14 W).
+3. Execute `getprosol 1H 15.66 14W` (15.66 µs length of 90 degree pulse, PLW1{F2}=14 W power).
 
 4. Verify in `ased`, then start the 2-D HSQC: `zg`.
 

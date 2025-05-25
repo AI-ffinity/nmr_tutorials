@@ -1,4 +1,4 @@
-12.10.2025 on 850 MHz
+12.10.2024 on 850 MHz
 
 `1s te`: set the temperature.
 `lock`: opens a dialog box with the list of solvents. When you select a solvent and click OK, it reads the lock parameters for that solvent from the lock table which has been set up 
@@ -13,8 +13,34 @@ lock signal is defined in the edlock table. We select "90% H2O and 10% D2O" solv
 `topshim gui`: automatic shimming - homogenizes the magnetic field in z and xy axes. There is automatic option and manual.
 `loopadj`: optimize the lock parameters LGAIN (loop gain), LTIME (loop time) and LFILTER (loop filter).
 `pulsecalc`: calibrates the pulse lengths (prosol: `getprosol` has the precalibrated parameters based on a test sample but they are not optimal for other samples). This calibration is mostly needed for H because the values of C and N don't change that much.
-`getprosol [nucleus P90 PL90] <- values for 1H, 13C, 15N`:     The nucleus; P90, the value for 90° hard pulse length; PL90, the value for 90°hard pulse power level. 
+`getprosol [NUC{Fx} P1{Fx} PLW1{Fx}] <- values for 1H, 13C, 15N`:     Fx: is the dimension name (F1, F2, F3, or F4); NUC{Fx}: the nucleus name ("1H", "15N", or "13C"); P1{Fx}: the length of the 90° hard pulse in μsec; PLW1{Fx}: the power level of the 90° hard pulse in W or dB (you must specify the unit of measurement in the input). E.g. `getprosol 1H 13.29 14.529W 13C 12.0 162.93W 15N 37.8 169.82W`
 `O1`: sets the spectral center in the given dimension.
+`O1P`, `O2P`, `O3P`: sets the transmitter frequency offset (ppm) of the 1st, 2nd and 3rd nucleus
+`D1`, `D2`, `D3`, ..., `D8`: delays (sec)
+`ZGOPTNS`: allows you to set an option to acquisition commands like `zg` and `go`. Whatever you write there is copied verbatim to the compiler that expands the pulse-program’s C-style pre-processor directives (#ifdef …). Each token you place in ZGOPTNS must therefore look like a C macro definition, i.e. -D<FLAG>. Setting or clearing a flag lets one and the same pulse programme behave in very different ways (water suppression on/off, selective-pulse calculation, “double-label” decoupling, etc.) without editing the code.
+E.g. "-DCALC_SP -DLABEL_CN"
+| Flag         | Typical pulse-sets that look for it                      | What it switches on                                                                                                                                                  | Practical effect                                                                                                                                                                                                            |
+| ------------ | -------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `-DLABEL_CN` | All Bruker triple-resonance (HNCA, HNCACB, TROSY, HSQC…) | Branches that expect **double-labelled** (¹³C/¹⁵N) samples                                                                                                           | Adds **¹³C decoupling** during ¹⁵N evolution and adapts delays that depend on the ¹J<sub>CN</sub> coupling; pulse lengths `P22`, power level `PL2` etc. are un-commented |
+| `-DCALC_SP`  | “Best”/“b\_…” selective or BEST-TROSY sequences          | Activates a small *calculator* block that derives **band-selective ¹H 90°/180° shapes** from the user constants `cnst54`/`cnst55` each time you start the experiment | You only have to type the desired *bandwidth & offset*; the sequence generates and loads the correct soft-pulse on the fly                                                                       |
+
+| Flag                              | Typical purpose                                                                                | 
+| --------------------------------- | ---------------------------------------------------------------------------------------------- | 
+| `-DPRESAT`                        | Use a *continuous-wave presaturation* block during `d1` instead of WATERGATE                   | 
+| `-DWG` or `-DWATERGATE`           | Use *WATERGATE* solvent suppression instead of presat                                          | 
+
+
+
+## So the goal is to setup multiple 2D planes of the various 4D HCNH NOESY pulse programs and launch them one by one using `zg` (they will be added to the queue). Based on their quality we will chose the right 4D pulse program for this protein sample.
+
+The remaining of the process involves creating a 4D HCNH NOESY experiments and copying values of the folowing parameters (among others) from the 2D plane experiment:
+SW{Fx}: spectral widths
+IN_F{s} [μsec]: increment for delay
+CNST{2,4,16,18,19}{Fx}: various constants for 1H nucleous (maybe also for 13C and 15N).
+	
+Then run again the same `getprosol` command-line, e.g. `getprosol 1H 13.29 14.529W 13C 12.0 162.93W 15N 37.8 169.82W`
+`SPNAM26{F4}` or `SPNAM1{F4}`: file name for shaped pulse
+`P1{F4}` or `P17{F4}`: one of the shaped pulses
 
 MISCELLANEOUS COMMANDS:
 `ased`: edit acquisition parameters used in pulse program
