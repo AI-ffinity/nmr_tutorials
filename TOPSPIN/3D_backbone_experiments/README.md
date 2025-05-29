@@ -248,3 +248,8 @@ calibrated 1H 90° pulse parameters from the 2D to the 3D experiment and optimis
 * HSQC spectra define the H, C and N windows (`SW`, `O1P`) that we copy into the 3D experiment setups.  
 * `TD` (size of FID), `SW` (spectral width) and `AQ` (acquisition time) are inter-dependent: setting any two automatically 
 determines the third in TopSpin.  
+
+---
+
+# Authors
+- Thomas Evangelidis
