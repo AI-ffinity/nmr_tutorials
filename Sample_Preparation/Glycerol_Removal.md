@@ -70,9 +70,7 @@ In this step, the sample is prepared for NMR by adding D<sub>2</sub>O and submit
 - b) Add ~20 μL of D<sub>2</sub>O (5–10% of the total volume) and mix gently.
 - c) Submit the sample to the NMR facility personnel.
 
-<span style="color:blue; font-weight:bold;">
-The following steps are performed by NMR facility personnel but are included here for completeness:
-</span>
+**The following steps are performed by NMR facility personnel but are included here for completeness:**
 
 - a) Pipette 300 μL of sample into the Shigemi tube.
 - b) Insert the plunger so the meniscus is 2–3 mm below the rim.
