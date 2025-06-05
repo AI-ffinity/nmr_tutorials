@@ -8,7 +8,7 @@ This tutorial describes the procedure for removing glycerol from protein samples
 - NMR buffer (glycerol-free): 25 mM Tris, 150 mM NaCl, 1 mM TCEP, pH 7.5
 - Protein aliquots
 - Ice box
-- NanoDrop instrument (for measuring concentration; see separate tutorial)
+- NanoDrop instrument (for measuring concentration; see separate [tutorial](./NanoDrop_tutorial.md))
 - D<sub>2</sub>O solution
 - Shigemi tubes
 
@@ -47,7 +47,7 @@ This step removes glycerol from the protein samples using the filter’s molecul
 
 After three cycles, the glycerol content should be negligible for NMR analysis.
 
-> **_NOTE:_** Protein loss is expected after each cycle. If the retentate volume drops significantly (e.g., <50 μL), the filter unit may be faulty. In that case, measure both the filtrate and retentate concentrations using the NanoDrop (see separate tutorial) and decide the next 
+> **_NOTE:_** Protein loss is expected after each cycle. If the retentate volume drops significantly (e.g., <50 μL), the filter unit may be faulty. In that case, measure both the filtrate and retentate concentrations using the NanoDrop (see separate [tutorial](./NanoDrop_tutorial.md)) and decide the next 
 steps based on the result.
 
 ## 3. Measuring Final Protein Concentration
@@ -57,7 +57,7 @@ This step determines the final protein concentration after buffer exchange.
 - a) Transfer the retentate to a 1 mL Eppendorf tube.
 - b) Dilute to ~300 μL with NMR buffer and mix well.
 - c) Keep both the sample and NMR buffer on ice.
-- d) Take the box to the NanoDrop station and follow the NanoDrop tutorial.
+- d) Take the box to the NanoDrop station and follow the [NanoDrop tutorial](./NanoDrop_tutorial.md).
 - e) Record the final concentration.
 
 > **_NOTE:_** Compare the final concentration to the starting concentration in the aliquotes. Protein loss should not exceed ~30–40%.
