@@ -1,0 +1,137 @@
+Convert my following NMR lab notes to a readable .md markup language tutorial. Do not skip any information in my notes! Entries like these "[fig1.png]" are embeded Figures in the tutorial. Do not omit any information any text in my lab note. Just rearrange the text. Rearrange the words and improve the markup language format  Aesthetically. Do not change the text. 
+
+
+# First we did 1H pulse calibration (experiment 1) while for 13C and 15N we used the default parameters from getprosol. Then we measured a short 15N HSQC (experiment 2) and and a short 13C HSQC (exp. 3) with full spectral width at N and C, respectively.
+ 
+# We also measured the N-HN planes of two types of CBCAcoNH pulse programs, the standard version and the one with water gate and we want to select the best one for this sample.
+
+* `xfb`: to process the N-HN plane from both CBCAcoNH (exp. 4 and 5) and then `.ph` to correct their phase.
+* [fig1.png] `.md`: to overlay the N-HN planes from exp. 4 and 5, click on the "copy the contour levels from first to other datasets" icon. The standard version (exp. 4) seems to be more sensitive.
+
+
+# Setup full-length HSQC experiments
+
+* [fig2.png] `re 2` to display the test 15N HSQC (experiment 2/) and hit `new` to create a new 15N HSQC experiment with the desired spectral width in the N dimension. Name it "21".
+* `re 2` to return to the test 15N HSQC and zoom into the region of interest. Right click -> Save Display Region To... -> Parameters ABSF1/2. Then go to PROCPARS panel and write down the N axis boundaries, e.g. 100 ppm to  135 ppm.
+* [fig3.png] `re 21` to return to the new 15N HSQC and `eda` to open the ACQPARS panel. Set SW{F1}to 135-100 = 35 ppm. Then set O1P{F1} to minimum plus half spectral width, namely 100 + (135-100)/2 = 117.5 ppm.
+Set NS to 16.
+* [fig4.png] `re 3` followed by `new` create a full 13C HSQC from the test 13C HSQC (experiment 3). Name it "22".
+* [fig5.png] `re 3` to return to the test 13C HSQC and zoom into the region of interest. Right click -> Save Display Region To... -> Parameters ABSF1/2. Then go to PROCPARS panel and write down the aliphatic C axis boundaries, e.g. 4.6 ppm to 77.5 ppm.
+* `re 22`, then `eda`, set SW{F1} to 77.5-4.6 = 72.9 ppm, O1P{F1} to minimum plus half spectral width, namely 4.6 + (77.5-4.6)/2 = 41.05 ppm, NS to 16. Hit `expt` to estimate the experimental time.
+
+# Setup the CBCAcoNH experiments
+
+* [fig6.png] Note down the N and aliphatic C spectral widths from 15N HSQC (exp 21) and 13C HSQC (exp 22), then hit `re 4` to return to the selected CBCAcoNH with WaterGate followed by `new` to create a full-length experiment named "23". Adjust the Title, hit `eda` to switch to the PROCPARS panel, set TD{F2} to 60, TD{F1} to 128, SW{F1} to 73.0, O1P{F1} to 41.1, the default value SW{F2} 35 ppm is good so change only O1P{F2} to 117.5.
+
+* [fig7.png] Since we measured already the N-HN plane of this experiment we don't need to repeat `pulsecal`. Do `gs` (interactive parameter optimization during acquisition) to check if the measurement is running smoothly for control. If there was an error in the parameterization then Topspin will raise an Error within seconds, e.g. is a negative interval occurs or if the signal is too high and it is overflown. If it runs normally then hit `stop` to stop it. The ideal would be to control that by measuring the first increment of the given experiment.
+
+* [fig8.png] `re 21` to return to the full 15N HSQC, then `new` to create a short 15N HSQC for quality control (QC) to check if the protein is still stable. Adjust the Title, then `eda` and set NS to 2.
+
+# Next steps will follow the same motif. We will create a full 3D experiment, we determine (calibrate) the 1H 90o pulse. After collecting some data this command will pop up a window with a 90o pulse and its associated power level. Clicking "OK" will enter the displayed values into the current parameter set. followed by a short QC 15N HSQC, and so on.
+
+# Setup the HNCACB experiment.
+
+* `re 6` and then `new` to create a full-length HNCACB (exp 25). Adjust Title, `eda`, SW{F1} -> 73.0, O1P{F1} -> 41.1, O1P{F2} -> 117.5. Hit `pulsecal` for automatic 1H 90o pulse calibration. After collecting some data this command will pop up a window with a 90o pulse and its associated power level. Clicking "OK" will enter the displayed values into the current parameter set. For 13C and 15N we used the default parameters in the "prosol" parameters table (command `getprosol`). If we wanted to optimize the 13C 90o pulse and 15N 90o pulse, there are special calibration pulse sequences which we should launch as individual experiments (`zg` command).
+
+[fig9.png; pulsecal figure]
+
+The `gs` and if no error is raised, `stop`.
+
+* create a QC 15N HSQC by `re 24`, then `new` and name it "26".
+
+# repeat the same procedure for the HNCO.
+
+* [fig10.png] `re 7`, `new`, name it "27" and adjust Title, `eda`, set TD{F2} -> 60, O1P{F2} -> 117.5, and then `pulsecal`. Then `gs` and then - if everything works fine - `stop`.
+
+* create a QC 15N HSQC by `re 24`, `new` and name it "28".
+
+# repeat the same procedure for the HNcaCO.
+
+* [fig11.png] `re 8`, `new`, name it "29" and adjust Title, `eda`, set TD{F2} -> 60, O1P{F2} -> 117.5, and then `pulsecal`. Then `gs` and then - if everything works fine - `stop`.
+
+* create a QC 15N HSQC by `re 24`, `new` and name it "30".
+
+
+# repeat the same procedure for the HNcoCA.
+
+* [fig12.png] `re 3` and zoom into the CA-HA region. Save the C resonance range, e.g. 42-76 ppm.
+ 
+* [fig13.png] `re 9`, `new`, name it "31" and adjust Title, `eda`, set TD{F2} -> 60, SW{F1} -> 76-42, O1P{F1} -> 42 + (76-42)/2, O1P{F2} -> 117.5, and then `pulsecal`. Then `gs` and then - if everything works fine - `stop`.
+
+* create a QC 15N HSQC by `re 24`, `new` and name it "32".
+
+# repeat the same procedure for the HNCA.
+
+* [fig14.png] `re 10`, `new`, name it "33" and adjust Title, `eda`, set TD{F2} -> 60, SW{F1} -> 76-42, O1P{F1} -> 42 + (76-42)/2, O1P{F2} -> 117.5, and then `pulsecal`. Then `gs` and then - if everything works fine - `stop`.
+
+* create a QC 15N HSQC by `re 24`, `new` and name it "34".
+
+
+# repeat the same procedure for the hNcaNNH.
+
+* [fig15.png] `re 11`, `new`, name it "35" and adjust Title, `eda`, set TD{F2} -> 60, O1P{F1} -> 117.5, O1P{F2} -> 117.5, (we leave the spectral widths SW{F2} and SW{F1} to the default 35 ppm value) and then `pulsecal`. Then `gs` and then - if everything works fine - `stop`.
+
+* create a QC 15N HSQC by `re 24`, `new` and name it "36".
+
+# Launch all the experiments and place them in the queue
+
+* [fig16.png] `re 21` to switch to the first experiment to conducted and hit `multiexpt 16` to estimate the total measurement time of all 16 experiments.
+
+* [fig17.png] `re 27` to switch to the HNCO (most sensitive 3D experiment) and measure only 1 increment to check whether we obtain protein signal. `eda`, change DS (dummy scans) from 32 to 4 to save time, then launch it with `zg`, and when it finishes the measurement of the first increment hit `qsin`, `ft`, `.ph` to phase correct and save it. The protein signal is obvious, so we stop the experiment upon measurement of the currect increment with `halt`. If it doesn't stop then hit `stop` to kill it. Do not forget to change DS back to 32!
+
+* [fig18.png] launch serially all experiment and place them in the queue byt switch to the first experiment with `re 21` and then `multizg 16`.
+
+Notes: 
+
+* The 3D experiments employe shaped pulses in contrast to the 2D HSQC experiments. `pulsecal` not only optimizes the 1H 90o pulse but also recalculates all shaped pulses in the 3D pulse program - including decoupling - with the calibrated values of 1H 90o pulse. Otherwise we would have to copy the calibrated 1H 90o pulse parameters from the 2D to the 3D and optimize the power parameters of each shaped pulse individually through a simulation program.
+
+* Essentially we measure the HSQC spectra to define the region of signals in the H, C and N dimensions (parameters SW, O1P), which we copy to the 3D experiments.
+
+* TD (size if FID), SW (spectral width) and AQ (acqusition time) are 3 parameters but only 2 of them are independent of the others. For example, if we set TD and SW, then AQ is adjusted automatically in Topspin.
+
+
+######### 13C and 15N 90 degree hard pulse calibration ############
+
+* `lock`
+* `atmm`, select "1H" and match/tune. Then "13C" and then "15N". Finally, click "Close and store values".
+* `loopadj`
+* `topshim gui`, set Dimension->1D, Optimise for->1H, After->Z-X-Y-XZ-YZ-Z, Only->yes. Click "Start".
+* [part1: 11:46; maybe you can find better image] once completed, set After->off and hit `topshim ordmax=7`, which optimizes all the parameters containing Z up to the 7th order (the maximum order of Z is 8). One strategy is to first roughly optimize Z up to 5th order, then the combinations of Y and Z up to the 5th order, and finally Z up to the 7th order. 
+* [part1, 12:26]`re 1` to switch to the 1D 1H PP, `P1` to check that the 90 degree high power pulse length is correctly set. Then `zg`,  `efp` to verify that the signal from D2O doesn't look distorted (it must look like perfect symetric bell shape).
+
+### calibrate 13C 90 degree hard pulse length
+
+* [part1, 13:24] copy the 13C and 15N pulse calibration experiments to a new directory. These contain special pulse sequence that when we have an optimal 90 degree high power pulse length then the signal is 0, if it shorter than the optimal length then the signal is possitive, if it is longer then the signal is negative.  Enter the 13C experiment and hit `pulsecal` to calibrate the 1H pulse length (P1) first.
+* [part1, 14:36] `ased` and look at the value of "P3" (90 degree high power pulse for 13C). It should be the defaul value from "prosol" table (14.2 μsec in this case). We set it to a low value (shorter pulse), e.g. 5.0 in order to get a spectrum and be able to phase it because with the default a ~90 degree pulse will be applied, which nulifies the signal (that's the purpose of the 90 degree pulse). Then hit `zg`, when it finishes hit `qsin`, `ft`, `.ph` to phase it. The correct phasing is important, because this spectrum will be use in the next step (`popt`). If we skip it then the signals will have dispersion character (positive and negative signals) and finding the pulse length where the signal is 0 will be confusing. 
+* [part1, 15:26] we zoom into the signal region on which the pulse length must be optimized. Right click -> "Save Display Region To..." -> "Parameters F1/F2" -> "OK".
+* [part1, 16:12] hit `popt` to open the parameter optimization window, in which you set the values GROUP->1, PARAMETER->P3, OPTIMUM->ZERO (to find the P3 value that yields 0 signal), STARTVAL->12 and ENDVAL->16 are the boundaries of the display region (see previous step), INC->0.4 (the stride/increment). Then click "Save" and "Start optimize", overwrite->y.
+* `P1` and write down its value (e.g. 13.07 μsec). Do the same for `PLW1` (e.g. 11.46 dB).
+* [part1, 20:40] Once the signal acquisition finishes, `re 1 1` and check if the signal sign has been inverted.
+* [part1, 21:21] `re 1 999` we see a spectrum (the dispay repeated 11 times with incremented pulse length starting from 12 μsec incremented with a stride (interval) 0.4 μsec, up to 16 μsec. If the optimization routine doesn't find the pulse length value where the signal is 0 in the range of values that we scrutinize (12.0, 12.4, 12.8, 13.2, 13.6, 14.0, 14.4, 14.8, 15.2, 15.6, 16.0 μsec), then it takes the signal intensities and does interpolation to approximate that value. This is what it did in this case, because the optimal P3 value where the signal is 0 is also displayed  and is 13.382361 μsec.
+
+### calibrate 15N 90 degree hard pulse length
+
+* `re 2 1` and `pulsecal`. Compare the output 90o pulse value (13.10 us) with the one previously obtained. They must be very similar.
+* [part1, 23:29] `ased` and set "P21" (this is the parameter controling the 15N 90 degree hard pulse length) to a lower value (10.0 μsec) than the defaul from "prosol" table (34.0 μsec). Then hit `zg`, when it finishes hit `qsin`, `ft`, `.ph` to phase it.
+* [part1, 24:22] zoom into the signal region on which the pulse length must be optimized. Right click -> "Save Display Region To..." -> "Parameters F1/F2" -> "OK".
+* [part1, 25:26] hit `popt` to open the parameter optimization window, in which you set the values GROUP->1, PARAMETER->P21, OPTIMUM->ZERO (to find the P21 value that yields 0 signal), STARTVAL->32 and ENDVAL->36 are the boundaries of the display region (see previous step), INC->0.4 (the stride/increment). Then click "Save" and "Start optimize", overwrite->y.
+* [part1, 30:04] Once the signal acquisition finishes, `re 2 1` and check if the signal sign has been inverted. Then `re 1 999` to preview the signal from optimization. This time it looks too noisy to infer accurate P21 value. That's because we used only 4 scans.
+* [part1, 30:52] we repeat the process with more scans. Hit `NS 16` and then `popt`. We narrow the pulse length range that will be be scrutinized to STARTVAL->33, ENDVAL->37. Then click "Save" and "Start optimize", overwrite->y.
+* [part1, 40:41] when the optimization finishes hit `re 2 999`. The 11 spectra with progressively lower signal will look better resolved and the optimal P21 will be displayed (35.218787 in this case, obviously obtained by signal intensity iterpolation).
+
+### apply the optimum 1H, 13C and 15N pulse lengths to all experiment 
+* [part1, 42:37] now we must apply the optimum 90o pulse lengths of 1H, 13C and 15N to every experiment that we want to record. Hit `re 41` and then `getprosol 1H 13.07 -11.46 13C 13.4 -21.68 15N 35.2 -25.55` (the PLW1 values are in dB). Repeat on the other spectra, `re 42`, `getprosol 1H 13.07 -11.46 13C 13.4 -21.68 15N 35.2 -25.55`, `re 43`, `getprosol 1H 13.07 -11.46 13C 13.4 -21.68 15N 35.2 -25.55`, `re 43`, `getprosol 1H 13.07 -11.46 13C 13.4 -21.68 15N 35.2 -25.55`, `re 44`, `getprosol 1H 13.07 -11.46 13C 13.4 -21.68 15N 35.2 -25.55`, `re 45`, `getprosol 1H 13.07 -11.46 13C 13.4 -21.68 15N 35.2 -25.55`, `re 46`, `getprosol 1H 13.07 -11.46 13C 13.4 -21.68 15N 35.2 -25.55`. If we had given only `getprosol 1H 13.07 -11.46` the the 13C and 15N parameter values would have been obtained from the "prosol" table and would be suboptimal for this sample.
+* [part1, 45:20] Finally, check that all spectra ca be recorded without problems. `re 41` , `o1` to check the Transmitter frequency offset [F2,F1], `gs`, "Stop", then `re 42`, optionally `o1`, `gs`, "Stop", then `re 43`, optionally `o1`, `gs`, "Stop", then `re 44`, optionally `o1`, `gs`, "Stop", then `re 45` , optionally `o1`, `gs`, "Stop". O1 should be in all experiments the same.
+* `re 41`, `multiexpt 6` to estimate the total experiment time. If you are satisfied hit `multizg 6` to start the recordings.
+
+
+######### Bottom-up 13C and 15N 90 degree hard pulse calibration on 850 MHz by me ############
+
+* `lock`
+* On the high field cryo-probes Bruker recommends doing automatic tuning-matching from the nucleus with the highest frequency to the nucleus with the lowest, namely 1H->13C->15N. You can either select the nuclei manually or better issue `atma high` to do it automatically.
+* [part2, 8:05] once finished hit `atmm` for manual refinement. Optimize the 15N. The Wobble sweep width of 13C is very wide (12.017 MHz by default) and hence we must zoom more into the basine of the signal. Therefore set it to 4.0 and click "Set". Then you must refine the position of the minimum. Likewise, set Wobble sweep width of 1H to 4 MHz (default value was 12.754 MHz) and refine manually.
+* `topshim`
+* `loopadj`
+* [part2, 14:08] `topshim gui`, set Dimension->1D, Optimise for->1H, After->Z-X-Y-XZ-YZ-Z, Only->yes. Click "Start". The "3D" option is more thorough and much slower but it's usually not necessary unless you have recently replaced the probe. It is beneficial for water-containing samples but in the 3mm tube the cuvette is narrow along the dimension X-Y and thus there is not much field inhomogenity to correct. However, Shigemi's have diameter 5 mm and there the 3D could be beneficial. To save time, since we already completed the 1D optimization, we issue `topshim ordmax=7`, which optimizes all combinations of X up to the 7th order. By default `topshim` optimizes up to the 5th order.
+* [part2, 18:40] lets measure and check now the 1D proton. `re 1`, the `ased`. The existing "P1" value 13.130 is too high and will result to very strong signal (probably remained there by a previously-issued `pulsecal` or `getprosol`). We lower it to 1.0. 
+* [part2, 19:53] hit `zg`, `efp`, `.ph` to manual phase correction. Zoom into the peak and verify that the shape is symmetric.
