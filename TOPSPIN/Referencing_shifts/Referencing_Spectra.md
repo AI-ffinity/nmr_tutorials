@@ -1,5 +1,7 @@
 # Referencing Spectra in Topspin with BioTop (RECOMMENDED)
 
+- If you don't have the **BioTop** Topspin extension, install the spectrometer-related dependencies by running `expinstall` 
+and keeping the default values.
 - Execute `biotop` to open the browser window.
 - Set the measurement conditions correctly: **Labeling**, **Solvent**, **Tube**, **Temperature**. You can also provide 
   the FASTA sequence of the protein, and BioTop will automatically calculate the **Molecular size**. (However, the MW does 
@@ -64,22 +66,6 @@
    - Click **OK**. Both the `F2` and `F3` axes of the 3D NOESY will be shifted accordingly.
 
 7. **Repeat the procedure for the `34` projection** of the 4D NOESY to calibrate it.
-
----
-
-# OBSOLETE TOPSPIN MACRO SCRIPTS
-
-These Topspin AU programs calculate the `1H`, `13C`, and `15N` reference shifts according to:
-
-> **Lit:** Wishart D. S. et al.: J. Biomol. NMR 6 (1995) 135-140.
-
-- Unzip and copy these files to:
-  ```
-  /opt/topspin4.4.0/exp/stan/nmr/au/src/user
-  ```
-- You can add these values to the **SR** field in **PROCPARS** before FT or NUS reconstruction so that they are applied 
-  to the resulting spectrum.
-```
 
 ---
 

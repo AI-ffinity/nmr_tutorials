@@ -33,16 +33,6 @@ Follow [the instructions](../TOPSPIN/Referencing_shifts/Referencing_Spectra.md) 
 
 ---
 
-### Step 2. Prepare the Spectra Files
-
-#### 2.1 Reference the HSQC spectra in Topspin
-
-- If you don't have the **BioTop** Topspin extension, install the spectrometer-related dependencies by running `expinstall` and keeping the default values. 
-- Open the `1H-15N HSQC` spectrum and issue the command `btproc biorefonly`. If the temperature is not `298 K`, then you have to manually do spectral referencing by setting it in the `btproc` browser window.
-- Do the same for the `1H-13C HSQC`. The `2rr` files will be updated automatically.
-- You do not need to reference the `4D HCNH NOESY` because this will be compensated for by aligning to the HSQC spectra
-  during peak picking.
-
 #### 2.2 Convert Spectra to UCSF Format
 
 Enter the directory where each spectrum is saved in Bruker format and run `bruk2ucsf` from there—running it from another directory will fail.  

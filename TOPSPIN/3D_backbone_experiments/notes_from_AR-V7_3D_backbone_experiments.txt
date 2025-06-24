@@ -83,7 +83,7 @@ The `gs` and if no error is raised, `stop`.
 
 Notes: 
 
-* The 3D experiments employe shaped pulses in contrast to the 2D HSQC experiments. `pulsecal` not only optimizes the 1H 90o pulse but also recalculates all shaped pulses in the 3D pulse program - including decoupling - with the calibrated values of 1H 90o pulse. Otherwise we would have to copy the calibrated 1H 90o pulse parameters from the 2D to the 3D and optimize the power parameters of each shaped pulse individually through a simulation program.
+* The 3D experiments employ shaped pulses in contrast to the 2D HSQC experiments. `pulsecal` not only optimizes the 1H 90o pulse but also recalculates all shaped pulses in the 3D pulse program - including decoupling - with the calibrated values of 1H 90o pulse. Otherwise we would have to copy the calibrated 1H 90o pulse parameters from the 2D to the 3D and optimize the power parameters of each shaped pulse individually through a simulation program.
 
 * Essentially we measure the HSQC spectra to define the region of signals in the H, C and N dimensions (parameters SW, O1P), which we copy to the 3D experiments.
 
@@ -149,7 +149,7 @@ nothing new
 
 ### apply the optimum 1H, 13C and 15N pulse lengths to all experiment 
 
-* [part2, 39:07] `re 1` and zoom in the peak region. Place your curson in the middle to see the maximum O1 value (water's resonance frequency in this sample), in this case 3991.1 Hz. However, the optimum value may deviate a few Hz, therefor we issue `o1calib`, which will calculate it. Then we will put the output O1 value to the spectra we want to measure and with `gs` we will assess the shape of the FID to decide the exact O1 value to use. This is important because all experiments with water signal suppression function best when the O1 is exactly at the water's resonance frequency. Here we measure only experiments with gradient selection, where it is not critical. Regardless it is ideal to set an accurate O1 value.
+* [part2, 39:07] `re 1` and zoom in the peak region. Place your cursor in the middle to see the maximum O1 value (water's resonance frequency in this sample), in this case 3991.1 Hz. However, the optimum value may deviate a few Hz, therefor we issue `o1calib`, which will calculate it. Then we will put the output O1 value to the spectra we want to measure and with `gs` we will assess the shape of the FID to decide the exact O1 value to use. This is important because all experiments with water signal suppression function best when the O1 is exactly at the water's resonance frequency. Here we measure only experiments with gradient selection, where it is not critical. Regardless it is ideal to set an accurate O1 value.
 * [part2, 43:38] when it finishes hit `O1` to see the value that it found. In this case it is 3994.21 Hz.
 * execute `getprosol` with the 1H, 13C and 15N calibrated parameters for all experiments we want to measure.
 * [part2, 48:13] `re 8` to switch to the 3D experiment and experimentally find the optimum O1 value. Hit `gs`, got to the table "Offset" and give the O1 value from `o1calib`, namely 3994.21 Hz, and hit the keyboard button "enter".
