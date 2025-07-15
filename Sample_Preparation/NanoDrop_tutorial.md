@@ -49,7 +49,7 @@ Follow these steps to perform the measurement:
 </p>
 
 - d) Pipette 3 μL of the NMR buffer onto the lower tip.
-- e) Click **`Blank Measurement`** in the GUI.
+- e) Click **`Blank`** in the GUI.
 
 <p align="center">
   <img src="./images/nanodrop-blank.jpg" width="500"/>
