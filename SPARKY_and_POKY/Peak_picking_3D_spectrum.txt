@@ -8,18 +8,17 @@ For **peak picking**, we will follow a **systematic strategy** that, although mo
 
 To ensure **accurate peak selection**, we will use the **N-HN projection as intermediate reference point** for restricted peak picking in the 3D spectrum. The workflow is as follows:
 
-1. **Overlay the N-HN projection onto the 15N-HSQC spectrum**  
-2. **Identify peak centers** by using the **15N-HSQC spectrum as reference**  
-3. **Use these peak centers** to perform **restricted peak picking** in the 3D spectrum  
+1. Load and adjust the appearance of spectra
+3. Use the  15N-HSQC spectrum as reference to perform **restricted peak picking** in the 3D spectrum
 4. **Unfold or unalias peaks** as necessary  
 5. **Remove noise peaks** from the 3D spectrum  
 
 By following this approach, we ensure that the final set of picked peaks in the **3D spectrum** is as accurate and noise-free as possible.
 
 
-#### 2.3 Rename Axes
+#### Step 1. Rename Axes
 
-Rename the axes in the `1H-15N HSQC` and `1H-13C HSQC` spectra:
+Rename the axes in the `1H-15N HSQC` and `1H-13C HSQC` spectra otherwise the strip plotting (`sp`) won't work:
 
 ```shell
 ucsfdata -a1 15N -a2 1H 15N_HSQC.ucsf
@@ -53,71 +52,47 @@ ucsfdata -a1 13C -a2 15N -a3 1H HNCO.ucsf
 
 > **IMPORTANT:** Make sure that axes are named consistently in all spectra; otherwise, you will encounter problems during peak picking.
 
-
-* create N-H projection of HNCO:
-`ucsfdata -a1 13C -p1 -r -o 2D_N-H_projection.ucsf HNCO.ucsf`
-
-
 ---
 
-### Step 3. Loading the Spectra
+### Step 2. Load the Spectra
 
 **Load the spectra**
-- Open the UCSF files with the `fo` command (make sure to display **Poky Spectrum** type of files in the pop-up browser), 
-navigate to the folder, and select your spectra. Alternatively, you can copy the full path to each spectrum (for 
-example, `realpath HNCO.ucsf` in the Shell) and paste it into the pop-up browser.
-- Do the same with the 2D projection and the `15N-HSQC` spectrum.
+- Open the UCSF files with the `fm` command (make sure to display **Poky Spectrum** type of files in the pop-up browser),
+navigate to the folder, and select your spectra.
 - Use `xa` to show the nucleus types on the axes, `xr` to roll the axes and `xx` to transpose them.
-- Fix the aspect ratio by hitting `vt` and increasing the **Aspect (ppm)** for example to `12`, and then **Apply**.
+- Fix the aspect ratio by hitting `vt` and increasing the **Aspect (ppm)** for example to `18`, and then **Apply**.
 
 ---
 
 
-### Step 4. Adjusting the Spectra
+### Step 3. Adjust the Spectra
 
-**Synchronize Spectra**  
-- Click `yt` to synchronize the `N` axes of the `1H-15N HSQC`, 2D N-HH projection and `HNCO`.
-- Then synchronize the `HN` axes of those same spectra. Remember to synchronize one axis at a time!  
-
+**Synchronize spectra**
+- Click `yt` to synchronize the `15N` axes of the `1H-15N HSQC` and `HNCO`.
+- Then synchronize the `1H` axes of those same spectra. Remember to synchronize one axis at a time!
 
 **Correct the contour levels and colors**  
-- Type `vC` to bring up the contour level control scrollbars and adjust the contour levels.
-- Type `ec` to bring up the easy contour dialog allowing you to adjust all loaded spectra, including their colors.
+- Type `ec` to bring up the easy contour dialog allowing you to adjust all loaded spectra, including their colors and contour levels.
 - If you double-click on a spectrum in the dialog it will open up the contour level dialog (equivalent to the `ct` command).
+- Adjust the contour levels (both positive and negative) in the `15N HSQC` spectrum to optimize peak visibility.
 
-**Align the `2D_N-HN_proj` to the `15N_HSQC`**  
-- The 3D axes are usually completely off and must be aligned to the reference HSQC spectra. To achieve this, use the 2D 
-projections.   
-- Hit `ol` to overlay `2D_N-HN_proj.ucsf` onto `15N_HSQC`.
-- You may reduce the contour number to 1 for one of the two spectra for better visibility. Also hit `oz` to increse the contour thickness and the peak marker thickness.
-- Manually pick the most "trustworthy" peak in the `15N_HSQC` (`F8` to enter peak picking mode, `F1` to exit it) and find the 
-same peak in the 4D.  
-- Type `al`, and in the pop-up:  
-  - Set **Align spectrum** to `2D_N-HN_proj`  
-  - Set **using peak in** to `15N_HSQC`  
-  - The axes should match, thanks to the renaming we did earlier.  
-  - Now hold the `Shift` key and select one "trustworthy" peak in each spectrum for alignment.  
-  - Hit **Align**.
-  - Alternatively pick a set of matching peaks (button `F8`) in both spectra and click the **Auto align** option (slower and doesn't always work well).
+**Overlay spectra**
+- Switch to the `HNCO`, hit `ol` and overlay the `15N_HSQC` onto that spectrum.
+- Type `ec` and decrease the positive and negative level values of `15N_HSQC` to 1. That will allow you to view clearer the
+peak of HNCO on the overlay.
 
-![](images/N-HN_alignment.png)
-
-
-**Reference the `HNCO`**  
-- Hit `st` and copy the shift values from the aligned `2D_N-HN_proj` to `HNCO`.  
-- Make sure that every time you copy a shift value from one spectrum to the other, you click **Apply**, or else the value is not saved.  
-- When you finish, click **OK**, and the `HNCO` will be referenced!  
+!Note: here I assume that both `HNCO` and `15N_HSQC` are referenced. In not then you must align them using the
+`2D_N-HN_proj` (see the other tutorial).
 
 ---
 
+### Step 4. Peak Picking
 
-### Step 5. Peak Picking
+**Adjusting Contour Levels and Preparing Reference Peaks**
 
-# Adjusting Contour Levels and Preparing Reference Peaks
-
-- Adjust the contour levels (both positive and negative) in the `15N HSQC` spectrum to optimize peak visibility.
-- Press `F8` to enter peak picking mode and select all visible peaks.
+- Press `F8` to enter peak picking mode and select all visible peaks in `15N HSQC`.
 - Use the following Python function to estimate the expected number of N-H (in-phase) peaks from the amino acid sequence in the **multiplicity edited 15N HSQC**:
+
 ```python
 def estimate_15N_hsqc_peaks(sequence: str) -> int:
     # Count backbone amides = total residues minus any prolines and the N-terminus
@@ -126,58 +101,54 @@ def estimate_15N_hsqc_peaks(sequence: str) -> int:
     sidechain_peaks = sequence.count('R') + sequence.count('K') + sequence.count('W') + sequence.count('H')
     return backbone_peaks + sidechain_peaks
 ```
-- Gradually increase or decrease the contour levels until the number of in-phase (positive intensity) picked peaks is approximately the expected number of N-H peaks (149 for AR-V7 protein, 254 for NatD).
-I set the contour level to 1.4e+06, which captured XXX in-phase peaks, as below that a lot of noise peaks were emerging.
 
-  ![](images/15N_HSQC_contour_level.png)
-  
-- Press `lt` to open the peak list and export the peak list from the `15N HSQC` spectrum by saving it to a file.
-- Switch to the `2D N-HN projection`, hit `ol` and overlay `15N_HSQC` to `2D_N-HN_proj`.
-- Delete all current peaks from the `2D N-HN projection`.
-- Press `rp` to load the saved peak list from the `15N HSQC`. Alternatively, just copy (Ctrl+c)-paste (Ctrl+v) from one spectrum to the other.
-- Press `pa` to select all peaks.
-- Press `pc` to adjust the peak positions to the **contour centers** of the `2D projection`.
-- Go through all the peak markers, visualize them and adjust their position manually to be at the center of the contours hills
-in the `2D_N-HN_proj` and fix their position there by hitting `pk`. To help you spot the overlapping peak markers, hit `lt`, **sort by frequency** and go through the list
-search for peaks with identical coordinates. Double-click on them and adjust their position based on the `15N_HSQC`.- At the end count the peak markers in both spectra using `lt`. They must be the same. If not, check for peaks with the same coordinates - they are seen as one.
-- These peaks will be used as **reference points** for **restricted peak picking** in the `3D spectrum` later on.
+- Gradually increase or decrease the contour levels until the **number of in-phase (positive intensity)** picked peaks is
+close to the expected number of N-H peaks (149 for AR-V7 protein, 254 for NatD).
 
-Below you see the final peak selection on the `N-HN_proj` (orange) adjusted to the peak centers. The `15N_HSQC` is 
-overlaid with cyan and yellow color. Notice that some peaks that were not present in the `N-HN_proj` (less sensitive experiment)
-were added from the `15N_HSQC` and the inverse (although much fewer peaks were added like this).
+**Restricted peak picking round 1**
 
-![here you see](images/N-HN_proj_peaks.png)
-
-### Restricted Peak Picking
-
-- Press `kr` to open the **Restricted Peak Picking** window.
+- Type `pa` to select all peaks in the `15N HSQC`.
+- Type `kr` to open the **Restricted Peak Picking** window.
 - Under **Find peaks**, select the **HNCO** spectrum.
-- Under **Using peaks in**, select the **N-HN projection**.
+- Under **Using peaks in**, select the **15N_HSQC**.
+- First use low thresholds: 0.1 ppm for 15N and 0.01 ppm for 1H.
 - Click the **Pick Peaks** button.
 
 
-### Manual Refinement
+**Manual Refinement**
 
-Open the `HNCO` and `N-HN_proj` windows next to each other, hit `vz` and set the "w1 C" values to `9999`. 
-Select groups of peaks in HNCO that were supposed to be a single peak according to your peak selection in `N-HN_proj`.
+Open the `HNCO` and `15N HSQC` windows next to each other, hit `vz` and set the "w1 C" values to `9999`.
+Select groups of peaks in HNCO that were supposed to be a single peak according to your peak selection in `15N HSQC`.
 Hit `lt` and sort by "N" frequency.
-Select one group of HNCO peaks and hit `lt`. Hold Ctrl and left mouse click on the peak from the group with the highest Data Height to unselect it. Then click the "Delete" keyboard button to select the weaker peaks. So this way only the strongest peak will remain. Select the remaining peaks, hit 'nt' and write "r" to remember that these peaks were reviewed. The "r" should appear in `lt` window if you activate the "Note" radiobutton under "Options...".
+Select one group of HNCO peaks and hit `lt`. Hold Ctrl and left mouse click on the peak from the group with the highest
+Data Height to unselect it. Then click the "Delete" keyboard button to select the weaker peaks. So this way only the
+strongest peak will remain. Select the remaining peaks, hit 'nt' and write "r" to remember that these peaks were reviewed.
+The "r" should appear in `lt` window if you activate the "Note" radiobutton under "Options...".
 Repeat this process for all groups of HNCO peaks.
 
+**Restricted peak picking round 2**
+
+- Select in `15N HSQC` only the peaks which had no equivalent in the HNCO.
+- Type `kr` to open the **Restricted Peak Picking** window and following the same procedure, but this time use higher
+thresholds: 0.2 ppm for 15N and 0.02 ppm for 1H.
 
 
 ---
 
 ### Step X. Exporting Peak Lists
 
-**Export Picked Peaks for 4D-GRAPHS**  
-Go to the 3D peak list (type `lt`) and select the columns `w1`, `w2`, `w3`, `Data Height` and `Note`. Click **Apply**, then **Save...**.
-Further editing of the projections and the HSQC is needed.
+**Export Picked Peaks for 4D-GRAPHS**
+- Switch to the `15N HSQC` spectrum, type `lt` to open the peak list, click on "Options" to display the
+"Assignment", `w1`, `w2`, `Data Height`, and export the peak list to a file.
+- Switch to the 3D spectrum and do the same.
 
+---
 
 # Peak Picking a Combination of two 3D Spectra with POKY
 
-For the peak picking of the combination HNcoCA/HNCA we will use the same workflow as in HNCO, but since HNcoCA gives us the Cα(i-1), N(i), Hn(i) and HNCA Cα(i-1), Cα(i), N(i), Hn(i), the we will peak pick one spin system at a time using strip plots. In summary the steps are following:
+For the peak picking of the combination HNcoCA/HNCA we will use the same workflow as in HNCO, but since HNcoCA gives us
+the Cα(i-1), N(i), Hn(i) and HNCA Cα(i-1), Cα(i), N(i), Hn(i), the we will peak pick one spin system at a time using
+strip plots. In summary the steps are following:
 
 * create 2D N-HN projections for both HNcoCA and HNCA and do the peak picking as described for HNCO.
 * 13C HSQC
