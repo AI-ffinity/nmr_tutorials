@@ -21,13 +21,13 @@ extinction coefficient of the measured protein. This can be obtained via ProtPar
 ## 1. Obtaining of the Ext. coefficient via ProtParam
 
 - a) Visit the [ProtParam](https://web.expasy.org/protparam/) website.
-- b) Paste the FASTA sequence of your protein into the input box and click **Compute Parameters**.
+- b) Paste the FASTA sequence of your protein into the input box and click **`Compute Parameters`**.
 
 <p align="center">
   <img src="./images/protparam-homescreen.png" width="500"/>
 </p>
 
-- c) In the computed results, look for the section with Ext. coefficients.
+- c) In the computed results, look for the section with **Ext. coefficients**.
 
 <p align="center">
   <img src="./images/protparam-ext-coeff.png" width="500"/>
@@ -58,7 +58,7 @@ Follow these steps to perform the measurement:
 - f) Close the lid and wait for the blanking process to complete.
 - g) Reopen the lid and **wipe both tips thoroughly** using a tissue.
 - h) Pipette 3 μL of the **protein sample** onto the lower tip.
-- i) Click the **`Measure`** button in the GUI (it may also be labeled `Protein`).
+- i) Click the **`Measure`** button in the GUI.
 
 <p align="center">
   <img src="./images/nanodrop-measure.jpg" width="500"/>
