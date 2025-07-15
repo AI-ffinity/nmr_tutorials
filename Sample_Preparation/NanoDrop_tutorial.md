@@ -2,7 +2,8 @@
 
 The NanoDrop spectrophotometer uses **surface tension** to hold small liquid samples in place, eliminating the need for cuvettes or capillaries. It operates based on **UV/Vis spectroscopy**, measuring light absorbance at specific wavelengths.
 
-This tutorial provides step-by-step instructions for measuring protein concentration at **280 nm**.
+This tutorial provides step-by-step instructions for measuring protein concentration at **280 nm**. In order to do that, one must also know the 
+extinction coefficient of the measured protein. This can be obtained via ProtParam tool (see below).
 
 ### Equipment (available at the NanoDrop station):
 
@@ -11,14 +12,31 @@ This tutorial provides step-by-step instructions for measuring protein concentra
 - Pipette set to 3 μL (the required sample volume)
 - Wiping tissues
 
-### User-provided materials:
+### User-provided materials/knowledge:
 
 - NMR buffer (for blanking)
 - Protein sample
+- Extinction coefficient
+---
+## 1. Obtaining of the Ext. coefficient via ProtParam
+
+- a) Visit the [ProtParam](https://web.expasy.org/protparam/) website.
+- b) Paste the FASTA sequence of your protein into the input box and click **Compute Parameters**.
+
+<p align="center">
+  <img src="./images/protparam-homescreen.png" width="500"/>
+</p>
+
+- c) In the computed results, look for the section with Ext. coefficients.
+
+<p align="center">
+  <img src="./images/protparam-ext-coeff.png" width="500"/>
+</p>
+
+- d) Choose the appropriate coefficient that corresponds to your protein and NanoDrop settings.
 
 ---
-
-## 1. Measurement Procedure
+## 2. Measurement Procedure
 
 Follow these steps to perform the measurement:
 
@@ -47,7 +65,7 @@ Follow these steps to perform the measurement:
 </p>
 
 - j) Close the lid and wait for the measurement to complete.
-- k) Divide the reported concentration by **1.079** (the absorption coefficient) to calculate the correct molar concentration. Record the result.
+- k) Divide the reported concentration by **Extinction coefficient** to calculate the correct molar concentration. Record the result.
 
 <p align="center">
   <img src="./images/nanodrop-concentration.jpg" width="500"/>
