@@ -47,8 +47,7 @@ This step removes glycerol from the protein samples using the filter’s molecul
 
 After three cycles, the glycerol content should be negligible for NMR analysis.
 
-> **_NOTE:_** Protein loss is expected after each cycle. If the retentate volume drops significantly (e.g., <50 μL), the filter unit may be faulty. In that case, measure both the filtrate and retentate concentrations using the NanoDrop (see separate [tutorial](./NanoDrop_tutorial.md)) and decide the next 
-steps based on the result.
+> **_NOTE:_** Protein loss is expected after each cycle. If the retentate volume drops significantly (e.g., <50 μL), the filter unit may be faulty. In that case, measure both the filtrate and retentate concentrations using the NanoDrop (see separate [tutorial](./NanoDrop_tutorial.md)) and decide the next steps based on the result.
 
 ## 3. Measuring Final Protein Concentration
 

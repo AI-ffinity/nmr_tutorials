@@ -24,16 +24,36 @@ Follow these steps to perform the measurement:
 
 - a) Open the spectrophotometer lid.
 - b) Pipette 3 μL of Milli-Q detergent onto the lower measurement tip, close the lid, then wipe both the **top and bottom tips** thoroughly.
-- c) In the NanoDrop GUI, select **`Protein A280`** to use the correct settings for protein absorbance at 280 nm.
+- c) In the NanoDrop GUI homescreen, select **`Protein A280`** to use the correct settings for protein absorbance at 280 nm.
+
+<p align="center">
+  <img src="./images/nanodrop-homescreen.jpg" width="500"/>
+</p>
+
 - d) Pipette 3 μL of the NMR buffer onto the lower tip.
 - e) Click **`Blank Measurement`** in the GUI.
+
+<p align="center">
+  <img src="./images/nanodrop-blank.jpg" width="500"/>
+</p>
+
 - f) Close the lid and wait for the blanking process to complete.
 - g) Reopen the lid and **wipe both tips thoroughly** using a tissue.
 - h) Pipette 3 μL of the **protein sample** onto the lower tip.
 - i) Click the **`Measure`** button in the GUI (it may also be labeled `Protein`).
+
+<p align="center">
+  <img src="./images/nanodrop-measure.jpg" width="500"/>
+</p>
+
 - j) Close the lid and wait for the measurement to complete.
 - k) Divide the reported concentration by **1.079** (the absorption coefficient) to calculate the correct molar concentration. Record the result.
-- l) Return the GUI to the **Home** screen.
+
+<p align="center">
+  <img src="./images/nanodrop-concentration.jpg" width="500"/>
+</p>
+
+- l) Return the GUI to the **Homescreen**.
 - m) Pipette 3 μL of Milli-Q detergent onto the lower tip again, close the lid briefly, then wipe both tips clean for storage.
 
 ---
