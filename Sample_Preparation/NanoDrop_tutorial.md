@@ -1,4 +1,4 @@
-# Measurement of Protein Concetration with NanoDrop Spectrophotometer
+# Measurement of Protein Concentration with NanoDrop Spectrophotometer
 
 The NanoDrop spectrophotometer uses **surface tension** to hold small liquid samples in place, eliminating the need for cuvettes or capillaries. It operates based on **UV/Vis spectroscopy**, measuring light absorbance at specific wavelengths.
 
@@ -49,30 +49,31 @@ Follow these steps to perform the measurement:
 </p>
 
 - d) Pipette 3 μL of the NMR buffer onto the lower tip.
-- e) Click **`Blank`** in the GUI.
+- e) Set `Type` to `1 Abs = 1 mg/mL`
+- f) Click **`Blank`** in the GUI.
 
 <p align="center">
   <img src="./images/nanodrop-blank.jpg" width="500"/>
 </p>
 
-- f) Close the lid and wait for the blanking process to complete.
-- g) Reopen the lid and **wipe both tips thoroughly** using a tissue.
-- h) Pipette 3 μL of the **protein sample** onto the lower tip.
-- i) Click the **`Measure`** button in the GUI.
+- g) Close the lid and wait for the blanking process to complete.
+- h) Reopen the lid and **wipe both tips thoroughly** using a tissue.
+- i) Pipette 3 μL of the **protein sample** onto the lower tip.
+- j) Click the **`Measure`** button in the GUI.
 
 <p align="center">
   <img src="./images/nanodrop-measure.jpg" width="500"/>
 </p>
 
-- j) Close the lid and wait for the measurement to complete.
-- k) Divide the reported concentration by **Extinction coefficient** to calculate the correct molar concentration. Record the result.
+- k) Close the lid and wait for the measurement to complete.
+- l) Divide the reported concentration by **Extinction coefficient** to calculate the correct molar concentration. Record the result.
 
 <p align="center">
   <img src="./images/nanodrop-concentration.jpg" width="500"/>
 </p>
 
-- l) Return the GUI to the **Homescreen**.
-- m) Pipette 3 μL of Milli-Q detergent onto the lower tip again, close the lid briefly, then wipe both tips clean for storage.
+- m) Return the GUI to the **Homescreen**.
+- n) Pipette 3 μL of Milli-Q detergent onto the lower tip again, close the lid briefly, then wipe both tips clean for storage.
 
 ---
 

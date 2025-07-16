@@ -4,8 +4,8 @@ This tutorial describes the procedure for removing glycerol from protein samples
 
 - Fixed-angle rotor
 - Pipettes (ideally 100 μL and 200 μL ranges) 
-- 0.5 mL centrifugal filter unit (3–10 kDa MWCO), inserted into a larger Eppendorf tube
-- NMR buffer (glycerol-free): 25 mM Tris, 150 mM NaCl, 1 mM TCEP, pH 7.5
+- 0.5 mL centrifugal filter unit (3–100 kDa MWCO), inserted into a larger Eppendorf tube
+- NMR buffer (glycerol-free). E.g. 25 mM Tris, 150 mM NaCl, 1 mM TCEP, pH 7.5
 - Protein aliquots
 - Ice box
 - NanoDrop instrument (for measuring concentration; see separate [tutorial](./NanoDrop_tutorial.md))
