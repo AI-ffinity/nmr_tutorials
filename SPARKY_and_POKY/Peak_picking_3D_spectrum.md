@@ -115,30 +115,47 @@ close to the expected number of N-H peaks (149 for AR-V7 protein, 254 for NatD).
 - Click the **Pick Peaks** button.
 
 
-**Manual Refinement**
+**Manual Refinement using Strip Plots**
 
-Open the `HNCO` and `15N HSQC` windows next to each other, hit `vz` and set the "w1 C" values to `9999`.
-Select groups of peaks in HNCO that were supposed to be a single peak according to your peak selection in `15N HSQC`.
-Hit `lt` and sort by "N" frequency.
-Select one group of HNCO peaks and hit `lt`. Hold Ctrl and left mouse click on the peak from the group with the highest
-Data Height to unselect it. Then click the "Delete" keyboard button to select the weaker peaks. So this way only the
-strongest peak will remain. Select the remaining peaks, hit 'nt' and write "r" to remember that these peaks were reviewed.
-The "r" should appear in `lt` window if you activate the "Note" radiobutton under "Options...".
-Repeat this process for all groups of HNCO peaks.
+- On the `HNCO` window hit `vz` and set the "w1 C" values to `9999`.
+- Adjust their size and keep the `HNCO` and `15N HSQC` windows next to each other.
+- Select all `15N HSQC` peaks by typing `pa` and then `sp` to open the **Strip Plot** window.
+- In the drop-down menu click at "Show" and activate `HNCO` spectrum. Then click on "[+] Peaks" button. Type also `lt`
+to have the peak list window open and see the peak intensities.
+- Select and remove the `HNCO` peaks with negative intensity. If you still have far more the expected number of N-H
+you calculated earlier, then you can remove low intensity peaks until you reach a "safe number" of potentially real peaks.
+- Iterate through every strip and remove noise peaks based on their intensity, number of expected peaks, location in
+the N-H plane of `HNCO` and your intuition. Sometimes a strip may contain more than one real peaks (two or more residues
+with the same N-H frequencies but distinct C' frequencies).
+- Select the remaining strong peak(s), hit 'nt' and write "s" to remember that these peaks were reviewed in the strip plot.
+The "s" should appear in `lt` window if you activate the "Note" radiobutton under "Options...".
+
+**Manual Refinement using the overlay of `15N HSQC` to `HCNO`**
+
+- Select a group of peaks in `HNCO` that were supposed to be a single peak according to your peak selection in `15N HSQC`.
+
+![](images/peak_picking_3D/peak_group.png)
+
+- Hit `lt` on the `HNCO` window. Hold Ctrl and left mouse click on the peak from the group with the highest
+"Data Height" to unselect it. Then click the "Delete" keyboard button to delete the weaker peaks. So this way only the
+strongest peak will remain.
+- Select the remaining strong peak(s), hit 'nt' and write "r" to remember that these peaks were reviewed. The "r" should appear
+in `lt` window if you activate the "Note" radiobutton under "Options...".
+- Repeat this process for all groups of HNCO peaks.
 
 **Restricted peak picking round 2**
 
-- Select in `15N HSQC` only the peaks which had no equivalent in the HNCO.
+- Select in `15N HSQC` only the peaks which had no equivalent in the HNCO in the 1st round or restricted peak picking.
 - Type `kr` to open the **Restricted Peak Picking** window and following the same procedure, but this time use higher
 thresholds: 0.2 ppm for 15N and 0.02 ppm for 1H.
-
+- Follow the same manual refinement steps as before.
 
 ---
 
-### Step X. Exporting Peak Lists
+### Step 5. Exporting Peak Lists
 
 **Export Picked Peaks for 4D-GRAPHS**
-- Switch to the `15N HSQC` spectrum, type `lt` to open the peak list, click on "Options" to display the
+- Switch to the `15N HSQC` spectrum, type `lt` to open the peak list, click on "Options" to display only the
 "Assignment", `w1`, `w2`, `Data Height`, and export the peak list to a file.
 - Switch to the 3D spectrum and do the same.
 
@@ -150,7 +167,34 @@ For the peak picking of the combination HNcoCA/HNCA we will use the same workflo
 the Cα(i-1), N(i), Hn(i) and HNCA Cα(i-1), Cα(i), N(i), Hn(i), the we will peak pick one spin system at a time using
 strip plots. In summary the steps are following:
 
-* create 2D N-HN projections for both HNcoCA and HNCA and do the peak picking as described for HNCO.
-* 13C HSQC
-* strip plots
+- Do the restricted peak picking in two rounds, remove negative peaks and low intensity positive peaks from both spectra,
+ as described for `HNCO`.
+- In addition to `15 HSQC`, load and adjust also the `13C HSQC`.
+- First select all peaks of `HNcoCA` (more sensitive experiment) by hitting `pa`, then `sp` to strip plot and
+display both spectra.
+- Iterate through each pair of strip plots and search for pattern of peaks, like that
+in the figure below.
+
+![](images/peak_picking_3D/HNCA_HNcoCA_strip_plot.png)
+
+- Select the real peaks and mark them with "s" by hitting `nt` and then delete the noise peaks.
+- Repeat the above steps for all pairs of strips. Then select all peaks of `HNCA` and repeat the same procedure.
+
+---
+
+# Merge peaks from a 3D spectrum measured on two spectrometers
+
+- Follow all previous steps to load and adjust the spectra.
+- First select all peaks of `HNCO 850MHz` by hitting `pa`, then `sp` to strip plot and
+display both spectra.
+- Iterate through each pair of strip plots and search for unique peaks in one of the two, like that
+in the figure below.
+
+![](images/peak_picking_3D/strip_plot_merge_3D_peaks.png)
+
+- Select the unique peaks, hit `nt` and mark them with "u" to remember them later.
+- One you finish with all the strip plots, select all peaks of `HNCO 950MHz` and repeat the same
+steps.
+- At the end export both HNCO peaks lists along with the "Note column" and combine them manually
+by adding the `HNCO 850 MHz` peaks marked with "u" to `HNCO 950 MHz`.
 
