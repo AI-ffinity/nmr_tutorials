@@ -1,6 +1,61 @@
-# Creating 2D and 3D Projections from 4D NOESY with NMRFAM Sparky
+# Creating 2D and 3D Projections from 4D NOESY with POKY/NMRFAM Sparky
 
 This tutorial guides you through creating 2D and 3D projections from a 4D NOESY spectrum using the `ucsfdata` script from NMRFAM Sparky. We'll start by converting the 4D spectrum to UCSF format and proceed with generating and analyzing the projections.
+
+## POKY installation
+
+Sometimes running the POKY/Sparky utility scripts (especially `bruk2ucsf`) outside their directory yields segmentation 
+faults. Therefore, add the following functions into your `~/.bashrc` script:
+
+```shell
+alias poky="/opt/POKY/poky_linux/bin/poky"
+
+# Helper function: resolves relative paths, changes to /opt/POKY/poky_linux/bin/, executes a command,
+# and returns to the original directory.
+_run_in_poky_bin() {
+    # Arguments:
+    #   $1: Command name (e.g. "bruk2ucsf" or "ucsfdata")
+    #   $2: Relative path to the input file.
+    #   $3: Relative path to the output file.
+    if [ "$#" -ne 3 ]; then
+        echo "Usage: _run_in_poky_bin <command_name> <relative_input> <relative_output>"
+        return 1
+    fi
+
+    local cmd="$1"
+    local input_rel="$2"
+    local output_rel="$3"
+
+    # Resolve absolute paths using realpath.
+    local input_full
+    input_full=$(realpath "$input_rel") || { echo "Error: Cannot resolve input file path"; return 1; }
+    
+    local output_dir
+    output_dir=$(realpath "$(dirname "$output_rel")") || { echo "Error: Cannot resolve output directory"; return 1; }
+    local output_full="${output_dir}/$(basename "$output_rel")"
+
+    # Change directory to /opt/POKY/poky_linux/bin/ using pushd/popd.
+    pushd /opt/POKY/poky_linux/bin/ > /dev/null || { echo "Error: Unable to enter /opt/POKY/poky_linux/bin/"; return 1; }
+
+    # Execute the command with full path arguments.
+    ./"$cmd" "$input_full" "$output_full"
+
+    # Return to the original directory.
+    popd > /dev/null
+}
+
+# Function: bruk2ucsf_run
+# Usage: bruk2ucsf_run <relative_input> <relative_output>
+bruk2ucsf_run() {
+    if [ "$#" -ne 2 ]; then
+        echo "Usage: bruk2ucsf_run <relative_input> <relative_output>"
+        return 1
+    fi
+    _run_in_poky_bin "bruk2ucsf" "$1" "$2"
+}
+```
+
+Then do `source ~/.bashrc`.
 
 ## Step 1: Convert 4D Spectrum to UCSF
 
@@ -49,10 +104,12 @@ ucsfdata -a1 C -a2 HC -o 13C_HSQC_renamed_axes.ucsf 13C_HSQC.ucsf
 
 ## Additional Resources
 
-- For those interested in creating 2D projections via the graphical user interface (GUI), refer to the following video tutorial: [How to Make 2D Projections of 3D Spectra](https://www.youtube.com/watch?v=KyfyS5inLwI)
+- For those interested in creating 2D projections via the graphical user interface (GUI), refer to the following video 
+tutorial: [How to Make 2D Projections of 3D Spectra](https://www.youtube.com/watch?v=KyfyS5inLwI)
 
 **Note:** While the GUI method is available, this tutorial focuses on the command-line approach for its efficiency and precision.
 
 
-With ucsfdata you can also pull 2D slices from the 4D. You can go back to -wN parameter and find the “index” that gives your preferred ppm slice.
+With ucsfdata you can also pull 2D slices from the 4D. You can go back to `-wN` parameter and find the “index” that 
+gives your preferred ppm slice.
 https://groups.google.com/g/nmr-sparky/c/wb2IJoeNPZc

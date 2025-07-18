@@ -5,8 +5,10 @@
 
 ## Common Commands
 
-Sparky offers a variety of two-letter accelerators to streamline your workflow. Below, you'll find a categorized list of these commands along with brief descriptions of their functionalities.
+Sparky offers a variety of two-letter accelerators to streamline your workflow. Below, you'll find a categorized list 
+of these commands along with brief descriptions of their functionalities.
 
+- **cf** opens the command finder window
 
 ### File IO
 
@@ -21,24 +23,26 @@ Sparky offers a variety of two-letter accelerators to streamline your workflow. 
 - **xe:** Special Python command for saving the peak list in Xeasy format.
 - **xr:** Roll axes. Useful for navigating 3D and 4D spectra.
 - **xx:** Axis transpose. Swaps the axes.
-- **yt:** Synchronize axes of various spectra. Ideal for analyzing series of 3D or 4D spectra.
+- **yt:** Synchronize axes of various spectra. Ideal for peak picking in 3D and 4D spectra using a 2D as a reference.
 - **zf, zi, zo, zp:** Zoom full spectrum, zoom in, zoom out, and zoom to the previous view, respectively.
-- **ct:** Adjust contour levels and colors.
+- **ec:** Easy contour dialog allowing you to adjust all loaded spectra. **RECOMMENDED**
+- **ct:** Adjust contour levels and colors. Better use **ec**.
 - **cl:** Adjust the color of an ornament.
 - **oz:** Adjust the size of an ornament.
-- **ol:** Overlay views. Compares different spectra.
-- **ci:** Inverse background color
-- **vt:** View settings. Adjusts various spectral settings, including aspect ratio.
+- **ol:** Overlays spectra.
+- **ci:** "Inverse background color": *in fact, this dialogue allows changing the color of the selected peak (POKY build 29. Aug 2024)*
+- **vt:** View settings. Adjusts various spectral settings, including aspect ratio of axes (e.g. expand one axis by increasing `Aspect`).
 
 ### Peak and Spectrum Manipulation
 
 - **a1, a2, a3:** Add spectral width (SW) to a peak in the F1, F2, or F3 dimension. Useful for aliased spectra.
+> **NOTE:** **sweepwidth** is an term incorectly used to refer to **spectral width**.
 - **A1, A2, A3:** Subtract SW from a peak in the F1, F2, or F3 dimension. For handling aliased spectra.
 - **at:** Assignment tool. Assists in assigning peaks.
 - **dr:** Delete resonances not used in any peak assignment. Cleans up the resonance list.
 - **eu:** Undo the last peak manipulation.
 - **it:** Integration tool for peak integration.
-- **kr:** Restrictive peak picking tool. Allows using one peak list as a guidance for peak picking in another spectrum.
+- **kr:** Restrictive peak picking tool. Allows using one peak list as a guidance for peak picking in another spectrum. E.g. 1H-15N HSQC -> 4D HCNH NOESY.
 - **lt:** Opens the peak list for a given spectrum, offering various options.
 - **oc:** Ornament copy. Copies assignment/label information between spectra.
 - **op:** Ornament paste.
@@ -64,12 +68,13 @@ Sparky offers a variety of two-letter accelerators to streamline your workflow. 
 Note: For peaks with assignments not following the convention [A-Z][0-9]+[A-Z0-9']+-[A-Z0-9'], use a custom script that modifies the .save file to ensure compatibility.
 
 - **rr:** Resonance rename. Renames resonances for consistency.
-- **st:** Spectrum tool. Useful for global axes shift corrections.
+- **st:** Spectrum tool. Useful for global axes shift corrections (e.g. "referencing").
 - **tb:** Table of resonances for the project. Helps in identifying missing assignments.
-- **vc:** View centering. Centers the view on a specific peak, especially useful in 3D spectra.
+- **vc:** View centering. Centers the view on a specific peak, especially useful when have associated peaks in 2D with 3D or 4D spectra.
 - **vd:** View duplicate. Duplicates the view of a spectrum into another window.
 - **vR:** Show assignments on the edge of the spectrum.
 - **vS:** Show 1D slice on the edge of the spectrum.
+- **vz:** Set the visible depth - useful for unfolding/unaliasing in the 4D HCNH NOESY.
 
 
 
@@ -84,5 +89,7 @@ Note: For peaks with assignments not following the convention [A-Z][0-9]+[A-Z0-9
 
 ## Tips for Handling Peaks
 
-When using the **rp** command to load a list of peaks, ensure the assignments follow the conventional format ([A-Z][0-9]+[A-Z0-9']+-[A-Z0-9']). For peaks with non-conventional names, consider using a custom script that modifies the .save file to ensure compatibility.
+When using the **rp** command to load a list of peaks, ensure the assignments follow the conventional format 
+([A-Z][0-9]+[A-Z0-9']+-[A-Z0-9']). For peaks with non-conventional names, consider using a custom script that 
+modifies the .save file to ensure compatibility.
 

@@ -13,7 +13,7 @@
 * **`ftnd 0 nd2d`** - Leaves FID’s in the acquired order (xf2 only).
 * **`abs`** - Performs baseline correction. The parameters `absf1` & `absf2` specify the range in ppm for the correction.
 * **`abs1`** - Baseline correction specifically for the F1 dimension of a 2D spectrum.
-* **`abs2`** - Baseline correction specifically for the F2 dimension of a 2D spectrum.
+* **`abs2`** - Baseline correction specifically for the F2 dimension of a 2D spectrum. Do first `abs2` and then `abs1`.
 * **`tabs3`, `tabs2`, `tabs1`** - Perform baseline correction in the F3, F2, and F1 axes, respectively.
 
 ## Phase Correction
@@ -40,9 +40,8 @@ and first-order phase settings to optimize spectral clarity and symmetry. Not re
 * **`totxt`** - save currently displayed region as a text file (1D and 2D)
 
 ## Miscellaneous Processing
-* **`eda`** - Displays parameters for the indirect dimensions of 2D, 3D spectra such as sweep width, time domain size, and offsets.
 * **`tf3 n; tf2 n; tf1 n`** - Fourier Transforms the specified dimension in a 3D dataset. The 'n' indicates that no imaginary data is generated.
-* **`edp`** - Used to access and modify processing parameters in the "ProcPars" window.
+* **`edp`** - Used to access and modify processing parameters in the "PROCPARS" window.
 * **`4 TDeff 1024`** - Set the effective time domain size for the direct dimension in the 4D spectrum. This will allow you to use `SI{F4} = 1024` 
 when the spectrum was measured with `TD{F4} > 1024`. In a similar manner you can change any other parameter in `PROCPARS`.
 * **`cplbruk`** - View and compile Bruker's AU programs.
@@ -61,14 +60,20 @@ automatically calculated contour levels.
 * **`sx` and `ej`** - Commands used to eject the current sample from the spectrometer.
 * **`sx <position>`** - Starts the carousel and inserts the sample at the specified position into the spectrometer.
 * **`new`** - Creates a new experiment based on an active one.
+* **`eda`** - Switches to the "ACQUPARS" panel to edit acquisition parameters.
+* **`ased`** - Same effect as `eda`? According to documentation: edit acquisition parameters used in pulse program.
+* **`edasp`** - Set up nuclei and spectrometer routing.
+* **`edte`** - Edit the temperature parameters.
+* **`loopadj`** - AU program for optimization of LGAIN (loop gain), LTIME (loop time), etc.
 * **`ww`** - Executes automatic matching and tuning of the system.
 * **`lock`** - Locks the magnetic field, usually selecting "H2O + D2O" from the dropdown list.
 * **`topshim gui`** - Initiates automatic 1D shimming to optimize the magnetic field homogeneity.
 * **`p1` followed by `1 P1 1`** - Configures pulse program settings.
-* **`zg`** - Starts the experiment, initiating the acquisition of the NMR spectrum.
 * **`atma`** - Automatically tunes and matches the channels, typically used for 15N and 1H channels.
 * **`pulsecal`** - Calculates the length of the 90° hydrogen pulse P1 for 10W.
 * **`getprosol 1H P1 xW`** - Sets pulse and power, inserting previously determined value P1 with the appropriate power value.
+* **`gs`** - Interactive parameter optimization during acquisition.
+* **`zg`** - Starts the experiment, initiating the acquisition of the NMR spectrum.
 * **`stop`** - Stops the measurement process.
 * **`pulse <x>W`** - Recalculates the pulse for `<x> Watt`.
 
