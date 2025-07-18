@@ -27,7 +27,7 @@ Experiments of a 14 kDa IDP on 850 MHz.
 
   to verify that the signal from D₂O isn’t distorted (it must appear as a perfect symmetric bell shape).
 
-![fig2](images/pulse_calibration/fig2.png)
+![pulsecal\_fig2](images/pulse_calibration/fig2.png)
 
 ### Calibrate 13C 90-Degree Hard Pulse Length
 
@@ -39,7 +39,7 @@ Experiments of a 14 kDa IDP on 850 MHz.
 
   to calibrate the ¹H pulse length (P1) first. `pulsecal` will also read and update **P3** (the 90° high-power pulse for ¹³C) from the “prosol” table.
 
-![pulsecal\_fig2](images/pulse_calibration/fig2.png)
+![pulsecal\_fig3](images/pulse_calibration/fig3.png)
 
 * Run `ased` and inspect **P3**. It should be the default value from the “prosol” table (14.2 μs here). Set it to a lower value (e.g. 5.0 μs, or divide by 2) to get a spectrum you can phase—otherwise, a near-90° pulse will nullify the signal. Then run:
 
@@ -52,11 +52,11 @@ Experiments of a 14 kDa IDP on 850 MHz.
 
   to acquire and phase the spectrum. Correct phasing is crucial, as this spectrum feeds into the next step (`popt`); without it, signals will have dispersion character (positive and negative peaks), making the 0-signal point ambiguous.
 
-![pulsecal\_fig3](images/pulse_calibration/fig3.png)
+![pulsecal\_fig4](images/pulse_calibration/fig4.png)
 
 * Zoom into the signal region to be optimized. Right-click → **Save Display Region To…** → **Parameters F1/F2** → **OK**.
 
-![pulsecal\_fig4](images/pulse_calibration/fig4.png)
+![pulsecal\_fig5](images/pulse_calibration/fig5.png)
 
 * Run `popt` to open the parameter-optimization window. Set:
 
@@ -68,7 +68,7 @@ Experiments of a 14 kDa IDP on 850 MHz.
   * **INC** → 0.4
     Then click **Save** and **Start Optimize**, overwrite → **y**.
 
-![pulsecal\_fig5](images/pulse_calibration/fig5.png)
+![pulsecal\_fig6](images/pulse_calibration/fig6.png)
 
 * Run `P1` and note its value (e.g. 13.07 μs). Do the same for `PLW1` (e.g. –11.46 dB). These will be needed for `getprosol`.
 * Once acquisition finishes, run:
@@ -79,7 +79,7 @@ Experiments of a 14 kDa IDP on 850 MHz.
 
   to invert the signal sign. Skipping this means spectrum “999” won’t load correctly.
 
-![pulsecal\_fig6](images/pulse_calibration/fig6.png)
+![pulsecal\_fig7](images/pulse_calibration/fig7.png)
 
 * Run:
 
@@ -89,7 +89,7 @@ Experiments of a 14 kDa IDP on 850 MHz.
 
   to display a series of spectra (11 spectra with pulse lengths from 12.0 to 16.0 μs in 0.4-μs increments). If the optimizer doesn’t find an exact zero within these values, it interpolates. Here it reports an optimal **P3** value of 13.382361 μs.
 
-![pulsecal\_fig7](images/pulse_calibration/fig7.png)
+![pulsecal\_fig8](images/pulse_calibration/fig8.png)
 
 * Run `P3` and note its value (e.g. 13.4 μs). Do the same for `PLW1` (e.g. –21.68 dB). These will also be needed for `getprosol`.
 
@@ -107,11 +107,11 @@ Experiments of a 14 kDa IDP on 850 MHz.
 
   to acquire and phase the spectrum.
 
-![pulsecal\_fig8](images/pulse_calibration/fig8.png)
+![pulsecal\_fig9](images/pulse_calibration/fig9.png)
 
 * Zoom into the signal region to be optimized. Right-click → **Save Display Region To…** → **Parameters F1/F2** → **OK**.
 
-![pulsecal\_fig9](images/pulse_calibration/fig9.png)
+![pulsecal\_fig10](images/pulse_calibration/fig10.png)
 
 * Run `popt` to open the parameter-optimization window and set:
 
@@ -123,11 +123,11 @@ Experiments of a 14 kDa IDP on 850 MHz.
   * **INC** → 0.4
     Then click **Save** and **Start Optimize**, overwrite → **y**.
 
-![pulsecal\_fig10](images/pulse_calibration/fig10.png)
+![pulsecal\_fig11](images/pulse_calibration/fig11.png)
 
 * Once acquisition finishes, run `re 2 1` to invert the signal sign, then `re 1 999` to preview the optimization. The result may look too noisy to infer an accurate P21 value—this is because only 4 scans were used.
 
-![pulsecal\_fig11](images/pulse_calibration/fig11.png)
+![pulsecal\_fig12](images/pulse_calibration/fig12.png)
 
 * Repeat the process with more scans. Run:
 
@@ -138,11 +138,11 @@ Experiments of a 14 kDa IDP on 850 MHz.
 
   and narrow the pulse-length range: **STARTVAL** → 33, **ENDVAL** → 37. Then click **Save** and **Start Optimize**, overwrite → **y**.
 
-![pulsecal\_fig12](images/pulse_calibration/fig12.png)
+![pulsecal\_fig13](images/pulse_calibration/fig13.png)
 
 * When optimization finishes, run `re 2 1` followed by `re 2 999` (the former is required to load spectrum “999”). The 11 spectra with progressively lower signal will be better resolved, and the optimal P21 (e.g. 35.218787 μs) will be displayed—interpolated from the intensities.
 
-![pulsecal\_fig13](images/pulse_calibration/fig13.png)
+![pulsecal\_fig14](images/pulse_calibration/fig14.png)
 
 * Run `P21` and note its value (e.g. 35.2 μs). Do the same for `PLW3` (e.g. –25.55 dB). These will be needed for `getprosol`.
 
@@ -176,7 +176,7 @@ Experiments of a 14 kDa IDP on 850 MHz.
 
   If you had run only `getprosol 1H 13.07 -11.46`, the ¹³C and ¹⁵N values would be pulled from “prosol” and would be suboptimal for this sample.
 
-![pulsecal\_fig14](images/pulse_calibration/fig14.png)
+![pulsecal\_fig15](images/pulse_calibration/fig15.png)
 
 * Finally, verify that all spectra can be recorded without issues. For each experiment:
 
@@ -204,7 +204,7 @@ Experiments of a 14 kDa IDP on 850 MHz.
 
   O1 should be identical in all experiments.
 
-![pulsecal\_fig15](images/pulse_calibration/fig15.png)
+![pulsecal\_fig16](images/pulse_calibration/fig16.png)
 
 * Run:
 
@@ -240,7 +240,7 @@ Experiments of a 14 kDa IDP on 850 MHz.
 
   for manual refinement. Optimize the 15N. The Wobble sweep width of 13C is very wide (12.017 MHz by default); therefore, we must zoom in on the baseline of the signal. Set it to 4.0 and click **Set**, then refine the position of the minimum. Likewise, set the Wobble sweep width of 1H to 4.0 MHz (default: 12.754 MHz) and refine manually.
 
-![pulsecal\_fig16](images/pulse_calibration/fig16.png)
+![pulsecal\_fig17](images/pulse_calibration/fig17.png)
 
 * `topshim`
 * `loopadj`
@@ -253,7 +253,7 @@ Experiments of a 14 kDa IDP on 850 MHz.
 
   to optimize all Z combinations up to 7th order (default is 5th).
 
-![pulsecal\_fig17](images/pulse_calibration/fig17.png)
+![pulsecal\_fig18](images/pulse_calibration/fig18.png)
 
 * Let’s measure and check the 1D proton now. Run:
 
@@ -264,7 +264,7 @@ Experiments of a 14 kDa IDP on 850 MHz.
 
   The existing **P1** value (13.130 μs) is too high and will give a very strong signal (probably left by a previous `pulsecal` or `getprosol`). Lower it to 1.0.
 
-![pulsecal\_fig18](images/pulse_calibration/fig18.png)
+![pulsecal\_fig19](images/pulse_calibration/fig19.png)
 
 * Run:
 
@@ -276,7 +276,7 @@ Experiments of a 14 kDa IDP on 850 MHz.
 
   for manual phase correction. Zoom into the peak and verify that the shape is symmetric.
 
-![pulsecal\_fig19](images/pulse_calibration/fig19.png)
+![pulsecal\_fig20](images/pulse_calibration/fig20.png)
 
 ### Calibrate 13C 90° Hard Pulse Length
 
@@ -302,7 +302,7 @@ Nothing new.
 
   assess the FID shape to decide the exact O1. This is important because experiments with water-signal suppression work best when O1 is exactly at the water resonance. Here we measure only gradient-selected experiments, where it’s less critical; regardless, it’s ideal to set an accurate O1.
 
-![pulsecal\_fig20](images/pulse_calibration/fig20.png)
+![pulsecal\_fig21](images/pulse_calibration/fig21.png)
 
 * When it finishes, run:
 
@@ -312,16 +312,16 @@ Nothing new.
 
   to display the found value; in this case, 3994.21 Hz.
 
-![pulsecal\_fig21](images/pulse_calibration/fig21.png)
+![pulsecal\_fig22](images/pulse_calibration/fig22.png)
 
 * Execute `getprosol` with the ¹H, ¹³C, and ¹⁵N calibrated parameters for all experiments to be measured.
 
 * Run `re 8` to switch to the 3D experiment and experimentally find the optimum O1 value. Hit `gs`, go to the **Offset** table, enter the O1 value from `o1calib` (3994.21 Hz), and press Enter.
 
-![pulsecal\_fig22](images/pulse_calibration/fig22.png)
+![pulsecal\_fig23](images/pulse_calibration/fig23.png)
 
 * Then enter the previous value, 3991.10 Hz, and press Enter. You will see a less wavy FID, indicating it is better than 3994.21 Hz. This occurs because the modular differences between observed and resonance frequencies are minimized, giving a smoother FID. In principle, one could manually alter O1 and observe its effect, but here it is redundant. Finally, click **Stop**.
 
-![pulsecal\_fig23](images/pulse_calibration/fig23.png)
+![pulsecal\_fig24](images/pulse_calibration/fig24.png)
 
 * Update the `O1` value in all experiments you plan to run.
