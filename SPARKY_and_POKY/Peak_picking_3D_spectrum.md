@@ -143,7 +143,7 @@ def estimate_15N_hsqc_peaks(sequence: str) -> int:
 
 1. Identify a group of **`HNCO`** peaks that should correspond to a single **`15N HSQC`** peak.
 
-   ![](images/peak_picking_3D/peak_group.png)
+   ![fig1](images/peak_picking_3D/peak_group.png)
 
 2. In the **`HNCO`** window press **`lt`**.
    Hold **Ctrl** and **left‑click** the peak with the highest **Data Height** to deselect it, then press **Delete** to remove the weaker peaks so that only the strongest remains.
@@ -185,7 +185,7 @@ When peak‑picking the combination **HNcoCA / HNCA**, we use the same overall w
 
 4. For each pair of strip plots, look for characteristic peak patterns like the one below:
 
-   ![](images/peak_picking_3D/HNCA_HNcoCA_strip_plot.png)
+   ![fig2](images/peak_picking_3D/HNCA_HNcoCA_strip_plot.png)
 
 5. Select the real peaks, mark them with **“s”** via **`nt`**, and delete the noise peaks.
 
@@ -201,7 +201,7 @@ When peak‑picking the combination **HNcoCA / HNCA**, we use the same overall w
 
 3. For each pair of strip plots, search for peaks unique to one spectrum, as illustrated below:
 
-   ![](images/peak_picking_3D/strip_plot_merge_3D_peaks.png)
+   ![fig3](images/peak_picking_3D/strip_plot_merge_3D_peaks.png)
 
 4. Select each unique peak, press **`nt`**, and mark it with **“u”** so you can identify it later.
 
