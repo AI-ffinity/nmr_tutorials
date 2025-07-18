@@ -198,3 +198,7 @@ steps.
 - At the end export both HNCO peaks lists along with the "Note column" and combine them manually
 by adding the `HNCO 850 MHz` peaks marked with "u" to `HNCO 950 MHz`.
 
+---
+
+# Author
+- Thomas Evangelidis
