@@ -2,11 +2,7 @@
 
 ## Overview
 
-This tutorial’s workflow begins with **referencing and converting** the spectra to **POKY/Sparky** format. Next, we **create a 2D projection** from the 3D spectrum, which aids not only proper referencing but also more accurate peak picking.
-
-For **peak picking**, we will follow a **systematic strategy** that—although more involved—allows for **higher‑precision** identification of peaks in the 3D spectrum while minimizing noise. Because the **N‑HN projection is derived directly from the 3D spectrum**, it provides a more accurate reference than a standalone <sup>15</sup>N‑HSQC spectrum, whose peak centers may deviate slightly from those in the N‑HN projection.
-
-To ensure **accurate peak selection**, we will use the **N‑HN projection as an intermediate reference point** for restricted peak picking in the 3D spectrum. The workflow is as follows:
+This tutorial’s workflow begins with **referencing and converting** the spectra to **POKY/Sparky** format. Then:
 
 1. **Load and adjust** the appearance of all spectra.
 2. Use the <sup>15</sup>N‑HSQC spectrum as a reference to perform **restricted peak picking** in the 3D spectrum.
@@ -190,6 +186,12 @@ When peak‑picking the combination **HNcoCA / HNCA**, we use the same overall w
 5. Select the real peaks, mark them with **“s”** via **`nt`**, and delete the noise peaks.
 
 6. Repeat the process for all strips, then select all peaks in **`HNCA`** and perform the same refinement.
+
+>**Note**: the peak‑picking of the combination **CBCAcoNH / HNCACB** follows the same logic. The main difference is that in 
+the **HNCACB** the **Cα** and **Cβ** peaks have opposite phase (usually **Cβ** are anti-phase). Thus beware not do delete
+all peaks with negative intensity. In that spectrum, usually the peaks of residue `i` have stronger intensity than 
+those of residue `i-1`. On the other hand this phase swap does not apply to the **CBCAcoNH**, where you can safely 
+delete negative peaks. Moreover, the **Cα** peaks tend to have higher intensity value than the **Cβ** peaks.
 
 ---
 
