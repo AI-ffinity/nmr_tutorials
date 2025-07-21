@@ -39,11 +39,14 @@ Because the stock concentration is often unknown, begin with a test dilution and
 
 ### 📐 Useful Equations
 
-```txt
-Dilution factor = (sample volume + buffer volume) / sample volume  
-Total dilution = dilution_1 × dilution_2 × ...
-c [μM] = (A × 10⁶ × dilution) / ε  
-c [μM] = (mg/mL × 10⁶ × dilution) / MW
+```math
+\begin{align*}
+A &= c \times \epsilon \times l \\
+dilution &= \frac{V_{sample} + V_{buffer}}{V_{sample}} \\  
+total \ dilution &= dilution_1 \times dilution_2 × ...\\
+c [μM] &= \frac{A \times 10⁶ \times dilution}{\epsilon}  \\
+c [μM] &= \frac{(c_{mg/mL} \times 10⁶ \times dilution)}{MW}
+\end{align*}
 ```
 
 ---
@@ -114,60 +117,59 @@ c [μM] = (mg/mL × 10⁶ × dilution) / MW
 
 ## 4. Calculating Protein Concentration
 
-After measurement, you can calculate protein concentration using either of the following methods:
+After collecting your NanoDrop measurements, you can calculate the protein concentration in two ways, depending on whether you used:
 
-> 🧠 Best Practice: Record **both A280 and mg/mL** for cross-checking
+- **Absorbance values (A280)** → use the **Beer–Lambert law**
+- **Mass concentration (mg/mL)** reported by NanoDrop → convert to **molar concentration**
+
+> 🧠 **Recommendation:** Record **both** the absorbance and the reported concentration during measurement. This provides a useful cross-check and allows you to recompute values if needed.
 
 ---
 
-### 🔹 Method 1: Using Absorbance (A280)
+### 🔹 Option 1: Calculation Based on Absorbance (A280)
 
-> ℹ️ NanoDrop standardizes all readings to a **1 cm path length**, so `l = 1`
+If you chose to manually calculate concentration using the absorbance values, follow these steps:
 
-- Calculate the average Absorbance over one replicate, and use:
+1. For each replicate, **average the 5 A280 values** recorded.
+2. Apply the **Beer–Lambert law**:
+```math
+\begin{align*}
+A &= c \times \epsilon \times l \\ 
+c [μM] &= \frac{(A_{avg} × 10^6 × dilution)}{ε}
+\end{align*}
+```
+Where:
+- `A` = average absorbance at 280 nm (unitless)
+- `ε` = extinction coefficient in M⁻¹·cm⁻¹ (from ProtParam)
+- `l` = path length in cm (NanoDrop usually auto-adjusts; use 0.1 cm unless known otherwise)
+- `dilution` = total dilution factor applied to the measured sample
+
+
+---
+
+### 🔹 Option 2: Calculation Based on NanoDrop Reported Concentration
+
+If you used **"Other protein (E & MW)"** mode, NanoDrop will report **mass concentration** in **mg/mL**.
+
+To convert this to the final **molar concentration**, use the following formula:
 
 ```math
-c [μM] = \frac{(A_{avg} × 10^6 × dilution)}{ε}
+c [μM] = \frac{c_{NanoDrop} × 10⁶ × dilution}{MW}
 ```
-**Example:**  
-- A = 0.750  
-- ε = 21,000  
-- dilution = 30×
 
-```
-c = (0.750 × 10⁶ × 30) / 21,000  
-  = 22,500,000 / 21,000  
-  = 1,071.4 μM
-```
 
 ---
 
-### 🔹 Method 2: Using mg/mL from NanoDrop
-
-```txt
-c [μM] = (mg/mL × 10⁶ × dilution) / MW
-```
-
-**Example:**  
-- mg/mL = 0.85  
-- MW = 71,000  
-- dilution = 30×
-
-```
-[μM] = (0.85 × 10⁶ × 30) / 71,000  
-     = 25,500,000 / 71,000  
-     = 359.2 μM
-```
+> 📝 **Note:** The two methods should give you very similar results. If they differ significantly, re-check your ε, MW, dilution factor, and pipetting accuracy.
 
 ---
 
-### 📊 Final Reporting
+### ✅ Final Result
 
-- Average the **three replicate concentrations**
-- Optionally report **standard deviation**
-- Report final result in **μM**
+Once you've calculated the molar concentration for all three replicates:
+- Average the three values to obtain your **final concentration estimate**.
+- If necessary, report the standard deviation for accuracy.
 
----
 
 ## 🧠 Tips & Best Practices
 
@@ -177,4 +179,5 @@ c [μM] = (mg/mL × 10⁶ × dilution) / MW
 - Use both A280 and mg/mL values when possible
 - Never forget to apply the **dilution factor**
 
----
+
+
