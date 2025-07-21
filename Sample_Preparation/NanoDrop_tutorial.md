@@ -9,7 +9,7 @@ extinction coefficient of the measured protein. This can be obtained via ProtPar
 
 - NanoDrop spectrophotometer (connected to a computer with NanoDrop GUI)
 - Milli-Q detergent (for cleaning the measurement surfaces)
-- Pipette set to 3 μL (the required sample volume)
+- Pipettes with range 1-20 μL
 - Wiping tissues
 
 ### User-provided materials/knowledge:
@@ -33,7 +33,7 @@ extinction coefficient of the measured protein. This can be obtained via ProtPar
   <img src="./images/protparam-ext-coeff.png" width="500"/>
 </p>
 
-- d) Choose the appropriate coefficient that corresponds to your protein and NanoDrop settings.
+- d) **If your NMR buffer contains a reducing agent (e.g., DTT or TCEP), use the extinction coefficient assuming all cysteine (Cys) residues are reduced.** These reagents prevent disulfide bond (cystine) formation, so the reduced-state assumption accurately reflects the protein's condition in solution.
 
 ---
 ## 2. Measurement Procedure
