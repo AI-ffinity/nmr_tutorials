@@ -26,8 +26,17 @@ This tutorial provides step-by-step instructions for measuring protein concentra
 1. Visit [ProtParam](https://web.expasy.org/protparam/)
 2. Paste your protein's FASTA sequence
 3. Click `Compute Parameters`
+
+<p align="center">
+  <img src="./images/protparam-homescreen.png" width="500"/>
+</p>
+
 4. Locate the **Extinction Coefficient** section
-5. ✅ **If your buffer contains reducing agents (e.g., DTT or TCEP)**, choose the value assuming all Cys are **reduced**
+<p align="center">
+  <img src="./images/protparam-ext-coeff.png" width="500"/>
+</p>
+
+5. ✅ **If your buffer contains reducing agents (e.g., DTT or tCEP)**, choose the value assuming all Cys are **reduced**
 
 ---
 
@@ -53,17 +62,17 @@ c [μM] &= \frac{(c_{mg/mL} \times 10⁶ \times dilution)}{MW}
 
 ### 🔬 Step 1: Prepare a 20× Test Dilution Sample
 
-- 2 μL protein + 38 μL buffer → total = 40 μL  
+- Pipette 2 μL protein and 38 μL buffer into a new Eppendorf tube → total = 40 μL  
 - Dilution = **20×**  
-- Vortex thoroughly
+- Put the vial into vortex and mix well
 
 ---
 
 ### 🧪 Step 2: Measure A280
 
-- Measure **3 μL** on NanoDrop
+- Measure **3 μL** on NanoDrop (see below).
 - If **A280 < 1.0**, proceed to replicate measurements
-- If **A280 > 1.0**, dilute further:
+- If **A280 > 1.0**, dilute further according to following table:
 
 | Final Dilution | Dilution Step | Test Dilution Sample | Buffer | Total Vol |
 |----------------|----------------|--------|--------|-----------|
@@ -71,45 +80,76 @@ c [μM] &= \frac{(c_{mg/mL} \times 10⁶ \times dilution)}{MW}
 | 40×            | 2×             | 5 μL   | 5 μL   | 10 μL     |
 | 50×            | 2.5×           | 4 μL   | 6 μL   | 10 μL     |
 
-> 💡 Example: 20× → 2× → 40× total dilution
+> 💡 Example: 20× → 2× → 40× total dilution. \
+Always mix the new dilution table into a new Eppendorf tube.
 
 ---
 
 ### ✅ Step 3: Prepare Final Replicates
 
-- Once the correct dilution is identified, prepare **3 replicates**
-  - Each should yield at least **15 μL** (5 × 3 μL measurements)
-- ✅ If the initial 20× test is valid, you can use it as **Replicate 1**
+Once you’ve determined the appropriate dilution factor, prepare **three independent replicate samples** using that same dilution. Each replicate should provide at least **15 μL** of solution (sufficient for 5 × 3 μL measurements).  
+For example, if the final dilution is **30×**:
+
+- In three clean Eppendorf tubes, mix **2 μL** of protein stock with **58 μL** of NMR buffer.
+- Vortex each sample thoroughly to ensure proper mixing.
+- If the initial 20× test dilution yielded an acceptable absorbance (within 0.1–1.0), you may use it as **Replicate 1**, and prepare two additional samples following the same 20× protocol.
 
 ---
 
 ## 3. Measurement Procedure
 
-1. Clean both tips:
-   - Load 3 μL Milli-Q
+1. Clean both measuring tips:
+   - Open Nanodrop and pipette 3 μL of Milli-Q onto lower tip.
    - Close lid briefly
-   - Wipe both tips
+   - Wipe both tips with tissues
 
-2. Open NanoDrop software
-   - Select **"Protein A280"**
+2. Open NanoDrop measurement settings:
+   - On the GUI, Select **"Protein A280"**
 
-3. Under `Type`, choose:
-   - ✅ **"Other protein (E & MW)"**
+<p align="center">
+  <img src="./images/nanodrop-homescreen.jpg" width="500"/>
+</p>
+
+3. Under `Sample ID`, name your measurements.
+
+4. Under `Type`, choose:
+   - **"Other protein (E & MW)"**
      - Enter **ε** from ProtParam (in thousands, e.g., 21 for 21,000)
      - Enter **MW** in kDa
 
-4. Blank:
-   - Load **3 μL NMR buffer**
+<p align="center">
+  <img src="./images/nanodrop-settings.jpg" width="500"/>
+</p>
+
+
+5. Blank:
+   - Pipette **3 μL of NMR buffer**  onto lower tip. 
    - **Close lid**, click **Blank**
+   - Wait for the blanking process to finish
+   - Wipe both tips with tissues
 
-5. Measure sample:
-   - Wipe tips
-   - Load **3 μL protein sample**
+
+<p align="center">
+  <img src="./images/nanodrop-blank.jpg" width="500"/>
+</p>
+
+
+6. Measure sample:
+   - Wipe both tips with tissues
+   - Pipette **3 μL of prepared protein sample** onto lower tip.
    - **Close lid**, click **Measure**
+   - Wait for the measuring process to finish
+   - Wipe both tips with tissues
 
-6. Record results:
-   - A280
-   - mg/mL value reported by NanoDrop
+
+<p align="center">
+  <img src="./images/nanodrop-measure.jpg" width="500"/>
+</p>
+
+
+7. Record results:
+   - **A280**
+   - **Conc. mg/mL** value reported by NanoDrop
 
 > 🧼 Only clean with Mili-Q and return to the homescreen **after final replicate**, not between every measurement
 
@@ -117,7 +157,7 @@ c [μM] &= \frac{(c_{mg/mL} \times 10⁶ \times dilution)}{MW}
 
 ## 4. Calculating Protein Concentration
 
-After collecting your NanoDrop measurements, you can calculate the protein concentration in two ways, depending on whether you used:
+After collecting your NanoDrop measurements, you can calculate the protein concentration in two ways, depending on whether you recorded:
 
 - **Absorbance values (A280)** → use the **Beer–Lambert law**
 - **Mass concentration (mg/mL)** reported by NanoDrop → convert to **molar concentration**
