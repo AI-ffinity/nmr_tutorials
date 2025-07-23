@@ -28,12 +28,12 @@ This tutorial provides step-by-step instructions for measuring protein concentra
 3. Click `Compute Parameters`
 
 <p align="center">
-  <img src="../images/protparam-homescreen.png" width="500"/>
+  <img src="./images/protparam-homescreen.png" width="500"/>
 </p>
 
 4. Locate the **Extinction Coefficient** section
 <p align="center">
-  <img src="../images/protparam-ext-coeff.png" width="500"/>
+  <img src="./images/protparam-ext-coeff.png" width="500"/>
 </p>
 
 5. ✅ **If your buffer contains reducing agents (e.g., DTT or tCEP)**, choose the value assuming all Cys are **reduced**
@@ -107,7 +107,7 @@ For example, if the final dilution is **30×**:
    - On the GUI, Select **"Protein A280"**
 
 <p align="center">
-  <img src="../images/nanodrop-homescreen.jpg" width="500"/>
+  <img src="./images/nanodrop-homescreen.jpg" width="500"/>
 </p>
 
 3. Under `Sample ID`, name your measurements.
@@ -118,7 +118,7 @@ For example, if the final dilution is **30×**:
      - Enter **MW** in kDa
 
 <p align="center">
-  <img src="../images/nanodrop-settings.jpg" width="500"/>
+  <img src="./images/nanodrop-settings.jpg" width="500"/>
 </p>
 
 
@@ -130,7 +130,7 @@ For example, if the final dilution is **30×**:
 
 
 <p align="center">
-  <img src="../images/nanodrop-blank.jpg" width="500"/>
+  <img src="./images/nanodrop-blank.jpg" width="500"/>
 </p>
 
 
@@ -143,7 +143,7 @@ For example, if the final dilution is **30×**:
 
 
 <p align="center">
-  <img src="../images/nanodrop-measure.jpg" width="500"/>
+  <img src="./images/nanodrop-measure.jpg" width="500"/>
 </p>
 
 
