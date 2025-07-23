@@ -1,105 +1,200 @@
-# 15N HSQC Titration Experiment Setup
+# How to Set Up a **¹H–¹⁵N HSQC** Experiment in TopSpin
 
-This tutorial outlines the step-by-step setup for a 15N HSQC titration experiment using an NMR spectrometer.
+> This tutorial walks you through every step—from loading your sample to fine-tuning shims and measuring signal-to-noise—so 
+> you can acquire high-quality HSQC data and compare the classic and BEST-HSQC variants.
+> There is [another tutorial](./15N_HSQC_IOCB_tutorial.md) based on a workshop, which will be eventually merged to this one.
 
-## Starting the Experiment
+---
 
-1. **Eject Current Sample:**
-   - Use `sx` or `ej` to eject the current sample from the spectrometer.
+## 1. Prepare a New Experiment Folder
 
-2. **Insert New Sample:**
-   - Command `sx <position>` starts the carousel, and the sample at the specified position will be inserted into the spectrometer. Replace `<position>` with the actual position number of your sample.
+1. **Copy a previously calibrated ¹H experiment**  
+   - In TopSpin, select an earlier proton pulse-calibration experiment (e.g. `zg`) and press `new`.  
+   - Create a **new dataset** and copy the parameters into it.
 
-## Setting Up a 1D Experiment in Folder "Praktikum"
+2. **Set the temperature**  
+   - Press `edte` and enter the desired temperature.
 
-Proceed with the following steps to set up and start the 1D experiment:
+3. **Insert the sample** into the spectrometer.
 
-1. **Create a New Experiment:**
-   - Use the command `new` to create a new experiment based on an active one. Add an appropriate description to differentiate this setup.
+4. **Lock on the solvent**  
+   - Press `lock`, choose the correct solvent (e.g. `H2O+D2O`), and wait ≈ 10 min for temperature stabilization.
 
-2. **Automatic Matching and Tuning:**
-   - Execute `ww` to automatically match and tune the system. Aim to align the bottom of the well with the vertical central line of the display for optimal performance.
+![Lock menu](images/fig1.png)
 
-3. **Lock the Magnetic Field:**
-   - Use `lock` and select "H2O + D2O" from the dropdown list. The system will measure a simple spectrum to adjust the frequency, ensuring the stability of the magnetic field throughout long experiments.
+> **Tip:** While the sample equilibrates, you can start configuring the HSQC experiment.
 
-4. **Automatic Shimming:**
-   - Enter `topshim gui` to initiate automatic 1D shimming, which optimizes the magnetic field homogeneity.
+---
 
-5. **Pulse Program Setup:**
-   - Input `p1` followed by `1 P1 1` to configure the pulse program settings.
+## 2. Load and Configure the HSQC Pulse Program
 
-6. **Start the Experiment:**
-   - Use the command `zg` to start the experiment. This will initiate the acquisition of the 1D NMR spectrum.
+![Create new experiment](images/fig2.png)
 
-## Setting Up a 2D Experiment in Folder "Praktikum"
+1. Press `new` → **Read parameter set** → choose an HSQC sequence (e.g. `HSQCETF3FGPSI`).  
+2. Select **Execute getprosol** to import pulse-length/power values.  
+3. Enter a short description under **Title** and click **OK**.
 
-1. **Create a New 2D Experiment:**
-   - Use the command `new` to create a new experiment and add its details.
+4. **Verify acquisition channels**  
+   - Press `edasp`.
 
-2. **Sample Insertion:**
-   - Place your sample into a cuvette holder and use `sx <position>` to start the carousel. This command inserts the sample at the specified position into the spectrometer. Replace `<position>` with the actual position number of your sample.
+5. **Set basic parameters**  
+   - Press `eda` and adjust  
+     - **SW** (spectral width)  
+     - **O1P** (reference offset)  
+     - **AQ** (acquisition time)  
+     - **TD / DS / NS** as needed for total experiment time (`expt`).
 
-3. **Automatic Tuning and Matching:**
-   - Execute `atma` to automatically tune and match the 15N and 1H channels. Use the arrows on the display to center the well on the vertical line for optimal tuning.
+---
 
-4. **Frequency Lock:**
-   - Select "H2O + D2O" using the `lock` command. This setup measures a simple spectrum of D2O to adjust and lock the frequency, ensuring magnetic field stability throughout long experiments.
+## 3. Probe Tuning & Matching
 
-5. **Shimming:**
-   - Run `topshim gui` for automatic 1D shimming to optimize the magnetic field homogeneity.
+![ATMM window](images/fig4.png)
 
-6. **Pulse Calibration:**
-   - Use `pulsecal` to calculate the length of the 90° hydrogen pulse P1 for 10W. This is recalculated for each sample as differences, though small, depend more on buffer salt concentration and temperature than on the protein and ligand. For salt concentrations > 150 mM, the pulse is longer (e.g., 14 ms). Optimal pulse length is crucial for maximizing signal acquisition.
+1. Press `atmm` (manual tune/match).  
+2. **Select `15N`**, click **Start**, then repeat for **`1H`**.  
+3. When automatic tuning finishes, switch to **manual** mode and center the minima on both channels.
 
-7. **Set Pulse and Power:**
-   - Execute `getprosol 1H P1 xW`, for example, `getprosol 1H 0.71 10W`. Insert the previously determined value P1 with the appropriate power value.
+4. Press `loopadj` to refine lock parameters.
 
-8. **Fourier Transform Check:**
-   - Run `xfb` to perform a Fourier transform in both dimensions to monitor how the 2D spectrum develops. Typically, signals in the 15N dimension improve more significantly than those in the 1H dimension as the experiment progresses, although eventually only noise is added. This is more pronounced in small, flexible proteins or intrinsically disordered proteins (IDPs), which can be recorded for longer durations.
+---
 
-9. **Spectrum Processing:**
-   - Execute `qfp` to process the spectrum, which applies the macro for quadrature sine bell window (`qsin`), Fourier transform 1D (`ft`), and phase correction (`pk`).
+## 4. Automated Shimming (Shigemi Tube)
 
-10. **Interactive Phase Correction:**
-    - Use `.ph` for phase correction. Drag on the "0" icon and click the "save" icon when adjustments are completed.
+1. Launch the GUI: `topshim gui`.
 
-11. **Multidisplay Mode:**
-    - Enter `.md` of the "two parallel FIDs" icon to switch to multidisplay mode. This allows overlaying and comparing different spectra by clicking and dragging them into the window.
+![Topshim GUI](images/fig5.png)
 
-12. **Baseline Correction:**
-    - Perform baseline correction using `basl`. The baseline appears in red, with the spectrum in blue. This step is necessary because automatic correction often fails to achieve perfect results.
+2. Under **PARAMETERS** type `plot` and start an initial shim.  
+3. Examine the field profile:  
+   - `TopshimData → 1D_maps_field → zg30` (see liquid range).
 
-13. **Monitor Progress:**
-    - Run `xfb` again to continue monitoring the progress of the experiment.
+![Field profile](images/fig6.png)
 
-## Other Useful Commands
+4. Run a **3D shim**:  
+   - `topshim gui` → choose **3D**, enable **Use Z6**.  
+   - Set **Before / After** to `Z-X-Y-XZ-YZ-Z`.  
+   - Under **PARAMETERS** enter the z-range you measured, e.g. `zrange=-0.881,0.84`, then click **Start**.
 
-1. **Recalculating Pulse Power:**
-   - `pulse <x>W` recalculates the pulse for `<x> Watt`, which in our context is usually 10. Replace `<x>` with the actual power level you need to set.
+![3D shim settings](images/fig7.png)
 
-2. **Pulse Program Commands:**
-   - Use `p1` followed by `1 P1 1` to set or check the pulse program configurations.
+---
 
-3. **Stopping the Experiment:**
-   - The command `stop` is used to halt the measurement process at any point.
+## 5. Fine-Tuning the ¹H Pulse Length
 
-4. **Setting Number of Scans and Delay:**
-   - `1 NS 1` sets the number of scans to 1, optimizing the acquisition time.
-   - `d1` sets the delay time between scans, allowing for system relaxation and accurate results.
+> The following commands were issued in the console (no screenshots):
 
-5. **Enhanced Fourier Processing:**
-   - Execute `efp` for a combined command sequence:
-     - `em` (exponentially multiply) applies broadening with a factor of `1b`.
-     - `ft` performs a Fourier transform on the 1D data.
-     - `pk` applies phase correction, using phc0 and phc1 parameters to adjust the spectrum.
+```bash
+lockdisp
+loopadj
+wsh
+bsmsdisp
+re 1          # recall the 1D proton dataset
+eda
+1 AQ 0.524    # extend acquisition time
+1 TD 64K
+pulsecalc
+ased
+1 P1 1
+zg            # acquire 1D ¹H
+gm
+ft
+mc
+pp
+````
 
-6. **Receiver Gain Setting:**
-   - `1 RG 64` sets the receiver gain of experiment "1" to 64, optimizing signal detection and amplification. Receiver 
-   gain is a crucial parameter in NMR spectroscopy that adjusts the level of amplification of the NMR signal received 
-   by the hardware. Proper adjustment of the receiver gain is essential to obtain a signal with good signal-to-noise 
-   ratio without saturating the receiver.
+### Calibrate P1
 
-## General Remarks
+1. Open `ased`, set `1 P1 15.59*4`.
+2. Acquire (`zg`) the 1D proton spectrum.
+3. `fp` → **Check phasing**; if lock drifted (DMSO present), re-lock.
+4. `.ph` → manual phase → save.
+5. Repeat `zg` to iterate pulse calibration:
 
-- **Water Signal:** In NMR spectroscopy, water typically appears at 4.7 ppm. This is a crucial reference point for calibrating and interpreting NMR spectra, especially in aqueous samples.
+   * Goal: **equal positive and negative components** (ideally zero net signal).
+   * If more negative, **increase P1** via `ased` (`1 P1 62.520`) and re-run `zg`.
+   * Continue until balanced.
+
+![Pulse calibration result](images/fig9.png)
+
+6. Divide the final P1 by 4 (90° pulse) in `eda`.
+
+![Return to 90°](images/fig11.png)
+
+---
+
+## 6. Water Referencing & Final HSQC Setup
+
+![Water carrier zoom](images/fig12.png)
+
+1. Zoom into the water peak, note the zero-intensity carrier (e.g. **4456.08 Hz**).
+
+2. `re 2` → return to HSQC dataset → `eda` → set **O1{F2}** to that value.
+
+3. Execute `getprosol 1H 15.66 14W` (15.66 µs length of 90 degree pulse, PLW1{F2}=14 W power).
+
+4. Verify in `ased`, then start the 2D HSQC: `zg`.
+
+5. While acquiring, extract the 1D strip:
+
+   * `qsin` → **OK** → peaks between 8–10 ppm confirm protein visibility.
+   * Phase with `.ph` if needed.
+
+![Extract 1D from HSQC](images/fig13.png)
+
+---
+
+## 7. Setting Up the **BEST-HSQC**
+
+1. Press `new` → **Read parameters** → select `B_HSQCETF3GPSI` (BEST variant).
+2. In `eda`, note the **shorter TD{F1}** (faster but lower resolution).
+
+   * Adjust **TD**, **SW**, **NS** to balance time vs. resolution.
+
+![BEST-HSQC parameters](images/fig14.png)
+
+---
+
+## 8. Measuring 2D Signal-to-Noise (Classic vs. BEST)
+
+1. Display both processed datasets side-by-side.
+2. `xfb` → Fourier transform → `abs2` then `abs1` for baseline correction.
+3. Synchronize views, pick a strong peak, record its region.
+4. Create an **`int2drng`** file (`peak1.txt`) with:
+
+   ```
+   0 0
+   a 2048 0 0 122.75 123.75
+     16384 0 0 9.5 8.5
+   a 1024 0 0 128.0 110.0
+     16384 0 0 13.0 10.4
+   ```
+
+![Define S/N region](images/fig16.png)
+
+5. Run `sino2D`, choose **peak1.txt**—note **SINO** value.
+6. Repeat for the other dataset and for 2–3 additional peaks to compare classic vs. BEST performance.
+
+![Classic vs BEST windows](images/fig15.png)
+
+---
+
+## 9. Summary Checklist
+
+| Step              | Command               | Purpose                |
+| ----------------- | --------------------- | ---------------------- |
+| New dataset       | `new`                 | Copy parameters        |
+| Temperature       | `edte`                | Set temp               |
+| Parameter check   | `edasp`, `eda`        | Verify & edit settings |
+| Probe tune/match  | `atmm`                | ¹H & ¹⁵N matching      |
+| Lock optimize     | `loopadj`             | Fine lock              |
+| Shim              | `topshim gui`         | 1-D then 3-D shim      |
+| Pulse calibration | `zg`, `ased`          | Optimize P1            |
+| Water reference   | `eda`                 | Set O1{F2}             |
+| Acquire HSQC      | `zg`                  | Start 2D run          |
+| BEST HSQC         | `new` → BEST sequence | Faster variant         |
+| S/N analysis      | `sino2D`              | Compare datasets       |
+
+-----------------------------
+## Authors
+
+- **Thomas Evangelidis**
