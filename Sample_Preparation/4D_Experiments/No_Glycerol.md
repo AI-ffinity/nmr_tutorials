@@ -73,7 +73,7 @@ Because most centrifugal filter units are not volume-marked, estimating when you
 
 ## 2. Concetration Measurement
 
-Measure the concetration of your sample by following the [NanoDrop tutorial](./NanoDrop_tutorial.md). This concetration will serve as a starting point for the calculation of how much AcCoa is need to be added to achieve the desired ratio between protein and cofactor (if needed).
+Measure the concetration of your sample by following the [NanoDrop tutorial](../Misc/NanoDrop_tutorial.md). This concetration will serve as a starting point for the calculation of how much AcCoa is need to be added to achieve the desired ratio between protein and cofactor (if needed).
 
 ## 3. Final NMR Sample preparation
 
@@ -152,7 +152,7 @@ This gives you a final volume of ~339 μL, suitable for Shigemi tube preparation
 
 - Vortex the tube briefly to ensure thorough mixing.
 - Transfer the contents to the Shigemi tube.
-- Centrifuge the Shigemi tube on the table rotor to get rid of the bubbles.
+- Spin the Shigemi tube on the table rotor to get rid of the bubbles.
 
 **The following steps should be performed by NMR facility personnel but are included here for completeness:**
 
