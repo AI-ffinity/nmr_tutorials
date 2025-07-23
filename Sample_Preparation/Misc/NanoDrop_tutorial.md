@@ -194,7 +194,7 @@ If you used **"Other protein (E & MW)"** mode, NanoDrop will report **mass conce
 To convert this to the final **molar concentration**, use the following formula:
 
 ```math
-c [μM] = \frac{c_{NanoDrop} × 10⁶ × dilution}{MW}
+c [μM] = \frac{c_{NanoDrop} × 10^6 × dilution}{MW}
 ```
 
 
