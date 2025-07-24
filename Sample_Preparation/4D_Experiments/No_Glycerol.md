@@ -155,7 +155,8 @@ This gives you a final volume of ~339 μL, suitable for Shigemi tube preparation
 ### 🔹 Step 3: Final Steps
 
 - Vortex the tube briefly to ensure thorough mixing.
-- Transfer the contents to the Shigemi tube.
+- Transfer the sample into the Shigemi tube using the glass Pasteur pipette.
+- Cap the Shigemi tube.
 - Spin the Shigemi tube on the table rotor to get rid of the bubbles.
 
 **The following steps should be performed by NMR facility personnel but are included here for completeness:**
