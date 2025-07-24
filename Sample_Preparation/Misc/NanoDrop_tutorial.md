@@ -23,20 +23,20 @@ This tutorial provides step-by-step instructions for measuring protein concentra
 
 ## 1. Obtaining the Extinction Coefficient via ProtParam
 
-1. Visit [ProtParam](https://web.expasy.org/protparam/)
-2. Paste your protein's FASTA sequence
-3. Click `Compute Parameters`
+1. Visit [ProtParam](https://web.expasy.org/protparam/).
+2. Paste your protein's FASTA sequence.
+3. Click `Compute Parameters`.
 
 <p align="center">
   <img src="./images/protparam-homescreen.png" width="500"/>
 </p>
 
-4. Locate the **Extinction Coefficient** section
+4. Locate the **Extinction Coefficient** section.
 <p align="center">
   <img src="./images/protparam-ext-coeff.png" width="500"/>
 </p>
 
-5. ✅ **If your buffer contains reducing agents (e.g., DTT or tCEP)**, choose the value assuming all Cys are **reduced**
+5. ✅ **If your buffer contains reducing agents (e.g., DTT or tCEP)**, choose the value assuming all Cys are **reduced**.
 
 ---
 
@@ -100,11 +100,11 @@ For example, if the final dilution is **30×**:
 
 1. Clean both measuring tips:
    - Open Nanodrop and pipette 3 μL of Milli-Q onto lower tip.
-   - Close lid briefly
-   - Wipe both tips with tissues
+   - Close lid briefly.
+   - Wipe both tips with tissues.
 
 2. Open NanoDrop measurement settings:
-   - On the GUI, Select **"Protein A280"**
+   - On the GUI, Select **"Protein A280"**.
 
 <p align="center">
   <img src="./images/nanodrop-homescreen.jpg" width="500"/>
@@ -114,8 +114,8 @@ For example, if the final dilution is **30×**:
 
 4. Under `Type`, choose:
    - **"Other protein (E & MW)"**
-     - Enter **ε** from ProtParam (in thousands, e.g., 21 for 21,000)
-     - Enter **MW** in kDa
+     - Enter **ε** from ProtParam (in thousands, e.g., 21 for 21,000), using the value that assumes all **Cys residues are reduced**.
+     - Enter **MW** in kDa.
 
 <p align="center">
   <img src="./images/nanodrop-settings.jpg" width="500"/>
@@ -123,10 +123,10 @@ For example, if the final dilution is **30×**:
 
 
 5. Blank:
-   - Pipette **3 μL of NMR buffer**  onto lower tip. 
-   - **Close lid**, click **Blank**
-   - Wait for the blanking process to finish
-   - Wipe both tips with tissues
+   - Pipette **3 μL of NMR buffer**  onto lower tip.
+   - **Close lid**, click **Blank**.
+   - Wait for the blanking process to finish.
+   - Wipe both tips with tissues.
 
 
 <p align="center">
@@ -135,11 +135,11 @@ For example, if the final dilution is **30×**:
 
 
 6. Measure sample:
-   - Wipe both tips with tissues
+   - Wipe both tips with tissues.
    - Pipette **3 μL of prepared protein sample** onto lower tip.
-   - **Close lid**, click **Measure**
-   - Wait for the measuring process to finish
-   - Wipe both tips with tissues
+   - **Close lid**, click **Measure**.
+   - Wait for the measuring process to finish.
+   - Wipe both tips with tissues.
 
 
 <p align="center">
@@ -175,7 +175,7 @@ If you chose to manually calculate concentration using the absorbance values, fo
 ```math
 \begin{align*}
 A &= c \times \epsilon \times l \\ 
-c [μM] &= \frac{(A_{avg} × 10^6 × dilution)}{ε}
+c~[μM] &= \frac{(A_{avg} × 10^6 × dilution)}{ε}
 \end{align*}
 ```
 Where:
@@ -194,9 +194,8 @@ If you used **"Other protein (E & MW)"** mode, NanoDrop will report **mass conce
 To convert this to the final **molar concentration**, use the following formula:
 
 ```math
-c [μM] = \frac{c_{NanoDrop} × 10^6 × dilution}{MW}
+c~[μM] = \frac{c_{NanoDrop} × 10^6 × dilution}{MW}
 ```
-
 
 ---
 

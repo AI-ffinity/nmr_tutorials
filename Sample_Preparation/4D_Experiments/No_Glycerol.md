@@ -2,7 +2,7 @@
 
 This tutorial outlines the procedure for preparing protein samples for **4D NMR experiments**, assuming the starting material is **glycerol-free**. If your protein aliquots contain glycerol, please follow the separate [glycerol removal tutorial](./Glycerol_Removal.md).
 
-The process assumes you are starting with a series of protein aliquots (e.g., 6 × 100 μL, 150 μM) and guides you through:
+The process assumes you are starting with a series of protein aliquots (e.g., 6 × 100 μL, 300 μM assumed) and guides you through:
 
 - Concentration of the protein solution  
 - Measurement of protein concentration  
@@ -17,7 +17,7 @@ The process assumes you are starting with a series of protein aliquots (e.g., 6 
 - Pipettes (ideally in 100 μL and 200 μL ranges)
 - 0.5 mL centrifugal filter unit (3–100 kDa MWCO), placed inside a support Eppendorf tube
 - NMR buffer (glycerol-free), e.g.: `25 mM Tris, 300 mM NaCl, 1 mM TCEP, pH 7.5`
-- Protein aliquots (e.g., 6 × 100 μL, 150 μM assumed)
+- Protein aliquots (e.g., 6 × 100 μL, 300 μM assumed)
 - Ice box
 - NanoDrop spectrophotometer (for concentration measurement — see [separate tutorial](./NanoDrop_tutorial.md))
 - D<sub>2</sub>O solution
@@ -33,17 +33,21 @@ The goal of this step is to reduce the combined volume of your aliquots (~600 
 
 ### 🔹 Step 1: Pre-wash the Filter Unit
 
-1. Pipette **500 μL** of NMR buffer into the filter unit.
-2. Insert the unit into the centrifuge rotor.
-3. Centrifuge at **8,000 × g** for **10 minutes** at **4 °C**.
-4. If the buffer still reamins in the filter unit, centrifuge again for **5–10 minutes** until the unit is empty.
+Since the filter unit lacks volume markings, you will need to add one manually:
+
+1. Pipette **350 μL** of NMR buffer into the filter unit.  
+2. Use a marker to draw a line at the **350 μL** level. This mark will serve as a reference for future volume adjustments.
+3. Pipette additional **150 μL** into the filter unit to reach its full capacity.
+4. Insert the unit into the centrifuge rotor.
+5. Centrifuge at **8,000 × g** for **10 minutes** at **4 °C**.
+6. If the buffer still remains in the filter unit, centrifuge again for **5–10 minutes** until the unit is empty.
 
 ---
 
 ### 🔹 Step 2: Pool the Protein Aliquots
 
 1. Remove **6 protein aliquots** from the freezer and thaw them on **ice** for approximately **10–15 minutes**.
-2. Once thawed, pipette the full contents of each aliquot into a single clean Eppendorf tube.
+2. Once thawed, pipette the contents of the first five aliquots directly into the sixth one.
 3. Vortex the tube briefly to ensure thorough mixing.
 4. You should now have approximately **600 μL** of sample, accounting for minor pipetting losses.
 
@@ -51,19 +55,15 @@ The goal of this step is to reduce the combined volume of your aliquots (~600 
 
 ### 🔹 Step 3: Concentrating the Sample
 
-Because most centrifugal filter units are not volume-marked, estimating when you’ve reached 350 μL can be tricky. To help with this:
+In this step, you will use the **350 μL** mark made earlier to estimate the volume during concentrating.
 
-1. **Prepare a test filter unit** by pipetting **350 μL of water** into it. This acts as a temporary **visual reference** for the target final volume.
-2. In a separate, **pre-washed filter unit**, pipette **500 μL** of your protein sample.
-3. Centrifuge the sample at **8,000 × g** for **1 minute** at **4 °C**.
-4. After each spin, compare the sample volume **visually** to the water-filled reference unit.
+1. Pipette **500 μL** of your protein sample into **pre-washed filter unit**.
+2. Centrifuge the sample at **8,000 × g** for **1 minute** at **4 °C**.
+3. After each spin, check if the volume in the filter unit is above mark.
    - If the volume is still **above** the target, continue centrifugation in **1-minute increments**.
    - Stop once the volume matches the reference level.
 
 > ⚠️ **Avoid overdrying** the sample — stop slightly above the target volume if in doubt.
-
-5. Place the filter unit with the concentrated solution with the NMR buffer on ice and head to the NanoDrop station to measure concentration. 
----
 
 > 💡 **If your total sample volume exceeds the filter unit’s capacity (e.g., ~600 μL total), process the remaining volume like this**:
 >
@@ -71,9 +71,13 @@ Because most centrifugal filter units are not volume-marked, estimating when you
 > - Continue centrifugation in 1-minute increments as before.
 > - This ensures that **all of your protein sample is retained** and concentrated together without needing a second filter unit.
 
+4. Place the filter unit with the concentrated solution with the NMR buffer on ice and head to the NanoDrop station to measure concentration. 
+---
+
+
 ## 2. Concetration Measurement
 
-Measure the concetration of your sample by following the [NanoDrop tutorial](../Misc/NanoDrop_tutorial.md). This concetration will serve as a starting point for the calculation of how much AcCoa is need to be added to achieve the desired ratio between protein and cofactor (if needed).
+Measure the concetration of your sample by following the [NanoDrop tutorial](../Misc/NanoDrop_tutorial.md). This concetration will serve as a starting point for the calculation of how much AcCoa is needed to be added to achieve the desired ratio between protein and cofactor (if needed).
 
 ## 3. Final NMR Sample preparation
 
