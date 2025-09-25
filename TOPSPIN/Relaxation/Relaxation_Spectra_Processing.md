@@ -88,137 +88,144 @@ tabs2
 
 ---
 
-## Part C — Analyze in **Bruker Dynamics Center** (Protein Dynamics)
+## Part C — Analyze in Bruker Dynamics Center (Protein Dynamics)
 
-## 1) Launch & get oriented
+### 1) Launch & get oriented
 
-* Open **Dynamics Center**. In the lower-left, click the **Protein Dynamics** tab; you’ll see the method tree with **T1-Relaxation** and **T2-Relaxation** among the options. If you like, set a default data folder via **Config → Preferences → Default Spectrum Path** so every file dialog starts in the right place. &#x20;
+* Open Dynamics Center. In the lower-left, click the Protein Dynamics tab; you’ll see the method tree with T1-Relaxation and T2-Relaxation among the options. If you like, set a default data folder via Config → Preferences → Default Spectrum Path so every file dialog starts in the right place.
 
-## 2) One-time “Sample” setup (reused for both T1 and T2)
+### 2) One-time “Sample” setup (reused for both T1 and T2)
 
-* Go to **Sample** and load your **AA sequence** (FASTA) and a **PDB with hydrogens**. When you click **OK**, the **Sample** leaf turns **green**, meaning it’s ready. This saves time later because you can load this setup into other methods.&#x20;
+* Go to Sample and load your AA sequence (FASTA) and a PDB with hydrogens. When you click OK, the Sample leaf turns green, meaning it’s ready. This saves time later because you can load this setup into other methods.
 
 > Why this matters: the sequence aligns residue-indexed results; the H-complete PDB enables structure-aware displays later if you use them.
 
-## 3) T1 — Add data & peaks (pseudo-3D)
+### 3) T1 — Add data & peaks (pseudo-3D)
 
-* Open **T1-Relaxation → Data**. Set **Spectrum type = pseudo-3D** and browse to your processed **HSQC-T1** dataset.
-* In **Peaks**, pick **use any other peak list** and point to your good **2D ^15N HSQC** peak list (e.g., day-0 reference).
-* **Enable peak snapping** and choose **Snap to first plane then copy to others** so the software follows your peaks across delay planes.
-* Set **Search radius ≈ 3 points per dimension**.
-* In **Integrals**, set **Integral type = intensities**. Click **OK**; **Data** turns green and the planes/peaks are loaded.  &#x20;
+* Open T1-Relaxation → Data. Set Spectrum type = pseudo-3D and browse to your processed HSQC-T1 dataset.
+* In Peaks, pick “use any other peak list” and point to your good 2D ^15N HSQC peak list (e.g., day-0 reference).
+* Enable peak snapping and choose “Snap to first plane then copy to others” so the software follows your peaks across delay planes.
+* Set Search radius ≈ 3 points per dimension.
+* In Integrals, set Integral type = intensities. Click OK; Data turns green and the planes/peaks are loaded.
 
-> Tip: If you measured the same delay multiple times, see the **Lists** tab (default settings are fine for most cases).&#x20;
+> Tip: If you measured the same delay multiple times, see the Lists tab (default settings are fine for most cases).
 
-## 4) T1 — Fit the decays (Analysis)
+### 4) T1 — Fit the decays (Analysis)
 
-* Open **Analysis**. Choose **exponential decays**; keep **automatic starting values**.
-* Under **fit error estimation**, select the option that uses **signal-to-noise and variance of repeat experiments**; set **confidence interval = 95%**. Run the fit. It’s fast on typical datasets. &#x20;
+* Open Analysis. Choose exponential decays; keep automatic starting values.
+* Under fit error estimation, select the option that uses signal-to-noise and variance of repeat experiments; set confidence interval = 95%. Run the fit. It’s fast on typical datasets.
 
-> Result: per-residue **T1** with error bars—ready for plotting/export.
+> Result: per-residue T1 with error bars—ready for plotting/export.
 
-## 5) T1 — Make the display useful (View)
+### 5) T1 — Make the display useful (View)
 
-* In **View**, enable **fit curves in the main window** and set **“update on left-click”** so clicking a peak updates the fit panel.
-* Turn on **error bars for integrals**, the **T1 histogram**, and **error bars on the histogram**.
-* The cursor is **linked** across panels: click a peak to see its fit and highlighted bar.
-* To focus on a single panel, **right-click** away from fit points and choose **Toggle full display**; repeat to restore the full layout. &#x20;
+* In View, enable fit curves in the main window and set “update on left-click” so clicking a peak updates the fit panel.
+* Turn on error bars for integrals, the T1 histogram, and error bars on the histogram.
+* The cursor is linked across panels: click a peak to see its fit and highlighted bar.
+* To focus on a single panel, right-click away from fit points and choose Toggle full display; repeat to restore the full layout.
 
-> If you ever “lose” everything, use **File → Visibility of objects** to bring panels back.&#x20;
+> If you ever “lose” everything, use File → Visibility of objects to bring panels back.
 
-## 6) Save your T1 setup (project)
+### 6) Save your T1 setup (project)
 
-* **Right-click T1 → Save As…** and store, for example, **`T1.project`**. Use **Save As** so T1 and T2 end up as different files.&#x20;
+* Right-click T1 → Save As… and store, for example, `T1.project`. Use Save As so T1 and T2 end up as different files.
 
-## 7) T2 — Reuse the setup, switch the data, repeat
+### 7) T2 — Reuse the setup, switch the data, repeat
 
-* Open **T2-Relaxation**, then **right-click → Open…** and select your **`T1.project`**. This preloads **Sample** and your view preferences (the **Sample** node should turn green).
-* Go to **Data** and update only the **spectrum path** to your **HSQC-T2** pseudo-3D dataset; keep the same **Peaks/snapping**, **Search radius**, **Integrals**, and **Lists** settings as above.
-* Run **Analysis** again with **exponential decays**, S/N-based errors, and **95% CI**.
-* In **View**, turn on the **T2 histogram** and error bars; use the same navigation tricks (linked cursor, toggle full display).
-* **Save As…** **`T2.project`** when done. &#x20;
+* Open T2-Relaxation, then right-click → Open… and select your `T1.project`. This preloads Sample and your view preferences (the Sample node should turn green).
+* Go to Data and update only the spectrum path to your HSQC-T2 pseudo-3D dataset; keep the same Peaks/snapping, Search radius, Integrals, and Lists settings as above.
+* Run Analysis again with exponential decays, S/N-based errors, and 95% CI.
+* In View, turn on the T2 histogram and error bars; use the same navigation tricks (linked cursor, toggle full display).
+* Save As… `T2.project` when done.
 
-## 8) Export results & report
+### 8) Export results & report
 
-* From T1 and T2, use **Report** to create a PDF, and/or **Export** to get **text/Excel (.xlsx)** with fitted values and errors.
-* For quick stats on a histogram, **right-click → Properties**.&#x20;
+* From T1 and T2, use Report to create a PDF, and/or Export to get text/Excel (.xlsx) with fitted values and errors.
+* For quick stats on a histogram, right-click → Properties.
 
 ---
 
 ### Mini-FAQ / sanity checks (from the manual)
 
-* **Why pseudo-3D?** You process ^1H and ^15N as normal frequency axes; the “third” axis is **delay**, so Dynamics Center treats it as a stack of HSQC planes vs. time for fitting. (Set it explicitly in **Data → Spectrum type = pseudo-3D**.)&#x20;
-* **Do I need my own peak list?** Yes—use your best, clean **2D HSQC** peak list so peaks can be **snapped** to each delay plane.&#x20;
-* **Nothing shows / I closed everything.** Use **File → Visibility of objects** to restore panels.&#x20;
+* Why pseudo-3D? You process ^1H and ^15N as normal frequency axes; the “third” axis is delay, so Dynamics Center treats it as a stack of HSQC planes vs. time for fitting. (Set it explicitly in Data → Spectrum type = pseudo-3D.)
+* Do I need my own peak list? Yes—use your best, clean 2D HSQC peak list so peaks can be snapped to each delay plane.
+* Nothing shows / I closed everything. Use File → Visibility of objects to restore panels.
 
 ---
 
 ### What you hand off downstream
 
-Exported tables from **T1** and **T2** let you compute **R1 = 1/T1**, **R2 = 1/T2**, and **R2/R1** outside Dynamics Center (e.g., in Excel or Python), then plot residue-wise trends across days for your time-course analysis.
+* Exported tables from T1 and T2 let you compute R1 = 1/T1, R2 = 1/T2, and R2/R1 outside Dynamics Center (e.g., in Excel or Python), then plot residue-wise trends across days for your time-course analysis.
 
 ---
 
-# Part D — Convert to rates and make the summary plots (per day, then compare days)
+## Part D — Convert to rates and make the summary plots (per day, then compare days)
 
-1. **Export fitted values from Dynamics Center (not raw intensities).**
-   From each **T1** or **T2** method, use **Export** (or **Report**) to get per‑residue **T1**/**T2** plus their uncertainties. These are the quantities Dynamics Center fits and displays in the fit/histogram panels, and they’re the correct basis for downstream plots.
+1. Export fitted values from Dynamics Center (not raw intensities).
 
-2. **Compute rates (with units) and propagate errors.**
-   Work in seconds. For each residue:
+* From each T1 or T2 method, use Export (or Report) to get per-residue T1/T2 plus their uncertainties. These are the quantities Dynamics Center fits and displays in the fit/histogram panels, and they’re the correct basis for downstream plots.
 
-* **R1 = 1/T1** (s⁻¹)
-* **R2 = 1/T2** (s⁻¹)
-  Recommended first‑order uncertainties: **σ(R) ≈ σ(T)/T²**. Keep these errors; use them as error bars in your bar plots.
+2. Compute rates (with units) and propagate errors.
 
-3. **Optionally compute the ratio for trends (not absolute τc).**
+* Work in seconds. For each residue:
 
-* **R2/R1** is a useful *relative* proxy for changes in effective tumbling. With **T1/T2 only** (no hetNOE), treat R2/R1 as **comparative across days**, not as a standalone τc map; exchange and diffusion anisotropy can bias it.
+  * R1 = 1/T1 (s⁻¹)
+  * R2 = 1/T2 (s⁻¹)
+* Recommended first-order uncertainties: σ(R) ≈ σ(T)/T². Keep these errors; use them as error bars in your bar plots.
 
-4. **Merge days and align residues.**
-   Use the **same day‑0 HSQC peak list** that you snapped to in Dynamics Center so residue IDs align across days. If a residue is missing on a given day (fit failed / SNR low), leave it blank rather than forcing an estimate.
+3. Optionally compute the ratio for trends (not absolute τc).
 
-5. **Plot clearly, with uncertainties.**
-   For each day, build per‑residue bar plots for **T1**, **T2**, **R1**, **R2**, and (optionally) **R2/R1**, **with error bars**. Arrange days vertically (or side‑by‑side) so trends are easy to see. Also keep the **T1/T2 histograms** from Dynamics Center—they’re a quick check of global shifts day‑to‑day.
+* R2/R1 is a useful relative proxy for changes in effective tumbling. With T1/T2 only (no hetNOE), treat R2/R1 as comparative across days, not as a standalone τc map; exchange and diffusion anisotropy can bias it.
 
-6. **Sanity controls for the 7‑day series.**
+4. Merge days and align residues.
 
-* Keep **sample temperature** and acquisition conventions identical across days.
-* Use the **same Dynamics Center Data settings** everywhere (pseudo‑3D, peak snapping mode, search radius ≈ 3 points, integrals = **intensities**) so fits remain comparable.
+* Use the same day-0 HSQC peak list that you snapped to in Dynamics Center so residue IDs align across days. If a residue is missing on a given day (fit failed / SNR low), leave it blank rather than forcing an estimate.
+
+5. Plot clearly, with uncertainties.
+
+* For each day, build per-residue bar plots for T1, T2, R1, R2, and (optionally) R2/R1, with error bars. Arrange days vertically (or side-by-side) so trends are easy to see. Also keep the T1/T2 histograms from Dynamics Center—they’re a quick check of global shifts day-to-day.
+
+6. Sanity controls for the 7-day series.
+
+* Keep sample temperature and acquisition conventions identical across days.
+* Use the same Dynamics Center Data settings everywhere (pseudo-3D, peak snapping mode, search radius ≈ 3 points, integrals = intensities) so fits remain comparable.
 
 ---
 
-# Part E — Interpretation of relaxation plots (what T1/T2 alone can tell you)
+## Part E — Interpretation of relaxation plots (what T1/T2 alone can tell you)
 
-Below is a concise, T1/T2‑only cheatsheet. It focuses on **fitted T1/T2 (and derived R1/R2)**—not raw plane intensities.
+* Below is a concise, T1/T2-only cheatsheet. It focuses on fitted T1/T2 (and derived R1/R2)—not raw plane intensities.
 
-**Global size / tumbling changes**
+Global size / tumbling changes
 
-* **Aggregation / oligomerization / tighter complexes:**
-  Expect **shorter T2** → **larger R2** (broader lines), often **modest T1 changes**. If **R2** rises broadly across many residues from day‑to‑day, that’s consistent with **slower tumbling (larger apparent τc)** and/or added **Rex**. Your **R2/R1** may also **increase** globally.
-* **Degradation / unfolding into smaller species:**
-  Expect **longer T2** → **smaller R2** (narrower lines) for fragments that tumble faster; **R2/R1** tends to **decrease**. New peaks can appear at new positions (fragments/unfolded regions).
+* Aggregation / oligomerization / tighter complexes:
 
-**Local dynamics vs. exchange (limits of T1/T2‑only)**
+  * Expect shorter T2 → larger R2 (broader lines), often modest T1 changes. If R2 rises broadly across many residues from day-to-day, that’s consistent with slower tumbling (larger apparent τc) and/or added Rex. Your R2/R1 may also increase globally.
+* Degradation / unfolding into smaller species:
 
-* **Chemical exchange (Rex)** inflates **R2** without a matching **R1** change. Residues with unusually high **R2** (outliers in the histogram) are **exchange candidates**; with T1/T2 alone you can flag them, but you can’t robustly deconvolve Rex from size effects.
+  * Expect longer T2 → smaller R2 (narrower lines) for fragments that tumble faster; R2/R1 tends to decrease. New peaks can appear at new positions (fragments/unfolded regions).
 
-**What not to over‑interpret**
+Local dynamics vs. exchange (limits of T1/T2-only)
 
-* **Absolute τc from R2/R1** using only T1/T2 is **not** recommended; keep it **relative** across days.
-* **Raw intensity stacks** across days are confounded by gain/SNR; rely on **fitted** T1/T2 (with errors) and their histograms.
+* Chemical exchange (Rex) inflates R2 without a matching R1 change. Residues with unusually high R2 (outliers in the histogram) are exchange candidates; with T1/T2 alone you can flag them, but you can’t robustly deconvolve Rex from size effects.
 
-**Practical readouts for your 7‑day study**
+What not to over-interpret
 
-* **Histogram shifts:** a left shift of **R2** (smaller R2 / longer T2) suggests **smaller/faster** species; a right shift (larger R2 / shorter T2) suggests **larger/slower** or **more exchange**.
-* **Residue‑specific flags:** peaks whose **R2** jumps beyond the day’s interquartile spread (and is significant within error bars) are potential **exchange/interaction hotspots** worth inspecting in spectra.
+* Absolute τc from R2/R1 using only T1/T2 is not recommended; keep it relative across days.
+* Raw intensity stacks across days are confounded by gain/SNR; rely on fitted T1/T2 (with errors) and their histograms.
 
+Practical readouts for your 7-day study
 
-In this folder there is a tiny Excel template that ingests PDC exports and spits out **day-stacked R2 barplots with error bars** (and computes R1, R2, R2/R1 for you).
+* Histogram shifts: a left shift of R2 (smaller R2 / longer T2) suggests smaller/faster species; a right shift (larger R2 / shorter T2) suggests larger/slower or more exchange.
+* Residue-specific flags: peaks whose R2 jumps beyond the day’s interquartile spread (and is significant within error bars) are potential exchange/interaction hotspots worth inspecting in spectra.
 
-Quick how-to for the spreadsheet:
+---
 
-* Paste your PDC exports into **Exports\_T1** and **Exports\_T2** (columns: Residue, Day, T1\_s, T1\_err\_s / T2\_s, T2\_err\_s).
-* The template computes **R1 = 1/T1**, **R2 = 1/T2**, **R2/R1**, and error bars in **Rates**.
-* **Charts** shows a ready-made clustered bar chart: **R2 by Residue and Day** with custom error bars. It auto-expands as you add rows (thanks to Excel Tables).
-* If you use more than \~50 residues, duplicate the chart or extend the plotted ranges in the **Charts** sheet.
+In this folder there is a tiny Excel template that ingests PDC exports and spits out day-stacked R2 barplots with error bars (and computes R1, R2, R2/R1 for you).
+
+Quick how-to for the spreadsheet
+
+* Paste your PDC exports into Exports\_T1 and Exports\_T2 (columns: Residue, Day, T1\_s, T1\_err\_s / T2\_s, T2\_err\_s).
+* The template computes R1 = 1/T1, R2 = 1/T2, R2/R1, and error bars in Rates.
+* Charts shows a ready-made clustered bar chart: R2 by Residue and Day with custom error bars. It auto-expands as you add rows (thanks to Excel Tables).
+* If you use more than \~50 residues, duplicate the chart or extend the plotted ranges in the Charts sheet.
