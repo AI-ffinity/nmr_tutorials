@@ -159,28 +159,66 @@ Exported tables from **T1** and **T2** let you compute **R1 = 1/T1**, **R2 = 1/T
 
 ---
 
-## Part D — Convert to rates and make the summary plots
+# Part D — Convert to rates and make the summary plots (per day, then compare days)
 
-* Compute **R1 = 1/T1** and **R2 = 1/T2** per residue; then compute **R2/R1**.
-> R2/R1 is often used as a proxy for local effective correlation time; many labs even estimate τ\_c maps from this ratio.
-* For the **7-day time course**, make per-residue bar plots (T1, T2, R2/R1) stacked day-by-day so you can spot trends.
-**Interpretation cheatsheet (amide ^15N):**
-* **Longer T2 (smaller R2)** → narrower lines → typically **more flexible/disordered** local environment or **smaller 
-fragments** (if the protein degrades).
-* **Shorter T2 (larger R2)** → broader lines → **more rigid** cores / **larger effective size** (aggregation, 
-oligomerization). (Remember R2 also gets contributions from chemical exchange, R\_ex.)
-* **R2/R1** generally **increases** with **longer τ\_c** (bigger apparent size/slow tumbling), but be cautious: R\_ex 
-and diffusion anisotropy can bias simple τ\_c estimates for large proteins; advanced methods (e.g., TRACT and 
-cross-correlated approaches) exist if you need robust τ\_c.
+1. **Export fitted values from Dynamics Center (not raw intensities).**
+   From each **T1** or **T2** method, use **Export** (or **Report**) to get per‑residue **T1**/**T2** plus their uncertainties. These are the quantities Dynamics Center fits and displays in the fit/histogram panels, and they’re the correct basis for downstream plots.
+
+2. **Compute rates (with units) and propagate errors.**
+   Work in seconds. For each residue:
+
+* **R1 = 1/T1** (s⁻¹)
+* **R2 = 1/T2** (s⁻¹)
+  Recommended first‑order uncertainties: **σ(R) ≈ σ(T)/T²**. Keep these errors; use them as error bars in your bar plots.
+
+3. **Optionally compute the ratio for trends (not absolute τc).**
+
+* **R2/R1** is a useful *relative* proxy for changes in effective tumbling. With **T1/T2 only** (no hetNOE), treat R2/R1 as **comparative across days**, not as a standalone τc map; exchange and diffusion anisotropy can bias it.
+
+4. **Merge days and align residues.**
+   Use the **same day‑0 HSQC peak list** that you snapped to in Dynamics Center so residue IDs align across days. If a residue is missing on a given day (fit failed / SNR low), leave it blank rather than forcing an estimate.
+
+5. **Plot clearly, with uncertainties.**
+   For each day, build per‑residue bar plots for **T1**, **T2**, **R1**, **R2**, and (optionally) **R2/R1**, **with error bars**. Arrange days vertically (or side‑by‑side) so trends are easy to see. Also keep the **T1/T2 histograms** from Dynamics Center—they’re a quick check of global shifts day‑to‑day.
+
+6. **Sanity controls for the 7‑day series.**
+
+* Keep **sample temperature** and acquisition conventions identical across days.
+* Use the **same Dynamics Center Data settings** everywhere (pseudo‑3D, peak snapping mode, search radius ≈ 3 points, integrals = **intensities**) so fits remain comparable.
 
 ---
 
-# Interpretation of relaxation barplots
+# Part E — Interpretation of relaxation plots (what T1/T2 alone can tell you)
 
-The relaxation data are signal intensities at pre-specified time points plotted together.
-T2 relaxation is more sensitive to the MW and therefore more informative.
-From this data we obtain primarily two types of information:
-1) If the protein forms aggregates or multimers then the MW of the complex increases, the tumbling rate drops, and the T2 
-relaxation of its nuclei shortens (faster relaxation), which results to signal drop.
-2) On the opposite, if the protein unfolds or is degraded (is broken down to smaller parts), then the tumbling rate
-increases, the T2 relaxation of its nuclei increases (slower relaxation), which results to signal increase.
+Below is a concise, T1/T2‑only cheatsheet. It focuses on **fitted T1/T2 (and derived R1/R2)**—not raw plane intensities.
+
+**Global size / tumbling changes**
+
+* **Aggregation / oligomerization / tighter complexes:**
+  Expect **shorter T2** → **larger R2** (broader lines), often **modest T1 changes**. If **R2** rises broadly across many residues from day‑to‑day, that’s consistent with **slower tumbling (larger apparent τc)** and/or added **Rex**. Your **R2/R1** may also **increase** globally.
+* **Degradation / unfolding into smaller species:**
+  Expect **longer T2** → **smaller R2** (narrower lines) for fragments that tumble faster; **R2/R1** tends to **decrease**. New peaks can appear at new positions (fragments/unfolded regions).
+
+**Local dynamics vs. exchange (limits of T1/T2‑only)**
+
+* **Chemical exchange (Rex)** inflates **R2** without a matching **R1** change. Residues with unusually high **R2** (outliers in the histogram) are **exchange candidates**; with T1/T2 alone you can flag them, but you can’t robustly deconvolve Rex from size effects.
+
+**What not to over‑interpret**
+
+* **Absolute τc from R2/R1** using only T1/T2 is **not** recommended; keep it **relative** across days.
+* **Raw intensity stacks** across days are confounded by gain/SNR; rely on **fitted** T1/T2 (with errors) and their histograms.
+
+**Practical readouts for your 7‑day study**
+
+* **Histogram shifts:** a left shift of **R2** (smaller R2 / longer T2) suggests **smaller/faster** species; a right shift (larger R2 / shorter T2) suggests **larger/slower** or **more exchange**.
+* **Residue‑specific flags:** peaks whose **R2** jumps beyond the day’s interquartile spread (and is significant within error bars) are potential **exchange/interaction hotspots** worth inspecting in spectra.
+
+
+In this folder there is a tiny Excel template that ingests PDC exports and spits out **day-stacked R2 barplots with error bars** (and computes R1, R2, R2/R1 for you).
+
+Quick how-to for the spreadsheet:
+
+* Paste your PDC exports into **Exports\_T1** and **Exports\_T2** (columns: Residue, Day, T1\_s, T1\_err\_s / T2\_s, T2\_err\_s).
+* The template computes **R1 = 1/T1**, **R2 = 1/T2**, **R2/R1**, and error bars in **Rates**.
+* **Charts** shows a ready-made clustered bar chart: **R2 by Residue and Day** with custom error bars. It auto-expands as you add rows (thanks to Excel Tables).
+* If you use more than \~50 residues, duplicate the chart or extend the plotted ranges in the **Charts** sheet.
