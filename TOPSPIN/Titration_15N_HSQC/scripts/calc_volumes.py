@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import math
 from typing import Dict, Optional
 
 
@@ -147,12 +146,12 @@ if __name__ == "__main__":
         print(f"{k:<15} : {v:9.3f}")
 
     # B) Protein-agnostic mode (ignore protein target; no buffer; fill remainder with protein)
-    V_final=300.0
-    C_ligand_stock=100000.0
+    V_final=340.0
+    C_ligand_stock=1000.0
     DMSO_stock_pct=1.0
-    C_ligand_target=10.0
+    C_ligand_target=18.87
     DMSO_target_pct=0.02
-    C_protein_stock=150.0
+    C_protein_stock=54
     C_protein_target=None      # <-- activate protein-agnostic mode (None or 0)
 
     example_agnostic = calc_volumes_for_sample(

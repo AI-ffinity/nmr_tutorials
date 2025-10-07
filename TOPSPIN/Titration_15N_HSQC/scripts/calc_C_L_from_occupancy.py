@@ -53,10 +53,10 @@ def ligand_conc_for_occupancy(occupancy: float, Kd: float, cp: float) -> float:
     return x * cp                                      # absolute [L]
 
 
-cp = 120           # µM total protein
-Kd = 291          # µM dissociation constant
+cp = 50           # µM total protein
+Kd = 19.1          # µM dissociation constant
 
-for qd in np.arange(0.3, 0.9, 0.05): # [0.3, 0.4, 0.5, 0.6, 0.65, 0.7, 0.75, 0.8, 0.9]:	# desired occupancy
+for qd in np.arange(0.1, 0.9, 0.05): # [0.3, 0.4, 0.5, 0.6, 0.65, 0.7, 0.75, 0.8, 0.9]:	# desired occupancy
     qd = round(qd, 2)
     ligand_needed = ligand_conc_for_occupancy(qd, Kd, cp)
     print(f"occupancy {qd} -> Ligand concentration required: {ligand_needed:.2f} µM")

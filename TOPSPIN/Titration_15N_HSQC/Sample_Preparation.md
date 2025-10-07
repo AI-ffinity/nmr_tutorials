@@ -53,10 +53,10 @@ Stocks: ligand **100 mM in 100% DMSO**; protein **150 µM** (no DMSO).
 **Output**
 ```
 
-V\_ligand\_stock  :     0.030 µL
-V\_protein\_stock :   290.000 µL
-V\_neat\_DMSO     :     5.970 µL
-V\_buffer        :     4.000 µL
+V_ligand_stock  :     0.030 µL
+V_protein_stock :   290.000 µL
+V_neat_DMSO     :     5.970 µL
+V_buffer        :     4.000 µL
 
 ```
 
@@ -90,10 +90,10 @@ Stocks: ligand **100 mM in 100% DMSO**; protein stock on hand (no DMSO).
 **Output**
 ```
 
-V\_ligand\_stock  :     0.030 µL
-V\_neat\_DMSO     :     5.970 µL
-V\_protein\_stock :   294.000 µL
-V\_buffer        :     0.000 µL
+V_ligand_stock  :     0.030 µL
+V_neat_DMSO     :     5.970 µL
+V_protein_stock :   294.000 µL
+V_buffer        :     0.000 µL
 
 ```
 
