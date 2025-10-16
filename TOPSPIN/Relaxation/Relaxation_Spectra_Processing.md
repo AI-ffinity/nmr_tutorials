@@ -380,3 +380,6 @@ bars) are potential exchange/interaction hotspots worth inspecting in spectra.
   For a single snapshot, **R2/R1** is a compact, unitless way to visualize relative tumbling and exchange. Over several days, the **trajectory** matters, so a **robust slope** of **R2 vs. day** (converted to a robust z‑score) emphasizes residues that **change consistently**—exactly what you want to spot unfolding, degradation, or aggregation trends.
 
 ---
+
+# Authors
+- Thomas Evangelidis

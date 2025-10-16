@@ -78,3 +78,8 @@ If you stick with **proton detection** (most common), only one heteronucleus (^1
 * Extra dimensions don’t automatically mean extra decoupling; it depends on which nucleus you are listening to in the final FID.
 
 With these basics you can confidently choose when and how to switch on decoupling in your next NMR experiment.
+
+---
+
+# Authors
+- Thomas Evangelidis

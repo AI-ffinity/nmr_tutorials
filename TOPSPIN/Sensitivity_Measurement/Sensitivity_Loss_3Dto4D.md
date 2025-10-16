@@ -15,4 +15,8 @@ beginning one by one, double-clicking and identifying non-overlaping peaks. You 
 with strong signals, not all of them. For example, I chose peaks 221, 212, 209, 207 (!), 204 (!).
 * Note down the coordinates of the chosen peaks, switch to the `23` projection of the 3D NOESY
 and look them up.
-* 
+
+---
+
+# Authors
+- Thomas Evangelidis

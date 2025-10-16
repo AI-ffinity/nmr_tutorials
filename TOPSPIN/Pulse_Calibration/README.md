@@ -325,3 +325,8 @@ Nothing new.
 ![pulsecal\_fig24](images/pulse_calibration/fig24.png)
 
 * Update the `O1` value in all experiments you plan to run.
+
+---
+
+# Authors
+- Thomas Evangelidis

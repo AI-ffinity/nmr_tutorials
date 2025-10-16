@@ -39,3 +39,8 @@ To visualize, edit the contour levels as described in [this](../Phase_Correction
 Below I overlay 3 titration spectra for clarity.
 
 ![titrations overlay](images/titrations_overlay.png)
+
+---
+
+# Authors
+- Thomas Evangelidis
