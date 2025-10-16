@@ -1,4 +1,4 @@
-# Measurement of S/N ratio in 15N-edited 3D NOESY and in 4D HCNH NOESY.
+# INCOMPLETE! Measurement of S/N ratio in 15N-edited 3D NOESY and in 4D HCNH NOESY.
 
 ------------
 
