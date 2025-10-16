@@ -34,6 +34,14 @@ _RE_SECTION = re.compile(r"^SECTION:\s+results", re.IGNORECASE)
 _RE_HEADER_SPLIT = re.compile(r"\s{2,}|\t+")
 # Matches "123 ALAN / 123 ALAH" and similar
 _RE_PEAK_NAME = re.compile(r"^\s*(\d+)\s*([A-Z]{3})N\s*/\s*(\d+)\s*[A-Z]{3}H", re.IGNORECASE)
+# Also support names like "S9N-H", "Y108N-H" (one-letter AA followed by resid)
+_RE_PEAK_ONELETTER = re.compile(r"^\s*([A-Z])\s*(\d+)\s*N-?H", re.IGNORECASE)
+_AA1TO3 = {
+    'A':'ALA','C':'CYS','D':'ASP','E':'GLU','F':'PHE','G':'GLY','H':'HIS','I':'ILE','K':'LYS',
+    'L':'LEU','M':'MET','N':'ASN','P':'PRO','Q':'GLN','R':'ARG','S':'SER','T':'THR','V':'VAL',
+    'W':'TRP','Y':'TYR'
+}
+
 
 
 def parse_pdc_results(txt_path: Path) -> "pd.DataFrame":
@@ -83,10 +91,25 @@ def parse_pdc_results(txt_path: Path) -> "pd.DataFrame":
         if m:
             resid = int(m.group(1)); resname = m.group(2).upper()
         else:
-            # Try looser fallback "123 ALA" somewhere in the string
-            m2 = re.search(r"(\d+)\s*([A-Z]{3})", peak_name.upper())
-            if m2:
-                resid = int(m2.group(1)); resname = m2.group(2)
+            # Try one-letter form like "S9N-H" / "Y108N-H"
+            m1 = _RE_PEAK_ONELETTER.match(peak_name)
+            if m1:
+                aa1 = m1.group(1).upper()
+                resid = int(m1.group(2))
+                resname = _AA1TO3.get(aa1, aa1*3)  # fallback e.g., 'X' -> 'XXX'
+            else:
+                # Try looser fallback "123 ALA" somewhere in the string
+                m2 = re.search(r"(\d+)\s*([A-Z]{3})", peak_name.upper())
+                if m2:
+                    resid = int(m2.group(1)); resname = m2.group(2)
+                else:
+                    # Accept patterns like "A110N-H" even if AA letter isn't recognized
+                    m3 = re.search(r"([A-Z])\s*(\d+)", peak_name.upper())
+                    if m3:
+                        resid = int(m3.group(2)); resname = _AA1TO3.get(m3.group(1), m3.group(1)*3)
+        # Ensure a non-null residue name for grouping
+        if resname is None:
+            resname = "UNK"
 
         F2_ppm = _smart_float(record.get("F2 [ppm]", ""))
         F3_ppm = _smart_float(record.get("F3 [ppm]", ""))
@@ -339,47 +362,141 @@ def write_pdb_with_bfactors(pdb_in: Path, pdb_out: Path, resid2b: Dict[int, floa
     return min_b, max_b
 
 
+from pathlib import Path
+from typing import Optional
+
 def emit_pymol_script_apply_btxt(out_pml: Path, pdb_to_load: str, btxt_name: str, object_name: str = "prot",
                                  spectrum_min: Optional[float] = None, spectrum_max: Optional[float] = None,
                                  b_column: str = "B_written", palette: str = "blue_white_red"):
     """
-    Write a PyMOL .pml that loads the PDB, applies B from TXT (B_written or raw_metric), colors & putty.
+    Write a PyMOL .pml that:
+      - loads the PDB
+      - reads a TSV with 'resid, B_written, metric, raw_metric'
+      - assigns B for valid residues
+      - GREYs & uses uniform cartoon (loop) for residues with B=0/missing or missing raw_metric
+      - uses 'cartoon putty' + spectrum coloring only for residues with valid B and raw_metric
+
+    If spectrum_min/max are provided, they're used for the color ramp; otherwise min/max are computed from the valid B's.
     """
-    min_line = f", minimum={spectrum_min:.2f}" if spectrum_min is not None else ""
-    max_line = f", maximum={spectrum_max:.2f}" if spectrum_max is not None else ""
-    pml = f"""# Auto-generated: apply {{b_column}} from TXT and visualize
+    # Embed optional spectrum limits as literals inside the PML (or None to auto-compute)
+    smin = "None" if spectrum_min is None else f"{float(spectrum_min):.6g}"
+    smax = "None" if spectrum_max is None else f"{float(spectrum_max):.6g}"
+
+    pml = f"""# --- Auto-generated PyMOL loader: apply B from TXT and visualize ---
+# - Reads "resid, B_written, metric, raw_metric" from: {btxt_name}
+# - Assigns B to atoms (only for valid residues)
+# - Uses "cartoon putty" + spectrum coloring for residues with valid B AND valid raw_metric
+# - Uses uniform cartoon (loop) and GREY color for:
+#     (a) B_written == 0 or missing
+#     (b) raw_metric missing
+# - Auto-loads the PDB and sets up the view
+
+set_color gray50, [128,128,128]
+set ray_opaque_background, on
+
+# Load structure
 load {pdb_to_load}, {object_name}
 
-# Apply B-factors from tab file: resid  B_written  metric  raw_metric
 python
 import csv, math
-obj = "{object_name}"
-bcol = "{b_column}"
-bmap = {{}}
-with open("{btxt_name}") as fh:
-    rd = csv.DictReader(fh, delimiter='\\t')
-    for row in rd:
-        try:
-            resid = int(row['resid'])
-            val = row.get(bcol, '')
-            if val is None or val=='':
-                continue
-            b = float(val)
-            if not math.isfinite(b):
-                continue
-            bmap[resid] = b
-        except Exception:
-            pass
-for resid, b in bmap.items():
-    cmd.alter(f"{{obj}} and resi {{resid}}".format(obj=obj, resid=resid), f"b={{b}}".format(b=b))
-cmd.rebuild()
-python end
+from pymol import cmd
 
-# Color & putty
-hide everything, {object_name}
-show cartoon, {object_name}
-spectrum b, {palette}, {object_name}{min_line}{max_line}
-cartoon putty, {object_name}
+obj = "{object_name}"
+tsv = "{btxt_name}"
+b_field = "{b_column}"
+palette = "{palette}"
+forced_min = {smin}
+forced_max = {smax}
+
+# Basic view
+cmd.hide("everything", obj)
+cmd.show("cartoon", obj)
+cmd.color("gray70", obj)
+
+# Parse the table
+bmap = {{}}          # resid -> B value (valid only)
+valid = []           # residues with finite, nonzero B AND finite raw_metric
+bad_b = []           # residues with B missing/non-finite OR B == 0
+bad_raw = []         # residues with missing/non-finite raw_metric
+
+with open(tsv) as fh:
+    rd = csv.DictReader(fh, delimiter="\\t")
+    for row in rd:
+        resid_s = (row.get("resid") or "").strip()
+        if not resid_s:
+            continue
+        try:
+            resid = int(resid_s)
+        except:
+            continue
+
+        # B_written (or other column chosen via b_field)
+        B_text = (row.get(b_field) or "").strip()
+        try:
+            B = float(B_text)
+        except:
+            B = float("nan")
+
+        # raw_metric
+        RM_text = (row.get("raw_metric") or "").strip()
+        try:
+            RM = float(RM_text)
+        except:
+            RM = float("nan")
+
+        if not (isinstance(B, (int, float)) and math.isfinite(B)) or B == 0.0:
+            bad_b.append(resid)
+        elif not (isinstance(RM, (int, float)) and math.isfinite(RM)):
+            bad_raw.append(resid)
+        else:
+            valid.append(resid)
+            bmap[resid] = B
+
+# Assign B to atoms for valid residues
+for resid, B in bmap.items():
+    cmd.alter("%s and resi %d" % (obj, resid), "b=%f" % (B))
+cmd.rebuild()
+
+def make_sel(name, lst):
+    if not lst:
+        return None
+    sel = "+".join(map(str, lst))
+    cmd.select(name, "%s and resi %s" % (obj, sel))
+    return name
+
+sel_valid = make_sel("valid_bres", valid)
+sel_badB  = make_sel("zero_or_missingB", bad_b)
+sel_badRM = make_sel("missing_raw", bad_raw)
+
+# Uniform cartoon + GREY for invalid categories (no putty scaling)
+if sel_badB:
+    cmd.color("gray50", sel_badB)
+    cmd.cartoon("loop", sel_badB)
+
+if sel_badRM:
+    cmd.color("gray50", sel_badRM)
+    cmd.cartoon("loop", sel_badRM)
+
+# Valid residues: putty thickness from B, color by B range
+if sel_valid:
+    cmd.cartoon("putty", sel_valid)
+    cmd.set("cartoon_putty_transform", 7, sel_valid)   # linear map B -> thickness
+
+    Bs = list(bmap.values())
+    if Bs:
+        mn, mx = min(Bs), max(Bs)
+        # Use forced_min/max if provided; otherwise autocompute from data
+        if isinstance(forced_min, float) or isinstance(forced_min, int):
+            mn = float(forced_min)
+        if isinstance(forced_max, float) or isinstance(forced_max, int):
+            mx = float(forced_max)
+        # Color by B only on valid residues
+        cmd.spectrum("b", palette, sel_valid, minimum=mn, maximum=mx)
+
+# Everything else (not in any list): uniform cartoon
+cmd.cartoon("loop", "%s and not (valid_bres or zero_or_missingB or missing_raw)" % obj)
+python end
+# --- end ---
 """
     Path(out_pml).write_text(pml)
 
@@ -598,7 +715,8 @@ def main():
     out_prefix = Path(args.out_prefix)
     pdb_in = Path(args.pdb_in)
     if not pdb_in.exists():
-        die(f"PDB not found: {pdb_in}")
+        print(f"[WARN] PDB not found: {pdb_in}. Proceeding (plots will use data-derived residue axis; PDB export disabled)", file=sys.stderr)
+        args.no_pdb = True
 
     # -------- single-day --------
     if n_days <= 1:

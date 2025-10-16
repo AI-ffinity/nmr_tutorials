@@ -222,7 +222,7 @@ treats it as a stack of HSQC planes vs. time for fitting. (Set it explicitly in 
 > You do **not** need to recompute R1 = 1/T1 or R2 = 1/T2 yourself. The script will only back-compute a rate from T if 
 > a report row is missing that rate.
 
-2. What this [Python script](scripts/pdc_relax_to_bfactor_v10.py) does for you (automatic)
+2. What this [Python script](scripts/pdc_relax_to_bfactor.py) does for you (automatic)
 
 * Reads the **results** tables (T1 + T2) and matches residues across days.
 * **Single day:** forms **R2/R1** (unitless) per residue for a compact snapshot.
@@ -234,6 +234,8 @@ treats it as a stack of HSQC planes vs. time for fitting. (Set it explicitly in 
 
 * **Multi-day (≥2 days):** computes a robust **state_score** from the *trend* of **R2 vs. day** *(t of slope[ln R2 ~ day])*.
   (positive = R2 increases → slower tumbling/aggregation/exchange; negative = R2 decreases → faster tumbling/unfolding).
+
+![state_score](images/state_score.png)
 
 > **Why R2‑centric?** R2 is most sensitive to size‑/tumbling‑related broadening and also carries chemical‑exchange (Rex) 
 > contributions on μs–ms timescales; large positive shifts in R2 across days commonly indicate aggregation/oligomerization 
@@ -252,14 +254,16 @@ treats it as a stack of HSQC planes vs. time for fitting. (Set it explicitly in 
 
 3. How to run the script
 
+Run `python3 pdc_relax_to_bfactor.py -h` to see all the CLI options. Below are representative usage examples.
+
 * **Single day** (default metric = R2/R1; normalized for visualization):
 
 ```bash
-python3 pdc_relax_to_bfactor_v10.py \
+python3 pdc_relax_to_bfactor.py \
   --t1 T1_day1_report.txt \
   --t2 T2_day1_report.txt \
   --pdb-in Cterm_AF_H.pdb \
-  --out-prefix ARV7_day1_R2overR1 \
+  --out-prefix ARV7_day1_R2 \
   --metric auto \
   --bf-norm minmax --norm-range 10 80 --clip-percentiles 5 95 \
   --save-plots --emit-pml --no-pdb \
@@ -273,51 +277,37 @@ python3 pdc_relax_to_bfactor_v10.py \
 * **Three days** (default metric = state_score; normalized; with plots):
 
 ```bash
-python3 pdc_relax_to_bfactor_v10.py \
+python3 pdc_relax_to_bfactor.py \
   --t1 T1_day1_report.txt T1_day2_report.txt T1_day3_report.txt \
   --t2 T2_day1_report.txt T2_day2_report.txt T2_day3_report.txt \
   --labels d1 d2 d3 \
   --pdb-in Cterm_AF_H.pdb \
   --out-prefix ARV7_days1to3_state \
   --metric auto \
-  --bf-norm minmax --norm-range 10 80 --clip-percentiles 5 95 \
-  --save-plots --emit-pml --no-pdb \
-  --pml-column B_written --palette red_white_blue
+  --bf-norm minmax --norm-range 10 80 --clip-percentiles 0 100 \
+  --save-plots --emit-pml --no-pdb --palette blue_white_red
 ```
 
 > **Normalization options:**
 > `--bf-norm none|minmax|zscore` (choose), `--norm-range a b` (e.g., `10 80`), `--clip-percentiles p_low p_high` (e.g., `5 95`).
 
-4. What you still might compute yourself (optional)
+4. What you get (outputs, same `<prefix>`)
 
-* Domain-level summaries (medians, IQRs).
-* Custom residue sets (e.g., interface vs. core).
-* Any alternative normalization scheme (the script already supports the common choices above).
-
-5. What you get (outputs, same `<prefix>`)
-
-* `<prefix>.pdb` — structure with **B-factor = chosen metric** (normalized if requested).
 * `<prefix>.pml` — PyMOL script that colors by B and enables **putty** thickness by B.
 * `<prefix>.metrics.csv` (single-day) or `<prefix>.multi.csv` (multi-day) — residue values and **B_written** (what was 
 written into PDB).
 * (If `--save-plots`) PNGs: **R2 by residue/day** and **state_score histogram**.
 
-> **Good practice across days:** keep temperature and acquisition identical; keep PDC data settings identical 
-> (pseudo-3D, peak snapping, search radius ≈ 3 points, integrals = intensities).
-
 ---
 
-## Visualize the PDBs in PyMOL (color + “putty” thickness from B-factors)
+## Visualize the PDBs in PyMOL
 
-**What this shows:** higher **B** → more **red** and **thicker** tube (if putty on).
+**What this shows:** higher **B** → more **red** and **thicker** tube (if putty on) if you have set `--palette red_white_blue`.
 B equals **R2/R1** or **R2** (single day) or **state_score** (multi-day), depending on how you ran the script.
 
 ### Quickstart (use the generated `.pml`)
 
 1. In PyMOL: `run ARV7_day1_R2.apply_b_from_txt.pml` →
-
-> To change color limits, edit the `minimum=` / `maximum=` in the `.pml` line:
-> `spectrum b, blue_white_red, prot, minimum=10, maximum=80`
 
 > If you used `--bf-norm none`, set `minimum`/`maximum` to the actual range (see **B_written** in the CSV).
 
@@ -329,13 +319,18 @@ ray 2400, 1800
 png ARV7_day1_R2.png, dpi=300
 ```
 
+![R2](images/ARV7_day1_R2.png)
+
 ---
 
 ### Interpreting the metrics (one line each)
 
-* **R2/R1 (single day):** higher → slower tumbling / more exchange; lower → faster tumbling / more flexible/fragmented.
-* **state_score (multi-day):** positive → R2 trending up (aggregation/exchange); negative → R2 trending down 
-(unfolding/degradation).
+* **R2 up (T2 down) →** slower tumbling / larger effective size and/or µs–ms exchange (Rex).
+* **R2 down →** faster tumbling / smaller effective size (e.g., cleavage, unfolding to small fragments).
+* state_score = a robust z-score of the R2-vs-day trend.
+* **Positive state_score →** R2 increases with day ⇒ slower tumbling / added exchange / possible aggregation.
+* **Negative state_score →** R2 decreases ⇒ faster tumbling / unfolding / fragmentation.
+* IDRs commonly resist broadening and are sensitive to proteolysis, producing new sharp peaks.
 
 
 ## Part E — Interpretation of relaxation plots (what T1/T2 alone can tell you)
@@ -364,6 +359,10 @@ histogram) are exchange candidates; with T1/T2 alone you can flag them, but you 
 
 * Absolute τc from R2/R1 using only T1/T2 is not recommended; keep it relative across days.
 * Raw intensity stacks across days are confounded by gain/SNR; rely on fitted T1/T2 (with errors) and their histograms.
+
+
+![R2 plots](images/R2_plots_interpretation.png)
+
 
 **Practical readouts for your 3‑day study**
 
