@@ -1,4 +1,4 @@
-# Guide to Set Up 4D NMR Experiments
+# OBSOLETE!!! Guide to Set Up 4D NMR Experiments
 
 ## Setting Up NMR Experiments
 
@@ -144,6 +144,6 @@ getprosol 1H 13.29 14.529W 13C 12.0 162.93W 15N 37.8 169.82W
 
 ---
 
-
-
+# Authors
+- Thomas Evangelidis
 

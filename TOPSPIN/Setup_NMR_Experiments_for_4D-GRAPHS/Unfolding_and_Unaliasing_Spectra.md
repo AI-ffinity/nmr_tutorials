@@ -28,5 +28,7 @@ Here, you can predict:
 ### Recommendations
 - **Simulation**: Use chemical prediction software (e.g. UCBshift, SHIFTX, etc.) to model how your spectra might look like. By loading them to Sparky you can identify the peaks in your real spectrum that are aliased or folded.
 
+---
 
-
+# Authors
+- Thomas Evangelidis

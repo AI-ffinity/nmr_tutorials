@@ -65,3 +65,8 @@
 
 4. **Fallback/advanced:**  
    - Reserve BEST‑TROSY only if you move to larger constructs or encounter unresolved overlap that BEST‑HSQC cannot resolve.  
+
+---
+
+# Authors
+- Thomas Evangelidis

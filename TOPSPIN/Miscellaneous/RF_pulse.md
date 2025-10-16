@@ -21,3 +21,8 @@ Below is a diagram  showing a 90° excitation pulse, a delay (τ), and a 180° r
 * **90° pulse** (π/2): a short RF-pulse at the Larmor frequency that tips magnetization into the transverse plane.
 * **Delay (τ):** spins dephase under B₀ inhomogeneity and chemical shift.
 * **180° pulse** (π): flips the dephasing spins so they rephase and produce an echo at time 2τ.
+
+---
+
+# Authors
+- Thomas Evangelidis
