@@ -2,7 +2,7 @@
 
 This tutorial outlines the procedure for preparing protein samples for **4D NMR experiments**, assuming the starting material is **glycerol-free**. If your protein aliquots contain glycerol, please follow the separate [glycerol removal tutorial](./Glycerol_Removal.md).
 
-The process assumes you are starting with a series of protein aliquots (e.g., 6 × 100 μL, 300 μM assumed) and guides you through:
+The process assumes you are starting with a series of protein aliquots (e.g., 6 × 100 μL, 300 μM assumed) and guides you through:
 
 - Concentration of the protein solution  
 - Measurement of protein concentration  

@@ -8,7 +8,7 @@ For **peak picking**, we will follow a **systematic strategy** that, although mo
 
 To ensure **accurate peak selection**, we will use the **2D projections as intermediate reference points** for restricted peak picking in the 4D spectrum. The workflow is as follows:
 
-1. **Overlay the projections onto the corresponding HSQC spectra**  
+1. **Overlay the projections onto the corresponding HSQC spectra**
 2. **Identify peak centers** by using the **HSQC spectra as references**  
 3. **Use these peak centers** to perform **restricted peak picking** in the 4D spectrum  
 4. **Unfold or unalias peaks** as necessary  

@@ -36,7 +36,7 @@ This tutorial provides step-by-step instructions for measuring protein concentra
   <img src="./images/protparam-ext-coeff.png" width="500"/>
 </p>
 
-5. ✅ **If your buffer contains reducing agents (e.g., DTT or tCEP)**, choose the value assuming all Cys are **reduced**.
+5. ✅ **If your buffer contains reducing agents (e.g., DTT or TCEP)**, choose the value assuming all Cys are **reduced**.
 
 ---
 
