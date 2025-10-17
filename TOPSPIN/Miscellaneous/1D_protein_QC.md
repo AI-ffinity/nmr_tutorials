@@ -5,3 +5,8 @@ Direct detection of the 1H atoms in the protein is enough!
 ![](images/1D_protein_QC.jpeg)
 
 If you just want to QC your protein sample, sometimes 15 minutes is all you need... 
+
+---
+
+# Authors
+- Thomas Evangelidis

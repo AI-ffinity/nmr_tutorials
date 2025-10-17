@@ -36,3 +36,8 @@ By discarding those initial transients you ensure that every **stored** scan is 
 
 *Dummy scans* are there to throw away the startup “junk” and let the pulse-acquire-relax cycle stabilise **before** you begin averaging.  
 They work *with* the relaxation delay **D1**, not in place of it: DS ensures stability, while D1 ensures full magnetisation recovery.  
+
+---
+
+# Authors
+- Thomas Evangelidis
