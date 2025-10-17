@@ -70,4 +70,12 @@ Description of [components of an NMR spectrometer](NMR_theory/NMR_Spectrometer.m
       <a href="./SPARKY_and_POKY">How to analyze spectra in POKY - the successor of NMRFAM SPARKY.</a>
     </td>
   </tr>
+  <tr>
+    <td style="vertical-align: middle; width: 100px;">
+      <img src="./images/tube_pic.jpg" alt="Random tube" style="max-width: 100%; height: 100px">
+    </td>
+    <td style="vertical-align: middle; ">
+      <a href="./Sample_Preparation">How to prepare samples for NMR measurements.</a>
+    </td>
+  </tr>
 </table>
