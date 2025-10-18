@@ -34,11 +34,11 @@ an easy sample that you are getting signals, and the spectrum looks as expected.
 
 ### 15N HSQC (hsqcedetf3gpsi2)
 Begin with the 15N HSQC using the hsqcedetf3gpsi2 pulse sequence to obtain in-phase peaks for N-H2 and 
-anti-phase peaks for side-chains N-H. This experiment is necessary for chemical shift assignment with 4D-GRAPHS.
+anti-phase peaks for side-chains N-H. This experiment is necessary for chemical shift assignment with 4D-GraFID.
 
 ### 13C HSQC (hsqcedetgp)
 Conduct a 13C HSQC experiment for in-phase peaks of CH, CH3, and anti-phase for CH2. This experiment is also necessary 
-for chemical shift assignment with 4D-GRAPHS. We don't measure the aromatics in the 13C HSQC. The reason is that we 
+for chemical shift assignment with 4D-GraFID. We don't measure the aromatics in the 13C HSQC. The reason is that we 
 use 13C HSQC hsqcedetgp just to identify the CH2 for the assignment. Besides that, the 4D HCNH NOESY is primarily for 
 the aliphatic C-H - we see only part of the aromatic carbons in the NOESY. But in any case, it's useful to have the 
 aromatic C-H in 13C HSQC, but for them, we don't need the hsqcedetgp.

@@ -9,7 +9,7 @@ Navigation
 ========================
 
 ## Manuals
-* [Pick 4D NOESY peaks for 4D-GRAPHS](./Peak_picking_4D_spectrum)
+* [Pick 4D NOESY peaks for 4D-GraFID](./Peak_picking_4D_spectrum)
 * [Protein NMR workflow](./Protein_NMR_workflow.md)
 * [Transfer assignments from BMRB](POKY/Transfer_BMRB_assignments.md)
 
