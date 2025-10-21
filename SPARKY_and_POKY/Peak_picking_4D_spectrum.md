@@ -203,9 +203,11 @@ peaks and hit `ms` to measure their radius in both axes.
 ![calculate w1_step and w2_step](images/calculate_tolerances.png)
 
 Once the artificial peaks are created, press `lt` to select and delete the low-intensity ones. This step refines the 
-grid so that it covers only regions in the 2D spectra with high signal-to-noise ratios, as shown in the figure below.
+grid so that it covers only regions in the 2D spectra with high signal-to-noise ratios, as shown in the figures below.
 
-![add figure grid on HSQC]()
+![refined lattice grid 15N-HSQC](images/refined_lattice_grid_15N-HSQC.png)
+
+![refined lattice grid 13C-HSQC](images/refined_lattice_grid_13C-HSQC.png)
 
 You can then use all these peaks—including the real seed peaks and the newly generated artificial ones—for restricted 
 peak picking. This helps capture more peaks in the target 4D NOESY spectrum, which is beneficial because 4D-GraFID 
@@ -345,27 +347,27 @@ Go to the 4D peak list (type `lt`) and select the columns `w1`, `w2`, `w3`, `w4`
 Further editing of the projections and the HSQCs is needed.
 
 
-# Improve the Precision of the 13C HSQC Peak List using the 4D HCNH NOESY Peak List
+# Enhance the 13C-HSQC peak list with multiplicity information (which C-H is methylene)
 
-- Once you have finalized the **peak list** from the **HC-C projection**, **export it to a file**.  
-- Press `fo` and reopen the **13C HSQC spectrum** in a **new window**.  
-- Press `st` and **rename** that window to **"13C HSQC - 4D Peak List"**.  
-- Hit `rp`, toggle on **Auto detect dimensions** and load the **4D HCNH NOESY peak list**. 
-- Verify that the **aliased/folded peaks** are unaliased/unfolded, just as on the 4D spectrum (POKY does this automatically).  
+- Once you have finalized the **peak list** from the **standard 13C-HSQC**, **export it to a file**.  
+- Press `fo` and reopen the **13C ME-HSQC spectrum** in a **new window**.  
+- Press `st` and **rename** that window to **"refined 13C HSQC Peak List"**.  
+- Hit `rp`, toggle on **Auto detect dimensions** and load the **standard 13C-HSQC peak list**. 
+- Verify that the **aliased/folded peaks** are unaliased/unfolded, just as on the standard 13C-HSQC spectrum (POKY does this automatically).  
 - Hit `lt` and through the "Options" display the "Data Height".
-- **Export the updated peak list** to a new file named `13C_HSQC_with_4D_HCNH_NOESY_peaks.list`.
+- **Export the updated peak list** to a new file named `standard_13C_HSQC_with_ME_peaks.list`.
 
-We follow this approach because the **13C HSQC spectrum** is **very noisy**, with **large dispersion effects**, meaning 
-that the **peak centers deviate** from those identified in **4D HCNH NOESY spectrum**.  
-Consequently, since the entire assignment relies on the 4D spectrum, it is **more accurate** to use the peak 
-markers from it, but **enhanced with the intensity signs** present in the **13C HSQC spectrum**.  
-The 13C HSQC spectrum provides information on whether a peak corresponds to a **methylene group**, which improves 
-both **accuracy and coverage** for **chemical shift assignment** in **4D-GraFID**.
+We follow this approach because the **13C ME-HSQC spectrum** is **very noisy**, with **large dispersion effects**, meaning 
+that the **peak centers deviate** from those identified in **standard 13C-HSQC spectrum**, which provides the maximum 
+possible resolution and S/N. As such, we end with a near-complete aliphatic C-H peak list with information on whether 
+a peak corresponds to a **methylene group**, which improves both **accuracy and coverage** for **chemical shift 
+assignment** in **4D-GraFID**.
 
 
-# Improve the Precision of the 15N HSQC Peak List using the 2D N-HN projection Peak List  
-The `15N HSQC peak list` for 4D-GraFID must have only one peak for each spin system, therefore we will apply the 
-previous trick but using the `**N-HN projection peak list* instead of the 4D HCNH NOESY peak list.
+# Enhance the 15N-HSQC peak list with multiplicity information (which peak comes from N-H and which from N-H2)
+Apply the previous trick but on the `standard 15N-HSQC peak list` using the **15N ME-HSQC** spectrum. Export the new peak
+list to a file including the intensity column of **15N ME-HSQC**, which tells which peaks originates from
+an N-H and which from an N-H2 group. This information is used by **4D-GraFID** to identify the side-chain amide peaks.
 
 ---
 
