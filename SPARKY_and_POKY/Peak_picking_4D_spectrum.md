@@ -273,9 +273,9 @@ remove the selected irrelevant peaks.
 > 💡 For large proteins with **tens of thousands of peaks**, it is recommended to **delete them in two batches** rather 
 > than all at once.
 
-This is how the final **peak selection** on the **HC-C plane** of the **4D NOESY** should look.
+This is how the final **peak selection** on the **HC-C plane** of the **4D NOESY** (overlaid on the 13C-HSQC for clarity) should look.
 
-[add FIGURE]
+![4D peaks HC-C plane](images/picked_4D_peaks_HC-C_plane.png)
 
 
 ### Step X. Unalias/Unfold 4D Peaks
@@ -321,31 +321,17 @@ bit of **intuition** and a **sharp eye**. Unfortunately, it **cannot be automate
 - Click **"Recompute"** several times.
 - If the **"Estimated noise:"** changes a lot, increase the **"noise as median of"** and repeat the process.
 - Once you settle on an **"Estimated noise:"** value, open the peak list by hitting `lt`, display the **S/N** and sort by **Data Height**.
-- Select all peaks with absolute **S/N** value less than the **"Estimated noise:"** and delete them. For stricter peak picking, you can set the cutoff to 3x or 5x the **"Estimated noise:"**.
+- Select all peaks with absolute **S/N** value less than the **"Estimated noise:"** and delete them. For stricter peak 
+picking, you can set the cutoff to 2x or 3x the "Estimated noise:". **Do not set the threshold high because 4D-GraFID 
+can identify and remove the noise NOESY peaks automatically.**
 
-** OPTIONAL: Discard the noise peaks using a weak peak as a reference**  
-- Overlay the `N-HN_proj` onto the `15N_HSQC` and increase the contour levels until noise peaks start to emerge.  
-- Select a `15N_HSQC` peak with weak signal in `N-HN_proj` and check its HC-C plane by switching to `4D_HCNH_NOESY` and hitting `vc`.  
-- Review the picked peaks (previously found by `kr`), adjusting the contour levels until all visible peaks are captured.  
-- If you cannot achieve this, pick another weak peak in the `15N_HSQC` and repeat the process.  
-- Once you succeed, select the **weakest picked peak** and hit `ss`. This command will select all 4D peaks that have lower intensity than the selected one. Type `lt` to check that.  
-- Click **Delete** to remove them.
-
-> **Note**: This comparison is made using signed intensities: negative peaks with large absolute intensity will also be 
-selected! Check them manually and deselect if needed: hold `Ctrl` and drag over the selected peaks with your mouse.
-
-![peak list](./images/peak-list-window.png)
-
-(^ There should be a GIF here showing large negative peaks.)
 
 ---
 
-### Step X. Exporting Peak Lists
+### Step X. Exporting Peak Lists for 4D-GraFID
 
-**Export Picked Peaks for 4D-GraFID**  
-Go to the 4D peak list (type `lt`) and select the columns `w1`, `w2`, `w3`, `w4`, `Data Height` and `Note`. Click **Apply**, then **Save...**.
-Further editing of the projections and the HSQCs is needed.
-
+#### Export Picked 4D Peaks
+Go to the 4D peak list (type `lt`) and select the columns `w1`, `w2`, `w3`, `w4`, `Data Height`. Click **Apply**, then **Save...**.
 
 # Enhance the 13C-HSQC peak list with multiplicity information (which C-H is methylene)
 
@@ -378,7 +364,7 @@ When you do restricted peak picking (`kr`) using as a reference Peaks that have 
 will automatically check for possible aliased peaks. If the spectrum width of the source 2D is larger than that of the 
 nD (n = [3,4]), POKY will find and mark the peaks in the 3D as aliased. 
 
-However, BEWARE that when your reference peaks are aliased or unfolded, POKY won't match the correct peaks in the 
+However, **BEWARE** that when your reference peaks are aliased or unfolded, POKY won't match the correct peaks in the 
 target spectrum unless they are also unalias/unafolded. It may catch some peaks but they will be irrelevant. Therefore, 
 do not unalias/unfold the peaks in the 2D HC-C and N-HN projections! Do the unaliasing/unfolding directly on the 4D 
 HCNH NOESY.
