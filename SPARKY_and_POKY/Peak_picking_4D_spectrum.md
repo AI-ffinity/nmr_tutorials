@@ -33,7 +33,7 @@ Follow [the instructions](../TOPSPIN/Referencing_shifts/Referencing_Spectra.md) 
 
 ---
 
-#### 2.2 Convert Spectra to UCSF Format
+#### 2.1 Convert Spectra to UCSF Format
 
 Enter the directory where each spectrum is saved in Bruker format and run `bruk2ucsf` from there—running it from another directory will fail.  
 For example, to convert the `1H-15N`, `1H-13C HSQC` spectra, and the 4D HCNH NOESY:
@@ -47,7 +47,7 @@ For example, to convert the `1H-15N`, `1H-13C HSQC` spectra, and the 4D HCNH NOE
 > Note: You can also [convert the spectra from Bruker to UCSF format in POKY/Sparky](Miscellaneous/convert_spectra_POKY.md), 
 > but you cannot rename the axes in that process.
 
-#### 2.3 Rename Axes
+#### 2.2 Rename Axes
 
 Rename the axes in the `1H-15N` and `1H-13C HSQC` spectra:
 
@@ -84,7 +84,7 @@ ucsfdata -a1 HC -a2 C -a3 N -a4 HN 4D_HCNH_NOESY.ucsf
 
 > **IMPORTANT:** Make sure that axes are named consistently in all spectra; otherwise, you will encounter problems during peak picking.
 
-#### 2.4 Create C-HC and N-HN Projections
+#### 2.3 Create C-HC and N-HN Projections
 
 For a detailed tutorial, see [Create_2D_projections_from_4D_spectrum](../SPARKY_and_POKY/Create_2D_projections_from_4D_spectrum.md).
 Briefly, extract the `N-HN projection` from the `4D HCNH NOESY`. You may need to adjust the `-p[1-4]` values according 
@@ -278,24 +278,37 @@ This is how the final **peak selection** on the **HC-C plane** of the **4D NOESY
 ![4D peaks HC-C plane](images/picked_4D_peaks_HC-C_plane.png)
 
 
-### Step X. Unalias/Unfold 4D Peaks
+### Step 6. Unalias/Unfold 4D Peaks (if necessary)
 
-Next, we will perform **unaliasing/unfolding of peaks**. For more details, please read the [respective article](Unfold_Peaks.md).
+Next, we will perform **unaliasing/unfolding of peaks** - if there are any. For more details, please read the [respective article](Unfold_Peaks.md).
 
 Aliased Peaks usually occur in the ranges `C < 25` ppm and `HC > 3` ppm. 
 
-In this spectrum, we have some **aliased peaks** that appear on top.  
+For demonstration I show you the 4D spectrum of another protein, which has many **aliased peaks** that appear on top.  
 - Press `F1` to switch to **selection mode**, select the aliased peaks, and then press `a1` to unalias them along the **C axis (W1)**.
+- Hover over the aliased peaks and you will notice the word "aliased" appearing along the **C axis (W1)**.
 
-
-[FIGURE here]
+![aliased 4D](images/aliased_4D.png)
 
 ---
 
-### Step X. Manual Refinement of 4D Peak List
+### Step 7. Manual Refinement of 4D Peak List
 
-Next, we will manually inspect all the peaks and remove those that are **not located in density regions**—neither of 
-the **HC-C projection** nor of the **15N-HSQC**.
+**Discard the 4D noise peaks using a S/N cutoff**
+- Hit `st` and in the text box **"noise as median of"** write 10000 or another high number.
+- Click **"Recompute"** several times.
+- If the **"Estimated noise:"** changes a lot, increase the **"noise as median of"** and repeat the process.
+- Once you settle on an **"Estimated noise:"** value, open the peak list by hitting `lt`, display the **S/N** and sort by **Data Height**.
+- Select all peaks with absolute **S/N** value less than the **"Estimated noise:"**, like in the Figure below, and delete them. For stricter peak 
+picking, you can set the cutoff to 2x or 3x the "Estimated noise:". **Do not set the threshold high because 4D-GraFID 
+can identify and remove the noise NOESY peaks automatically.**
+
+![low intensity 4D peaks](images/low_intensity_4D_peaks.png)
+
+**Discard the noise peaks using the 13C-HSQC and the 15N-HSQC**
+
+Next, we will manually inspect all the **4D peaks** and remove those that are **not located in density regions**—neither of 
+the **13C-HSQC** nor of the **15N-HSQC**.
 
 - Type `fo` and load the 4D spectrum again, this time to a new window.
 - In the new window double-click `xr` followed by `xx` to bring the **N and HN axes** into view.
@@ -314,21 +327,14 @@ You should now have **two different views** of the 4D spectrum:
 2. The other showing the selected peaks on the **N-HN plane**
 
 What you must do next is **manually inspect** the peaks and **delete those not in density regions**. This requires a 
-bit of **intuition** and a **sharp eye**. Unfortunately, it **cannot be automated**—it must be **supervised manually** by pressing `st`.
+bit of **intuition** and a **sharp eye**. Unfortunately, it **cannot be automated**—it must be **supervised manually** 
+by pressing `st`. Below are shown two obviously noise peaks on the HC-C plane view.
 
-**Discard the noise peaks using a S/N cutoff**
-- Hit `st` and in the text box **"noise as median of"** write 10000 or another high number.
-- Click **"Recompute"** several times.
-- If the **"Estimated noise:"** changes a lot, increase the **"noise as median of"** and repeat the process.
-- Once you settle on an **"Estimated noise:"** value, open the peak list by hitting `lt`, display the **S/N** and sort by **Data Height**.
-- Select all peaks with absolute **S/N** value less than the **"Estimated noise:"** and delete them. For stricter peak 
-picking, you can set the cutoff to 2x or 3x the "Estimated noise:". **Do not set the threshold high because 4D-GraFID 
-can identify and remove the noise NOESY peaks automatically.**
-
+![manually selected noise peaks](images/manual_noise_4D_peak_removal.png)
 
 ---
 
-### Step X. Exporting Peak Lists for 4D-GraFID
+### Step 8. Exporting Peak Lists for 4D-GraFID
 
 #### Export Picked 4D Peaks
 Go to the 4D peak list (type `lt`) and select the columns `w1`, `w2`, `w3`, `w4`, `Data Height`. Click **Apply**, then **Save...**.
@@ -361,11 +367,11 @@ an N-H and which from an N-H2 group. This information is used by **4D-GraFID** t
 
 **Unaliasing Peaks in POKY**  
 When you do restricted peak picking (`kr`) using as a reference Peaks that have not been unaliased or unfolded, POKY 
-will automatically check for possible aliased peaks. If the spectrum width of the source 2D is larger than that of the 
-nD (n = [3,4]), POKY will find and mark the peaks in the 3D as aliased. 
+will automatically check for possible aliased peaks. If the spectrum width of the reference 2D is larger than that of the 
+target 3D/4D spectrum, POKY will find and mark the peaks in the 3D/4D as aliased.
 
-However, **BEWARE** that when your reference peaks are aliased or unfolded, POKY won't match the correct peaks in the 
-target spectrum unless they are also unalias/unafolded. It may catch some peaks but they will be irrelevant. Therefore, 
+However, **BEWARE** that when your reference peaks are unaliased or unfolded, POKY won't match the correct peaks in the 
+target spectrum unless they are also unalias/unfolded. It may catch some peaks but they will be irrelevant. Therefore, 
 do not unalias/unfold the peaks in the 2D HC-C and N-HN projections! Do the unaliasing/unfolding directly on the 4D 
 HCNH NOESY.
 
