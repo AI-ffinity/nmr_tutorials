@@ -13,10 +13,10 @@
 Of all the online video resources on NMR, we highly recommend the following 4 courses. They cover the fundamentals and 
 gradually build up to more advanced concepts. Despite the titles mentioning MRI, they are focused mostly on NMR.
 
-**NMR Basics:** https://youtu.be/TQegSF4ZiIQ?si=FJkY8QicmrN8pQs4  
-**The Spin Echo:** https://youtu.be/M7yh0To6Wbs?si=vxmjIrKAKAasia8z  
-**Fourier Transform and K-Space:** https://youtu.be/R_4GuyJTzMo?si=s9EUCBIMQLvLlb1S  
-**The Gradient Recalled Echo (GRE):** https://youtu.be/vapJRr6gAds?si=cMejtjccdaCWiZ6G
+**NMR Basics:** [https://youtu.be/TQegSF4ZiIQ?si=FJkY8QicmrN8pQs4](https://youtu.be/TQegSF4ZiIQ?si=FJkY8QicmrN8pQs4)  
+**The Spin Echo:** [https://youtu.be/M7yh0To6Wbs?si=vxmjIrKAKAasia8z](https://youtu.be/M7yh0To6Wbs?si=vxmjIrKAKAasia8z)  
+**Fourier Transform and K-Space:** [https://youtu.be/R_4GuyJTzMo?si=s9EUCBIMQLvLlb1S](https://youtu.be/R_4GuyJTzMo?si=s9EUCBIMQLvLlb1S)  
+**The Gradient Recalled Echo (GRE):** [https://youtu.be/vapJRr6gAds?si=cMejtjccdaCWiZ6G](https://youtu.be/vapJRr6gAds?si=cMejtjccdaCWiZ6G)
 
 Description of [components of an NMR spectrometer](NMR_theory/NMR_Spectrometer.md).
 
