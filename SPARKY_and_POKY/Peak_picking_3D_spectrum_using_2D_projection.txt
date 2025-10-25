@@ -170,7 +170,7 @@ Repeat this process for all groups of HNCO peaks.
 
 ### Step X. Exporting Peak Lists
 
-**Export Picked Peaks for 4D-GRAPHS**  
+**Export Picked Peaks for 4D-GraFID**
 Go to the 3D peak list (type `lt`) and select the columns `w1`, `w2`, `w3`, `Data Height` and `Note`. Click **Apply**, then **Save...**.
 Further editing of the projections and the HSQC is needed.
 

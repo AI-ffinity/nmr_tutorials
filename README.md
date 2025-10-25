@@ -27,7 +27,7 @@ Description of [components of an NMR spectrometer](NMR_theory/NMR_Spectrometer.m
       <img src="./images/spectrometer.png" alt="Spectrometer" style="max-width: 100%; width: 100px; height: 100px">
     </td>
     <td style="vertical-align: middle;">
-      <a href="TOPSPIN/Setup_NMR_Experiments_for_4D-GRAPHS">Setting up 4D NMR experiments for 4D-GRAPHS.</a>
+      <a href="TOPSPIN/Setup_NMR_Experiments_for_4D-GraFID">Setting up 4D NMR experiments for 4D-GraFID.</a>
     </td>
   </tr>
   <tr>

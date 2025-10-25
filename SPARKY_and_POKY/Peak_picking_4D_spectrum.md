@@ -33,7 +33,9 @@ Follow [the instructions](../TOPSPIN/Referencing_shifts/Referencing_Spectra.md) 
 
 ---
 
-#### 2.2 Convert Spectra to UCSF Format
+### Step 2. Convert and Prepare Spectra
+
+#### 2.1 Convert Spectra to UCSF Format
 
 Enter the directory where each spectrum is saved in Bruker format and run `bruk2ucsf` from there—running it from another directory will fail.  
 For example, to convert the `1H-15N`, `1H-13C HSQC` spectra, and the 4D HCNH NOESY:
@@ -47,7 +49,7 @@ For example, to convert the `1H-15N`, `1H-13C HSQC` spectra, and the 4D HCNH NOE
 > Note: You can also [convert the spectra from Bruker to UCSF format in POKY/Sparky](Miscellaneous/convert_spectra_POKY.md), 
 > but you cannot rename the axes in that process.
 
-#### 2.3 Rename Axes
+#### 2.2 Rename Axes
 
 Rename the axes in the `1H-15N` and `1H-13C HSQC` spectra:
 
@@ -76,7 +78,7 @@ transmitter MHz          950.374     238.980      96.311     950.374
 ```
 
 From the `upfield` and `downfield` rows, you can guess which axis is `HC` and which is `HN`. In this example, the following 
-command renames them properly—amidic protons have higher shift values than the aliphatic protons:
+command renames them properly—amide protons have higher shift values than the aliphatic protons:
 
 ```shell
 ucsfdata -a1 HC -a2 C -a3 N -a4 HN 4D_HCNH_NOESY.ucsf
@@ -84,7 +86,7 @@ ucsfdata -a1 HC -a2 C -a3 N -a4 HN 4D_HCNH_NOESY.ucsf
 
 > **IMPORTANT:** Make sure that axes are named consistently in all spectra; otherwise, you will encounter problems during peak picking.
 
-#### 2.4 Create C-HC and N-HN Projections
+#### 2.3 Create C-HC and N-HN Projections
 
 For a detailed tutorial, see [Create_2D_projections_from_4D_spectrum](../SPARKY_and_POKY/Create_2D_projections_from_4D_spectrum.md).
 Briefly, extract the `N-HN projection` from the `4D HCNH NOESY`. You may need to adjust the `-p[1-4]` values according 
@@ -111,8 +113,8 @@ ucsfdata -p3 -r -o 2D_HC-C_proj.ucsf HC-C-N.ucsf
 navigate to the folder, and select your spectra. Alternatively, you can copy the full path to each spectrum (for 
 example, `realpath 4D_HCNH_NOESY.ucsf` in the Shell) and paste it into the pop-up browser.
 - Do the same with the 2D projections and the `HSQC` spectra.
-- Use `xa` to show the nucleus types on the axes., `xr` to roll the axes and `xx` to transpose them.
-- Fix the aspect ratio by hitting `vt` and increasing the **Aspect (ppm)** for example to `12`, and then **Apply**.
+- Use `xa` to show the nucleus types on the axes; `xr` to roll the axes and `xx` to transpose them.
+- Fix the aspect ratio by hitting `vt` and increasing the **Aspect (ppm)**, for example, to `12`, and then **Apply**.
 
 ---
 
@@ -132,7 +134,7 @@ axes of those same spectra. Remember to synchronize one axis at a time!
 - The 4D axes are usually completely off and must be aligned to the reference HSQC spectra. To achieve this, use the 2D 
 projections.   
 - Hit `ol` to overlay `2D_N-HN_proj.ucsf` onto `15N_HSQC`.
-- You may reduce the contour number to 1 for one of the two spectra for better visibility. Also hit `oz` to increse the contour thickness and the peak marker thickness.
+- You may reduce the contour number to 1 for one of the two spectra for better visibility. Also hit `oz` to increase the contour thickness and the peak marker thickness.
 - Manually pick the most "trustworthy" peak in the `15N_HSQC` (`F8` to enter peak picking mode, `F1` to exit it) and find the 
 same peak in the 4D.  
 - Type `al`, and in the pop-up:  
@@ -141,7 +143,7 @@ same peak in the 4D.
   - The axes should match, thanks to the renaming we did earlier.  
   - Now hold the `Shift` key and select one "trustworthy" peak in each spectrum for alignment.  
   - Hit **Align**.
-  - Alternatively pick a set of matching peaks (button `F8`) in both spectra and click the **Auto align** option (slower and doesn't always work well).
+  - Alternatively pick a set of matching peaks (button `F8`) in both spectra and click the **Auto align** option (slower and does not always work well).
 
 ![](images/N-HN_alignment.png)
 
@@ -160,11 +162,12 @@ Follow the same procedure described in the previous step.
 
 ### Step 5. Peak Picking
 
-# Adjusting Contour Levels and Preparing Reference Peaks
+#### 5.1 Adjusting Contour Levels and Preparing Reference Peaks
 
 - Adjust the contour levels (both positive and negative) in the `15N HSQC` spectrum to optimize peak visibility.
 - Press `F8` to enter peak picking mode and select all visible peaks.
-- Use the following Python function to estimate the expected number of N-H (in-phase) peaks from the amino acid sequence in the **multiplicity edited 15N HSQC**:
+- Use the following Python function to estimate the expected number of N-H (in-phase) peaks from the amino acid 
+sequence in the **15N HSQC**:
 ```python
 def estimate_15N_hsqc_peaks(sequence: str) -> int:
     # Count backbone amides = total residues minus any prolines and the N-terminus
@@ -173,120 +176,140 @@ def estimate_15N_hsqc_peaks(sequence: str) -> int:
     sidechain_peaks = sequence.count('R') + sequence.count('K') + sequence.count('W') + sequence.count('H')
     return backbone_peaks + sidechain_peaks
 ```
-- Gradually increase or decrease the contour levels until the number of in-phase (positive intensity) picked peaks is approximately the expected number of N-H peaks (292 for CA2 protein).
+- Gradually increase or decrease the contour levels until the number of in-phase (positive intensity) picked peaks 
+is approximately the expected number of N-H peaks (292 for CA2 protein).
 I set the contour level to 1.4e+06, which captured 274 in-phase peaks, as below that a lot of noise peaks were emerging.
+
   ![](images/15N_HSQC_contour_level.png)
+
 - Press `lt` to open the peak list and export the peak list from the `15N HSQC` spectrum by saving it to a file.
-- Switch to the `2D N-HN projection`, hit `ol` and overlay `15N_HSQC` to `2D_N-HN_proj`.
-- Delete all current peaks from the `2D N-HN projection`.
-- Press `rp` to load the saved peak list from the `15N HSQC`. Alternatively, just copy (Ctrl+c)-paste (Ctrl+v) from one spectrum to the other.
-- Press `pa` to select all peaks.
-- Press `pc` to adjust the peak positions to the **contour centers** of the `2D projection`.
-- Go through all the peak markers, visualize them and adjust their position manually to be at the center of the contours hills
-in the `2D_N-HN_proj`. To help you spot the overlapping peak markers, hit `lt`, **sort by frequency** and go through the list
-search for peaks with identical coordinates. Double-click on them and adjust their position based on the `15N_HSQC`.- At the end count the peak markers in both spectra using `lt`. They must be the same. If not, check for peaks with the same coordinates - they are seen as one.
-- These peaks will be used as **reference points** for **restricted peak picking** in the `4D spectrum` later on.
+- Press `Ng` to open the "Nucleate grid" plugin GUI, create and refine grid points for restricted peak picking as
+described below.
 
-Below you see the final peak selection on the `N-HN_proj` (orange) adjusted to the peak centers. The `15N_HSQC` is 
-overlaid with cyan and yellow color. Notice that some peaks that were not present in the `N-HN_proj` (less sensitive experiment)
-were added from the `15N_HSQC` and the inverse (although much fewer peaks were added like this).
+#### 5.2 Optimizing Restricted Peak Picking for Higher Accuracy
 
-![here you see](images/N-HN_proj_peaks.png)
+For more accurate restricted peak picking, use the "Nucleate Grid" plugin in POKY. This tool helps generate artificial 
+peaks in the form of a grid lattice, seeded from original peaks in your 2D reference spectra—in this context, from 
+the 15N-HSQC and 13C-HSQC spectra.
 
-#------------------------------------------
-
-**Pick all peaks in the HC-C projection that match with reference 1H-13C HSQC**  
-Since `1H-13C HSQC` is very crowded and is not ideal for setting landmarks for restricted peak selection, we will use it in 
-combinations ith the `2D_HC-C_proj`. Overlay the two spectra and select with `F8` all the peaks in `2D_HC-C_proj`. The add manually
-the peaks that you believe are within the general boundaries defined by the `1H-13C HSQC` and are not noise - a bit of 
-intuition will be helpful here. Synchronizing the two spectra with `yt` and viewing them next to each other will help you.
-In the following Figure I show how I add a new peak in the `2D_HC-C_proj` based on the density of the `1H-13C HSQC`.
-
-![](images/HC-C_proj_pick_filling.png)
-
-These peaks in `2D_HC-C_proj` will be your landmarks for restrictive peak selection.
+> **How to install the "Nucleate grid" POKY plugin:** copy the file [nucleategrid.py](POKY/scripts/nucleategrid.py) to 
+> `poky_linux/modules/poky` and inside `poky_linux/modules/poky/poky_site.py` add the following under `('restrictedpick','show_dialog')),`:
+> `    ('Ng', 'Nucleate grid', ('nucleategrid', 'show_dialog')),`.
 
 
-## Optimizing Restricted Peak Picking for Higher Accuracy
+The grid is generated starting from these reference (or "seed") peaks and is expanded until an elliptical shape is 
+formed, as defined by the parameters `r1` and `r2`. You can also add spacing between grid points using the `w1_step` 
+and `w2_step` padding parameters. To select the optimal `r1` and `r2` values for your spectra, focus on a few representative
+peaks and hit `ms` to measure their radius in both axes.
 
-- For **more accurate restricted peak picking** and to **reduce noise**, it is recommended to use **different tolerances** for peaks based on their **radius**.
-- Open each **projection spectrum**, sort the peaks by **data height**, and **start the lowest intensity peaks**.
-- **Double-click on peaks** in the `lt` table to visualize them, hit `ms` to measure their radius in both axes and group them
-based on **suitable tolerance values** that will capture all corresponding peaks in the 4D spectrum within that **region of the 2D plane**.
-In general applying the same tolerance to all peaks with similar data height is a good strategy.
-- Once you decide about the tolerance values of a group of peaks, select them in the `lt` window and hit `nt` to save 
-in a note the chosen tolerance values.
+![calculate w1_step and w2_step](images/calculate_tolerances.png)
 
-![](images/calculate_tolerances.png)
+Once the artificial peaks are created, press `lt` to select and delete the low-intensity ones. This step refines the 
+grid so that it covers only regions in the 2D spectra with high signal-to-noise ratios, as shown in the figures below.
+
+![refined lattice grid 15N-HSQC](images/refined_lattice_grid_15N-HSQC.png)
+
+![refined lattice grid 13C-HSQC](images/refined_lattice_grid_13C-HSQC.png)
+
+You can then use all these peaks—including the real seed peaks and the newly generated artificial ones—for restricted 
+peak picking. This helps capture more peaks in the target 4D NOESY spectrum, which is beneficial because 4D-GraFID 
+can automatically handle noisy peaks and refine the selection using heuristic criteria. It's better to capture more 
+peaks at this stage to avoid missing real, informative inter-residual peaks that help build the NH-map. 4D-GraFID will remove 
+the noise peaks automatically later.
+
+---
+#### 5.3 Pick peaks in the 1H-13C HSQC
+Repeat the same peak picking procedure for **1H-13C HSQC** and create grid points for restricted peak picking.
+
+#### 5.4 Perform Restricted Peak Picking using **15N HSQC** and **1H-13C HSQC** as reference
 
 Since this protein is large, we will perform restricted peak picking in **two rounds**.  
-This is necessary because the screen updates every time a picking cycle completes, and for large proteins, this eventually becomes **terribly slow**.
+This is necessary because the screen updates every time a picking cycle completes, and for large proteins, this 
+eventually becomes **terribly slow**.
 
-- First, select approximately **half** of the peaks in the **N-HN projection**.
-- Press `kr` to open the **Restricted Peak Picking** window. Make sure you copied our enhanced plugin to your POKY distribution (see **Prerequisites**)!
+- First, select approximately **half** of the peaks in the **15N-HSQC**.
+- Press `kr` to open the **Restricted Peak Picking** window. Make sure you copied our enhanced plugin to your POKY 
+distribution (see **Prerequisites**)!
 - Activate the toggle options:
   - `Use selected peaks only`
   - `Use tolerance values from note`
 - Under **Find peaks**, select the **4D NOESY** spectrum.
-- Under **Using peaks in**, select the **N-HN projection**.
+- Under **Using peaks in**, select the **15N-HSQC**.
 - Click the **Pick Peaks** button.
 - Once it finishes, repeat **restricted peak picking**, this time:
-  - Set **Using peaks in** to the **HC-C projection**
+  - Set **Using peaks in** to the **13C-HSQC**
   - **Deactivate** the toggle `Use selected peaks only`
   - Click the **Select Peaks** button.
 
-- Then, switch to the **4D NOESY window**, press `I` (capital i), and then the **Delete** button to remove all irrelevant peaks.
+- Then, switch to the **4D NOESY window**, press `Ip` (capital i), and then the **Delete** button to remove all irrelevant peaks.
 - The remaining peak list displayed on the **HC-C plane** of the 4D NOESY should now look clean.
 - Press `pa` (select all), then `NT`, and write a word like `matched` to mark these peaks.
 - Click **Apply**.
 
-- Now go back to the **N-HN projection window**.
+- Now go back to the **15N-HSQC window**.
 - Select the **remaining half** of the peaks.
 - Open the **Restricted Peak Picking** window again.
-  - Set **Using peaks in** to the **N-HN projection**.
+  - Set **Using peaks in** to the **15N-HSQC**.
   - Activate both toggle options:
     - `Use selected peaks only`
     - `Use tolerance values from note`
   - Click the **Pick Peaks** button.
 
-- Change **Using peaks in** to the **HC-C projection**.
+- Change **Using peaks in** to the **13C-HSQC**.
 - Deactivate `Use selected peaks only`.
 - Click **Select Peaks**.
 - Switch to the **4D NOESY window**, press `NT`, write the word `matched`, and click **Apply**.
 
-> ⚠️ **Important:** Do **not delete any peaks yet**, as we did in the first round—otherwise, you will lose some of the peaks identified earlier.
+> ⚠️ **Important:** Do **not delete any peaks yet**, as we did in the first round—otherwise, you will 
+> lose some of the peaks identified earlier.
 
 - Press `lt` to display the **pick list** in the 4D spectrum.
 - Click **Options**, sort the list by **Note**, activate the **Note** toggle, and click **Apply**.
-- Our goal is to delete only those peaks that do **not have a note**. The **good peaks** are those with the word `matched` in the **Note** column.
+- Our goal is to delete only those peaks that do **not have a note**. The **good peaks** are those with the 
+word `matched` in the **Note** column.
 - Use the `Page Up` and `Page Down` keyboard buttons to scroll quickly and select large portions of peaks without notes.
-- Once a significant portion is selected, switch to the **4D NOESY window** and press the **Delete** key to remove the selected irrelevant peaks.
+- Once a significant portion is selected, switch to the **4D NOESY window** and press the **Delete** key to 
+remove the selected irrelevant peaks.
 
-> 💡 For large proteins with **tens of thousands of peaks**, it is recommended to **delete them in two batches** rather than all at once.
+> 💡 For large proteins with **tens of thousands of peaks**, it is recommended to **delete them in two batches** rather 
+> than all at once.
 
-This is how the final **peak selection** on the **HC-C plane** of the **4D NOESY** should look.
+This is how the final **peak selection** on the **HC-C plane** of the **4D NOESY** (overlaid on the 13C-HSQC for clarity) should look.
 
-[FIGURE]
+![4D peaks HC-C plane](images/picked_4D_peaks_HC-C_plane.png)
 
 
-### Step X. Unalias/Unfold 4D Peaks
+### Step 6. Unalias/Unfold 4D Peaks (if necessary)
 
-Next, we will perform **unaliasing/unfolding of peaks**. For more details, please read the [respective article](Unfold_Peaks.md).
+Next, we will perform **unaliasing/unfolding of peaks** - if there are any. For more details, please read the [respective article](Unfold_Peaks.md).
 
-Aliased Peaks usually occur in the ranges `C < 25` ppm and `HC > 3` ppm. 
+Aliased peaks usually occur in the ranges `C < 25` ppm and `HC > 3` ppm. 
 
-In this spectrum, we have some **aliased peaks** that appear on top.  
+For demonstration, I show you the 4D spectrum of another protein, which has many **aliased peaks** that appear on top.  
 - Press `F1` to switch to **selection mode**, select the aliased peaks, and then press `a1` to unalias them along the **C axis (W1)**.
+- Hover over the aliased peaks and you will notice the word "aliased" appearing along the **C axis (W1)**.
 
-
-[FIGURE here]
+![aliased 4D](images/aliased_4D.png)
 
 ---
 
-### Step X. Manual Refinement of 4D Peak List
+### Step 7. Manual Refinement of 4D Peak List
 
-Next, we will manually inspect all the peaks and remove those that are **not located in density regions**—neither of 
-the **HC-C projection** nor of the **N-HN projection**.
+**Discard the 4D noise peaks using an S/N cutoff**
+- Hit `st` and in the text box **"noise as median of"** write 10000 or another high number.
+- Click **"Recompute"** several times.
+- If the **"Estimated noise:"** changes a lot, increase the **"noise as median of"** and repeat the process.
+- Once you settle on an **"Estimated noise:"** value, open the peak list by hitting `lt`, display the **S/N** and sort by **Data Height**.
+- Select all peaks with absolute **S/N** value less than the **"Estimated noise:"**, like in the Figure below, and delete them. For stricter peak 
+picking, you can set the cutoff to 2x or 3x the "Estimated noise:". **Do not set the threshold high because 4D-GraFID 
+can identify and remove the noise NOESY peaks automatically.**
+
+![low intensity 4D peaks](images/low_intensity_4D_peaks.png)
+
+**Discard the noise peaks using the 13C-HSQC and the 15N-HSQC**
+
+Next, we will manually inspect all the **4D peaks** and remove those that are **not located in density regions**—neither of 
+the **13C-HSQC** nor of the **15N-HSQC**.
 
 - Type `fo` and load the 4D spectrum again, this time to a new window.
 - In the new window double-click `xr` followed by `xx` to bring the **N and HN axes** into view.
@@ -297,81 +320,59 @@ the **HC-C projection** nor of the **N-HN projection**.
   - Click **Apply**.
 - You might need to adjust the **peak sizes** by typing `oz`.
 - Hit `ol` and overlay:
-  - First the **N-HN projection** onto the 4D
-  - Then the **15N HSQC** onto the 4D
-- Hit `st` and rename this window to **4D_HCNH_NOESY - N-HN proj**
+  - First the **15N-HSQC** onto the 4D
+- Hit `st` and rename this window to **4D_HCNH_NOESY - 15N-HSQC**
 
 You should now have **two different views** of the 4D spectrum:
 1. One showing the selected peaks on the **HC-C plane**
 2. The other showing the selected peaks on the **N-HN plane**
 
 What you must do next is **manually inspect** the peaks and **delete those not in density regions**. This requires a 
-bit of **intuition** and a **sharp eye**. Unfortunately, it **cannot be automated**—it must be **supervised manually** by pressing `st`.
+bit of **intuition** and a **sharp eye**. Unfortunately, it **cannot be automated**—it must be **supervised manually** 
+by pressing `st`. Below are shown two obvious noise peaks on the HC-C plane view.
 
-**Discard the noise peaks using a S/N cutoff**
-- Hit `st` and in the text box **"noise as median of"** write 10000 or another high number.
-- Click **"Recompute"** several times.
-- If the **"Estimated noise:"** changes a lot, increase the **"noise as median of"** and repeat the process.
-- Once you settle on an **"Estimated noise:"** value, open the peak list by hitting `lt`, display the **S/N** and sort by **Data Height**.
-- Select all peaks with absolute **S/N** value less than the **"Estimated noise:"** and delete them. For stricter peak picking, you can set the cutoff to 3x or 5x the **"Estimated noise:"**.
-
-** OPTIONAL: Discard the noise peaks using a weak peak as a reference**  
-- Overlay the `N-HN_proj` onto the `15N_HSQC` and increase the contour levels until noise peaks start to emerge.  
-- Select a `15N_HSQC` peak with weak signal in `N-HN_proj` and check its HC-C plane by switching to `4D_HCNH_NOESY` and hitting `vc`.  
-- Review the picked peaks (previously found by `kr`), adjusting the contour levels until all visible peaks are captured.  
-- If you cannot achieve this, pick another weak peak in the `15N_HSQC` and repeat the process.  
-- Once you succeed, select the **weakest picked peak** and hit `ss`. This command will select all 4D peaks that have lower intensity than the selected one. Type `lt` to check that.  
-- Click **Delete** to remove them.
-
-> **Note**: This comparison is made using signed intensities: negative peaks with large absolute intensity will also be 
-selected! Check them manually and deselect if needed: hold `Ctrl` and drag over the selected peaks with your mouse.
-
-![peak list](./images/peak-list-window.png)
-
-(^ There should be a GIF here showing large negative peaks.)
+![manually selected noise peaks](images/manual_noise_4D_peak_removal.png)
 
 ---
 
-### Step X. Exporting Peak Lists
+### Step 8. Exporting Peak Lists for 4D-GraFID
 
-**Export Picked Peaks for 4D-GRAPHS**  
-Go to the 4D peak list (type `lt`) and select the columns `w1`, `w2`, `w3`, `w4`, `Data Height` and `Note`. Click **Apply**, then **Save...**.
-Further editing of the projections and the HSQCs is needed.
+#### 8.1 Export Picked 4D Peaks
+Go to the 4D peak list (type `lt`) and select the columns `w1`, `w2`, `w3`, `w4`, `Data Height`. Click **Apply**, then **Save...**.
 
+#### 8.2 Enhance the 13C-HSQC peak list with multiplicity information (which C–H is methylene)
 
-# Improve the Precision of the 13C HSQC Peak List using the 4D HCNH NOESY Peak List
-
-- Once you have finalized the **peak list** from the **HC-C projection**, **export it to a file**.  
-- Press `fo` and reopen the **13C HSQC spectrum** in a **new window**.  
-- Press `st` and **rename** that window to **"13C HSQC - 4D Peak List"**.  
-- Hit `rp`, toggle on **Auto detect dimensions** and load the **4D HCNH NOESY peak list**. 
-- Verify that the **aliased/folded peaks** are unaliased/unfolded, just as on the 4D spectrum (POKY does this automatically).  
+- Once you have finalized the **peak list** from the **standard 13C-HSQC**, **export it to a file**.  
+- Press `fo` and reopen the **13C ME-HSQC spectrum** in a **new window**.  
+- Press `st` and **rename** that window to **"refined 13C HSQC Peak List"**.  
+- Hit `rp`, toggle on **Auto detect dimensions** and load the **standard 13C-HSQC peak list**. 
+- Verify that the **aliased/folded peaks** are unaliased/unfolded, just as on the standard 13C-HSQC spectrum (POKY does this automatically).  
 - Hit `lt` and through the "Options" display the "Data Height".
-- **Export the updated peak list** to a new file named `13C_HSQC_with_4D_HCNH_NOESY_peaks.list`.
+- **Export the updated peak list** to a new file named `standard_13C_HSQC_with_ME_peaks.list`.
 
-We follow this approach because the **13C HSQC spectrum** is **very noisy**, with **large dispersion effects**, meaning 
-that the **peak centers deviate** from those identified in **4D HCNH NOESY spectrum**.  
-Consequently, since the entire assignment relies on the 4D spectrum, it is **more accurate** to use the peak 
-markers from it, but **enhanced with the intensity signs** present in the **13C HSQC spectrum**.  
-The 13C HSQC spectrum provides information on whether a peak corresponds to a **methylene group**, which improves 
-both **accuracy and coverage** for **chemical shift assignment** in **4D-GRAPHS**.
+We follow this approach because the **13C ME-HSQC spectrum** is **very noisy**, with **large dispersion effects**, meaning 
+that the **peak centers deviate** from those identified in **standard 13C-HSQC spectrum**, which provides the maximum 
+possible resolution and S/N. As such, we end with a near-complete aliphatic C-H peak list with information on whether 
+a peak corresponds to a **methylene group**, which improves both **accuracy and coverage** for **chemical shift 
+assignment** in **4D-GraFID**.
 
 
-# Improve the Precision of the 15N HSQC Peak List using the 2D N-HN projection Peak List  
-The `15N HSQC peak list` for 4D-GRAPHS must have only one peak for each spin system, therefore we will apply the 
-previous trick but using the `**N-HN projection peak list* instead of the 4D HCNH NOESY peak list.
+#### 8.3 Enhance the 15N-HSQC peak list with multiplicity information (which peak comes from N–H and which from N–H2)
+Apply the previous trick but on the `standard 15N-HSQC peak list` using the **15N ME-HSQC** spectrum. Export the new peak
+list to a file including the intensity column of **15N ME-HSQC**, which tells which peaks originate from
+an N-H and which from an N-H2 group. This information is used by **4D-GraFID** to identify the side-chain amide peaks.
 
 ---
 
 ## Notes for Special Cases
 
 **Unaliasing Peaks in POKY**  
-When you do restricted peak picking (`kr`) using as a reference Peaks that have not been unaliased or unfolded, POKY 
-will automatically check for possible aliased peaks. If the spectrum width of the source 2D is larger than that of the 
-nD (n = [3,4]), POKY will find and mark the peaks in the 3D as aliased. 
+When you do restricted peak picking (`kr`) using as a reference peaks that have not been unaliased or unfolded, POKY 
+will automatically check for possible aliased peaks. If the spectrum width of the reference 2D is larger than that of the 
+target 3D/4D spectrum, POKY will find and mark the peaks in the 3D/4D as aliased.
 
-However, BEWARE that when your reference peaks are aliased or unfolded, POKY won't match the correct peaks in the 
-target spectrum unless they are also unalias/unafolded. It may catch some peaks but they will be irrelevant. Therefore, 
+However, **BEWARE** that when your reference peaks are unaliased or unfolded, POKY won't match the correct peaks in the 
+target spectrum unless they are also unalias/unfolded. It may catch some peaks but they will be irrelevant. Therefore, 
 do not unalias/unfold the peaks in the 2D HC-C and N-HN projections! Do the unaliasing/unfolding directly on the 4D 
 HCNH NOESY.
 
@@ -383,6 +384,6 @@ Below are examples of the `13C-HSQC` spectra with aliased peaks (in yellow boxes
 
 ---
 
-# Authors
+## Authors
 - Thomas Evangelidis  
 - Ekaterina Burakova

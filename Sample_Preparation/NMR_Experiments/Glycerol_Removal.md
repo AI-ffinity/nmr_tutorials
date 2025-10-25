@@ -1,6 +1,7 @@
 # Removal of Glycerol
 
-This tutorial describes the procedure for removing glycerol from protein samples. Glycerol is often used to stabilize proteins but interferes with NMR measurements. The equipment required is listed below:
+This tutorial describes the procedure for removing glycerol from protein samples. Glycerol is often used to stabilize 
+proteins but interferes with NMR measurements. The equipment required is listed below:
 
 - Fixed-angle rotor
 - Pipettes (ideally 100 μL and 200 μL ranges) 
@@ -12,7 +13,24 @@ This tutorial describes the procedure for removing glycerol from protein samples
 - D<sub>2</sub>O solution
 - Shigemi tubes
 
-## 1. Preparation of Filter Units (Membrane Wetting)
+
+## 1. Thawing Frozen Protein Aliquots and Spinning them
+
+If your protein aliquots were stored at −80 °C, some protein molecules may become denatured or degraded during thawing. 
+This can trigger a domino effect on the remaining protein molecules, leading to rapid aggregation or contamination that 
+will hamper NMR data acquisition. To prevent that:
+
+1. **Thaw the samples slowly** in a box filled with ice.
+2. Once they are fully liquid, **spin at ≥ 15,000 g and 4 °C for 10 min**, then transfer the supernatant to a new tube.  
+  You will probably see a small white pellet left behind (a *good* sign), which is aggregated protein.
+
+**DO NOT OMIT THIS STEP**, otherwise your NMR sample may soon become unsuitable for measurements. Below is what happened 
+to us when we skipped the spin at ≥ 15,000 g and 4 °C for 10 min—the protein (25 kDa) completely **aggregated** in just 
+3 hours (white part of the NMR tube)!
+
+![aggregated protein](../images/aggregated_protein.jpeg)
+
+## 2. Preparation of Filter Units (Membrane Wetting)
 
 This step pre-washes the filter membrane with NMR buffer.
 
@@ -21,7 +39,7 @@ This step pre-washes the filter membrane with NMR buffer.
 - c) Centrifuge at 10g for 40 minutes at 4°C.
 - d) Discard the filtrate after centrifugation.
 
-## 2. Buffer Exchange Cycles
+## 3. Buffer Exchange Cycles
 
 This step removes glycerol from the protein samples using the filter’s molecular weight cutoff, which retains proteins while allowing smaller molecules (like glycerol) to pass through. After each cycle, the protein (retentate) remains in the filter, and the glycerol (filtrate) collects in the Eppendorf tube.
 
@@ -49,7 +67,7 @@ After three cycles, the glycerol content should be negligible for NMR analysis.
 
 > **_NOTE:_** Protein loss is expected after each cycle. If the retentate volume drops significantly (e.g., <50 μL), the filter unit may be faulty. In that case, measure both the filtrate and retentate concentrations using the NanoDrop (see separate [tutorial](../Misc/NanoDrop_tutorial.md)) and decide the next steps based on the result.
 
-## 3. Measuring Final Protein Concentration
+## 4. Measuring Final Protein Concentration
 
 This step determines the final protein concentration after buffer exchange.
 
@@ -61,7 +79,7 @@ This step determines the final protein concentration after buffer exchange.
 
 > **_NOTE:_** Compare the final concentration to the starting concentration in the aliquotes. Protein loss should not exceed ~30–40%.
 
-## 4. Transferring the Final Sample to a Shigemi Tube
+## 5. Transferring the Final Sample to a Shigemi Tube
 
 In this step, the sample is prepared for NMR by adding D<sub>2</sub>O and submitting it to the NMR facility. Most tasks are performed by facility personnel, except for the D<sub>2</sub>O addition.
 
