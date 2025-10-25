@@ -12,9 +12,9 @@ and keeping the default values.
   ```
 - You are all set. The axes should have shifted—check that they are correct.
 
-> **Note**  
-> BioTop fails to reference 4D spectra and their 2D projections. In that case, you will use the 2D projections to align
-> the 4D spectrum to the HSQC spectrum(s) [during peak picking in POKY](../../SPARKY_and_POKY/Peak_picking_4D_spectrum).
+> **Note**
+> BioTop fails to reference 4D spectra and their 2D projections. In that case, use the 2D projections to align
+> the 4D spectrum to the HSQC spectrum(s) [during peak picking in POKY](../../SPARKY_and_POKY/Peak_picking_4D_spectrum.md).
 
 ---
 
@@ -70,4 +70,5 @@ and keeping the default values.
 ---
 
 # Authors
+
 - Thomas Evangelidis

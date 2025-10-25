@@ -143,11 +143,11 @@ Making projections of the ENTIRE spectrum (full range of ppm in the direct dimen
 ## Step 3: NUS
 
 ### SMILE 
-Command reference: `nusPipe -fn SMILE -help` - see the output in [SMILE_ref.md](./nusPipe_SMILE_ref)
+Command reference: `nusPipe -fn SMILE -help` — see the output in [SMILE_ref.md](./nusPipe_SMILE_ref.md)
 
 **Reconstruction and processing script**
 
-Note how it writes out the data after each FT - this couls be optimized?
+Note how it writes out the data after each FT—this could be optimized.
 
     set xP0 = -90
     nmrPrintf "Manual phase xP0: %.1f\n\n" $xP0
