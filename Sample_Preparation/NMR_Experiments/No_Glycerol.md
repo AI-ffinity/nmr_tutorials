@@ -23,7 +23,7 @@ and guides you through:
 - NMR buffer (glycerol-free), e.g.: `25 mM Tris, 300 mM NaCl, 1 mM TCEP, pH 7.5`
 - Protein aliquots (e.g., 6 × 100 μL, 300 μM assumed)
 - Ice box
-- NanoDrop spectrophotometer (for concentration measurement — see [separate tutorial](./NanoDrop_tutorial.md))
+- NanoDrop spectrophotometer (for concentration measurement — see the [separate tutorial](../Misc/NanoDrop_tutorial.md))
 - D<sub>2</sub>O solution
 - Shigemi tubes
 
@@ -97,17 +97,17 @@ In this step, you will use the **350 μL** mark made earlier to estimate the vol
 > - Continue centrifugation in 1-minute increments as before.
 > - This ensures that **all of your protein sample is retained** and concentrated together without needing a second filter unit.
 
-4. Place the filter unit with the concentrated solution with the NMR buffer on ice and head to the NanoDrop station to measure concentration. 
+4. Place the filter unit with the concentrated solution in the NMR buffer on ice and head to the NanoDrop station to measure the concentration.
 ---
 
 
-## 3. Concetration Measurement
+## 3. Concentration Measurement
 
-Measure the concetration of your sample by following the [NanoDrop tutorial](../Misc/NanoDrop_tutorial.md). This concetration will serve as a starting point for the calculation of how much AcCoa is needed to be added to achieve the desired ratio between protein and cofactor (if needed).
+Measure the concentration of your sample by following the [NanoDrop tutorial](../Misc/NanoDrop_tutorial.md). This concentration will serve as a starting point for calculating how much AcCoA needs to be added to achieve the desired ratio between protein and cofactor (if needed).
 
 ## 4. Final NMR Sample preparation
 
-After the concetration measurement, transfer 300 μL of the concentrated sample into the Eppendorf tube. In this way, you will establish the volume of your protein stock for calculation of how much AcCoa and D<sub>2</sub>O to add. If you need to add AcCoa, folow from Step 1, otherwise jump to Step 2
+After the concentration measurement, transfer 300 μL of the concentrated sample into an Eppendorf tube. This step establishes the volume of your protein stock for calculating how much AcCoA and D<sub>2</sub>O to add. If you need to add AcCoA, follow Step&nbsp;1; otherwise, skip ahead to Step&nbsp;2.
 
 ### 🔹 Step 1: Calculation of the added volume
 

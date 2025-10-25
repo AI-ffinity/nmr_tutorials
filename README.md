@@ -5,7 +5,7 @@
   <img src="./images/AI-ffinity_Logo_Dark.png" alt="AIffinity logo" style="max-width: 90%; width: 200px">
   </div>
   <div style="flex: 1; padding-left: 10px; width: 70.0%;">
-    <p>This is the collection of tutorials which aims to help one setting up, running, and processing NMR experiments. 
+    <p>This collection of tutorials is designed to help you set up, run, and process NMR experiments.
     Click <a href="./quick_search.md">here</a> for instructions on how to quickly search the contents of the tutorials.</p>
   </div>
 </div>
@@ -27,7 +27,7 @@ Description of [components of an NMR spectrometer](NMR_theory/NMR_Spectrometer.m
       <img src="./images/spectrometer.png" alt="Spectrometer" style="max-width: 100%; width: 100px; height: 100px">
     </td>
     <td style="vertical-align: middle;">
-      <a href="TOPSPIN/Setup_NMR_Experiments_for_4D-GraFID">Setting up 4D NMR experiments for 4D-GraFID.</a>
+      <a href="./TOPSPIN/Setup_NMR_Experiments_for_4D-GRAPHS/README.md">Setting up 4D NMR experiments for 4D-GraFID.</a>
     </td>
   </tr>
   <tr>

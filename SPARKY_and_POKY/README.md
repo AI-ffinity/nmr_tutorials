@@ -1,7 +1,7 @@
 Overview
 =================
 
-POKY and NMRFAM-Sparky are both developeed by [Woongee Lee](https://www.linkedin.com/in/woongheelee), currently an Assistant Professor of Chemistry at University of Colorado Denver. POKY is the direct successor of Sparky, therefore *the user interfaces are very similar, and the abosolute majority of the commands in Sparky are the same in POKY.* (as of Sep, 2024). However, whereas NMRFAM Sparky is no longer supported, POKY will keep developing and might diverge from SPARKY interface in the future. Already now, POKY offers significant improvements of the GUI. 
+POKY and NMRFAM-Sparky are both developed by [Woongee Lee](https://www.linkedin.com/in/woongheelee), currently an Assistant Professor of Chemistry at the University of Colorado Denver. POKY is the direct successor of Sparky; therefore, *the user interfaces are very similar, and the absolute majority of the commands in Sparky are the same in POKY* (as of Sep 2024). However, whereas NMRFAM Sparky is no longer supported, POKY continues to evolve and may diverge from the SPARKY interface in the future. Even now, POKY offers significant improvements to the GUI.
 
 Unlike SPARKY, POKY requires an academic or commercial license. 
 
@@ -9,7 +9,7 @@ Navigation
 ========================
 
 ## Manuals
-* [Pick 4D NOESY peaks for 4D-GraFID](./Peak_picking_4D_spectrum)
+* [Pick 4D NOESY peaks for 4D-GraFID](./Peak_picking_4D_spectrum.md)
 * [Protein NMR workflow](./Protein_NMR_workflow.md)
 * [Transfer assignments from BMRB](POKY/Transfer_BMRB_assignments.md)
 
