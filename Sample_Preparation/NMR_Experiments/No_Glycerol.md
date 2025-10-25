@@ -7,7 +7,7 @@ please follow the separate [glycerol removal tutorial](./Glycerol_Removal.md).
 The process assumes you are starting with a series of protein aliquots (e.g., 6 × 100 μL, 300 μM assumed) 
 and guides you through:
 
-- Thawing frozen (-80 °C) aliquots
+- Thawing frozen (-80 °C) aliquots and spinning them to remove debris
 - Concentration of the protein solution  
 - Measurement of protein concentration  
 - Addition of Acetyl-CoA (AcCoA) to achieve a 1:1 molar ratio (if applicable)
@@ -29,21 +29,22 @@ and guides you through:
 
 ---
 
-## 1. Thawing Frozen Protein Aliquots
+## 1. Thawing Frozen Protein Aliquots and Spinning them
 
-If your protein aliquots were stored at (-80 °C) during the thawing process some protein molecules will be 
-denatured or destroyed and that may have a domino effect on the remaining protein molecules, leading to fast protein 
-aggregation or contamination that will hamper NMR spectra acquisition. To prevent that:
+If your protein aliquots were stored at −80 °C, some protein molecules may become denatured or degraded during thawing. 
+This can trigger a domino effect on the remaining protein molecules, leading to rapid aggregation or contamination that 
+will hamper NMR data acquisition. To prevent that:
 
-- That the samples slowly in a box full of ice.
-- Once they become liquid, spin them at >= 15,000g and 4 °C for 10 min and transfer the supernatant to a new tube. 
-You will probably see a small white pellet left behind (good sign), which is the aggregated protein.
+1. **Thaw the samples slowly** in a box filled with ice.
+2. Once they are fully liquid, **spin at ≥ 15,000 g and 4 °C for 10 min**, then transfer the supernatant to a new tube.  
+  You will probably see a small white pellet left behind (a *good* sign), which is aggregated protein.
 
-DO NOT OMIT THIS STEP, otherwise your NMR sample may become soon inappropriate for measurements. Below is what
-happened to us when he skipped the spinning at >= 15,000g and 4 °C for 10 min. The protein (25 kDa) in just 3 hours
-completely aggregate (white part of the NMR tube)!
+**DO NOT OMIT THIS STEP**, otherwise your NMR sample may soon become unsuitable for measurements. Below is what happened 
+to us when we skipped the spin at ≥ 15,000 g and 4 °C for 10 min—the protein (25 kDa) completely **aggregated** in just 
+3 hours (white part of the NMR tube)!
 
 ![aggregated protein](../images/aggregated_protein.jpeg)
+
 
 ## 2. Concentration of the Protein Solution
 
