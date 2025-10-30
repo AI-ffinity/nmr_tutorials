@@ -193,7 +193,7 @@ peaks in the form of a grid lattice, seeded from original peaks in your 2D refer
 the 15N-HSQC and 13C-HSQC spectra.
 
 > **How to install the "Nucleate grid" POKY plugin:** copy the file [nucleategrid.py](POKY/scripts/nucleategrid.py) to 
-> `poky_linux/modules/poky` and inside `poky_linux/modules/poky/poky_site.py` add the following under `('restrictedpick','show_dialog')),`:
+> `poky_linux/modules/poky` and inside `poky_linux/modules/poky/poky_site.py` add the following line under `('restrictedpick','show_dialog')),`:
 > `    ('Ng', 'Nucleate grid', ('nucleategrid', 'show_dialog')),`.
 
 
