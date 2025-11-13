@@ -11,3 +11,8 @@ use higher value.
 _Pulse-acquisition 1D NMR experiment. The macroscopic magnetization is aligned along the B 0 axis (Oz) at equilibrium 
 state, ideally at the end of the relaxation delay. After an RF excitation pulse, M 0 is flipped in the Oxy plane. The 
 precession of this magnetization gives the impulse response (or FID) which is detected._
+
+---
+
+# Authors
+- Thomas Evangelidis

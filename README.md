@@ -27,7 +27,7 @@ Description of [components of an NMR spectrometer](NMR_theory/NMR_Spectrometer.m
       <img src="./images/spectrometer.png" alt="Spectrometer" style="max-width: 100%; width: 100px; height: 100px">
     </td>
     <td style="vertical-align: middle;">
-      <a href="./Setup_NMR_Experiments_for_4D-GRAPHS">Setting up 4D NMR experiments for 4D-GRAPHS.</a>
+      <a href="TOPSPIN/Setup_NMR_Experiments_for_4D-GRAPHS">Setting up 4D NMR experiments for 4D-GRAPHS.</a>
     </td>
   </tr>
   <tr>
@@ -51,7 +51,7 @@ Description of [components of an NMR spectrometer](NMR_theory/NMR_Spectrometer.m
       <img src="./images/topspin_logo.png" alt="TopSpin logo" style="max-width: 100%; width: 100px">
     </td>
     <td style="vertical-align: middle;">
-      <a href="./TOPSPIN">How to process spectra in TopSpin.</a>
+      <a href="./TOPSPIN">How to record and process 2D, 3D and 4D spectra with TopSpin.</a>
     </td>
   </tr>
   <tr>
@@ -68,6 +68,14 @@ Description of [components of an NMR spectrometer](NMR_theory/NMR_Spectrometer.m
     </td>
     <td style="vertical-align: middle; ">
       <a href="./SPARKY_and_POKY">How to analyze spectra in POKY - the successor of NMRFAM SPARKY.</a>
+    </td>
+  </tr>
+  <tr>
+    <td style="vertical-align: middle; width: 100px;">
+      <img src="./images/tube_pic.jpg" alt="Random tube" style="max-width: 100%; height: 100px">
+    </td>
+    <td style="vertical-align: middle; ">
+      <a href="./Sample_Preparation">How to prepare samples for NMR measurements.</a>
     </td>
   </tr>
 </table>

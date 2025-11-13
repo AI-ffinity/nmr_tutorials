@@ -66,8 +66,10 @@ Lower-dimensional experiments can be recorded
 
 If the experimental evidence is not available for any reason, one has to make assumptions on which frequencies are to be observed in the experiment. 
 
-The heatmaps below show the chemical shift distribution based on a dataset of nearly 4M peaks. 
-If any peaks appear outside the shaded areas, they are likely to be aliased.   
+The heatmaps below show the chemical shift distribution based on a dataset of nearly 4M peaks. The colors inside 
+the black contour show the probability density  > 0.001. The color gradient is plotted with logarithmic scaling. 
+
+If any peaks appear outside the shaded areas, they are aliased.   
 
 | Hn / N plane                                                 | Hc/C plane                                                     |
 |--------------------------------------------------------------|----------------------------------------------------------------|

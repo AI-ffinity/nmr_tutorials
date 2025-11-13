@@ -129,4 +129,4 @@ Proceed with the following steps to set up and start the 1D experiment:
 -----------------------------
 ## Authors
 
-- **Thomas Evangelidis**
+- **adapted by Thomas Evangelidis from an NMR course offered by Vaclav Veverka, Pavel Srb and Rozalie Hexnerova at IOCB Prague**
