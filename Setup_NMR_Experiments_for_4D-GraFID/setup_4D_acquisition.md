@@ -84,3 +84,5 @@ t=0 |x|x| |x| | |x| | | |x|                           (stops halfway)
   * **No obvious NUS artefacts** → if issues, adjust `%NUS` / `NusT2` / apodization.
 
 **Same rules apply** whether F1 is ¹H in **HCCH** or **HCNH** NOESY: ¹H(indirect) has short T₂ → keep AQ modest, ensure NUS reaches long-t via `NusT2 = 2×AQ`, and bias sampling toward early times while still touching the tail.
+
+
