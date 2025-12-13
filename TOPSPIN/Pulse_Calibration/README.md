@@ -6,6 +6,14 @@ Experiments of a 14 kDa IDP on 850 MHz.
 
 * `lock`
 * `atmm`: select “1H” and match/tune; then select “13C”; then “15N.” Finally, click **Close and Store Values**.
+
+> **CAUTION:** You can see that your sample contains a lot of salt if, during matching and tuning, the initial position of the curves 
+> is completely off—especially the proton curve, which is more sensitive than the other nuclei to the salt amount. 
+> It's not about the concentration but the total amount of salt in the cuvette. For example, if you have 
+> 300 mM NaCl in your sample, this effect, which is called the Flink factor, will be more prominent if the cuvette size 
+> is big, because the total amount of salt within the probe will be greater than if you were using the smallest cuvette, 
+> which is the 3 mm one.
+
 * `loopadj`
 * `topshim gui`: set **Dimension** → 1D; **Optimise for** → 1H; **After** → Z-X-Y-XZ-YZ-Z; **Only** → yes. Click **Start**.
 * Once completed, set **After** → off and run:
