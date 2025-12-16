@@ -13,4 +13,9 @@ D1 (relaxation delay: 1–5 × T1). In the best HSQC pulse sequence, the value o
 BEST is a special method that exploits the effect of the magnetization of the water signal in order for the protein 
 magnetization to return—that’s why D1 is so short. Otherwise, it’s usually set to one second or higher.
 
+The pulses in BEST 15N-HSQC are shorter and therefore setting AQ{F2}=45 ms is recommended. In standard 15N-HSQC AQ{F2}=60 ms.
+BEST has increased sensitivity and is faster but suffers from lower resolution. The standard 15N-HSQC on the other hand 
+offers better resolution but is less sensitive and therefore you need to measure longer times. At the end you must run tests
+of both and decide which is the best for your protein sample.
+
 I stopped the video at 2:48
