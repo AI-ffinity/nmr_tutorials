@@ -1,5 +1,6 @@
 ---
 title: "Protein Backbone 3D NMR Spectra Acquisition Workflow"
+permalink: /TOPSPIN/3D_backbone_experiments/
 layout: default
 ---
 

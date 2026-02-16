@@ -1,5 +1,6 @@
 ---
 title: "Tutorials"
+permalink: /TOPSPIN/NUS_reconstruction/
 layout: default
 ---
 

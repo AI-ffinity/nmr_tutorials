@@ -1,5 +1,6 @@
 ---
 title: "OBSOLETE!!! Guide to Set Up 4D NMR Experiments"
+permalink: /TOPSPIN/Setup_NMR_Experiments_for_4D-GRAPHS/
 layout: default
 ---
 
@@ -151,4 +152,3 @@ getprosol 1H 13.29 14.529W 13C 12.0 162.93W 15N 37.8 169.82W
 
 # Authors
 - Thomas Evangelidis
-

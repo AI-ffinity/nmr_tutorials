@@ -1,5 +1,6 @@
 ---
 title: "Tutorials"
+permalink: /TOPSPIN/Phase_Correction/
 layout: default
 ---
 

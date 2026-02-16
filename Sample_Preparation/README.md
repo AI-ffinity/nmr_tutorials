@@ -1,5 +1,6 @@
 ---
 title: "Sample Preparation"
+permalink: /Sample_Preparation/
 layout: default
 ---
 

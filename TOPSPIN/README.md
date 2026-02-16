@@ -1,5 +1,6 @@
 ---
 title: "Navigation"
+permalink: /TOPSPIN/
 layout: default
 ---
 

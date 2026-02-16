@@ -1,5 +1,6 @@
 ---
 title: "Pulse Calibration Workflow"
+permalink: /TOPSPIN/Pulse_Calibration/
 layout: default
 ---
 
