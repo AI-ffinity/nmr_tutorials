@@ -1,3 +1,8 @@
+---
+title: "Creating 2D and 3D Projections from 4D NOESY with POKY/NMRFAM Sparky"
+layout: default
+---
+
 # Creating 2D and 3D Projections from 4D NOESY with POKY/NMRFAM Sparky
 
 This tutorial guides you through creating 2D and 3D projections from a 4D NOESY spectrum using the `ucsfdata` script from NMRFAM Sparky. We'll start by converting the 4D spectrum to UCSF format and proceed with generating and analyzing the projections.

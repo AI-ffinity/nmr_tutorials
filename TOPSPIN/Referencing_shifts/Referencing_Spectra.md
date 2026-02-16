@@ -1,3 +1,8 @@
+---
+title: "Referencing Spectra in Topspin with BioTop (RECOMMENDED)"
+layout: default
+---
+
 # Referencing Spectra in Topspin with BioTop (RECOMMENDED)
 
 - If you don't have the **BioTop** Topspin extension, install the spectrometer-related dependencies by running `expinstall` 

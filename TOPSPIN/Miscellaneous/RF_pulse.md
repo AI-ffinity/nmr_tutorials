@@ -1,3 +1,8 @@
+---
+title: "RF pulse"
+layout: default
+---
+
 In NMR, **RF** stands for **radiofrequency**, i.e. electromagnetic waves in the MHz–GHz range used to perturb nuclear spins.
 
 An RF pulse is a short burst of that radiofrequency energy applied to the sample via the probe’s coil. Its job is to 

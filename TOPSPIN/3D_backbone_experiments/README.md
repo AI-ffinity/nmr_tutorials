@@ -1,3 +1,8 @@
+---
+title: "Protein Backbone 3D NMR Spectra Acquisition Workflow"
+layout: default
+---
+
 # Protein Backbone 3D NMR Spectra Acquisition Workflow
 
 This tutorial contains of experiments for a 14 kDa IDP conducted on 950 MHz but without 

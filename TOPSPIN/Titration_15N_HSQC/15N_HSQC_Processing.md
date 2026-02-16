@@ -1,3 +1,8 @@
+---
+title: "15N HSQC Processing"
+layout: default
+---
+
 Briefly, the strategy is to do the following processing steps on the first spectrum (#0 titration) without the ligand, 
 export the commands to a new macro, and apply that macro to the other spectra of this titration.  You can then just
 modify the PHC0{F2} and apply the same macro to all other ligand titration spectra you measured for that protein.

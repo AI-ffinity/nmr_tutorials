@@ -1,3 +1,8 @@
+---
+title: "POKY User Manual"
+layout: default
+---
+
 # POKY User Manual
 
 ![POKY / SPARKY shortcuts cheat sheet](./images/poky_cheat_sheet_screenshot.png)

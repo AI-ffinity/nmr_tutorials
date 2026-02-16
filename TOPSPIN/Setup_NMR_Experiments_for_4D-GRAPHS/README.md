@@ -1,3 +1,8 @@
+---
+title: "OBSOLETE!!! Guide to Set Up 4D NMR Experiments"
+layout: default
+---
+
 # OBSOLETE!!! Guide to Set Up 4D NMR Experiments
 
 ## Setting Up NMR Experiments

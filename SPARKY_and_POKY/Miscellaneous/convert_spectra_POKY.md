@@ -1,3 +1,8 @@
+---
+title: "convert spectra POKY"
+layout: default
+---
+
 
 You should be able to directly open the Bruker files with the `fo` command (make sure to display All types of files in 
 the pop-up browser). If you can't, convert them to the .ucsf format first.

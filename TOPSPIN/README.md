@@ -1,3 +1,8 @@
+---
+title: "Navigation"
+layout: default
+---
+
 # Navigation
 
 * [Pulse Calibration tutorial](Pulse_Calibration/README.md)

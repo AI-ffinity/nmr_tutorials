@@ -1,3 +1,8 @@
+---
+title: "Removal of Glycerol"
+layout: default
+---
+
 # Removal of Glycerol
 
 This tutorial describes the procedure for removing glycerol from protein samples. Glycerol is often used to stabilize 

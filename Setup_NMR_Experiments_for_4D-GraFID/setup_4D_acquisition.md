@@ -1,3 +1,8 @@
+---
+title: "setup 4D acquisition"
+layout: default
+---
+
 Here’s a simple visual to lock it in:
 
 ```

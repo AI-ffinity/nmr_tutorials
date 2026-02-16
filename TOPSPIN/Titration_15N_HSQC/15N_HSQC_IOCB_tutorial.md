@@ -1,3 +1,8 @@
+---
+title: "15N HSQC Titration Experiment Setup"
+layout: default
+---
+
 # 15N HSQC Titration Experiment Setup
 
 This tutorial outlines the step-by-step setup for a 15N HSQC titration experiment using an NMR spectrometer.

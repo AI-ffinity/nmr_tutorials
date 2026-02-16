@@ -1,3 +1,8 @@
+---
+title: "Pulse Calibration Workflow"
+layout: default
+---
+
 # Pulse Calibration Workflow
 
 Experiments of a 14 kDa IDP on 850 MHz.

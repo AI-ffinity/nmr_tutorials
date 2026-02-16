@@ -1,3 +1,8 @@
+---
+title: "NOESY 4D sequence ref"
+layout: default
+---
+
 ### Magnetization transfer in 4D HCNH NOESY (HSQC-NOESY-HMQC)
 
 1. All protons are excited

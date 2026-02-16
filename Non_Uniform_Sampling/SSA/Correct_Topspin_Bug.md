@@ -1,3 +1,8 @@
+---
+title: "Description of Topspin files"
+layout: default
+---
+
 # Description of Topspin files
 
 In Bruker NMR spectroscopy systems, various files are used to store acquisition parameters for experiments, including multidimensional NMR like a 4D HCNH NOESY. Each of these files contains specific sets of parameters that define how the NMR experiment is conducted, particularly concerning each dimension of the experiment. Here’s a breakdown of what each file generally contains:

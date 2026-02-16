@@ -1,3 +1,8 @@
+---
+title: "POKY Documentation Conversion Tutorial"
+layout: default
+---
+
 # POKY Documentation Conversion Tutorial
 
 This tutorial guides you through the process of converting HTML documentation to a single PDF 

@@ -1,3 +1,8 @@
+---
+title: "Transferring BMRB Assignments"
+layout: default
+---
+
 # Transferring BMRB Assignments
 
 ![Watch video tutorial](https://drive.google.com/file/d/1KJQv9yT1oTubOu-vexuqLXtVFEE_EmxS/view?usp=drive_link)

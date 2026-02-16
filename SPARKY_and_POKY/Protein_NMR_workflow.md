@@ -1,3 +1,8 @@
+---
+title: "Protein NMR workflow"
+layout: default
+---
+
 ### Tips for Resonance Assignment
 
 **Preparation:**

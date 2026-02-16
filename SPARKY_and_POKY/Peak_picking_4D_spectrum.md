@@ -1,3 +1,8 @@
+---
+title: "Peak Picking in 4D Spectrum with POKY"
+layout: default
+---
+
 # Peak Picking in 4D Spectrum with POKY
 
 ## Overview

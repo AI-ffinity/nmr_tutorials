@@ -1,3 +1,8 @@
+---
+title: "Unfolding and Unaliasing Spectra"
+layout: default
+---
+
 You can make educated guesses about where to expect folded or aliased peaks in NMR spectra based on the parameters such as `FnMODE`, `SW` (Spectral Width), `SW_h` (high-resolution spectral width, if applicable), `O1`, and `O2` (carrier frequencies for different dimensions in multidimensional NMR experiments). Here’s how you can estimate the likelihood and location of such peaks:
 
 ### Understanding Folding and Aliasing

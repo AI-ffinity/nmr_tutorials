@@ -1,3 +1,8 @@
+---
+title: "Theory"
+layout: default
+---
+
 # Theory
 
 **The peaks appear aliased/folded when** the frequency of a peak exceeds the Nyquist limit for the spectral window which is being observed. 

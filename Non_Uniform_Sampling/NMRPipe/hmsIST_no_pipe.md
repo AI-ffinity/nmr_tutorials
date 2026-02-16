@@ -1,3 +1,8 @@
+---
+title: "NUS with hmsIST scripts - not using the implementation built into NMRPipe"
+layout: default
+---
+
 # NUS with hmsIST scripts - not using the implementation built into NMRPipe
 
 The problem with IST in NMRPipe is that it generates a few VERY LARGE files in the process. While those can be deleted after successful reconstruction, it may become a big problem in the long run. 

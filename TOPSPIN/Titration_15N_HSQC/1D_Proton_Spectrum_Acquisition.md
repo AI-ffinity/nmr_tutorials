@@ -1,3 +1,8 @@
+---
+title: "1D Proton Spectrum Acquisition"
+layout: default
+---
+
 in 1D experiments the data are writen to the disk when the measurement is complete. At any moment you can write the 
 data collected so far to the disk with the command `tr`.
 

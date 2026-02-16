@@ -1,3 +1,8 @@
+---
+title: "Measurement of Protein Concentration with NanoDrop Spectrophotometer"
+layout: default
+---
+
 # Measurement of Protein Concentration with NanoDrop Spectrophotometer
 
 The NanoDrop spectrophotometer uses **surface tension** to hold small liquid samples in place, eliminating the need for cuvettes or capillaries. It operates based on **UV/Vis spectroscopy**, measuring light absorbance at specific wavelengths.

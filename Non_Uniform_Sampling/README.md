@@ -1,3 +1,8 @@
+---
+title: "Manuals"
+layout: default
+---
+
 # Manuals
 
 * [SMILE](./NMRPipe/SMILE.md)

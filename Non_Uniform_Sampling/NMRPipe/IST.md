@@ -1,3 +1,8 @@
+---
+title: "IST reconstruction as implemented in NMR Pipe"
+layout: default
+---
+
 # IST reconstruction as implemented in NMR Pipe 
 
 ## General remarks

@@ -1,3 +1,8 @@
+---
+title: "Tutorials"
+layout: default
+---
+
 # Tutorials
 
 * [NUS reconstruction of 3D spectra](3D.md)

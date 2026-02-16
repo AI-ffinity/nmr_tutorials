@@ -1,3 +1,8 @@
+---
+title: "Quickstart"
+layout: default
+---
+
 Tutorials:  http://www.nmr.chem.uu.nl/~abonvin/tutorials/Assignment-Data/assignment.html
             http://www.nmr2.buffalo.edu/nesg.wiki/Resonance_Assignment/Sparky
 
