@@ -1,9 +1,9 @@
 ---
-title: "peak list full format guide"
+title: "4D-GraFID input data format guide"
 layout: default
 ---
 
-# Submitting peak lists for 4D-GraFID
+# Submitting NMR peak lists for 4D-GraFID
 
 ## Experiment type reference
 
@@ -26,9 +26,20 @@ layout: default
 | HNcaCO   | `hncacogp3d`                  | `H/N/CO` `(i, i-1)`                                          | same sign                               |
 | HNCO     | `hncogp3d`                    | **Backbone**: `H/N/CO(i−1)`; <br />**Sidechains:** **Asn** `HD2[1,2]/ND2/CG`; **Gln** `HE2[1,2]/NE2/CD` | same sign                               |
 
+
+
+> **Important:** Only **pairs** of complementary spectra are supported:
+> * HNCACB & CBCAcoNH
+> * HNCA & HNcoCA
+> * HNcaCO & HNCO
+> Non-paired experiments **will not be considered**
+{: .admonition .important}
+
+
+
 ### Side chain assignments & structure
 
-> Coming soon to 4D-GraFID
+> **Coming soon to 4D-GraFID!**
 {: .admonition .info}
 
 | Name             | Example Bruker pulse sequence | Expected atoms                                     | Intensity            |
@@ -39,16 +50,6 @@ layout: default
 | 15N-edited NOESY | `noesyhsqcf3gpwg3d`           | Any H to any amide                                 | Defined by NOE       |
 | HCCH-NOESY       | `hsqcnoesyhsqcccgp4`          | Any H/C to any H/C; mostly of **i** and **i±1**    | Defined by NOE       |
 | HCNH-NOESY       | `hsqcnoesyhsqccngp4d`         | BB+SC amides / BB+SC ; mostly of **i** and **i±1** | Defined by NOE       |
-
-## Requirements on sets of spectra
-
-Only **pairs** of complementary spectra are supported:
-
-* HNCACB & CBCAcoNH
-* HNCA & HNcoCA
-* HNcaCO & HNCO
-
-Non-paired experiments **will not be considered**
 
 ## User assignments reference
 
