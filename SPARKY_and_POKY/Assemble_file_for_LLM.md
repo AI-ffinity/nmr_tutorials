@@ -3,10 +3,16 @@ title: "POKY Documentation Conversion Tutorial"
 layout: default
 ---
 
-# POKY Documentation Conversion Tutorial
+POKY manual is provided in HTML format.
+You can find the [`POKY_documentation.pdf`](./POKY/doc/POKY_documentation.pdf) file in the current folder for convenience.
+Then feed the file into the latest ChatGPT or other LLM of your choice and ask it questions.
+
+# Converting POKY manual from HTML to PDF
+
+> For Linux / MacOS 
 
 This tutorial guides you through the process of converting HTML documentation to a single PDF 
-file using `wkhtmltopdf` and `pdfunite` on a system running Ubuntu. This could be particularly 
+file using `wkhtmltopdf` and `pdfunite`. This could be particularly 
 useful for consolidating documentation into a single, easily distributable format, with which
 you can create a POKY-specific ChatGPT 4 model.
 
@@ -18,6 +24,8 @@ Make sure your system is up-to-date and has the necessary packages installed. Op
 sudo apt update
 sudo apt install wkhtmltopdf poppler-utils
 ```
+
+use `dnf` instead of `apt` on RHEL-based systems and `brew` on MacOS.
 
 ## Step-by-Step Guide
 
@@ -46,9 +54,3 @@ Merge all the PDF files you've created into a single PDF document named `POKY_do
 ```bash
 pdfunite *.pdf POKY_documentation.pdf
 ```
-
-### 4. Load the Documentation
-
-You can find the [`POKY_documentation.pdf`](doc/POKY_documentation.pdf) file in the current folder for convenience.
-Then create a new ChatGPT 4 model by loading the POKY_documentation.pdf file. Hopefuly,
-the new model will be able to answer to your questions related to POKY's usage.

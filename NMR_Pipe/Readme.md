@@ -1,5 +1,6 @@
 ---
 title: "Single line NMR Pipe installation"
+permalink: /NMR_Pipe/
 layout: default
 ---
 
@@ -47,7 +48,6 @@ See this [thread](https://groups.io/g/nmrpipe/message/3225) for more details.
 7. Prompts user to remove the `tmp_download` folder with the source archives.
 
 Simple as that!
-
 
 
 

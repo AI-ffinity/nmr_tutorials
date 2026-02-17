@@ -10,7 +10,7 @@ layout: default
 
 ### Downloading Ubiquitin's Parameter Set
 For a smooth configuration of your spectrometer, download Ubiquitin's parameter set (the Topsin directory including 
-spectra and parameters) from this Google drive link. This parameter set is from a 600 MHz magnet (e.g. generated with 
+spectra and parameters) from this [Google Drive Link](https://drive.google.com/drive/folders/1MJaQDYZ0T69Zc-JC1VrY-RWwws8zJBEa?usp=sharing). This parameter set is from a 600 MHz magnet (e.g. generated with 
 “wpar”) and can be adapted to your machine using “paracon” and some further fiddling.
 
 In the "Complete_experiments" folder, you will find the following experiments:
@@ -33,8 +33,6 @@ to go first to edasp and click default to set wiring and frequencies for your ha
 DIGTYP to the one your hardware uses. Then you need to recalibrate the pulses and that should be it. I suggest not to 
 use getprosol as the pulses may be used in a different way than Bruker assumes. It is important to check first with 
 an easy sample that you are getting signals, and the spectrum looks as expected.
-
-[Google Drive Link](https://drive.google.com/drive/folders/1MJaQDYZ0T69Zc-JC1VrY-RWwws8zJBEa?usp=sharing)
 
 ## Feasibility Assessment with 2D Experiments
 

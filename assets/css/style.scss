@@ -16,10 +16,10 @@
   justify-content: center;
   width: clamp(1.6rem, 2.6vw, 2.05rem);
   height: clamp(1.6rem, 2.6vw, 2.05rem);
-  padding: 0.25rem;
+  padding: 0;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.15);
-  color: #ffffff;
+  background: rgba(255, 255, 255, 0.15) url("../../images/home.svg") no-repeat center;
+  background-size: 72% 72%;
   text-decoration: none;
   transition: transform 120ms ease, background-color 120ms ease;
 }
@@ -30,11 +30,6 @@
   background: rgba(255, 255, 255, 0.28);
 }
 
-.home-button img {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
 
 .visually-hidden {
   position: absolute;

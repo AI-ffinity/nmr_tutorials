@@ -8,7 +8,7 @@ layout: default
 
 * [SMILE](./NMRPipe/SMILE.md)
 * IST 
-	* [TopSpin]((../TOPSPIN/NUS_reconstruction/) 
+	* [TopSpin](../TOPSPIN/NUS_reconstruction/) 
 	* [Pipe](./NMRPipe/IST.md) 
 	* [hmsIST scripts](./NMRPipe/hmsIST_no_pipe.md)
 *  SSA

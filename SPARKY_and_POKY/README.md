@@ -29,4 +29,4 @@ Navigation
 * [Poky Documentation](./POKY/doc/POKY_documentation.pdf)
 * [Scripts for POKY](./POKY/scripts)
 * [POKY command reference](./Common_Commands.md)
-* [How to make POKY GPT (with ChatGPT4)](./Create_ChatGPT4_documentation_model.md)
+* [How to make POKY GPT (with ChatGPT4)](Assemble_file_for_LLM.md)
