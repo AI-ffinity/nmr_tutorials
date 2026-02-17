@@ -33,16 +33,16 @@ layout: default
 - Integrate a confirmed single HN peak in 1D, then other peaks to determine their multiplicity (singlets, doublets, etc.).
 - Mark and identify as many HN peaks as possible using integrals from 1D and the overlaid 1D+2D TOCSY spectra.
 
-> ![NOTE]
-> Ignore peaks exactly below HA peaks around 4.8 ppm as correspond to water absorption - ignore them!
+> **Note:** Ignore peaks exactly below HA peaks around 4.8 ppm as correspond to water absorption - ignore them!
+{: .admonition .note}
 
 **Peak Assignments**
 - Assign as many H?-HN, H?-HA, H?-HB, etc., peaks as possible. Note that the first residue's HN does not appear in the spectrum; the second residue's HN is the most leftward.
 - Use the HA(i)-HN(i+1) NOEs to assign as many peaks as you can to atoms/residues. Sparky identifies the closest atom resonance when you try to add labels.
 - Use the HN(i)-HN(i+1) NOEs to assign as many peaks as you can to atoms/residues. Sparky identifies the closest atom resonance when you try to add labels.
 
->![NOTE]
-> Strong HN(i)-HN(i+1) NOEs are characteristic of alpha- and 3/10-helical structures (~2.8 A, ~2.6 A) and turn I (~2.6 A).
+> **Note:** Strong HN(i)-HN(i+1) NOEs are characteristic of alpha- and 3/10-helical structures (~2.8 A, ~2.6 A) and turn I (~2.6 A).
+{: .admonition .note}
 
 - Use the HB(i)-HN(i+1) NOEs to assign as many peaks as you can to atoms/residues. Sparky identifies the closest atom resonance when you try to add labels.
 - Use the rest of the NOEs to assign as many more atoms as you can. Sparky identifies the closest atom resonance when you try to add labels.

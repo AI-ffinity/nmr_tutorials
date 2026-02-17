@@ -11,8 +11,8 @@ layout: default
 
 ### Backbone assignments
 
->  ![Warning]
->  Differentiation between backbone and side chain peaks in the **3D** experiments is currently not supported by 4D-GraFID; please, remove any known sidechain peaks from the peak lists. 
+> **Warning:** Differentiation between backbone and side chain peaks in the **3D** experiments is currently not supported by 4D-GraFID; please, remove any known sidechain peaks from the peak lists.
+{: .admonition .warning}
 
 
 
@@ -28,8 +28,8 @@ layout: default
 
 ### Side chain assignments & structure
 
-> ![Info]
 > Coming soon to 4D-GraFID
+{: .admonition .info}
 
 | Name             | Example Bruker pulse sequence | Expected atoms                                     | Intensity            |
 | ---------------- | ----------------------------- | -------------------------------------------------- | -------------------- |
@@ -52,8 +52,8 @@ Non-paired experiments **will not be considered**
 
 ## User assignments reference
 
-> ![NOTE]
-> Currently *(as of 16. Feb 2026)*, only assignments of 15N-HSQC are considered. 
+> **Important:** Currently *(as of 16. Feb 2026)*, only assignments of 15N-HSQC are considered.
+{: .admonition .important}
 
 The assignment must match the format: `<1-letter RESTYPE><RESNUM><ATOM-w1>-<ATOM-w2>`.
 

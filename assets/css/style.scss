@@ -116,3 +116,44 @@
   display: block;
   margin: 0 auto;
 }
+
+.admonition {
+  margin: 1rem 0;
+  padding: 0.85rem 1rem;
+  border-left: 4px solid #3c78d8;
+  background: #f7f9ff;
+  border-radius: 6px;
+}
+
+.admonition > :first-child {
+  margin-top: 0;
+}
+
+.admonition > :last-child {
+  margin-bottom: 0;
+}
+
+.admonition.note {
+  border-left-color: #2f80ed;
+  background: #f3f8ff;
+}
+
+.admonition.tip {
+  border-left-color: #2f9e44;
+  background: #f3fbf6;
+}
+
+.admonition.warning {
+  border-left-color: #f59f00;
+  background: #fff8e6;
+}
+
+.admonition.caution {
+  border-left-color: #e03131;
+  background: #fff4f4;
+}
+
+.admonition.important {
+  border-left-color: #6f42c1;
+  background: #f7f2ff;
+}
