@@ -24,18 +24,18 @@ Description of [components of an NMR spectrometer](NMR_theory/NMR_Spectrometer.m
 <table class="contents-table">
   <tr>
     <td>
+      <img class="contents-icon" src="./images/tube_pic.jpg" alt="Random tube">
+    </td>
+    <td>
+      <a href="./Sample_Preparation">How to prepare samples for NMR measurements</a>
+    </td>
+  </tr>  
+  <tr>
+    <td>
       <img class="contents-icon" src="./images/spectrometer.png" alt="Spectrometer">
     </td>
     <td>
-      <a href="./TOPSPIN/Setup_NMR_Experiments_for_4D-GRAPHS/README.md">Setting up 4D NMR experiments for 4D-GraFID.</a>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <img class="contents-icon" src="./images/nmrpipe_logo.png" alt="NMR Pipe logo">
-    </td>
-    <td>
-      <a href="./NMR_Pipe">General tips on navigating NMRPipe ecosystem.</a>
+      <a href="./TOPSPIN/Setup_NMR_Experiments_for_4D-GRAPHS/">Setting up 4D NMR experiments for 4D-GraFID</a>
     </td>
   </tr>
   <tr>
@@ -43,7 +43,7 @@ Description of [components of an NMR spectrometer](NMR_theory/NMR_Spectrometer.m
       <img class="contents-icon" src="./images/NUS.png" alt="NUS">
     </td>
     <td>
-      <a href="./Non_Uniform_Sampling">Processing NUS data.</a>
+      <a href="./Non_Uniform_Sampling">Processing NUS data</a>
     </td>
   </tr>
   <tr>
@@ -51,15 +51,24 @@ Description of [components of an NMR spectrometer](NMR_theory/NMR_Spectrometer.m
       <img class="contents-icon" src="./images/topspin_logo.png" alt="TopSpin logo">
     </td>
     <td>
-      <a href="./TOPSPIN">How to record and process 2D, 3D and 4D spectra with TopSpin.</a>
+      <a href="./TOPSPIN">How to record and process 2D, 3D and 4D spectra with TopSpin</a>
     </td>
   </tr>
+  <tr>
+    <td>
+      <img class="contents-icon" src="./images/nmrpipe_logo.png" alt="NMR Pipe logo">
+    </td>
+    <td>
+      <a href="./NMR_Pipe">General tips on navigating NMRPipe ecosystem</a>
+    </td>
+  </tr>
+  
   <tr>
     <td>
       <img class="contents-icon" src="./images/sparky.png" alt="Sparky screenshot">
     </td>
     <td>
-      <a href="./SPARKY_and_POKY">How to analyze spectra in SPARKY.</a>
+      <a href="./SPARKY_and_POKY">How to analyze spectra in SPARKY</a>
     </td>
   </tr>
   <tr>
@@ -67,15 +76,15 @@ Description of [components of an NMR spectrometer](NMR_theory/NMR_Spectrometer.m
       <img class="contents-icon" src="./images/POKY_icon.png" alt="POKY icon">
     </td>
     <td>
-      <a href="./SPARKY_and_POKY">How to analyze spectra in POKY - the successor of NMRFAM SPARKY.</a>
+      <a href="./SPARKY_and_POKY">How to analyze spectra in POKY - the successor of NMRFAM SPARKY</a>
     </td>
   </tr>
   <tr>
     <td>
-      <img class="contents-icon" src="./images/tube_pic.jpg" alt="Random tube">
+      <img class="contents-icon" src="./images/aiffinity_brain.png" alt="4D-GraFID icon">
     </td>
     <td>
-      <a href="./Sample_Preparation">How to prepare samples for NMR measurements.</a>
+      <a href="./Input_peak_lists_for_4D-GraFID/peak_list_full_format_guide.md">Submitting peak lists for automated assignments by 4D-GraFID</a>
     </td>
   </tr>
 </table>
