@@ -15,4 +15,3 @@ layout: default
 * [15N HSQC Titrations Analysis tutorial](Titration_15N_HSQC/15N_HSQC_Processing.md)
 * [T1, T2 Relaxation Analysis tutorial](Relaxation/Relaxation_Spectra_Processing.md)
 * [Useful TopSpin commands](Common_Topspin_Commands.md)
-* [Back to the main page](../)
