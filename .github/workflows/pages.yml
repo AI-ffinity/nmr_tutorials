@@ -22,6 +22,9 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
+      - name: Generate sidebar tree
+        run: python3 scripts/generate_tree.py
+
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
       

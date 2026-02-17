@@ -1,7 +1,5 @@
 # NMR Tutorials
 
-Make sure to browse this knowledge base on GitHub https://ai-ffinity.github.io/nmr_tutorials/!
-
 <div style="display: flex; justify-content: space-between;">
   <div style="flex: 1; padding-right: 10px; width: 30.0%; max-width: 90%;">
   <img src="./images/AI-ffinity_Logo_Dark.png" alt="AIffinity logo" style="max-width: 90%; width: 200px">
@@ -11,6 +9,9 @@ Make sure to browse this knowledge base on GitHub https://ai-ffinity.github.io/n
     Click <a href="quick_search/quick_search.md">here</a> for instructions on how to quickly search the contents of the tutorials.</p>
   </div>
 </div>
+
+> Make sure to browse this knowledge base on GitHub https://ai-ffinity.github.io/nmr_tutorials/!
+
 
 Of all the online video resources on NMR, we highly recommend the following 4 courses. They cover the fundamentals and 
 gradually build up to more advanced concepts. Despite the titles mentioning MRI, they are focused mostly on NMR.
