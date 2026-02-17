@@ -47,3 +47,19 @@
   white-space: nowrap;
   border: 0;
 }
+
+.contents-table td {
+  vertical-align: middle;
+}
+
+.contents-table td:first-child {
+  width: 110px;
+}
+
+.contents-table .contents-icon {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}

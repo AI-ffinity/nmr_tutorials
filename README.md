@@ -21,60 +21,60 @@ gradually build up to more advanced concepts. Despite the titles mentioning MRI,
 Description of [components of an NMR spectrometer](NMR_theory/NMR_Spectrometer.md).
 
 ## Contents
-<table>
+<table class="contents-table">
   <tr>
-    <td style="vertical-align: middle;">
-      <img src="./images/spectrometer.png" alt="Spectrometer" style="max-width: 100%; width: 100px; height: 100px">
+    <td>
+      <img class="contents-icon" src="./images/spectrometer.png" alt="Spectrometer">
     </td>
-    <td style="vertical-align: middle;">
+    <td>
       <a href="./TOPSPIN/Setup_NMR_Experiments_for_4D-GRAPHS/README.md">Setting up 4D NMR experiments for 4D-GraFID.</a>
     </td>
   </tr>
   <tr>
-    <td style="vertical-align: middle;">
-      <img src="./images/nmrpipe_logo.png" alt="NMR Pipe logo" style="max-width: 100%; height: 100px">
+    <td>
+      <img class="contents-icon" src="./images/nmrpipe_logo.png" alt="NMR Pipe logo">
     </td>
-    <td style="vertical-align: middle; ">
+    <td>
       <a href="./NMR_Pipe">General tips on navigating NMRPipe ecosystem.</a>
     </td>
   </tr>
   <tr>
-    <td style="vertical-align: middle;">
-      <img src="./images/NUS.png" alt="NUS" style="max-width: 100%; height: 100px">
+    <td>
+      <img class="contents-icon" src="./images/NUS.png" alt="NUS">
     </td>
-    <td style="vertical-align: middle; ">
+    <td>
       <a href="./Non_Uniform_Sampling">Processing NUS data.</a>
     </td>
   </tr>
   <tr>
-    <td style="vertical-align: middle; width: 100px;">
-      <img src="./images/topspin_logo.png" alt="TopSpin logo" style="max-width: 100%; width: 100px">
+    <td>
+      <img class="contents-icon" src="./images/topspin_logo.png" alt="TopSpin logo">
     </td>
-    <td style="vertical-align: middle;">
+    <td>
       <a href="./TOPSPIN">How to record and process 2D, 3D and 4D spectra with TopSpin.</a>
     </td>
   </tr>
   <tr>
-    <td style="vertical-align: middle; width: 100px;">
-      <img src="./images/sparky.png" alt="Sparky screenshot" style="max-width: 100%; height: 100px">
+    <td>
+      <img class="contents-icon" src="./images/sparky.png" alt="Sparky screenshot">
     </td>
-    <td style="vertical-align: middle;">
+    <td>
       <a href="./SPARKY_and_POKY">How to analyze spectra in SPARKY.</a>
     </td>
   </tr>
   <tr>
-    <td style="vertical-align: middle; width: 100px;">
-      <img src="./images/POKY_icon.png" alt="POKY icon" style="max-width: 100%; height: 100px">
+    <td>
+      <img class="contents-icon" src="./images/POKY_icon.png" alt="POKY icon">
     </td>
-    <td style="vertical-align: middle; ">
+    <td>
       <a href="./SPARKY_and_POKY">How to analyze spectra in POKY - the successor of NMRFAM SPARKY.</a>
     </td>
   </tr>
   <tr>
-    <td style="vertical-align: middle; width: 100px;">
-      <img src="./images/tube_pic.jpg" alt="Random tube" style="max-width: 100%; height: 100px">
+    <td>
+      <img class="contents-icon" src="./images/tube_pic.jpg" alt="Random tube">
     </td>
-    <td style="vertical-align: middle; ">
+    <td>
       <a href="./Sample_Preparation">How to prepare samples for NMR measurements.</a>
     </td>
   </tr>
