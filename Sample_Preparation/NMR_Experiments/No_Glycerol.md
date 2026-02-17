@@ -1,3 +1,8 @@
+---
+title: "Protein Sample Preparation for NMR Experiments"
+layout: default
+---
+
 # Protein Sample Preparation for NMR Experiments
 
 This tutorial outlines the procedure for preparing protein samples for **NMR experiments**, 

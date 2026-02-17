@@ -1,3 +1,8 @@
+---
+title: "Protein NMR workflow"
+layout: default
+---
+
 ### Tips for Resonance Assignment
 
 **Preparation:**
@@ -28,7 +33,7 @@
 - Integrate a confirmed single HN peak in 1D, then other peaks to determine their multiplicity (singlets, doublets, etc.).
 - Mark and identify as many HN peaks as possible using integrals from 1D and the overlaid 1D+2D TOCSY spectra.
 
-> [!NOTE]
+> ![NOTE]
 > Ignore peaks exactly below HA peaks around 4.8 ppm as correspond to water absorption - ignore them!
 
 **Peak Assignments**
@@ -36,7 +41,7 @@
 - Use the HA(i)-HN(i+1) NOEs to assign as many peaks as you can to atoms/residues. Sparky identifies the closest atom resonance when you try to add labels.
 - Use the HN(i)-HN(i+1) NOEs to assign as many peaks as you can to atoms/residues. Sparky identifies the closest atom resonance when you try to add labels.
 
->[!NOTE]
+>![NOTE]
 > Strong HN(i)-HN(i+1) NOEs are characteristic of alpha- and 3/10-helical structures (~2.8 A, ~2.6 A) and turn I (~2.6 A).
 
 - Use the HB(i)-HN(i+1) NOEs to assign as many peaks as you can to atoms/residues. Sparky identifies the closest atom resonance when you try to add labels.

@@ -1,3 +1,8 @@
+---
+title: "nusPipe SMILE ref"
+layout: default
+---
+
 `nusPipe -fn SMILE -help`
 
 Output: 

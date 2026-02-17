@@ -1,3 +1,8 @@
+---
+title: "TopSpin Commands for Spectra Processing"
+layout: default
+---
+
 # TopSpin Commands for Spectra Processing
 
 ## Fourier Transform and Baseline Correction

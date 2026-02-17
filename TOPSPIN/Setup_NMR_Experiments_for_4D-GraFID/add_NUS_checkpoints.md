@@ -1,3 +1,8 @@
+---
+title: "Adding Checkpoints to a NUS List to Monitor Sample Stability"
+layout: default
+---
+
 # Adding Checkpoints to a NUS List to Monitor Sample Stability
 
 Non-Uniform Sampling (NUS) is a powerful way to shorten experiment time in multidimensional NMR. However, long acquisitions can still lead to sample degradation: proteins may aggregate, denature, be cleaved, or precipitate over time. All of this affects your FIDs and, consequently, the final spectrum.

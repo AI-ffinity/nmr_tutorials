@@ -1,3 +1,8 @@
+---
+title: "SMILE reconstruction"
+layout: default
+---
+
 # SMILE reconstruction 
 
 ## General remarks

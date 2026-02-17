@@ -1,3 +1,8 @@
+---
+title: "NMR Spectrometer"
+layout: default
+---
+
 NMR spectrometers consist of three main components: a superconducting magnet, a probe and a complex electronic system 
 (console) controlled by a workstation (Figure 3).
 

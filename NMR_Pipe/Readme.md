@@ -1,3 +1,9 @@
+---
+title: "Single line NMR Pipe installation"
+permalink: /NMR_Pipe/
+layout: default
+---
+
 # Single line NMR Pipe installation
 
 Download, install and set up [NMRPipe](https://spin.niddk.nih.gov/bax/NMRPipe/) on Ubuntu with the single line!
@@ -42,7 +48,6 @@ See this [thread](https://groups.io/g/nmrpipe/message/3225) for more details.
 7. Prompts user to remove the `tmp_download` folder with the source archives.
 
 Simple as that!
-
 
 
 

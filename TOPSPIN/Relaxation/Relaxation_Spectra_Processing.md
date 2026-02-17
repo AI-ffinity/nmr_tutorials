@@ -1,3 +1,8 @@
+---
+title: "T1/T2 ^15N relaxation tutorial: TopSpin processing → Bruker Dynamics Center"
+layout: default
+---
+
 # T1/T2 ^15N relaxation tutorial: TopSpin processing → Bruker Dynamics Center
 
 ---

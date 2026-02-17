@@ -1,3 +1,8 @@
+---
+title: "Explanation of `rser` and `rser eao` Commands in TopSpin"
+layout: default
+---
+
 # Explanation of `rser` and `rser eao` Commands in TopSpin
 
 In TopSpin, the `rser` command is used to read raw time‐domain (FID) data from the `ser` file of a multi‐dimensional experiment. The `eao` keyword stands for “echo–antiecho” and instructs TopSpin on how to interpret or separate the raw data when echo–antiecho acquisition has been used in the indirect dimension(s).

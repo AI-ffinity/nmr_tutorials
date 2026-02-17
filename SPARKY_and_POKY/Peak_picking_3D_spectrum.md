@@ -1,3 +1,8 @@
+---
+title: "Peak Picking in a 3D Spectrum with **POKY**"
+layout: default
+---
+
 # Peak Picking in a 3D Spectrum with **POKY**
 
 ## Overview

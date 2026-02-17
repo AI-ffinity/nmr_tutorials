@@ -1,3 +1,8 @@
+---
+title: "Beginner‑friendly guide to **decoupling** in NMR"
+layout: default
+---
+
 # Beginner‑friendly guide to **decoupling** in NMR
 
 > **Goal:** understand why we switch on “proton decoupling” when we record a^13C spectrum and what changes when we move to 3‑D or 4‑D biomolecular experiments.

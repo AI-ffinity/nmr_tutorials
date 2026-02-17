@@ -1,3 +1,8 @@
+---
+title: "Dummy Scans"
+layout: default
+---
+
 ### What are “dummy scans” (DS)?
 
 In TopSpin the *dummy scans* (parameter **DS**) are additional scans that are executed **before** the first “real” scan is stored in the FID.  

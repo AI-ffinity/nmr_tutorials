@@ -1,3 +1,9 @@
+---
+title: "Sample Preparation"
+permalink: /Sample_Preparation/
+layout: default
+---
+
 # Sample Preparation
 
 Tutorials for preparing samples for NMR measurements and related procedures.  

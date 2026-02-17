@@ -1,9 +1,15 @@
+---
+title: "Protein Backbone 3D NMR Spectra Acquisition Workflow"
+permalink: /TOPSPIN/3D_backbone_experiments/
+layout: default
+---
+
 # Protein Backbone 3D NMR Spectra Acquisition Workflow
 
 This tutorial contains of experiments for a 14 kDa IDP conducted on 950 MHz but without 
 13C and 15N hard pulse calibrations. 
 For 13C and 15N pulse calibration for the same protein on the 850 MHz refer to 
-[this](../Pulse_Calibration/README.md) tutorial.
+[this](../Pulse_Calibration/) tutorial.
 
 ---
 

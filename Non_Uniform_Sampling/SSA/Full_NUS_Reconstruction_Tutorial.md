@@ -1,3 +1,8 @@
+---
+title: "Full NUS Reconstruction Tutorial"
+layout: default
+---
+
 NUS Processing of Ubiquitin 4D NOESY
 ------------------------------------------------------------------
 
@@ -284,7 +289,6 @@ pulse sequence), focusing on the Ubiquitin sample in the context of data/AIffini
 2. In Sparky, read the resulting projections and reference the N or HN axes as previously described.
 3. Overlay these projections on the 15N HSQC.
 
-![](../images/N-HN.png)
+![](../images/HN-N.png)
 
 *Authors: Petr Padrta & Thomas Evangelidis, 8.4.2024*
-

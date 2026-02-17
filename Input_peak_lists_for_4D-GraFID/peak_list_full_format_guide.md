@@ -1,3 +1,8 @@
+---
+title: "peak list full format guide"
+layout: default
+---
+
 # Submitting peak lists for 4D-GraFID
 
 ## Experiment type reference

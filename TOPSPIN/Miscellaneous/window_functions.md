@@ -1,3 +1,8 @@
+---
+title: "window functions"
+layout: default
+---
+
 Overview of Window Function Parameters (PROCPARS tab) for Protein Spectra
 ---
 

@@ -1,3 +1,8 @@
+---
+title: "How to Set Up a **¹H–¹⁵N HSQC** Experiment in TopSpin"
+layout: default
+---
+
 # How to Set Up a **¹H–¹⁵N HSQC** Experiment in TopSpin
 
 > This tutorial walks you through every step—from loading your sample to fine-tuning shims and measuring signal-to-noise—so 

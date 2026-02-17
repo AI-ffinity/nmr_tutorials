@@ -1,3 +1,8 @@
+---
+title: "TopSpin Tutorial: 1D spectra integration, calibration and deconvolution."
+layout: default
+---
+
 # TopSpin Tutorial: 1D spectra integration, calibration and deconvolution.
 
 ---

@@ -1,3 +1,8 @@
+---
+title: "Data handling"
+layout: default
+---
+
 # Data handling
 ## 1. Load spectrum into Poky
 * `fo` or File | Open...

@@ -1,3 +1,8 @@
+---
+title: "13C-edited 3D NOESY"
+layout: default
+---
+
 # 13C-edited 3D NOESY
 
 Execute the following steps in the specified order:

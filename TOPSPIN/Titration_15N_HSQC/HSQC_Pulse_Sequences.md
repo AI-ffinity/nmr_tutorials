@@ -1,3 +1,8 @@
+---
+title: "HSQC Pulse Sequences"
+layout: default
+---
+
 ## SOFAST‑HMQC
 **- Pros:**
   - Ultra‑fast acquisition (30 s–5 min per 2D spectrum) by using Ernst‑angle excitation and very short recycle delays, ideal for screening many ligands quickly.

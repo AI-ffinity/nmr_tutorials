@@ -1,0 +1,118 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+.page-header {
+  position: relative;
+}
+
+.home-button {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(1.6rem, 2.6vw, 2.05rem);
+  height: clamp(1.6rem, 2.6vw, 2.05rem);
+  padding: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15) url("../../images/home.svg") no-repeat center;
+  background-size: 72% 72%;
+  text-decoration: none;
+  transition: transform 120ms ease, background-color 120ms ease;
+}
+
+.home-button:hover,
+.home-button:focus-visible {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.28);
+}
+
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.page-body {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.sidebar {
+  position: sticky;
+  top: 1.5rem;
+  align-self: start;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 1rem;
+  max-height: calc(100vh - 3rem);
+  overflow: auto;
+}
+
+.sidebar-title {
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.sidebar .tree-root {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.sidebar .tree-root ul {
+  list-style: none;
+  margin: 0.4rem 0 0.4rem 0.75rem;
+  padding-left: 0.6rem;
+  border-left: 1px solid #eaeaea;
+}
+
+.sidebar a {
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.sidebar .tree-disabled {
+  color: #888888;
+  pointer-events: none;
+}
+
+@media (max-width: 980px) {
+  .page-body {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+    max-height: none;
+  }
+}
+
+.contents-table td {
+  vertical-align: middle;
+}
+
+.contents-table td:first-child {
+  width: 110px;
+}
+
+.contents-table .contents-icon {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}

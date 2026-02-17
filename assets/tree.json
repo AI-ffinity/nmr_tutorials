@@ -1,0 +1,540 @@
+{
+  "type": "dir",
+  "name": "nmr tutorials",
+  "path": ".",
+  "url": "/./",
+  "children": [
+    {
+      "type": "dir",
+      "name": "Input peak lists for 4D-GraFID",
+      "path": "Input_peak_lists_for_4D-GraFID",
+      "url": null,
+      "children": [
+        {
+          "type": "file",
+          "name": "Backbone experiments",
+          "path": "Input_peak_lists_for_4D-GraFID/Backbone experiments.md",
+          "url": "/Input_peak_lists_for_4D-GraFID/Backbone experiments.html"
+        },
+        {
+          "type": "file",
+          "name": "Experiment type reference",
+          "path": "Input_peak_lists_for_4D-GraFID/Experiment_type_reference.md",
+          "url": "/Input_peak_lists_for_4D-GraFID/Experiment_type_reference.html"
+        },
+        {
+          "type": "file",
+          "name": "peak list full format guide",
+          "path": "Input_peak_lists_for_4D-GraFID/peak_list_full_format_guide.md",
+          "url": "/Input_peak_lists_for_4D-GraFID/peak_list_full_format_guide.html"
+        }
+      ]
+    },
+    {
+      "type": "dir",
+      "name": "NMR theory",
+      "path": "NMR_theory",
+      "url": null,
+      "children": [
+        {
+          "type": "file",
+          "name": "NMR Spectrometer",
+          "path": "NMR_theory/NMR_Spectrometer.md",
+          "url": "/NMR_theory/NMR_Spectrometer.html"
+        }
+      ]
+    },
+    {
+      "type": "dir",
+      "name": "Non Uniform Sampling",
+      "path": "Non_Uniform_Sampling",
+      "url": "/Non_Uniform_Sampling/",
+      "children": [
+        {
+          "type": "dir",
+          "name": "NMRPipe",
+          "path": "Non_Uniform_Sampling/NMRPipe",
+          "url": null,
+          "children": [
+            {
+              "type": "file",
+              "name": "hmsIST no pipe",
+              "path": "Non_Uniform_Sampling/NMRPipe/hmsIST_no_pipe.md",
+              "url": "/Non_Uniform_Sampling/NMRPipe/hmsIST_no_pipe.html"
+            },
+            {
+              "type": "file",
+              "name": "IST",
+              "path": "Non_Uniform_Sampling/NMRPipe/IST.md",
+              "url": "/Non_Uniform_Sampling/NMRPipe/IST.html"
+            },
+            {
+              "type": "file",
+              "name": "NOESY 4D sequence ref",
+              "path": "Non_Uniform_Sampling/NMRPipe/NOESY_4D_sequence_ref.md",
+              "url": "/Non_Uniform_Sampling/NMRPipe/NOESY_4D_sequence_ref.html"
+            },
+            {
+              "type": "file",
+              "name": "nusPipe IST 4D ref",
+              "path": "Non_Uniform_Sampling/NMRPipe/nusPipe_IST_4D_ref.md",
+              "url": "/Non_Uniform_Sampling/NMRPipe/nusPipe_IST_4D_ref.html"
+            },
+            {
+              "type": "file",
+              "name": "nusPipe SMILE ref",
+              "path": "Non_Uniform_Sampling/NMRPipe/nusPipe_SMILE_ref.md",
+              "url": "/Non_Uniform_Sampling/NMRPipe/nusPipe_SMILE_ref.html"
+            },
+            {
+              "type": "file",
+              "name": "SMILE",
+              "path": "Non_Uniform_Sampling/NMRPipe/SMILE.md",
+              "url": "/Non_Uniform_Sampling/NMRPipe/SMILE.html"
+            }
+          ]
+        },
+        {
+          "type": "dir",
+          "name": "SSA",
+          "path": "Non_Uniform_Sampling/SSA",
+          "url": null,
+          "children": [
+            {
+              "type": "file",
+              "name": "Correct Topspin Bug",
+              "path": "Non_Uniform_Sampling/SSA/Correct_Topspin_Bug.md",
+              "url": "/Non_Uniform_Sampling/SSA/Correct_Topspin_Bug.html"
+            },
+            {
+              "type": "file",
+              "name": "Full NUS Reconstruction Tutorial",
+              "path": "Non_Uniform_Sampling/SSA/Full_NUS_Reconstruction_Tutorial.md",
+              "url": "/Non_Uniform_Sampling/SSA/Full_NUS_Reconstruction_Tutorial.html"
+            },
+            {
+              "type": "file",
+              "name": "Quick NUS Reconstruction Tutorial",
+              "path": "Non_Uniform_Sampling/SSA/Quick_NUS_Reconstruction_Tutorial.md",
+              "url": "/Non_Uniform_Sampling/SSA/Quick_NUS_Reconstruction_Tutorial.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "dir",
+      "name": "quick search",
+      "path": "quick_search",
+      "url": null,
+      "children": [
+        {
+          "type": "file",
+          "name": "quick search",
+          "path": "quick_search/quick_search.md",
+          "url": "/quick_search/quick_search.html"
+        }
+      ]
+    },
+    {
+      "type": "dir",
+      "name": "Sample Preparation",
+      "path": "Sample_Preparation",
+      "url": "/Sample_Preparation/",
+      "children": [
+        {
+          "type": "dir",
+          "name": "Misc",
+          "path": "Sample_Preparation/Misc",
+          "url": null,
+          "children": [
+            {
+              "type": "file",
+              "name": "NanoDrop tutorial",
+              "path": "Sample_Preparation/Misc/NanoDrop_tutorial.md",
+              "url": "/Sample_Preparation/Misc/NanoDrop_tutorial.html"
+            }
+          ]
+        },
+        {
+          "type": "dir",
+          "name": "NMR Experiments",
+          "path": "Sample_Preparation/NMR_Experiments",
+          "url": null,
+          "children": [
+            {
+              "type": "file",
+              "name": "Glycerol Removal",
+              "path": "Sample_Preparation/NMR_Experiments/Glycerol_Removal.md",
+              "url": "/Sample_Preparation/NMR_Experiments/Glycerol_Removal.html"
+            },
+            {
+              "type": "file",
+              "name": "No Glycerol",
+              "path": "Sample_Preparation/NMR_Experiments/No_Glycerol.md",
+              "url": "/Sample_Preparation/NMR_Experiments/No_Glycerol.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "dir",
+      "name": "SPARKY and POKY",
+      "path": "SPARKY_and_POKY",
+      "url": "/SPARKY_and_POKY/",
+      "children": [
+        {
+          "type": "dir",
+          "name": "Miscellaneous",
+          "path": "SPARKY_and_POKY/Miscellaneous",
+          "url": null,
+          "children": [
+            {
+              "type": "file",
+              "name": "convert spectra POKY",
+              "path": "SPARKY_and_POKY/Miscellaneous/convert_spectra_POKY.md",
+              "url": "/SPARKY_and_POKY/Miscellaneous/convert_spectra_POKY.html"
+            }
+          ]
+        },
+        {
+          "type": "dir",
+          "name": "POKY",
+          "path": "SPARKY_and_POKY/POKY",
+          "url": null,
+          "children": [
+            {
+              "type": "file",
+              "name": "Transfer BMRB assignments",
+              "path": "SPARKY_and_POKY/POKY/Transfer_BMRB_assignments.md",
+              "url": "/SPARKY_and_POKY/POKY/Transfer_BMRB_assignments.html"
+            }
+          ]
+        },
+        {
+          "type": "file",
+          "name": "Assemble file for LLM",
+          "path": "SPARKY_and_POKY/Assemble_file_for_LLM.md",
+          "url": "/SPARKY_and_POKY/Assemble_file_for_LLM.html"
+        },
+        {
+          "type": "file",
+          "name": "Common Commands",
+          "path": "SPARKY_and_POKY/Common_Commands.md",
+          "url": "/SPARKY_and_POKY/Common_Commands.html"
+        },
+        {
+          "type": "file",
+          "name": "Create 2D projections from 4D spectrum",
+          "path": "SPARKY_and_POKY/Create_2D_projections_from_4D_spectrum.md",
+          "url": "/SPARKY_and_POKY/Create_2D_projections_from_4D_spectrum.html"
+        },
+        {
+          "type": "file",
+          "name": "Peak picking 3D NOESY",
+          "path": "SPARKY_and_POKY/Peak_picking_3D_NOESY.md",
+          "url": "/SPARKY_and_POKY/Peak_picking_3D_NOESY.html"
+        },
+        {
+          "type": "file",
+          "name": "Peak picking 3D spectrum",
+          "path": "SPARKY_and_POKY/Peak_picking_3D_spectrum.md",
+          "url": "/SPARKY_and_POKY/Peak_picking_3D_spectrum.html"
+        },
+        {
+          "type": "file",
+          "name": "Peak picking 4D spectrum",
+          "path": "SPARKY_and_POKY/Peak_picking_4D_spectrum.md",
+          "url": "/SPARKY_and_POKY/Peak_picking_4D_spectrum.html"
+        },
+        {
+          "type": "file",
+          "name": "Protein NMR workflow",
+          "path": "SPARKY_and_POKY/Protein_NMR_workflow.md",
+          "url": "/SPARKY_and_POKY/Protein_NMR_workflow.html"
+        },
+        {
+          "type": "file",
+          "name": "Quickstart",
+          "path": "SPARKY_and_POKY/Quickstart.md",
+          "url": "/SPARKY_and_POKY/Quickstart.html"
+        },
+        {
+          "type": "file",
+          "name": "Read peak intensities",
+          "path": "SPARKY_and_POKY/Read_peak_intensities.md",
+          "url": "/SPARKY_and_POKY/Read_peak_intensities.html"
+        },
+        {
+          "type": "file",
+          "name": "Unfold Peaks",
+          "path": "SPARKY_and_POKY/Unfold_Peaks.md",
+          "url": "/SPARKY_and_POKY/Unfold_Peaks.html"
+        }
+      ]
+    },
+    {
+      "type": "dir",
+      "name": "TOPSPIN",
+      "path": "TOPSPIN",
+      "url": "/TOPSPIN/",
+      "children": [
+        {
+          "type": "dir",
+          "name": "3D backbone experiments",
+          "path": "TOPSPIN/3D_backbone_experiments",
+          "url": "/TOPSPIN/3D_backbone_experiments/",
+          "children": []
+        },
+        {
+          "type": "dir",
+          "name": "Miscellaneous",
+          "path": "TOPSPIN/Miscellaneous",
+          "url": null,
+          "children": [
+            {
+              "type": "file",
+              "name": "1D protein QC",
+              "path": "TOPSPIN/Miscellaneous/1D_protein_QC.md",
+              "url": "/TOPSPIN/Miscellaneous/1D_protein_QC.html"
+            },
+            {
+              "type": "file",
+              "name": "Decoupling",
+              "path": "TOPSPIN/Miscellaneous/Decoupling.md",
+              "url": "/TOPSPIN/Miscellaneous/Decoupling.html"
+            },
+            {
+              "type": "file",
+              "name": "Dummy Scans",
+              "path": "TOPSPIN/Miscellaneous/Dummy_Scans.md",
+              "url": "/TOPSPIN/Miscellaneous/Dummy_Scans.html"
+            },
+            {
+              "type": "file",
+              "name": "RF pulse",
+              "path": "TOPSPIN/Miscellaneous/RF_pulse.md",
+              "url": "/TOPSPIN/Miscellaneous/RF_pulse.html"
+            },
+            {
+              "type": "file",
+              "name": "transpose axes 2D",
+              "path": "TOPSPIN/Miscellaneous/transpose_axes_2D.md",
+              "url": "/TOPSPIN/Miscellaneous/transpose_axes_2D.html"
+            },
+            {
+              "type": "file",
+              "name": "window functions",
+              "path": "TOPSPIN/Miscellaneous/window_functions.md",
+              "url": "/TOPSPIN/Miscellaneous/window_functions.html"
+            }
+          ]
+        },
+        {
+          "type": "dir",
+          "name": "NUS reconstruction",
+          "path": "TOPSPIN/NUS_reconstruction",
+          "url": "/TOPSPIN/NUS_reconstruction/",
+          "children": [
+            {
+              "type": "file",
+              "name": "3D",
+              "path": "TOPSPIN/NUS_reconstruction/3D.md",
+              "url": "/TOPSPIN/NUS_reconstruction/3D.html"
+            },
+            {
+              "type": "file",
+              "name": "4D",
+              "path": "TOPSPIN/NUS_reconstruction/4D.md",
+              "url": "/TOPSPIN/NUS_reconstruction/4D.html"
+            }
+          ]
+        },
+        {
+          "type": "dir",
+          "name": "Phase Correction",
+          "path": "TOPSPIN/Phase_Correction",
+          "url": "/TOPSPIN/Phase_Correction/",
+          "children": [
+            {
+              "type": "dir",
+              "name": "definitions",
+              "path": "TOPSPIN/Phase_Correction/definitions",
+              "url": null,
+              "children": [
+                {
+                  "type": "file",
+                  "name": "rser command usage",
+                  "path": "TOPSPIN/Phase_Correction/definitions/rser_command_usage.md",
+                  "url": "/TOPSPIN/Phase_Correction/definitions/rser_command_usage.html"
+                }
+              ]
+            },
+            {
+              "type": "file",
+              "name": "2D",
+              "path": "TOPSPIN/Phase_Correction/2D.md",
+              "url": "/TOPSPIN/Phase_Correction/2D.html"
+            },
+            {
+              "type": "file",
+              "name": "3D",
+              "path": "TOPSPIN/Phase_Correction/3D.md",
+              "url": "/TOPSPIN/Phase_Correction/3D.html"
+            },
+            {
+              "type": "file",
+              "name": "4D",
+              "path": "TOPSPIN/Phase_Correction/4D.md",
+              "url": "/TOPSPIN/Phase_Correction/4D.html"
+            }
+          ]
+        },
+        {
+          "type": "dir",
+          "name": "Pulse Calibration",
+          "path": "TOPSPIN/Pulse_Calibration",
+          "url": "/TOPSPIN/Pulse_Calibration/",
+          "children": []
+        },
+        {
+          "type": "dir",
+          "name": "Referencing shifts",
+          "path": "TOPSPIN/Referencing_shifts",
+          "url": null,
+          "children": [
+            {
+              "type": "file",
+              "name": "Referencing Spectra",
+              "path": "TOPSPIN/Referencing_shifts/Referencing_Spectra.md",
+              "url": "/TOPSPIN/Referencing_shifts/Referencing_Spectra.html"
+            }
+          ]
+        },
+        {
+          "type": "dir",
+          "name": "Relaxation",
+          "path": "TOPSPIN/Relaxation",
+          "url": null,
+          "children": [
+            {
+              "type": "file",
+              "name": "Relaxation Spectra Processing",
+              "path": "TOPSPIN/Relaxation/Relaxation_Spectra_Processing.md",
+              "url": "/TOPSPIN/Relaxation/Relaxation_Spectra_Processing.html"
+            }
+          ]
+        },
+        {
+          "type": "dir",
+          "name": "Sensitivity Measurement",
+          "path": "TOPSPIN/Sensitivity_Measurement",
+          "url": null,
+          "children": [
+            {
+              "type": "file",
+              "name": "Sensitivity Loss 3Dto4D",
+              "path": "TOPSPIN/Sensitivity_Measurement/Sensitivity_Loss_3Dto4D.md",
+              "url": "/TOPSPIN/Sensitivity_Measurement/Sensitivity_Loss_3Dto4D.html"
+            }
+          ]
+        },
+        {
+          "type": "dir",
+          "name": "Setup NMR Experiments for 4D-GraFID",
+          "path": "TOPSPIN/Setup_NMR_Experiments_for_4D-GraFID",
+          "url": "/TOPSPIN/Setup_NMR_Experiments_for_4D-GraFID/",
+          "children": [
+            {
+              "type": "file",
+              "name": "add NUS checkpoints",
+              "path": "TOPSPIN/Setup_NMR_Experiments_for_4D-GraFID/add_NUS_checkpoints.md",
+              "url": "/TOPSPIN/Setup_NMR_Experiments_for_4D-GraFID/add_NUS_checkpoints.html"
+            },
+            {
+              "type": "file",
+              "name": "setup 4D acquisition",
+              "path": "TOPSPIN/Setup_NMR_Experiments_for_4D-GraFID/setup_4D_acquisition.md",
+              "url": "/TOPSPIN/Setup_NMR_Experiments_for_4D-GraFID/setup_4D_acquisition.html"
+            },
+            {
+              "type": "file",
+              "name": "starting point",
+              "path": "TOPSPIN/Setup_NMR_Experiments_for_4D-GraFID/starting_point.md",
+              "url": "/TOPSPIN/Setup_NMR_Experiments_for_4D-GraFID/starting_point/"
+            },
+            {
+              "type": "file",
+              "name": "Unfolding and Unaliasing Spectra",
+              "path": "TOPSPIN/Setup_NMR_Experiments_for_4D-GraFID/Unfolding_and_Unaliasing_Spectra.md",
+              "url": "/TOPSPIN/Setup_NMR_Experiments_for_4D-GraFID/Unfolding_and_Unaliasing_Spectra.html"
+            }
+          ]
+        },
+        {
+          "type": "dir",
+          "name": "Titration 15N HSQC",
+          "path": "TOPSPIN/Titration_15N_HSQC",
+          "url": null,
+          "children": [
+            {
+              "type": "file",
+              "name": "15N HSQC Acquisition",
+              "path": "TOPSPIN/Titration_15N_HSQC/15N_HSQC_Acquisition.md",
+              "url": "/TOPSPIN/Titration_15N_HSQC/15N_HSQC_Acquisition.html"
+            },
+            {
+              "type": "file",
+              "name": "15N HSQC IOCB tutorial",
+              "path": "TOPSPIN/Titration_15N_HSQC/15N_HSQC_IOCB_tutorial.md",
+              "url": "/TOPSPIN/Titration_15N_HSQC/15N_HSQC_IOCB_tutorial.html"
+            },
+            {
+              "type": "file",
+              "name": "15N HSQC Processing",
+              "path": "TOPSPIN/Titration_15N_HSQC/15N_HSQC_Processing.md",
+              "url": "/TOPSPIN/Titration_15N_HSQC/15N_HSQC_Processing.html"
+            },
+            {
+              "type": "file",
+              "name": "1D Proton Spectrum Acquisition",
+              "path": "TOPSPIN/Titration_15N_HSQC/1D_Proton_Spectrum_Acquisition.md",
+              "url": "/TOPSPIN/Titration_15N_HSQC/1D_Proton_Spectrum_Acquisition.html"
+            },
+            {
+              "type": "file",
+              "name": "HSQC Pulse Sequences",
+              "path": "TOPSPIN/Titration_15N_HSQC/HSQC_Pulse_Sequences.md",
+              "url": "/TOPSPIN/Titration_15N_HSQC/HSQC_Pulse_Sequences.html"
+            }
+          ]
+        },
+        {
+          "type": "file",
+          "name": "1D Spectrum Analysis",
+          "path": "TOPSPIN/1D_Spectrum_Analysis.md",
+          "url": "/TOPSPIN/1D_Spectrum_Analysis.html"
+        },
+        {
+          "type": "file",
+          "name": "Common Topspin Commands",
+          "path": "TOPSPIN/Common_Topspin_Commands.md",
+          "url": "/TOPSPIN/Common_Topspin_Commands.html"
+        },
+        {
+          "type": "file",
+          "name": "Topspin Installation",
+          "path": "TOPSPIN/Topspin_Installation.md",
+          "url": "/TOPSPIN/Topspin_Installation.html"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index",
+      "path": "index.md",
+      "url": "/index.html"
+    }
+  ]
+}
