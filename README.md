@@ -10,7 +10,7 @@
   </div>
 </div>
 
-> Make sure to browse this knowledge base on GitHub https://ai-ffinity.github.io/nmr_tutorials/!
+> Make sure to browse this knowledge base on GitHub Pages! https://ai-ffinity.github.io/nmr_tutorials/!
 
 
 Of all the online video resources on NMR, we highly recommend the following 4 courses. They cover the fundamentals and 
