@@ -3,15 +3,9 @@ title: "quick search"
 layout: default
 ---
 
-
-
-
-
-<img src="./images/home.svg" width=100, height=100 />
-
-
-
 Find all `.md` files and concatenate their contents into a single `all.md` file.
+
+Download the repository from https://github.com/AI-ffinity/nmr_tutorials, navigate to that folder and open a terminal.
 
 **Linux / MacOS**
 
@@ -26,5 +20,3 @@ Get-ChildItem -Recurse -Filter *.md | Sort-Object FullName | ForEach-Object { Ge
 ```
 
 Upload the `all.md` file to ChatGPT and ask it for instructions.
-
-Back to the [main page](https://ai-ffinity.github.io/nmr_tutorials/)

@@ -1,17 +1,17 @@
 ---
-title: "OBSOLETE!!! Guide to Set Up 4D NMR Experiments"
-permalink: /TOPSPIN/Setup_NMR_Experiments_for_4D-GRAPHS/
+title: "Starting Point for Setting Up a 4D Experiment"
+permalink: /TOPSPIN/Setup_NMR_Experiments_for_4D-GraFID/starting_point/
 layout: default
 ---
 
-# OBSOLETE!!! Guide to Set Up 4D NMR Experiments
+# Guide to Set Up 4D NMR Experiments: starting point
 
 ## Setting Up NMR Experiments
 
 ### Downloading Ubiquitin's Parameter Set
 For a smooth configuration of your spectrometer, download Ubiquitin's parameter set (the Topsin directory including 
-spectra and parameters) from this [Google Drive Link](https://drive.google.com/drive/folders/1MJaQDYZ0T69Zc-JC1VrY-RWwws8zJBEa?usp=sharing). This parameter set is from a 600 MHz magnet (e.g. generated with 
-“wpar”) and can be adapted to your machine using “paracon” and some further fiddling.
+spectra and parameters) from this [Google Drive Link](https://drive.google.com/drive/folders/1MJaQDYZ0T69Zc-JC1VrY-RWwws8zJBEa?usp=sharing). This parameter set is from a **600 MHz** magnet (e.g. generated with 
+`wpar`) and can be adapted to your machine using `paracon` and some further fiddling.
 
 In the "Complete_experiments" folder, you will find the following experiments:
 - Experiment 3: 13C HSQC
@@ -54,7 +54,7 @@ and the absence of artifacts. Additionally, check the H-H 2D plane for calibrati
 experiment(s). We frequently use intermediate mixing time (e.g. 70 ms).
 
 ### NUS Setup
-We use Topspins's NUS schedule generator. The number of NUS points and % sampling will depend on you sample. Specifically,
+We use the in-built TopSpins NUS schedule generator. The number of NUS points and % sampling will depend on you sample. Specifically,
 on the required number of scans, D1 delay, and other parameter values required to obtain good S/N.
 the available spectrometer time.
 
