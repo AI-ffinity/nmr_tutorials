@@ -109,8 +109,11 @@ ucsfdata -a1 C -a2 HC -o 13C_HSQC_renamed_axes.ucsf 13C_HSQC.ucsf
 
 ## Additional Resources
 
-- For those interested in creating 2D projections via the graphical user interface (GUI), refer to the following video 
-tutorial: [How to Make 2D Projections of 3D Spectra](https://www.youtube.com/watch?v=KyfyS5inLwI)
+For those interested in creating 2D projections via the graphical user interface (GUI), refer to the following video tutorial:
+
+<div class="video-container">
+  <iframe src="https://www.youtube.com/embed/KyfyS5inLwI" title="How to Make 2D Projections of 3D Spectra" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 **Note:** While the GUI method is available, this tutorial focuses on the command-line approach for its efficiency and precision.
 

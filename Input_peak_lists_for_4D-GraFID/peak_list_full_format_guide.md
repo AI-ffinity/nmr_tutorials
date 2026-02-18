@@ -5,20 +5,20 @@ layout: default
 
 # Submitting NMR peak lists for 4D-GraFID
 
-1. Upload your peak lists at the left panel of the upload interface Currently, we only support peak lists must be in NMRFAM SPARKY / POKY format; files must have `.list` extension.
+1. Upload your peak lists via the upload interface's left panel. Currently, we only support peak lists in NMRFAM SPARKY / POKY format; files must have the `.list` extension.
 2. Select the experiment type.
 
-The dimensions of the peak lists will be inferred automatically based on the distribution of the chemical shift values.
+The dimensions of the peak lists will be automatically inferred based on the distribution of chemical shift values.
 
 <div class="video-container">
   <iframe width="560" height="315" src="https://www.youtube.com/embed/ljX-bOdQsjU?si=yWYThM2b4LpYtd7N" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-[Watch the video on YouTube](https://www.youtube.com/watch?v=ljX-bOdQsjU)
+[Watch this video on YouTube](https://www.youtube.com/watch?v=ljX-bOdQsjU)
 
 
-## Example peak lists:
-Those peak lists are for a small protein from ARTINA benchmark set (1YEZ)
+## Example peak lists
+The following peak lists are from a small protein (**1YEZ**) from the **ARTINA benchmark set**:
 
 * [2D NH-HSQC](https://raw.githubusercontent.com/AI-ffinity/ARTINA_benchmark_set/blob/FULL_DATASET/1YEZ/input_files/1YEZ_HSQC_hsqcedetf3gpsi2.list.curated)
 * [3D HNCACB](https://raw.githubusercontent.com/AI-ffinity/ARTINA_benchmark_set/blob/FULL_DATASET/1YEZ/input_files/1YEZ_HNCACB.list.curated)

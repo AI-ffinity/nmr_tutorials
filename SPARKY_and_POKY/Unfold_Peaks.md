@@ -12,7 +12,11 @@ The spectrometer time is expensive, which is one of the reasons to limit spectra
 **The limit in spectral width is essentially the same as undersampling??**
 If there are signals of a higher frequency than the maximum frequency sampled, the spectrometer “sees” their frequencies as if they were within the window by mirroring it, so it appears as a lower frequency within the observed range. 
 
-The influence of the sampling rate is demonstrated in [this video by Zach Star](https://www.youtube.com/watch?v=Jv5FU8oUWEY)
+The influence of the sampling rate is demonstrated in the video by Zach Star:
+
+<div class="video-container">
+  <iframe src="https://www.youtube.com/embed/Jv5FU8oUWEY" title="The influence of the sampling rate by Zach Star" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 **For nD NMR spectroscopy, this means** that peaks outside the detectable spectral window in any dimension will appear as "folded" or "aliased" peaks within the window. 
 Folding in multiple dimensions, like in 2D or 3D NMR, can make spectra more complex, as folded signals from outside the spectral range appear within it, sometimes creating overlap with peaks from within the window. This folding or aliasing can complicate interpretation but may also be useful for spectral compression when controlled.
