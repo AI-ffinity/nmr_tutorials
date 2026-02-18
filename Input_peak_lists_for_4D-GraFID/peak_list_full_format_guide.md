@@ -5,6 +5,26 @@ layout: default
 
 # Submitting NMR peak lists for 4D-GraFID
 
+1. Upload your peak lists at the left panel of the upload interface Currently, we only support peak lists must be in NMRFAM SPARKY / POKY format; files must have `.list` extension.
+2. Select the experiment type.
+
+The dimensions of the peak lists will be inferred automatically based on the distribution of the chemical shift values.
+
+<div class="video-container">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/ljX-bOdQsjU?si=yWYThM2b4LpYtd7N" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+[Watch the video on YouTube](https://www.youtube.com/watch?v=ljX-bOdQsjU)
+
+
+## Example peak lists:
+Those peak lists are for a small protein from ARTINA benchmark set (1YEZ)
+
+* [2D NH-HSQC](https://raw.githubusercontent.com/AI-ffinity/ARTINA_benchmark_set/blob/FULL_DATASET/1YEZ/input_files/1YEZ_HSQC_hsqcedetf3gpsi2.list.curated)
+* [3D HNCACB](https://raw.githubusercontent.com/AI-ffinity/ARTINA_benchmark_set/blob/FULL_DATASET/1YEZ/input_files/1YEZ_HNCACB.list.curated)
+* [4D HCNH-NOESY](https://raw.githubusercontent.com/AI-ffinity/ARTINA_benchmark_set/blob/FULL_DATASET/1YEZ/input_files/1YEZ_HCNH.list.curated)
+
+
 ## Experiment type reference
 
 4D-GraFID accepts the following experiments and expects that they match the definitions in the table below. 
@@ -51,7 +71,7 @@ layout: default
 | HCCH-NOESY       | `hsqcnoesyhsqcccgp4`          | Any H/C to any H/C; mostly of **i** and **i±1**    | Defined by NOE       |
 | HCNH-NOESY       | `hsqcnoesyhsqccngp4d`         | BB+SC amides / BB+SC ; mostly of **i** and **i±1** | Defined by NOE       |
 
-## User assignments reference
+## Format reference for user-provided atom assignments
 
 > **Important:** Currently *(as of 16. Feb 2026)*, only assignments of 15N-HSQC are considered.
 {: .admonition .important}
